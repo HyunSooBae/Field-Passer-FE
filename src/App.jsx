@@ -1,29 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import Board from './pages/Board';
-import MyPage from './pages/MyPage';
-import Admin from './pages/Admin';
-import NotFound from './pages/NotFound';
-import './App.css'
+import './App.css';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
+import requestAPI from './api/axios';
 
 function App() {
-
+  useEffect(() => {
+    requestAPI();
+  }, []);
   return (
-    <BrowserRouter>
+    <div>
+      <ScrollRestoration />
       <Header />
-      <div>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/board/*' element={<Board />} />
-          <Route path='/mypage/*' element={<MyPage />} />
-          <Route path='/admin/*' element={<Admin />} />
-          <Route path='/*' element={<NotFound />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+      <Outlet />
+    </div>
   );
 }
 
-export default App
+export default App;
