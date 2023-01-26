@@ -1,6 +1,5 @@
 {
   "imminent": {
-    "resultCode": "success",
     "resultData": [
       {
         "postId": "123456",
@@ -59,7 +58,6 @@
     ]
   },
   "post": {
-    "resultCode": "success",
     "resultData": [
       {
         "postId": "123456",
@@ -222,6 +220,73 @@
         "imageURL": "/com/hi/helloimage/image1.jpg",
         "viewCount": "11",
         "wishCount": "7"
+      }
+    ]
+  },
+  "membersList": {
+    "resultDataNum": 30,
+    "resultData": [
+      {
+        "memberId": "hello123",
+        "email": "hello@email.com",
+        "memberName": "신도림 메시",
+        "signUpDate": "2023-01-12T19:17:14",
+        "postCount": "10",
+        "visitCount": "200",
+        "privilege": "일반 회원",
+        "reportsNum": 2,
+        "authority": "인증 완료"
+      },
+      {
+        "memberId": "hi123",
+        "email": "hi@email.com",
+        "memberName": "신촌 네이마르",
+        "signUpDate": "2023-01-12T19:17:14",
+        "postCount": "10",
+        "visitCount": "200",
+        "privilege": "일반 회원",
+        "reportsNum": 3,
+        "authority": "이메일 인증 전"
+      },
+      {
+        "memberId": "admin123",
+        "email": "hihello@email.com",
+        "memberName": "화곡동 음바페",
+        "signUpDate": "2023-01-12T19:17:14",
+        "postCount": "10",
+        "visitCount": "200",
+        "privilege": "관리자",
+        "reportsNum": 0,
+        "authority": "인증 완료"
+      }
+    ]
+  },
+  "report": {
+    "resultDataNum": 3,
+    "resultData": [
+      {
+        "questionId": "q123456",
+        "memberId": "hello123",
+        "memberName": "역삼동 모드리치",
+        "title": "사기를 당했습니다",
+        "registerDate": "2023-01-19T13:14:35",
+        "response": "답변 완료"
+      },
+      {
+        "questionId": "q123457",
+        "memberId": "hihello123",
+        "memberName": "서초동 백수",
+        "title": "집에 물이 안 나와요",
+        "registerDate": "2023-01-19T13:20:35",
+        "response": "답변 전"
+      },
+      {
+        "questionId": "q123458",
+        "memberId": "hi123",
+        "memberName": "진짜 호날두",
+        "title": "제가 호날두라는데 사람들이 안 믿어줘요",
+        "registerDate": "2023-01-19T13:25:35",
+        "response": "답변 전"
       }
     ]
   }
