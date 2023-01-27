@@ -1,7 +1,12 @@
-import React from "react";
+import React from 'react';
+import NavBar from '../components/Admin/NavBar';
 
 const Admin = () => {
-  return <div>Admin</div>;
+  return (
+    <div>
+      <NavBar />
+    </div>
+  );
 };
 
 export default Admin;
