@@ -17,6 +17,11 @@ module.exports = {
         base: '1rem',
         xl: '1.25rem',
       },
+      colors: {
+        transparent: 'transparent',
+        field: '#21A04D',
+        hoverfield: '#666666'
+      }
     },
   },
 };
