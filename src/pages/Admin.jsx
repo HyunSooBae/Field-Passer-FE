@@ -4,7 +4,7 @@ import Main from '../components/Admin/Main';
 
 const Admin = () => {
   return (
-    <div>
+    <div className='flex'>
       <NavBar />
       <Main />
     </div>
