@@ -12,7 +12,7 @@ function App() {
   return (
     <div>
       <ScrollRestoration />
-      {location.pathname === '/admin' ? null : <Header />}
+      {location.pathname.includes('/admin') ? null : <Header />}
       <Outlet />
     </div>
   );
