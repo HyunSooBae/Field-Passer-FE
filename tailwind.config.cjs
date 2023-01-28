@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
+        xxs: '375px',
         xs: '400px',
         sm: '540px',
         md: '800px',
@@ -19,8 +20,9 @@ module.exports = {
       },
       colors: {
         transparent: 'transparent',
-        field: '#21A04D'
-      }
+        field: '#21A04D',
+        hoverfield: '#666666',
+      },
     },
   },
 };
