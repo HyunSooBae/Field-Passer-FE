@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import './index.css';
 import Admin from './pages/Admin';
+import Member from './pages/Member';
 import Board from './pages/Board';
 import Home from './pages/Home';
 import MyPage from './pages/MyPage';
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: '/admin',
         element: <Admin />,
+      },
+      {
+        path: '/admin/member',
+        element: <Member />,
       },
       {
         path: '/board',
