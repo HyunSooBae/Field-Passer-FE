@@ -19,8 +19,9 @@ module.exports = {
       },
       colors: {
         transparent: 'transparent',
-        field: '#21A04D'
-      }
+        field: '#21A04D',
+        signatureGray: '#666666',
+      },
     },
   },
 };
