@@ -11,7 +11,7 @@ const Posts = () => {
     }
     getPosts();
   }, []);
-  console.log(posts);
+
   return (
     <table className='w-full table-auto'>
       <thead>
