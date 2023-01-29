@@ -21,7 +21,7 @@ module.exports = {
       colors: {
         transparent: 'transparent',
         field: '#21A04D',
-        signatureGray: '#666666',
+        hoverField: '#666666',
       },
     },
   },

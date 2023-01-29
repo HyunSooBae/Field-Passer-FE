@@ -12,7 +12,7 @@ const Header = () => {
         </div>
         <Searchbar />
         <div className='bg-slate-400'>
-          <button className='w-28 h-10 absolute xxs:right-1 xs:right-2 sm:right-3  bottom-2 rounded-lg bg-field hover:bg-hoverfield text-white font-bold'>
+          <button className='w-28 h-10 absolute xxs:right-1 xs:right-2 sm:right-3  bottom-2 rounded-lg bg-field hover:bg-hoverField text-white font-bold'>
             양도글 작성
           </button>
         </div>
