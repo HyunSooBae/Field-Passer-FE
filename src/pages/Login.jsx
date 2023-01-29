@@ -1,70 +1,48 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   return (
-    // <div className='xl:w-20 flex bg-white'>
-    //   <h2>로그인?</h2>
-    //   <form>
-    //     <div className='bg-gray-500'>
-    //       <input
-    //         type='text'
-    //         placeholder='이메일 아이디'
-    //         className='w-[450px] h-[76px] text-[14px] rounded-[10px] bg-white'
-    //       />
-    //     </div>
-    //     <div>
-    //       <input
-    //         type='password'
-    //         placeholder='비밀번호'
-    //         className='w-[450px] h-[76px] text-[14px] rounded-[10px]'
-    //       />
-    //     </div>
-    //   </form>
-    // </div>
-
-    <div className='w-full max-w-xs'>
-      <form className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
-        <div className='mb-4'>
-          <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='username'>
-            Username
+    <div className='m-auto max-w-7xl pt-[10vh] bg-white'>
+      <h2 className='w-[400px] text-3xl text-center my-10 m-auto'>로그인</h2>
+      <form className='w-[400px] m-auto'>
+        <div className='bg-white border mb-4'>
+          <label className='block text-gray-900 text-sm font-bold mb-2' htmlFor='username'>
+            이메일
           </label>
           <input
-            className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-            id='username'
             type='text'
-            placeholder='Username'
+            placeholder='이메일을 입력하세요'
+            required
+            className='w-full h-14 px-2 text-[14px] rounded-[10px] bg-white border appearance-none focus:outline-none autofill:valid:bg-white focus:border-field valid:border-field'
           />
         </div>
-        <div className='mb-6'>
-          <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='password'>
-            Password
+        <div className='bg-white border mb-4'>
+          <label className='block text-gray-900 text-sm font-bold mb-2' htmlFor='password'>
+            비밀번호
           </label>
           <input
-            className='shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
-            id='password'
             type='password'
-            placeholder='******************'
+            placeholder='비밀번호를 입력하세요'
+            required
+            className='w-full h-14 px-2 text-[14px] rounded-[10px] bg-white border appearance-none focus:outline-none autofill:valid:bg-white focus:border-field valid:border-field'
           />
-          <p className='text-red-500 text-xs italic'>Please choose a password.</p>
         </div>
-        <div className='flex items-center justify-between'>
-          <button
-            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
-            type='button'
-          >
-            Sign In
-          </button>
-          <a
-            className='inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800'
-            href='#'
-          >
-            Forgot Password?
-          </a>
+        <div className='flex justify-between mb-10'>
+          <Link href='#' className='text-gray-400 hover:text-field'>
+            아이디/비밀번호 찾기
+          </Link>
+          <Link href='#' className='text-gray-400 hover:text-field'>
+            회원가입
+          </Link>
         </div>
+        <button
+          type='submit'
+          className='w-full h-14 rounded-[10px] bg-field text-white font-bold hover:bg-hoverfield'
+        >
+          로그인
+        </button>
       </form>
-      <p className='text-center text-gray-500 text-xs'>
-        &copy;2020 Acme Corp. All rights reserved.
-      </p>
     </div>
   );
 };
