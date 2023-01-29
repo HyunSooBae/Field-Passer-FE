@@ -6,7 +6,7 @@ import { RiCustomerService2Fill } from 'react-icons/ri';
 import { CgWebsite } from 'react-icons/cg';
 
 const NavBar = () => {
-  const iconClass = 'cursor-pointer w-20 h-20 text-white';
+  const iconClass = 'cursor-pointer w-16 h-16 text-white';
   const member = () => <BsPeopleFill className={iconClass} />;
   const post = () => <HiDocumentDuplicate className={iconClass} />;
   const service = () => <RiCustomerService2Fill className={iconClass} />;
