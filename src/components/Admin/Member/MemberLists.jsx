@@ -13,23 +13,27 @@ const MemberLists = () => {
   }, []);
 
   return (
-    <div>
-      <table className='w-full'>
-        <thead>
-          <tr>
-            <th>닉네임</th>
-            <th>이메일</th>
-            <th>가입일</th>
-            <th>관리</th>
-          </tr>
-        </thead>
-        <tbody>
-          {members
-            ? members?.map((member) => <MemberList key={member.email} item={member} />)
-            : null}
-        </tbody>
-      </table>
-    </div>
+    <table className='w-full table-auto'>
+      <thead className='border-field'>
+        <tr>
+          <th scope='col' className='text-sm font-bold text-field px-6 py-4 text-left'>
+            닉네임
+          </th>
+          <th scope='col' className='text-sm font-bold text-field px-6 py-4 text-left'>
+            이메일
+          </th>
+          <th scope='col' className='text-sm font-bold text-field px-6 py-4 text-left'>
+            가입일
+          </th>
+          <th scope='col' className='text-sm font-bold text-field px-6 py-4 text-left'>
+            관리
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {members ? members?.map((member) => <MemberList key={member.email} item={member} />) : null}
+      </tbody>
+    </table>
   );
 };
 
