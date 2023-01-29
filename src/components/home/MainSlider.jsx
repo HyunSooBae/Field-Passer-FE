@@ -8,24 +8,18 @@ import { IoIosArrowDroprightCircle, IoIosArrowDropleftCircle } from 'react-icons
 const MainSlider = () => {
   
   const PrevArrow = (props) => {
-    const onClick  = props.onClick;
     return (
-      <div>
-        <IoIosArrowDropleftCircle
-          onClick={onClick}
-          className="absolute w-7 h-7 text-gray-500 left-0 top-1/2 bottom-1/2 cursor-pointer z-10" />
-      </div>
+      <IoIosArrowDropleftCircle
+        onClick={props.onClick}
+        className="xxs:hidden md:block w-8 h-8 absolute text-gray-300 bottom-1/2 left-1 cursor-pointer z-10" />
     );
   }
 
   const NextArrow = (props) => {
-    const onClick  = props.onClick;
     return (
-      <div>
-        <IoIosArrowDroprightCircle
-          onClick={onClick}
-          className="absolute w-7 h-7 text-gray-500 top-1/2 bottom-1/2 right-0 cursor-pointer" />
-      </div>
+      <IoIosArrowDroprightCircle
+        onClick={props.onClick}
+        className="xxs:hidden md:block w-8 h-8 absolute text-gray-300 bottom-1/2 right-1 cursor-pointer" />
     );
   }
 
@@ -51,11 +45,11 @@ const MainSlider = () => {
   }
 
   return (
-      <Slider {...settings}>
-        <div className="relative">
+      <Slider {...settings} className="relative pb-5">
+        <div>
           <img src="images/slider-1.png" />
         </div>
-        <div className="relative">
+        <div>
           <img src="images/slider-2.png" />
         </div>
       </Slider>
