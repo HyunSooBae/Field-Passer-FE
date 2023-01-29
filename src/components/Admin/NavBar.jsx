@@ -21,12 +21,12 @@ const NavBar = () => {
       </div>
       <div>
         <div className='flex gap-5 p-5 flex-wrap justify-center'>
-          <NavTab title='회원 관리' icon={member()} />
-          <NavTab title='게시글 관리' icon={post()} />
+          <NavTab title='회원 관리' icon={member()} address='member' />
+          <NavTab title='게시글 관리' icon={post()} address='post' />
         </div>
         <div className='flex gap-5 p-5 flex-wrap justify-center'>
-          <NavTab title='고객센터' icon={service()} />
-          <NavTab title='FIELD-PASSER' icon={main()} />
+          <NavTab title='고객센터' icon={service()} address='service' />
+          <NavTab title='FIELD-PASSER' icon={main()} address='/' />
         </div>
       </div>
     </div>

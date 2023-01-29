@@ -5,9 +5,6 @@ import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import requestAPI from './api/axios';
 
 function App() {
-  useEffect(() => {
-    requestAPI();
-  }, []);
   const location = useLocation();
   return (
     <div>
