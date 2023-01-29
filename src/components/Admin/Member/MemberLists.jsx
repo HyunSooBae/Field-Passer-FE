@@ -12,11 +12,9 @@ const MemberLists = () => {
     getMembers();
   }, []);
 
-  const tableBorder = 'border-solid';
-
   return (
     <div>
-      <table className='w-full table-auto'>
+      <table className='w-full'>
         <thead>
           <tr>
             <th>닉네임</th>
