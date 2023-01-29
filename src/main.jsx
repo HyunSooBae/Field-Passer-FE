@@ -4,11 +4,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import './index.css';
 import Admin from './pages/Admin';
-import Member from './pages/Member';
 import Board from './pages/Board';
 import Home from './pages/Home';
 import MyPage from './pages/MyPage';
 import NotFound from './pages/NotFound';
+import AdminMember from './pages/AdminMember';
+import AdminMemberDetail from './pages/AdminMemberDetail';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/admin/member',
-        element: <Member />,
+        element: <AdminMember />,
+      },
+      {
+        path: '/admin/member/detail/:memberId',
+        element: <AdminMemberDetail />,
       },
       {
         path: '/board',

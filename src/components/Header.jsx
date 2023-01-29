@@ -18,7 +18,7 @@ const Header = () => {
           <div className="xxs:mt-6 xxs:m-auto">
             <Searchbar />
           </div>
-            <button className="w-28 h-10 absolute xxs:right-5 xs:right-2 md:right-10 lg:right-24 bottom-2 rounded-lg bg-field hover:bg-hoverfield text-white font-bold">
+            <button className="w-28 h-10 absolute xxs:right-5 xs:right-2 md:right-10 lg:right-24 bottom-2 rounded-lg bg-field hover:bg-hoverField text-white font-bold">
               양도글 작성
             </button>
         </div>
