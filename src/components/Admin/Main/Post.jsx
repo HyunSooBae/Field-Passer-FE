@@ -3,16 +3,19 @@ import { BsEye } from 'react-icons/bs';
 import { HiOutlineChatBubbleLeftRight } from 'react-icons/hi2';
 
 const post = ({ item }) => {
+  const truncate = (str, n) => {
+    return str?.length > n ? str.substring(0, n) + '...' : str;
+  };
   return (
-    <div className='p-3 box-border'>
+    <div className='box-border'>
       <img
         src='https://www.newspeak.kr/news/photo/202209/440903_288757_4514.jpg'
         alt=''
         className='w-[180px] rounded-lg'
       />
-      <div className='flex flex-col'>
-        <span className='text-xs'>{item.category}</span>
-        <span className='font-bold'>{item.title}</span>
+      <div className='flex flex-col gap-2'>
+        <span className='text-xs pt-2'>{item.category}</span>
+        <span className='font-bold'>{truncate(item.title, 10)}</span>
         <span className='font-bold'>
           {item.resevedDate} {item.startTime}
         </span>

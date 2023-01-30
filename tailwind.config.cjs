@@ -23,7 +23,11 @@ module.exports = {
         transparent: 'transparent',
         field: '#21A04D',
         hoverField: '#666666',
+        tableBg: '#E6FFE8'
       },
+      gridTemplateColumns: {
+        'admin': '400px 1520px'
+      }
     },
   },
 };

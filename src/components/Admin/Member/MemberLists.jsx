@@ -14,7 +14,7 @@ const MemberLists = () => {
 
   return (
     <table className='w-full table-auto'>
-      <thead className='border-field'>
+      <thead className='text-xs text-field bg-tableBg'>
         <tr>
           <th scope='col' className='text-sm font-bold text-field px-6 py-4 text-left'>
             닉네임
