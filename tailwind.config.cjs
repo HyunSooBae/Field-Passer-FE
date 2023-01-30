@@ -4,9 +4,10 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        xxs: '375px',
+        xxs: '320px',
         xs: '400px',
         sm: '540px',
+        mm: '680px',
         md: '800px',
         lg: '1024px',
         xl: '1280px',
@@ -21,8 +22,12 @@ module.exports = {
       colors: {
         transparent: 'transparent',
         field: '#21A04D',
-        hoverfield: '#666666',
+        hoverField: '#666666',
+        tableBg: '#E6FFE8'
       },
+      gridTemplateColumns: {
+        'admin': '400px 1520px'
+      }
     },
   },
 };

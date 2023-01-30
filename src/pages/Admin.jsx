@@ -4,7 +4,7 @@ import Main from '../components/Admin/Main';
 
 const Admin = () => {
   return (
-    <div className='flex'>
+    <div className='grid grid-cols-admin grid-rows-1'>
       <NavBar />
       <Main />
     </div>

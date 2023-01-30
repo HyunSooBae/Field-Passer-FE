@@ -1,12 +1,16 @@
 import React from 'react';
 
-const question = () => {
+const question = ({ item }) => {
   return (
-    <div>
-      <span>비밀 번호 어떻게 바꾸죠?</span>
-      <span>최강 FE</span>
-      <span>답변 전</span>
-    </div>
+    <tr>
+      <td className='text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap'>{item.title}</td>
+      <td className='text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap'>
+        {item.memberName}
+      </td>
+      <td className='text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap'>
+        {item.response}
+      </td>
+    </tr>
   );
 };
 

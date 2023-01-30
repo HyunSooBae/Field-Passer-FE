@@ -1,10 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const NavTab = ({ title, icon }) => {
+const NavTab = ({ title, icon, address }) => {
+  const navigate = useNavigate();
+  const onClickHandler = (address) => {
+    navigate(`/admin/${address}`);
+  };
   return (
-    <div className='flex flex-col justify-center items-center gap-5 w-20'>
+    <div
+      className='flex flex-col justify-center items-center gap-5 w-24'
+      onClick={() => onClickHandler(address)}
+    >
       {icon}
-      <span className='text-white text-center pt-2'>{title}</span>
+      <span className='text-white text-center pt-2 whitespace-nowrap'>{title}</span>
     </div>
   );
 };

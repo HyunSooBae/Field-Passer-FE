@@ -6,13 +6,13 @@ import { RiCustomerService2Fill } from 'react-icons/ri';
 import { CgWebsite } from 'react-icons/cg';
 
 const NavBar = () => {
-  const iconClass = 'cursor-pointer w-20 h-20 text-white';
+  const iconClass = 'cursor-pointer w-16 h-16 text-white';
   const member = () => <BsPeopleFill className={iconClass} />;
   const post = () => <HiDocumentDuplicate className={iconClass} />;
   const service = () => <RiCustomerService2Fill className={iconClass} />;
   const main = () => <CgWebsite className={iconClass} />;
   return (
-    <div className='flex bg-field flex-col box-border h-screen justify-center items-center gap-5 w-96'>
+    <div className='flex bg-field flex-col box-border h-screen justify-center items-center gap-5 w-[400px]'>
       <img src='./images/anony.png' alt='' className='w-24' />
       <div className='flex gap-5 text-white'>
         <span>관리자 ADMIN</span>
@@ -21,12 +21,12 @@ const NavBar = () => {
       </div>
       <div>
         <div className='flex gap-5 p-5 flex-wrap justify-center'>
-          <NavTab title='회원 관리' icon={member()} />
-          <NavTab title='게시글 관리' icon={post()} />
+          <NavTab title='회원 관리' icon={member()} address='member' />
+          <NavTab title='게시글 관리' icon={post()} address='post' />
         </div>
         <div className='flex gap-5 p-5 flex-wrap justify-center'>
-          <NavTab title='고객센터' icon={service()} />
-          <NavTab title='FIELD-PASSER' icon={main()} />
+          <NavTab title='고객센터' icon={service()} address='service' />
+          <NavTab title='FIELD-PASSER' icon={main()} address='/' />
         </div>
       </div>
     </div>
