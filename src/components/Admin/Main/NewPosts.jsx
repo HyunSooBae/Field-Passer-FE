@@ -4,6 +4,7 @@ import requestAPI from '../../../api/axios';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { IoIosArrowDroprightCircle, IoIosArrowDropleftCircle } from 'react-icons/io';
 
 const NewPosts = () => {
   const [posts, setPosts] = useState([]);
@@ -39,36 +40,41 @@ const NewPosts = () => {
   };
 
   const settings = {
-    arrow: true,
+    dots: true,
     infinite: true,
     speed: 1000,
-    slidesToShow: 1,
+    slidesToShow: 4,
     slidesToscroll: 1,
     draggable: true,
     arrows: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    autoplay: true,
-    autoplaySpeed: 5000,
     pauseOnFocus: true,
     pauseOnHover: true,
-    responsive: [
-      {
-        breakpoints: 480,
-      },
-    ],
+    appenDots: (dots) => (
+      <div
+        style={{
+          backgroundColor: '#21A04D',
+          borderRadius: '50%',
+          width: '10px',
+          height: '10px',
+        }}
+      >
+        <ul style={{ margin: '0px' }}>{dots}</ul>
+      </div>
+    ),
   };
   return (
     <div className='w-3/5'>
       <h3 className='font-bold text-2xl'>최신 글 목록</h3>
-      <div className='flex'>
-        {/* <Slider {...settings}> */}
-        {posts ? (
-          posts.map((post) => <Post key={post.postId} item={post} />)
-        ) : (
-          <p>새로운 글이 없습니다.</p>
-        )}
-        {/* </Slider> */}
+      <div className='mt-3'>
+        <Slider {...settings}>
+          {posts ? (
+            posts.map((post) => <Post key={post.postId} item={post} />)
+          ) : (
+            <p>새로운 글이 없습니다.</p>
+          )}
+        </Slider>
       </div>
     </div>
   );
