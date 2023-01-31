@@ -4,7 +4,7 @@ import NavBar from '../../components/Admin/NavBar';
 
 const AdminMember = () => {
   return (
-    <div className='grid grid-cols-admin grid-rows-1 w-full'>
+    <div className='grid grid-cols-admin grid-rows-1 w-full h-screen'>
       <NavBar />
       <Main />
     </div>
