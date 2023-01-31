@@ -6,12 +6,14 @@ import BoardList from '../components/home/search/BoardList'
 
 const Home = () => {
   return (
-    <div className="m-auto max-w-7xl relative">
-      <MainSlider />
-      <BoardList />
-      <ImminentBoard />
+    <>
+      <main className="m-auto max-w-7xl relative">
+        <MainSlider />
+        <BoardList />
+        <ImminentBoard />
+      </main>
       <Footer />
-    </div>
+    </>
   )
 };
 
