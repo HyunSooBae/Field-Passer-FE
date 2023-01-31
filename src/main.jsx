@@ -13,6 +13,8 @@ import AdminMemberDetail from './pages/Admin/MemberDetail';
 import Login from './pages/Login';
 import Join from './pages/Join';
 import FindAccount from './pages/FindAccount';
+import BoradForm from './pages/BoradForm';
+import BoardDetails from './pages/BoardDetails';
 import AdminPost from './pages/Admin/Post';
 import AdminPostDetail from './pages/Admin/PostDetail';
 
@@ -33,6 +35,8 @@ const router = createBrowserRouter([
       { path: '/admin/post', element: <AdminPost /> },
       { path: '/admin/post/detail/:postId', element: <AdminPostDetail /> },
       { path: '/board', element: <Board /> },
+      { path: '/BoradForm', element: <BoradForm /> },
+      { path: '/board/details/:id', element: <BoardDetails /> },
     ],
   },
 ]);
