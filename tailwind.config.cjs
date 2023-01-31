@@ -23,6 +23,13 @@ module.exports = {
         transparent: 'transparent',
         field: '#21A04D',
         hoverField: '#666666',
+        tableBg: '#E6FFE8',
+      },
+      gridTemplateColumns: {
+        admin: '400px 1520px',
+      },
+      boxShadow: {
+        'table-border': '0 0 0 1px rgba(0,0,0,.3)',
       },
     },
   },

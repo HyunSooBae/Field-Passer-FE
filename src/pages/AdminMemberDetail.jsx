@@ -4,7 +4,7 @@ import Main from '../components/Admin/MemberDetail';
 
 const AdminMemberDetail = () => {
   return (
-    <div className='flex'>
+    <div className='grid grid-cols-admin grid-rows-1 w-full'>
       <NavBar />
       <Main />
     </div>

@@ -12,7 +12,7 @@ const NavBar = () => {
   const service = () => <RiCustomerService2Fill className={iconClass} />;
   const main = () => <CgWebsite className={iconClass} />;
   return (
-    <div className='flex bg-field flex-col box-border h-screen justify-center items-center gap-5 w-96'>
+    <div className='flex bg-field flex-col box-border h-screen justify-center items-center gap-5 w-[400px]'>
       <img src='./images/anony.png' alt='' className='w-24' />
       <div className='flex gap-5 text-white'>
         <span>관리자 ADMIN</span>

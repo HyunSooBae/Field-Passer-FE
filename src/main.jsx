@@ -10,6 +10,9 @@ import MyPage from './pages/MyPage';
 import NotFound from './pages/NotFound';
 import AdminMember from './pages/AdminMember';
 import AdminMemberDetail from './pages/AdminMemberDetail';
+import Login from './pages/Login';
+import Join from './pages/Join';
+import FindAccount from './pages/FindAccount';
 import AddBorad from './pages/AddBorad';
 
 const router = createBrowserRouter([
@@ -18,34 +21,16 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <NotFound />,
     children: [
-      {
-        path: '/',
-        element: <Home />,
-      },
-      {
-        path: '/mypage',
-        element: <MyPage />,
-      },
-      {
-        path: '/admin',
-        element: <Admin />,
-      },
-      {
-        path: '/admin/member',
-        element: <AdminMember />,
-      },
-      {
-        path: '/admin/member/detail/:memberId',
-        element: <AdminMemberDetail />,
-      },
-      {
-        path: '/board',
-        element: <Board />,
-      },
-      {
-        path: '/AddBorad',
-        element: <AddBorad />,
-      },
+      { path: '/', element: <Home /> },
+      { path: '/login', element: <Login /> },
+      { path: '/join', element: <Join /> },
+      { path: '/findaccount', element: <FindAccount /> },
+      { path: '/mypage', element: <MyPage /> },
+      { path: '/admin', element: <Admin /> },
+      { path: '/admin/member', element: <AdminMember /> },
+      { path: '/admin/member/detail/:memberId', element: <AdminMemberDetail /> },
+      { path: '/board', element: <Board /> },
+      { path: '/AddBorad', element: <AddBorad /> },
     ],
   },
 ]);
