@@ -8,11 +8,13 @@ import Board from './pages/Board';
 import Home from './pages/Admin/Home';
 import MyPage from './pages/MyPage';
 import NotFound from './pages/NotFound';
-import AdminMember from './pages/Admin/AdminMember';
-import AdminMemberDetail from './pages/Admin/AdminMemberDetail';
+import AdminMember from './pages/Admin/Member';
+import AdminMemberDetail from './pages/Admin/MemberDetail';
 import Login from './pages/Login';
 import Join from './pages/Join';
 import FindAccount from './pages/FindAccount';
+import AdminPost from './pages/Admin/Post';
+import AdminPostDetail from './pages/Admin/PostDetail';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,8 @@ const router = createBrowserRouter([
       { path: '/admin', element: <AdminHome /> },
       { path: '/admin/member', element: <AdminMember /> },
       { path: '/admin/member/detail/:memberId', element: <AdminMemberDetail /> },
+      { path: '/admin/post', element: <AdminPost /> },
+      { path: '/admin/post/detail/:postId', element: <AdminPostDetail /> },
       { path: '/board', element: <Board /> },
     ],
   },
