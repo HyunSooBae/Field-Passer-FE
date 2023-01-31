@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Board = () => {
   return (
-    <div className="w-[600px] ml-auto mr-auto my-[50px] flex flex-wrap">
+    <div className="w-[lg] ml-auto mr-auto my-[50px] flex flex-wrap">
       <div className="w-1/4 px-[10px] py-[10px] mb-[10px]">
         <Link to='./details/postName' className="flex flex-col gap-[15px]">
           <img role="img" className="w-full border border-gray-500 border-solid object-cover aspect-square rounded-lg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALcAAAETCAMAAABDSmfhAAAAA1BMVEUAAACnej3aAAAASElEQVR4nO3BgQAAAADDoPlT3+AEVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8A8WoAAHxScUAAAAAAElFTkSuQmCC"/>
