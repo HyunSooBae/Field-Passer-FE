@@ -26,7 +26,7 @@ module.exports = {
         tableBg: '#E6FFE8',
       },
       gridTemplateColumns: {
-        admin: '400px 1520px',
+        admin: '400px auto',
       },
       boxShadow: {
         'table-border': '0 0 0 1px rgba(0,0,0,.3)',
