@@ -13,19 +13,25 @@ const MemberLists = () => {
   }, []);
 
   return (
-    <table className='w-full table-auto'>
-      <thead className='text-xs text-field bg-tableBg'>
+    <table className='table-auto w-full text-sm mt-3 rounded-[10px] overflow-hidden bg-field border border-solid border-field'>
+      <colgroup>
+        <col className='w-auto' />
+        <col className='w-auto' />
+        <col className='w-auto' />
+        <col className='w-[250px]' />
+      </colgroup>
+      <thead className='text-sm text-field bg-tableBg text-bold'>
         <tr>
-          <th scope='col' className='text-sm font-bold text-field px-6 py-4 text-left'>
+          <th scope='col' className='px-6 py-4 text-left'>
             닉네임
           </th>
-          <th scope='col' className='text-sm font-bold text-field px-6 py-4 text-left'>
+          <th scope='col' className='px-6 py-4 text-left'>
             이메일
           </th>
-          <th scope='col' className='text-sm font-bold text-field px-6 py-4 text-left'>
+          <th scope='col' className='px-6 py-4 text-left'>
             가입일
           </th>
-          <th scope='col' className='text-sm font-bold text-field px-6 py-4 text-left'>
+          <th scope='col' className='px-6 py-4 text-left'>
             관리
           </th>
         </tr>

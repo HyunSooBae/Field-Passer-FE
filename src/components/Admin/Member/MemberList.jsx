@@ -7,7 +7,7 @@ const MemberList = ({ item }) => {
     navigate(`/admin/member/detail/${id}`);
   };
   return (
-    <tr className='border-field border-solid'>
+    <tr className='border-t-[1px] border-solid border-field bg-white'>
       <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
         {item.memberName}
       </td>

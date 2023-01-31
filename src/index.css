@@ -1,7 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@300&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'NanumSquareNeo-Variable';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -139,6 +147,7 @@ html,
 body,
 #root {
   height: 100%;
+  font-family: 'NanumSquareNeo-Variable', 'Noto Sans KR', sans-serif;
 }
 
 /* Change Autocomplete styles in Chrome*/
@@ -158,4 +167,3 @@ select:-webkit-autofill:focus {
   transition: background-color 1000s ease-in-out 0s;
   /* color: white; */
 }
-
