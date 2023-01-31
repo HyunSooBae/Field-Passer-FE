@@ -4,7 +4,7 @@ import RenderList from "./RenderList";
 
 const ImminentBoard = () => {
   return (
-    <section className="h-[500px] pt-5 bg-green-700">
+    <section className="h-[500px] mt-5 bg-green-700">
       <BoardList title='마감 임박' />
       <RenderList />
     </section>

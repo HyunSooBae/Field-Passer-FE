@@ -45,12 +45,12 @@ const MainSlider = () => {
   }
 
   return (
-      <Slider {...settings} className="relative pb-5">
+      <Slider {...settings} className="relative pt-5 pb-5 border-b border-gray-200 border-solid">
         <div>
-          <img src="images/slider-1.png" />
+          <img src="images/slider-1.png" className="rounded-lg" />
         </div>
         <div>
-          <img src="images/slider-2.png" />
+          <img src="images/slider-2.png" className="rounded-lg" />
         </div>
       </Slider>
   )
