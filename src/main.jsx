@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import './index.css';
-import Admin from './pages/Admin';
+import AdminHome from './pages/Admin/Home';
 import Board from './pages/Board';
-import Home from './pages/Home';
+import Home from './pages/Admin/Home';
 import MyPage from './pages/MyPage';
 import NotFound from './pages/NotFound';
-import AdminMember from './pages/AdminMember';
-import AdminMemberDetail from './pages/AdminMemberDetail';
+import AdminMember from './pages/Admin/AdminMember';
+import AdminMemberDetail from './pages/Admin/AdminMemberDetail';
 import Login from './pages/Login';
 import Join from './pages/Join';
 import FindAccount from './pages/FindAccount';
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       { path: '/join', element: <Join /> },
       { path: '/findaccount', element: <FindAccount /> },
       { path: '/mypage', element: <MyPage /> },
-      { path: '/admin', element: <Admin /> },
+      { path: '/admin', element: <AdminHome /> },
       { path: '/admin/member', element: <AdminMember /> },
       { path: '/admin/member/detail/:memberId', element: <AdminMemberDetail /> },
       { path: '/board', element: <Board /> },
