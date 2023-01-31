@@ -233,7 +233,7 @@ const MyPage = () => {
           <h3 className='text-2xl font-bold'>문의 게시판</h3>
           <Link>더보기</Link>
         </div>
-        <table className='table-auto w-full rounded-[10px] overflow-hidden'>
+        <table className='table-auto w-full border border-solid border-gray-200 rounded-[10px] overflow-hidden bg-gray-200'>
           <thead className='bg-gray-100'>
             <tr>
               <th scope='col' className='p-4 text-sm font-bold text-gray-500 text-left'>
@@ -258,7 +258,7 @@ const MyPage = () => {
                   <td>문의가 없습니다.</td>
                 </tr>
               )} */}
-            <tr className='border-t-[1px] border-solid border-gray-200'>
+            <tr className='border-t-[1px] border-solid border-gray-200 bg-white'>
               <td className='font-bold p-4 py-5'>사기를 당했습니다</td>
               <td className='px-4 py-5'>2023-01-19 13:14</td>
               <td className='px-4 py-5'>
@@ -269,7 +269,7 @@ const MyPage = () => {
               <td className='px-4 py-5 font-bold'>역삼동 모드리치</td>
             </tr>
 
-            <tr className='border-t-[1px] border-solid border-gray-200'>
+            <tr className='border-t-[1px] border-solid border-gray-200 bg-white'>
               <td className='font-bold p-4 py-5'>집에 물이 안나와요</td>
               <td className='px-4 py-5'>2023-01-19 13:20</td>
               <td className='px-4 py-5'>
@@ -277,10 +277,10 @@ const MyPage = () => {
                   답변 완료
                 </span>
               </td>
-              <td className='px-4 py-5'>서초동 백수</td>
+              <td className='px-4 py-5 font-bold'>서초동 백수</td>
             </tr>
 
-            <tr className='border-t-[1px] border-solid border-gray-200'>
+            <tr className='border-t-[1px] border-solid border-gray-200 bg-white'>
               <td className='font-bold p-4 py-5'>제가 호날두라는데 사람들이 안믿어줘요</td>
               <td className='px-4 py-5'>2023-01-19 13:25</td>
               <td className='px-4 py-5'>
@@ -288,10 +288,23 @@ const MyPage = () => {
                   답변 전
                 </span>
               </td>
-              <td className='px-4 py-5'>진짜 호날두</td>
+              <td className='px-4 py-5 font-bold'>진짜 호날두</td>
             </tr>
 
-            <tr className='border-t-[1px] border-solid border-gray-200'>
+            <tr className='border-t-[1px] border-solid border-gray-200 bg-white'>
+              <td className='font-bold p-4 py-5'>
+                제가 호날두라는데 사람들이 안믿어줘요 제가 호날두라는...
+              </td>
+              <td className='px-4 py-5'>2023-01-19 13:25</td>
+              <td className='px-4 py-5'>
+                <span className='p-1.5 rounded-[10px] font-bold text-gray-500 bg-gray-200'>
+                  답변 전
+                </span>
+              </td>
+              <td className='px-4 py-5 font-bold'>진짜 호날두</td>
+            </tr>
+
+            <tr className='border-t-[1px] border-solid border-gray-200 bg-white'>
               <td className='font-bold p-4 py-5'>제가 호날두라는데 사람들이 안믿어줘요</td>
               <td className='px-4 py-5'>2023-01-19 13:25</td>
               <td className='px-4 py-5'>
@@ -299,18 +312,7 @@ const MyPage = () => {
                   답변 전
                 </span>
               </td>
-              <td className='px-4 py-5'>진짜 호날두</td>
-            </tr>
-
-            <tr className='border-t-[1px] border-solid border-gray-200'>
-              <td className='font-bold p-4 py-5'>제가 호날두라는데 사람들이 안믿어줘요</td>
-              <td className='px-4 py-5'>2023-01-19 13:25</td>
-              <td className='px-4 py-5'>
-                <span className='p-1.5 rounded-[10px] font-bold text-gray-500 bg-gray-200'>
-                  답변 전
-                </span>
-              </td>
-              <td className='px-4 py-5'>진짜 호날두</td>
+              <td className='px-4 py-5 font-bold'>진짜 호날두</td>
             </tr>
           </tbody>
         </table>
