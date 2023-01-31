@@ -13,7 +13,8 @@ import AdminMemberDetail from './pages/AdminMemberDetail';
 import Login from './pages/Login';
 import Join from './pages/Join';
 import FindAccount from './pages/FindAccount';
-import AddBorad from './pages/AddBorad';
+import BoradForm from './pages/BoradForm';
+import BoardDetails from './pages/BoardDetails';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,8 @@ const router = createBrowserRouter([
       { path: '/admin/member', element: <AdminMember /> },
       { path: '/admin/member/detail/:memberId', element: <AdminMemberDetail /> },
       { path: '/board', element: <Board /> },
-      { path: '/AddBorad', element: <AddBorad /> },
+      { path: '/BoradForm', element: <BoradForm /> },
+      { path: '/board/details/:id', element: <BoardDetails /> },
     ],
   },
 ]);
