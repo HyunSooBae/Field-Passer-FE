@@ -11,7 +11,7 @@ const SelectBox = ({ id, names, defaultValue, size }) => {
   };
 
   return (
-    <select id={id} className={`bg-gray-50 border-2 border-gray-200 focus:outline-0 text-gray-900 text-m rounded-lg focus:border-green-500 block h-10 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-green-500 ${size}`}>
+    <select id={id} className={`bg-gray-50 border-2 border-gray-200 focus:outline-0 text-gray-900 text-m rounded-lg focus:border-green-500 block h-10 ${size}`}>
       <option value="" defaultValue>{defaultValue}</option>
       {renderOptions(names)}
     </select>
