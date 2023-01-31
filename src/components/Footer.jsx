@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
   return (
     <footer className='w-full pt-5 border-t border-gray-200 border-solid'>
-      <div className=' h-48 bg-yellow-400 m-auto max-w-5xl relative text-xs p-7 flex-col'>
+      <div className='bg-yellow-400 m-auto max-w-5xl relative text-xs p-7 flex-col'>
         <ul className='mb-2'>
           <li>
             <a href='/'>개인정보처리방침</a>

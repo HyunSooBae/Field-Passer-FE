@@ -6,7 +6,7 @@ const MembersMenu = () => {
   // else {고객센터/마이페이지/로그아웃}
 
   return (
-    <div className='w-full h-10 flex justify-end items-center  pr-8 text-sm text-hoverfield'>
+    <div className='h-10 flex justify-end items-center  pr-8 text-sm text-hoverfield'>
       <Link to='' className='mx-8 hover:text-black'>
         고객센터
       </Link>
