@@ -15,16 +15,16 @@ const NewQuestions = () => {
   return (
     <div className='w-2/5'>
       <h3 className='font-bold text-2xl'>문의 게시판</h3>
-      <table className='table-auto w-full text-sm text-left mt-3'>
-        <thead className='text-xs text-field bg-tableBg'>
+      <table className='table-auto w-full text-sm mt-3 rounded-[10px] overflow-hidden border border-solid border-field bg-field'>
+        <thead className='text-sm text-field bg-tableBg text-bold'>
           <tr>
-            <th scope='col' className='text-sm font-bold text-field px-6 py-4 text-left'>
+            <th scope='col' className='px-6 py-4 text-left'>
               제목
             </th>
-            <th scope='col' className='text-sm font-bold text-field px-6 py-4 text-left'>
+            <th scope='col' className='px-6 py-4 text-left'>
               닉네임
             </th>
-            <th scope='col' className='text-sm font-bold text-field px-6 py-4 text-left'>
+            <th scope='col' className='px-6 py-4 text-left'>
               상태
             </th>
           </tr>
