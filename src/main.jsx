@@ -10,6 +10,7 @@ import MyPage from './pages/MyPage';
 import NotFound from './pages/NotFound';
 import AdminMember from './pages/AdminMember';
 import AdminMemberDetail from './pages/AdminMemberDetail';
+import AddBorad from './pages/AddBorad';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: '/board',
         element: <Board />,
+      },
+      {
+        path: '/AddBorad',
+        element: <AddBorad />,
       },
     ],
   },
