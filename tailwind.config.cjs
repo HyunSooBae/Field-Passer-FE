@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.jsx'],
+  darkMode: ['class', '[data-mode="dark"]'],
+  content: [
+    './src/**/*.jsx',
+    "./node_modules/tailwind-datepicker-react/dist/**/*.js",
+  ],
   theme: {
     extend: {
       screens: {
@@ -26,7 +30,7 @@ module.exports = {
         tableBg: '#E6FFE8',
       },
       gridTemplateColumns: {
-        admin: '400px 1520px',
+        admin: '400px auto',
       },
       boxShadow: {
         'table-border': '0 0 0 1px rgba(0,0,0,.3)',
