@@ -5,7 +5,7 @@ import App from './App';
 import './index.css';
 import AdminHome from './pages/Admin/Home';
 import Board from './pages/Board';
-import Home from './pages/Admin/Home';
+import Home from './pages/Home';
 import MyPage from './pages/MyPage';
 import NotFound from './pages/NotFound';
 import AdminMember from './pages/Admin/Member';
