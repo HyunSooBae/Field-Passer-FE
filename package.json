@@ -16,6 +16,7 @@
     ]
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.2",
     "autoprefixer": "^10.4.13",
     "axios": "^1.2.2",
     "dotenv": "^16.0.3",
@@ -26,7 +27,7 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.2",
     "react-slick": "^0.29.0",
-    "redux": "^4.2.0",
+    "redux-logger": "^3.0.6",
     "slick-carousel": "^1.8.1",
     "tailwind-datepicker-react": "^1.2.3"
   },
