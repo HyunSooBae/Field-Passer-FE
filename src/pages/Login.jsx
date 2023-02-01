@@ -31,7 +31,7 @@ const Login = () => {
           </div>
           <div className='flex justify-between mb-10'>
             <Link to='/findaccount' className='text-gray-400 hover:text-field'>
-              아이디/비밀번호 찾기
+              비밀번호 찾기
             </Link>
             <Link to='/join' className='text-gray-400 hover:text-field'>
               회원가입
