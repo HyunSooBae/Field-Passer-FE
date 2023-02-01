@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import requestAPI from '../api/axios';
 import PostList from '../components/PostList'
@@ -8,16 +7,16 @@ const Board = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const res = await requestAPI('report')
-      setData(res)
+      const res = await requestAPI('post')
+      setData(res.data.resultData)
     }
     getData();
   }, []);
 
-  console.log(data)
+  console.log(data);
 
   return (
-    <PostList />
+    <PostList data={data}/>
   )
 }
 
