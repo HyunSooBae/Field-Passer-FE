@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selected, unselected } from '../../../store/selected';
+import { selected } from '../../../store/selected';
 
 const SelectBox = ({ id, options, defaultValue, size }) => {
   const dispatch = useDispatch();
