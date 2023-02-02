@@ -1,10 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ['class', '[data-mode="dark"]'],
-  content: [
-    './src/**/*.jsx',
-    "./node_modules/tailwind-datepicker-react/dist/**/*.js",
-  ],
+  content: ['./src/**/*.jsx', './node_modules/tailwind-datepicker-react/dist/**/*.js'],
   theme: {
     extend: {
       screens: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { categoryOptions } from '../../../options';
+import { categoryOptions } from '../../../util/options';
 
 const CategoryFilter = ({ selectedCategory }) => {
   return (
