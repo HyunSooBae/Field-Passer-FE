@@ -20,6 +20,7 @@ import AdminPostDetail from './pages/Admin/PostDetail';
 import { Provider } from 'react-redux';
 import store from './store';
 import ReportAndQuestion from './pages/Admin/ReportAndQuestion';
+import Help from './pages/Help';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       { path: '/', element: <Home /> },
+      { path: '/help', element: <Help /> },
       { path: '/login', element: <Login /> },
       { path: '/join', element: <Join /> },
       { path: '/findaccount', element: <FindAccount /> },
