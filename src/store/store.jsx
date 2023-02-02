@@ -4,8 +4,8 @@ const initialState = {
   catagorySelect: false,
   districtSelect: false,
 };
-const selectedState = createSlice({
-  name: 'selected',
+const storeState = createSlice({
+  name: 'store',
   initialState,
   reducers: {
     selected: (state, action) => {
@@ -20,11 +20,20 @@ const selectedState = createSlice({
           break
       }
     },
-    unselected: (state) => {
-      state.catagorySelect = false;
+    unselected: (state, action) => {
+      switch(action.payload){
+        case 'category' :
+          state.catagorySelect = false ;
+          break;
+        case 'district' : 
+          state.districtSelect = false ;
+          break
+        default :
+          break
+      }
     },
   },
 });
 
-export default selectedState;
-export const { selected, unselected } = selectedState.actions;
+export default storeState;
+export const { selected, unselected } = storeState.actions;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import requestAPI from '../api/axios';
+import Searchbar from '../components/home/search/Searchbar';
 import PostList from '../components/PostList'
 
 const Board = () => {
@@ -13,10 +14,11 @@ const Board = () => {
     getData();
   }, []);
 
-  console.log(data);
-
   return (
-    <PostList data={data}/>
+    <div className='px-[20px]'>
+      <Searchbar />
+      <PostList data={data}/>
+    </div>
   )
 }
 

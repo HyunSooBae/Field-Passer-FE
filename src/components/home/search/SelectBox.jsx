@@ -1,24 +1,26 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selected } from '../../../store/selected';
+import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { selected,unselected } from '../../../store/store';
 
 const SelectBox = ({ id, options, defaultValue, size }) => {
   const dispatch = useDispatch();
-  const selectedState = useSelector((state) => {
-    return state.selected.catagorySelect;
-  });
+  const select = useRef()
 
-  useEffect(() => {
-    console.log(selectedState)    
-  }, [selectedState]);
+  const checkSelector = (action) => {
+    if(select.current.value === ''){
+      dispatch(unselected(action))
+    } else {
+      dispatch(selected(action))
+    }
+  }
 
   return (
     <select
+      ref={select}
       id={id}
       className={`bg-gray-50 border-2 border-gray-200 focus:outline-0 text-gray-900 text-sm p-2 rounded-lg focus:border-green-500 block h-10 ${size}`}
       onChange={() => {
-        if(id === 'category') dispatch(selected('category'))
-        if(id === 'district') dispatch(selected('district'))
+        checkSelector(id)
       }}
     >
       <option value='' defaultValue>
