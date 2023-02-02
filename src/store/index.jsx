@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import selected from "./selected";
+import storeState from "./store";
 
 const store = configureStore({
   reducer: {
-    selected: selected.reducer,
+    store: storeState.reducer,
   },
 });
 

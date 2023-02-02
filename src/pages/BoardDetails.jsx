@@ -1,10 +1,45 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Board from './Board';
+import PostList from '../components/PostList';
+import requestAPI from '../api/axios';
 
 const BoardDetails = () => {
+  const mapElement = useRef(null);
+
+  // api 나오면 특정 게시글 데이터로 교체
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const res = await requestAPI('post')
+      setData(res.data.resultData)
+    }
+    getData();
+  }, []);
+
+  // api 나오면 경도 위도 받아서 사용
+  useEffect(() => {
+    const { naver } = window;
+    if (!mapElement.current || !naver) return;
+
+    const location = new naver.maps.LatLng(37.51557, 126.91228);
+    const mapOptions = {
+      center: location,
+      zoom: 17,
+      zoomControl: true,
+      zoomControlOptions: {
+        position: naver.maps.Position.TOP_RIGHT,
+      },
+    };
+    const map = new naver.maps.Map(mapElement.current, mapOptions);
+    new naver.maps.Marker({
+      position: location,
+      map,
+    });
+  }, []);
+
   const settings = {
     infinite: true,
     speed: 500,
@@ -19,10 +54,10 @@ const BoardDetails = () => {
   };
 
   return (
-    <div className='my-[50px] mx-auto w-[600px]'>
+    <div className='my-[50px] mx-auto max-w-[600px] px-[20px] mm:px-[0]'>
       <Slider
         {...settings}
-        className='relative h-[600px] mx-auto rounded-lg overflow-hidden'
+        className='relative max-h-[600px] mx-auto rounded-lg overflow-hidden'
       >
         <div className='w-full'>
           <img
@@ -77,12 +112,21 @@ const BoardDetails = () => {
         </div>
       </div>
 
+      <section className='flex w-full gap-[20px] my-[20px] mm:flex-row flex-col'>
+        <div ref={mapElement} className="mm:w-[300px] w-[100%] aspect-[1/1]"/>
+
+        <div className='flex flex-col gap-[10px]'>
+          <p className='text-sm'>장소 이름 : </p>
+          <p className='text-sm'>장소 번호 : </p>
+        </div>
+      </section>
+
       <div>
-        <div className="flex items-center justify-between pt-[30px]">
+        <div className="flex items-center justify-between py-[20px]">
           <p className='font-black'>성동구 다른 예약</p>
           <button className='text-xs text-gray-400'>더보기</button>
         </div>
-        <Board />
+        <PostList data={data}/>
       </div>
     </div>
   );
