@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const ImminentList = ({ category, district, reservedDate, startTime, stadiumName, mobile }) => {
+const ImminentList = ({ category, district, startTime, stadiumName, mobile }) => {
   //버튼 누르면 postId로 게시물 이동
   //category, postID 받아야됨..
+
+  const reservedDate = startTime.slice(5, 10).replace('-', '월 ') + '일';
+
   const liClassName = 'border-b border-solid border-gray-200 h-7 leading-6 ';
   return mobile ? (
     <div className='flex h-52 py-2 px-1 border-2 border-solid border-field mb-2 rounded-[10px] xxs:text-sm sm:text-base'>
@@ -18,7 +21,8 @@ const ImminentList = ({ category, district, reservedDate, startTime, stadiumName
         <li className={liClassName}>{district}</li>
         <li className={liClassName}>
           <span className='mr-5'>{reservedDate}</span>
-          <span>{startTime}</span>
+          <span>{startTime.slice(11, 16)}</span>
+          <span>{startTime.slice(11, 16)}</span>
         </li>
         <li className={liClassName}>{stadiumName}</li>
         <li className='h-6'>
@@ -41,7 +45,7 @@ const ImminentList = ({ category, district, reservedDate, startTime, stadiumName
           {reservedDate}
         </td>
         <td className=' text-gray-900 font-light px-2 py-4 whitespace-nowrap text-center'>
-          {startTime}
+          {startTime.slice(11, 16)}
         </td>
         <td className=' text-gray-900 font-light px-2 py-4 whitespace-nowrap text-center'>
           {stadiumName}
