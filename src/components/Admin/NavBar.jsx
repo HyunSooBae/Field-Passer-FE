@@ -12,7 +12,7 @@ const NavBar = () => {
   const service = () => <RiCustomerService2Fill className={iconClass} />;
   const main = () => <CgWebsite className={iconClass} />;
   return (
-    <div className='flex bg-field flex-col box-border h-full justify-center items-center gap-5 w-[400px]'>
+    <div className='flex bg-field flex-col box-border fixed h-full justify-center items-center gap-5 w-[400px]'>
       <img src='./images/anony.png' alt='' className='w-24' />
       <div className='flex gap-5 text-white'>
         <span>관리자 ADMIN</span>
@@ -21,12 +21,12 @@ const NavBar = () => {
       </div>
       <div>
         <div className='flex gap-5 p-5 flex-wrap justify-center'>
-          <NavTab title='회원 관리' icon={member()} address='member' />
-          <NavTab title='게시글 관리' icon={post()} address='post' />
+          <NavTab title='회원 관리' icon={member()} address='admin/member' />
+          <NavTab title='게시글 관리' icon={post()} address='admin/post' />
         </div>
         <div className='flex gap-5 p-5 flex-wrap justify-center'>
-          <NavTab title='고객센터' icon={service()} address='service' />
-          <NavTab title='FIELD-PASSER' icon={main()} address='/' />
+          <NavTab title='고객센터' icon={service()} address='admin/service' />
+          <NavTab title='FIELD-PASSER' icon={main()} address='' />
         </div>
       </div>
     </div>

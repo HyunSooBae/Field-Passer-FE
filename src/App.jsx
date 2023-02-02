@@ -6,7 +6,7 @@ import NavBar from './components/Admin/NavBar';
 
 function Admin() {
   return (
-    <div>
+    <div className='grid grid-cols-admin grid-rows-1 h-screen'>
       <ScrollRestoration />
       <NavBar />
       <Outlet />
