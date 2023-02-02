@@ -1,7 +1,8 @@
-import React, { useState, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import requestAPI from '../../api/axios';
 import SearchBox from '../../components/Admin/Member/SearchBox';
 import MemberLists from '../../components/Admin/Member/MemberLists';
+import Paging from '../../components/Admin/Paging';
 
 const AdminMember = () => {
   const [members, setMembers] = useState([]);
@@ -21,6 +22,7 @@ const AdminMember = () => {
         <span className='mb-5 block text-field font-bold'>검색 결과 {members?.length}</span>
         <MemberLists members={members} />
       </div>
+      <Paging />
     </div>
   );
 };

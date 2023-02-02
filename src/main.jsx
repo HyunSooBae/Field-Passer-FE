@@ -17,8 +17,9 @@ import BoradForm from './pages/BoradForm';
 import BoardDetails from './pages/BoardDetails';
 import AdminPost from './pages/Admin/Post';
 import AdminPostDetail from './pages/Admin/PostDetail';
-import { Provider } from "react-redux";
-import store from "./store";
+import { Provider } from 'react-redux';
+import store from './store';
+import ReportAndQuestion from './pages/Admin/ReportAndQuestion';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
       { path: '/admin/member/detail/:memberId', element: <AdminMemberDetail /> },
       { path: '/admin/post', element: <AdminPost /> },
       { path: '/admin/post/detail/:postId', element: <AdminPostDetail /> },
+      { path: '/admin/report', element: <ReportAndQuestion /> },
       { path: '/board', element: <Board /> },
       { path: '/BoradForm', element: <BoradForm /> },
       { path: '/board/details/:id', element: <BoardDetails /> },
@@ -46,5 +48,5 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <RouterProvider router={router} />
-  </Provider>
+  </Provider>,
 );

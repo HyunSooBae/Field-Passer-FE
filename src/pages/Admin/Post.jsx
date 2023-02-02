@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import requestAPI from '../../api/axios';
 import SearchBox from '../../components/Admin/Post/SearchBox';
 import PostsLists from '../../components/Admin/Post/PostsLists';
+import Paging from '../../components/Admin/Paging';
 
 const Post = () => {
   const [posts, setPosts] = useState([]);
@@ -22,6 +23,7 @@ const Post = () => {
         <span className='mb-5 block text-field font-bold'>검색 결과 {posts?.length}</span>
         <PostsLists posts={posts} />
       </div>
+      <Paging />
     </div>
   );
 };

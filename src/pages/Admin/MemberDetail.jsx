@@ -1,6 +1,7 @@
 import React from 'react';
 import Profile from '../../components/Admin/MemberDetail/Profile';
 import Posts from '../../components/Admin/MemberDetail/Posts';
+import Paging from '../../components/Admin/Paging';
 
 const AdminMemberDetail = () => {
   return (
@@ -12,6 +13,7 @@ const AdminMemberDetail = () => {
         <span className='mb-5 block text-field font-bold'>작성한 게시글 10</span>
         <Posts />
       </div>
+      <Paging />
     </div>
   );
 };
