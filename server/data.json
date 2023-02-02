@@ -291,7 +291,7 @@
     ]
   },
   "categoryList": {
-    "resultData" : [
+    "resultData": [
       {
         "categoryId": 1,
         "category": "풋살장"
@@ -314,7 +314,7 @@
       }
     ]
   },
-  "districtList":{
+  "districtList": {
     "resultData": [
       {
         "districtId": 1,
@@ -386,8 +386,8 @@
       }
     ]
   },
-  "stadiumList" : {
-    "resultData" :[
+  "stadiumList": {
+    "resultData": [
       {
         "stadiumId": 1,
         "categoryId": 5,
