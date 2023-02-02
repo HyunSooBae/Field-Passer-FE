@@ -3,12 +3,7 @@ import Main from '../../components/Admin/Member';
 import NavBar from '../../components/Admin/NavBar';
 
 const AdminMember = () => {
-  return (
-    <div className='grid grid-cols-admin grid-rows-1 w-full h-screen'>
-      <NavBar />
-      <Main />
-    </div>
-  );
+  return <Main />;
 };
 
 export default AdminMember;
