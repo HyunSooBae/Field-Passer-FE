@@ -34,11 +34,7 @@ const Post = ({ item }) => {
         {item.viewCount}
       </td>
       <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>2</td>
-      <td
-        className={`text-sm inline-block my-3 p-1.5 rounded-[6px] ${reservState(
-          item.transactionStatus,
-        )}`}
-      >
+      <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
         {item.transactionStatus}
       </td>
       <td className='px-6 py-4'>

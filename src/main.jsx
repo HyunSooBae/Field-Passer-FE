@@ -37,7 +37,7 @@ const router = createBrowserRouter([
       { path: '/admin/member/detail/:memberId', element: <AdminMemberDetail /> },
       { path: '/admin/post', element: <AdminPost /> },
       { path: '/admin/post/detail/:postId', element: <AdminPostDetail /> },
-      { path: '/admin/report', element: <ReportAndQuestion /> },
+      { path: '/admin/service', element: <ReportAndQuestion /> },
       { path: '/board', element: <Board /> },
       { path: '/BoradForm', element: <BoradForm /> },
       { path: '/board/details/:id', element: <BoardDetails /> },
