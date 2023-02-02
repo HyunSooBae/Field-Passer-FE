@@ -29,13 +29,26 @@ const ImminentBoard = () => {
     getList();
   }, []);
 
-  useEffect(() => {
-    console.log(selectedDistrict);
-  }, [selectedDistrict]);
+  const sortedItems = () => {
+    if (sortingDate) {
+      return list.sort(
+        (a, b) =>
+          a.startTime.slice(0, 10).replaceAll('-', '') -
+          b.startTime.slice(0, 10).replaceAll('-', ''),
+      );
+    } else {
+      return list.sort(
+        (a, b) =>
+          b.startTime.slice(0, 10).replaceAll('-', '') -
+          a.startTime.slice(0, 10).replaceAll('-', ''),
+      );
+    }
+  };
+  sortedItems();
 
   return (
     <section className='my-5 pb-5 border-b border-gray-200 border-solid'>
-      <GiTennisCourt className='w-20 h-20 m-auto' />
+      <GiTennisCourt className='w-16 h-16 m-auto' />
       <div className='w-full font-bold xxs:text-2xl mm:text-3xl text-center py-3 mb-10'>
         마감 임박 게시물
       </div>
