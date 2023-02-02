@@ -1,17 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import requestAPI from '../../../api/axios';
+import React from 'react';
 import MemberList from './MemberList';
 
-const MemberLists = () => {
-  const [members, setMembers] = useState([]);
-  useEffect(() => {
-    async function getMembers() {
-      const data = await requestAPI('membersList');
-      setMembers(data?.data?.resultData);
-    }
-    getMembers();
-  }, []);
-
+const MemberLists = ({ members }) => {
   return (
     <table className='table-auto w-full text-sm mt-3 rounded-[10px] overflow-hidden bg-field border border-solid border-field'>
       <colgroup>

@@ -4,7 +4,7 @@ import Main from '../../components/Admin/Post';
 
 const Post = () => {
   return (
-    <div className='grid grid-cols-admin grid-rows-1 max-w-7xl'>
+    <div className='grid grid-cols-admin grid-rows-1 w-full'>
       <NavBar />
       <Main />
     </div>
