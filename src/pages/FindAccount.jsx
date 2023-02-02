@@ -7,9 +7,9 @@ const FindAccount = () => {
   };
 
   return (
-    <div className='m-auto max-w-7xl pt-[10vh] bg-white'>
+    <div className='m-auto max-w-5xl pt-[10vh] bg-white'>
       <div className='w-[400px] m-auto'>
-        <h2 className='text-3xl text-center mb-14 font-bold'>비밀번호 찾기</h2>
+        <h1 className='text-3xl text-center mb-14 font-bold'>비밀번호 찾기</h1>
         <div className='flex justify-center gap-8  mb-10 border-solid border-b-2 border-gray-200'>
           <button onClick={tabMenuHandler} className='text-2xl w-full h-12 mb-2 hover:text-field'>
             아이디 찾기

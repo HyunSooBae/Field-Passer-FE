@@ -1,11 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useRef } from 'react';
 
 const Join = () => {
+  const imgfile = useRef(null);
+  // 업로드 이미지 미리보기
+  const imgPreview = (input) => {
+    if (input.target.files && input.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        imgfile.current.src = e.target.result;
+      };
+      reader.readAsDataURL(input.target.files[0]);
+    }
+  };
   return (
-    <div className='m-auto max-w-7xl pt-[10vh] bg-white'>
+    <div className='m-auto max-w-5xl pt-[10vh] mb-40 bg-white'>
       <div className='w-[400px] m-auto'>
-        <h2 className='text-3xl text-center mb-14'>회원가입</h2>
+        <h1 className='text-3xl text-center mb-14'>회원가입</h1>
         <form>
           <div className='bg-white border mb-4'>
             <label className='block text-gray-900 text-sm font-bold mb-2' htmlFor='username'>
@@ -53,19 +63,42 @@ const Join = () => {
           </div>
           <div className='bg-white border'>
             <h4 className='block text-gray-900 text-sm font-bold mb-2'>프로필 사진 (선택)</h4>
-            <div className='w-1/3 border aspect-square bg-gray-100 m-auto'>
+            {/* <div className='w-1/3 border aspect-square bg-gray-100 m-auto'>
               <span className=''>이미지 미리보기</span>
-            </div>
+            </div> */}
             <div className='flex justify-center gap-3 my-5'>
-              <label
+              {/* <label
                 className='w-fit p-1.5 rounded-[10px] border border-solid border-field text-gray-400'
                 htmlFor='imgFile'
               >
                 사진 선택
-              </label>
-              <span className='w-fit p-1.5 rounded-[10px] border border-solid border-gray-400 text-gray-400'>
-                초기화
-              </span>
+              </label> */}
+
+              <div>
+                <div className='flex gap-[10px]'>
+                  <label
+                    htmlFor='images'
+                    className='block w-[100px] h-[100px] border-solid border rounded-lg cursor-pointer border-[#ddd] bg-[url("images/cam.png")] bg-center bg-[length:60px] bg-no-repeat'
+                  />
+                  <input
+                    id='images'
+                    type='file'
+                    className='hidden'
+                    accept='image/gif,image/jpeg,image/png'
+                    onChange={(e) => imgPreview(e)}
+                  />
+
+                  <img
+                    src=''
+                    alt='미리보기 이미지'
+                    className='w-[100px] h-[100px] rounded-lg border border-solid border-gray-300'
+                    ref={imgfile}
+                  />
+                </div>
+                <span className='p-1.5 my-6 rounded-[10px] border border-solid border-gray-400 text-gray-400'>
+                  사진 삭제
+                </span>
+              </div>
             </div>
             <input
               type='file'

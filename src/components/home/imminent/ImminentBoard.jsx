@@ -1,67 +1,82 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import requestAPI from '../../../api/axios';
 import CategoryFilter from './CategoryFilter';
-import ImminentList from './ImminentList';
+import TableForm from './TableForm';
+import BoxForm from './BoxForm';
+import { useMediaQuery } from 'react-responsive';
+import { districtOptions } from '../../../util/options';
+import { GiTennisCourt } from 'react-icons/gi';
 
 const ImminentBoard = () => {
-  //종목별 필터링
-  //화면 sm사이즈(540px) 이하는 박스형으로 따로 만들기...
+  const pcForm = useMediaQuery({
+    query: '(min-width:680px)',
+  });
+  const mobileForm = useMediaQuery({
+    query: '(max-width:679px)',
+  });
+
+  const [list, setList] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('풋살장');
+  const [selectedDistrict, setSelectedDistrict] = useState('all');
+  const [sortingDate, setSortingDate] = useState(true);
+
+  useEffect(() => {
+    async function getList() {
+      const data = await requestAPI('imminent');
+      setList(data?.data?.resultData);
+      console.log(data?.data?.resultData);
+    }
+    getList();
+  }, []);
+
+  useEffect(() => {
+    console.log(selectedDistrict);
+  }, [selectedDistrict]);
 
   return (
-    <section className='my-5'>
-      <div className='w-full font-bold text-2xl text-center py-3 mb-3 border border-solid rounded-[10px] border-field'>
+    <section className='my-5 pb-5 border-b border-gray-200 border-solid'>
+      <GiTennisCourt className='w-20 h-20 m-auto' />
+      <div className='w-full font-bold xxs:text-2xl mm:text-3xl text-center py-3 mb-10'>
         마감 임박 게시물
       </div>
-      <div className='flex'>
-        <CategoryFilter />
+      <CategoryFilter selectedCategory={setSelectedCategory} />
+      <div className='flex h-15 mx-5 my-5 gap-10'>
+        <select
+          className='border-2 border-field focus:outline-0 text-gray-900 text-sm p-2 rounded-[10px] focus:border-green-500 block h-10 cursor-pointer'
+          onChange={(e) => setSelectedDistrict(e.target.value)}
+        >
+          <option value={'all'}>모든 지역</option>
+          {districtOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+        <div>
+          <button
+            onClick={(e) => setSortingDate(!sortingDate)}
+            className='p-3 text-sm rounded-[10px] border-2 border-solid border-field hover:bg-gray-200'
+          >
+            날짜 정렬
+          </button>
+        </div>
       </div>
-      <table className='table-auto w-full xxs:text-xs sm:text-sm mt-3 rounded-[10px] overflow-hidden bg-field border border-solid border-field'>
-        <thead className='text-sm text-field bg-tableBg text-bold'>
-          <tr>
-            <th scope='col' className='w-[15%] py-4 text-center bg-yellow-400'>
-              지역
-            </th>
-            <th scope='col' className='w-[15%] py-4 text-center bg-red-400'>
-              날짜
-            </th>
-            <th scope='col' className='w-[15%] py-4 text-center bg-gray-400'>
-              시간
-            </th>
-            <th scope='col' className='w-[40%] py-4 text-center bg-orange-400'>
-              구장
-            </th>
-            <th scope='col' className='w-[15%] py-4 text-center  bg-gray-400'>
-              거래하기
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* {reports ? (
-            reports?.map((report) => <Question key={아이디} item={게시글정보} />)
-          ) : (
-            <tr>
-              <td>마감 임박 게시물이 없습니다.</td>
-            </tr>
-          )} */}
-          <ImminentList
-            district={'강남구'}
-            reservedDate={'20230131'}
-            startTime={'12시 30분'}
-            stadiumName={'운동장'}
-          />
-          <ImminentList
-            district={'서대문구'}
-            reservedDate={'20230201'}
-            startTime={'1시 30분'}
-            stadiumName={'체육관'}
-          />
-          <ImminentList
-            district={'노원구'}
-            reservedDate={'20230202'}
-            startTime={'2시 00분'}
-            stadiumName={'공원'}
-          />
-        </tbody>
-      </table>
+      {pcForm && (
+        <TableForm
+          selectedCategory={selectedCategory}
+          selectedDistrict={selectedDistrict}
+          sort={sortingDate}
+          list={list}
+        />
+      )}
+      {mobileForm && (
+        <BoxForm
+          selectedCategory={selectedCategory}
+          selectedDistrict={selectedDistrict}
+          sort={sortingDate}
+          list={list}
+        />
+      )}
     </section>
   );
 };

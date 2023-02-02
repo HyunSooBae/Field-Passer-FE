@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const NavTab = ({ title, icon, address }) => {
   const navigate = useNavigate();
   const onClickHandler = (address) => {
-    navigate(`/admin/${address}`);
+    navigate(`/${address}`);
   };
   return (
     <div

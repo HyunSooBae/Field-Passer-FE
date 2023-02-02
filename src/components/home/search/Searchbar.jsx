@@ -1,22 +1,71 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import requestAPI from '../../../api/axios';
 import SelectBox from './SelectBox';
 
 const Searchbar = () => {
-  const categoryName = ['풋살', '축구', '농구', '테니스', '배드민턴'];
-  const districtName = ['강남구', '은평구', '서대문구'];
-  const stadiumName = ['체육관', '운동장', '스타디움', '공원', '실내구장'];
+  const catagorySelect = useSelector((state) => {
+    return state.store.catagorySelect;
+  });
+  const districtSelect = useSelector((state) => {
+    return state.store.districtSelect;
+  });
+
+  const [categoryList, setCategoryList] = useState([]);
+  const [districtList, setDistrictList] = useState([]);
+  const [stadiumList, setStadiumList] = useState([]);
+
+  useEffect(() => {
+    const getCategory = async () => {
+      const res = await requestAPI('categoryList');
+      setCategoryList(res.data.resultData);
+    };
+
+    getCategory();
+  }, []);
+
+  useEffect(() => {
+    if (catagorySelect) {
+      const getDistrict = async () => {
+        const res = await requestAPI('districtList');
+        setDistrictList(res.data.resultData);
+      };
+      getDistrict();
+    }
+  }, [catagorySelect]);
+
+  useEffect(() => {
+    if (districtSelect) {
+      const getStadiumList = async () => {
+        const res = await requestAPI('stadiumList');
+        setStadiumList(res.data.resultData);
+      };
+      getStadiumList();
+    }
+  }, [districtSelect]);
 
   return (
-    <section className='xs:w-96 sm:w-fit xxs:mt-6 xxs:flex-col xxs:m-auto xxs:flex mm:flex-row bg-zinc-200 py-2 px-2 items-center rounded-lg'>
-      <SelectBox id='category' names={categoryName} defaultValue='종목' size='w-28' />
-      <SelectBox id='district' names={districtName} defaultValue='지역 전체' size='w-28' />
-      <SelectBox id='stadium' names={stadiumName} defaultValue='구장 전체' size='w-60' />
-      <button
-        type='submit'
-        className='p-3 xxs:mt-1 sm:mt-0 sm:ml-1 rounded-lg bg-field hover:bg-hoverField text-white'
-      >
-        검색
-      </button>
+    <section className='flex my-[20px] justify-center gap-[10px] items-center flex-wrap'>
+      <div className='flex gap-[5px] flex-col mm:flex-row'>
+        <div className='flex gap-[5px]'>
+          <SelectBox id='category' defaultValue='종목' size='w-1/2' options={categoryList} />
+          <SelectBox id='district' defaultValue='지역 전체' size='w-1/2' options={catagorySelect ? districtList : []} />
+        </div>
+        <SelectBox id='stadium' defaultValue='구장 전체' size='w-[240px]' options={districtSelect ? stadiumList : []} />
+      </div>
+
+      <div className='flex gap-[5px] h-[40px]'>
+        <button
+          type='submit'
+          className='rounded-lg bg-field hover:bg-hoverField text-white text p-3 text-sm'
+        >
+          검색
+        </button>
+        <button className='p-3 rounded-lg bg-field hover:bg-hoverField text-white text-sm'>
+          <Link to='/BoradForm'>양도하기</Link>
+        </button>
+      </div>
     </section>
   );
 };

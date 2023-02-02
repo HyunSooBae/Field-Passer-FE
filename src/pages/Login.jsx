@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
   return (
-    <div className='m-auto max-w-7xl pt-[10vh] bg-white'>
+    <div className='m-auto max-w-5xl pt-[10vh] bg-white'>
       <div className='w-[400px] m-auto'>
-        <h2 className='text-3xl text-center mb-14'>로그인</h2>
+        <h1 className='text-3xl text-center mb-14'>로그인</h1>
         <form>
           <div className='bg-white border mb-4'>
             <label className='block text-gray-900 text-sm font-bold mb-2' htmlFor='username'>
