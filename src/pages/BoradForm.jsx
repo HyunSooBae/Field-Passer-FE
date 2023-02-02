@@ -1,8 +1,10 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Datepicker from "tailwind-datepicker-react"
 
 const BoradForm = () => {
+  const imgfile = useRef(null);
+
   //datepicker options
   const options = {
     title: "예약 일자",
@@ -33,21 +35,32 @@ const BoradForm = () => {
   const FormDatepicker = () => {
     const [show, setShow] = useState(false)
     const handleChange = (selectedDate) => {
-      
+      // api 완성되면 사용할 함수
     }
     const handleClose = (state) => {
       setShow(state)
     }
   
     return (
-      <div class=' w-[calc(50%-10px)] mr-5'>
+      <div className=' w-[calc(50%-10px)] mr-5'>
         <Datepicker options={options} onChange={handleChange} show={show} setShow={handleClose} classNames="relative"/>
       </div>
     )
   }
 
+  // 업로드 이미지 미리보기
+  const imgPreview = (input) => {
+    if(input.target.files && input.target.files[0]){
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        imgfile.current.src = e.target.result;
+      }
+      reader.readAsDataURL(input.target.files[0]);
+    }
+  }
+
   return (
-    <div className='my-[50px] mx-auto px-0 mm:px-[20px]'>
+    <div className='my-[50px] mx-auto px-[20px] mm:px-0'>
         <form action="" className='w-full max-w-[600px] ml-auto mr-auto mt-0 mb-0 flex flex-col gap-[10px] mm:gap-[20px]'>
             <div className='flex gap-3'>
                 <select name="" id="" className='w-24 h-8 border-2 border-solid border-#94a3b8 rounded-md text-sm pl-2 focus:outline-none focus:border-field '>
@@ -79,13 +92,15 @@ const BoradForm = () => {
             </div>
             <div>
               <p className='text-xs text-gray-600 mb-[10px]'>인증 사진</p>
-              <div>
-                <label htmlFor="images" className='block w-[100px] h-[100px] border-solid border rounded cursor-pointer border-[#ddd]'>카메라 icon</label>
-                <input id="images" type='file' multiple className='hidden' accept='image/gif,image/jpeg,image/png' />
+              <div className='flex gap-[10px]'>
+                <label htmlFor="images" className='block w-[100px] h-[100px] border-solid border rounded-lg cursor-pointer border-[#ddd] bg-[url("images/cam.png")] bg-center bg-[length:60px] bg-no-repeat' />
+                <input id="images" type='file' className='hidden' accept='image/gif,image/jpeg,image/png' onChange={(e) => imgPreview(e)}/>
+
+                <img src="" alt="미리보기 이미지" className='w-[100px] h-[100px] rounded-lg border border-solid border-gray-300' ref={imgfile}/>
               </div>
             </div>
 
-            <button className='text-sm px-2 py-2 border-solid rounded mx-auto w-[50px] bg-field text-white'>작성</button>
+            <button className='text-sm px-2 py-2 border-solid rounded mx-auto w-[50px] bg-field text-white mt-[20px]'>작성</button>
         </form>
     </div>
   )
