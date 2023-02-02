@@ -17,8 +17,9 @@ import BoradForm from './pages/BoradForm';
 import BoardDetails from './pages/BoardDetails';
 import AdminPost from './pages/Admin/Post';
 import AdminPostDetail from './pages/Admin/PostDetail';
-import { Provider } from "react-redux";
-import store from "./store";
+import { Provider } from 'react-redux';
+import store from './store';
+import Help from './pages/Help';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       { path: '/', element: <Home /> },
+      { path: '/help', element: <Help /> },
       { path: '/login', element: <Login /> },
       { path: '/join', element: <Join /> },
       { path: '/findaccount', element: <FindAccount /> },
@@ -46,5 +48,5 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <RouterProvider router={router} />
-  </Provider>
+  </Provider>,
 );

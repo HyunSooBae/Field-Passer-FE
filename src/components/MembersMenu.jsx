@@ -7,7 +7,7 @@ const MembersMenu = () => {
 
   return (
     <div className='h-10 flex justify-end items-center  pr-8 text-sm text-hoverfield'>
-      <Link to='' className='mx-8 hover:text-black'>
+      <Link to='/help' className='mx-8 hover:text-black'>
         고객센터
       </Link>
       <Link to='/join' className='mr-8  hover:text-black'>
