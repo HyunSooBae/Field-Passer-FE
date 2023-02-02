@@ -1,42 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ImminentList from './ImminentList';
+const BoxForm = ({ selectedCategory, selectedDistrict, sort, list }) => {
+  const filteredList = list.filter(
+    (item) =>
+      item.category === selectedCategory &&
+      (selectedDistrict === 'all' || item.district === selectedDistrict),
+  );
 
-const BoxForm = ({ selectedCategory, selectedDistrict, sort }) => {
+  console.log(filteredList);
   return (
     <div className='flex mm:hidden text-center'>
       <div className='w-full'>
-        <ImminentList
-          category={'풋살'}
-          district={'강남구'}
-          reservedDate={'20230131'}
-          startTime={'12시 30분'}
-          stadiumName={'운동장'}
-          mobile={true}
-        />
-        <ImminentList
-          category={'농구'}
-          district={'서대문구'}
-          reservedDate={'20230201'}
-          startTime={'1시 30분'}
-          stadiumName={'체육관'}
-          mobile={true}
-        />
-        <ImminentList
-          category={'배드민턴'}
-          district={'노원구'}
-          reservedDate={'20230202'}
-          startTime={'2시 00분'}
-          stadiumName={'공원'}
-          mobile={true}
-        />
-        <ImminentList
-          category={'테니스'}
-          district={'마포구'}
-          reservedDate={'20230203'}
-          startTime={'12시 00분'}
-          stadiumName={'실내구장'}
-          mobile={true}
-        />
+        {filteredList.length ? (
+          filteredList?.map(({ category, postId, district, stadiumName, startTime }) => (
+            <ImminentList
+              key={postId}
+              category={category}
+              district={district}
+              startTime={startTime}
+              stadiumName={stadiumName}
+              mobile={true}
+            />
+          ))
+        ) : (
+          <div className='h-52 py-12 px-1 border-2 border-solid border-field mb-2 rounded-[10px] text-lg text-center'>
+            조건에 맞는 게시물이 없습니다.
+          </div>
+        )}
       </div>
     </div>
   );

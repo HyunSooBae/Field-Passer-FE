@@ -26,4 +26,4 @@ export const districtOptions = [
   '중랑구',
 ];
 
-export const categoryOptions = ['풋살', '축구', '농구', '테니스', '배드민턴'];
+export const categoryOptions = ['풋살장', '축구장', '농구장', '테니스장', '배드민턴장'];

@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from '../components/Footer';
 import ImminentBoard from '../components/home/imminent/ImminentBoard';
 import MainSlider from '../components/home/MainSlider';
-import NewPosts from '../components/home/newPosts/NewPosts';
+import NewPostsBoard from '../components/home/NewPostsBoard';
 import Searchbar from '../components/home/search/Searchbar';
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
         <Searchbar />
         <MainSlider />
         <ImminentBoard />
-        <NewPosts />
+        <NewPostsBoard />
       </main>
       <Footer />
     </>
