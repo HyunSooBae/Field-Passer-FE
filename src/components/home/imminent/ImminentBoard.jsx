@@ -4,7 +4,7 @@ import CategoryFilter from './CategoryFilter';
 import TableForm from './TableForm';
 import BoxForm from './BoxForm';
 import { useMediaQuery } from 'react-responsive';
-import { districtOptions } from '../../../options';
+import { districtOptions } from '../../../util/options';
 import { GiTennisCourt } from 'react-icons/gi';
 
 const ImminentBoard = () => {
