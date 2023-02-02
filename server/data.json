@@ -73,7 +73,7 @@
         "title": "강남구 어디풋살장 1월 21일 10시 00분 양도합니다",
         "price": "35000",
         "transactionStatus": "양도 중",
-        "imageURL": "/com/hi/helloimage/image1.jpg",
+        "imageURL": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672640581201DVG4RD5O49HZUXHLCZQDP2K1T",
         "viewCount": "11",
         "wishCount": "7"
       },
@@ -91,7 +91,7 @@
         "title": "강동구 어디축구장 1월 21일 10시 00분 양도합니다",
         "price": "45000",
         "transactionStatus": "예약 중",
-        "imageURL": "/com/hi/helloimage/image1.jpg",
+        "imageURL": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672640581201DVG4RD5O49HZUXHLCZQDP2K1T",
         "viewCount": "11",
         "wishCount": "7"
       },
@@ -109,7 +109,61 @@
         "title": "관악구 어디농구장 1월 21일 10시 00분 양도합니다",
         "price": "25000",
         "transactionStatus": "양도 완료",
-        "imageURL": "/com/hi/helloimage/image1.jpg",
+        "imageURL": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672640581201DVG4RD5O49HZUXHLCZQDP2K1T",
+        "viewCount": "11",
+        "wishCount": "7"
+      },
+      {
+        "postId": "123451",
+        "memberId": "hello123",
+        "memberName": "역삼동 모드리치",
+        "category": "풋살장",
+        "district": "강남구",
+        "stadiumName": "어디풋살장",
+        "registerDate": "2023-01-19T13:14:35",
+        "reservedDate": "2023-01-21",
+        "startTime": "10:00:00",
+        "endTime": "11:00:00",
+        "title": "강남구 어디풋살장 1월 21일 10시 00분 양도합니다",
+        "price": "35000",
+        "transactionStatus": "양도 중",
+        "imageURL": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672640581201DVG4RD5O49HZUXHLCZQDP2K1T",
+        "viewCount": "11",
+        "wishCount": "7"
+      },
+      {
+        "postId": "234567",
+        "memberId": "hihello123",
+        "memberName": "천호동 모드리치",
+        "category": "축구장",
+        "district": "강동구",
+        "stadiumName": "어디축구장",
+        "registerDate": "2023-01-19T13:14:35",
+        "reservedDate": "2023-01-21",
+        "startTime": "10:00:00",
+        "endTime": "11:00:00",
+        "title": "강동구 어디축구장 1월 21일 10시 00분 양도합니다",
+        "price": "45000",
+        "transactionStatus": "예약 중",
+        "imageURL": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1670382289913H9UW74A8JQW217Z477K0YXXCR",
+        "viewCount": "11",
+        "wishCount": "7"
+      },
+      {
+        "postId": "345678",
+        "memberId": "hi123",
+        "memberName": "천호동 조던",
+        "category": "농구장",
+        "district": "관악구",
+        "stadiumName": "어디농구장",
+        "registerDate": "2023-01-19T13:14:35",
+        "reservedDate": "2023-01-21",
+        "startTime": "10:00:00",
+        "endTime": "11:00:00",
+        "title": "관악구 어디농구장 1월 21일 10시 00분 양도합니다",
+        "price": "25000",
+        "transactionStatus": "양도 완료",
+        "imageURL": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1670382289913H9UW74A8JQW217Z477K0YXXCR",
         "viewCount": "11",
         "wishCount": "7"
       },
@@ -127,7 +181,7 @@
         "title": "강남구 어디풋살장 1월 21일 10시 00분 양도합니다",
         "price": "35000",
         "transactionStatus": "양도 중",
-        "imageURL": "/com/hi/helloimage/image1.jpg",
+        "imageURL": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1670382289913H9UW74A8JQW217Z477K0YXXCR",
         "viewCount": "11",
         "wishCount": "7"
       },
@@ -145,7 +199,7 @@
         "title": "강동구 어디축구장 1월 21일 10시 00분 양도합니다",
         "price": "45000",
         "transactionStatus": "예약 중",
-        "imageURL": "/com/hi/helloimage/image1.jpg",
+        "imageURL": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1670382289913H9UW74A8JQW217Z477K0YXXCR",
         "viewCount": "11",
         "wishCount": "7"
       },
@@ -163,61 +217,7 @@
         "title": "관악구 어디농구장 1월 21일 10시 00분 양도합니다",
         "price": "25000",
         "transactionStatus": "양도 완료",
-        "imageURL": "/com/hi/helloimage/image1.jpg",
-        "viewCount": "11",
-        "wishCount": "7"
-      },
-      {
-        "postId": "123456",
-        "memberId": "hello123",
-        "memberName": "역삼동 모드리치",
-        "category": "풋살장",
-        "district": "강남구",
-        "stadiumName": "어디풋살장",
-        "registerDate": "2023-01-19T13:14:35",
-        "reservedDate": "2023-01-21",
-        "startTime": "10:00:00",
-        "endTime": "11:00:00",
-        "title": "강남구 어디풋살장 1월 21일 10시 00분 양도합니다",
-        "price": "35000",
-        "transactionStatus": "양도 중",
-        "imageURL": "/com/hi/helloimage/image1.jpg",
-        "viewCount": "11",
-        "wishCount": "7"
-      },
-      {
-        "postId": "234567",
-        "memberId": "hihello123",
-        "memberName": "천호동 모드리치",
-        "category": "축구장",
-        "district": "강동구",
-        "stadiumName": "어디축구장",
-        "registerDate": "2023-01-19T13:14:35",
-        "reservedDate": "2023-01-21",
-        "startTime": "10:00:00",
-        "endTime": "11:00:00",
-        "title": "강동구 어디축구장 1월 21일 10시 00분 양도합니다",
-        "price": "45000",
-        "transactionStatus": "예약 중",
-        "imageURL": "/com/hi/helloimage/image1.jpg",
-        "viewCount": "11",
-        "wishCount": "7"
-      },
-      {
-        "postId": "345678",
-        "memberId": "hi123",
-        "memberName": "천호동 조던",
-        "category": "농구장",
-        "district": "관악구",
-        "stadiumName": "어디농구장",
-        "registerDate": "2023-01-19T13:14:35",
-        "reservedDate": "2023-01-21",
-        "startTime": "10:00:00",
-        "endTime": "11:00:00",
-        "title": "관악구 어디농구장 1월 21일 10시 00분 양도합니다",
-        "price": "25000",
-        "transactionStatus": "양도 완료",
-        "imageURL": "/com/hi/helloimage/image1.jpg",
+        "imageURL": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1670382289913H9UW74A8JQW217Z477K0YXXCR",
         "viewCount": "11",
         "wishCount": "7"
       }
@@ -287,6 +287,866 @@
         "title": "제가 호날두라는데 사람들이 안 믿어줘요",
         "registerDate": "2023-01-19T13:25:35",
         "response": "답변 전"
+      }
+    ]
+  },
+  "categoryList": {
+    "resultData" : [
+      {
+        "categoryId": 1,
+        "category": "풋살장"
+      },
+      {
+        "categoryId": 2,
+        "category": "축구장"
+      },
+      {
+        "categoryId": 3,
+        "category": "농구장"
+      },
+      {
+        "categoryId": 4,
+        "category": "배드민턴장"
+      },
+      {
+        "categoryId": 5,
+        "category": "테니스장"
+      }
+    ]
+  },
+  "districtList":{
+    "resultData": [
+      {
+        "districtId": 1,
+        "district": "강남구"
+      },
+      {
+        "districtId": 2,
+        "district": "강동구"
+      },
+      {
+        "districtId": 3,
+        "district": "강서구"
+      },
+      {
+        "districtId": 4,
+        "district": "광진구"
+      },
+      {
+        "districtId": 5,
+        "district": "구로구"
+      },
+      {
+        "districtId": 6,
+        "district": "동대문구"
+      },
+      {
+        "districtId": 7,
+        "district": "동작구"
+      },
+      {
+        "districtId": 8,
+        "district": "마포구"
+      },
+      {
+        "districtId": 9,
+        "district": "서초구"
+      },
+      {
+        "districtId": 10,
+        "district": "성동구"
+      },
+      {
+        "districtId": 11,
+        "district": "성북구"
+      },
+      {
+        "districtId": 12,
+        "district": "송파구"
+      },
+      {
+        "districtId": 13,
+        "district": "양천구"
+      },
+      {
+        "districtId": 14,
+        "district": "영등포구"
+      },
+      {
+        "districtId": 15,
+        "district": "용산구"
+      },
+      {
+        "districtId": 16,
+        "district": "종로구"
+      },
+      {
+        "districtId": 17,
+        "district": "중구"
+      }
+    ]
+  },
+  "stadiumList" : {
+    "resultData" :[
+      {
+        "stadiumId": 1,
+        "categoryId": 5,
+        "districtId": 10,
+        "stadiumName": "응봉공원",
+        "latitude": "37.55694739",
+        "longitude": "127.0218203",
+        "phone": "02-2293-7646",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1667958809831OTDGHCQPI0RI1PAS91HA1BVMU"
+      },
+      {
+        "stadiumId": 2,
+        "categoryId": 2,
+        "districtId": 8,
+        "stadiumName": "난지천인조잔디축구장",
+        "latitude": "37.57423829",
+        "longitude": "126.8839003",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=SVC_IMG_FILE_3714"
+      },
+      {
+        "stadiumId": 3,
+        "categoryId": 1,
+        "districtId": 8,
+        "stadiumName": "난지천 공원 풋살장",
+        "latitude": "37.57577125",
+        "longitude": "126.8812774",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1669775174332LZ2NV7NRU7TZIYHJPP0WRWEIP"
+      },
+      {
+        "stadiumId": 4,
+        "categoryId": 1,
+        "districtId": 12,
+        "stadiumName": "잠실종합운동장 제3풋살경기장",
+        "latitude": "37.51348",
+        "longitude": "127.07662",
+        "phone": "02-2240-8782",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=SVC_IMG_FILE_59606"
+      },
+      {
+        "stadiumId": 5,
+        "categoryId": 1,
+        "districtId": 14,
+        "stadiumName": "영등포공원 풋살경기장",
+        "latitude": "37.51557",
+        "longitude": "126.91228",
+        "phone": "02-2670-3774",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1671496606623CZQXTMBYDYUW46OYDV40K68FH"
+      },
+      {
+        "stadiumId": 6,
+        "categoryId": 2,
+        "districtId": 14,
+        "stadiumName": "대림운동장 인조잔디구장",
+        "latitude": "37.49967021",
+        "longitude": "126.8939948",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=SVC_IMG_FILE_217813"
+      },
+      {
+        "stadiumId": 7,
+        "categoryId": 2,
+        "districtId": 7,
+        "stadiumName": "보라매공원 인조잔디축구장",
+        "latitude": "37.49101",
+        "longitude": "126.91605",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1638338025275O46H21TCGPNC2S1ONMTUNVCK0"
+      },
+      {
+        "stadiumId": 8,
+        "categoryId": 5,
+        "districtId": 7,
+        "stadiumName": "보라매공원 테니스장",
+        "latitude": "37.49101",
+        "longitude": "126.91605",
+        "phone": "02-841-8808",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=SVC_IMG_FILE_276094"
+      },
+      {
+        "stadiumId": 9,
+        "categoryId": 2,
+        "districtId": 2,
+        "stadiumName": "광나루한강공원 축구장",
+        "latitude": "37.551235",
+        "longitude": "127.1223154",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1670382289913H9UW74A8JQW217Z477K0YXXCR"
+      },
+      {
+        "stadiumId": 10,
+        "categoryId": 3,
+        "districtId": 2,
+        "stadiumName": "광나루한강공원 농구장",
+        "latitude": "37.55301471",
+        "longitude": "127.1229453",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672639615777Q7QKB6J3L3H3VQKW9DUEMFHTA"
+      },
+      {
+        "stadiumId": 11,
+        "categoryId": 3,
+        "districtId": 4,
+        "stadiumName": "뚝섬한강공원 농구장",
+        "latitude": "37.52760299",
+        "longitude": "127.077134",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672640581201DVG4RD5O49HZUXHLCZQDP2K1T"
+      },
+      {
+        "stadiumId": 12,
+        "categoryId": 3,
+        "districtId": 4,
+        "stadiumName": "뚝섬한강공원 장애인농구장",
+        "latitude": "37.52863022",
+        "longitude": "127.0727354",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672640850492WM9N2J9UW6ZGOQ7QIOFDNGT55"
+      },
+      {
+        "stadiumId": 13,
+        "categoryId": 2,
+        "districtId": 4,
+        "stadiumName": "뚝섬한강공원 축구장",
+        "latitude": "37.52803685",
+        "longitude": "127.0764003",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1670383764432WCH7C5ELHQH7W2M91E6KORVF9"
+      },
+      {
+        "stadiumId": 14,
+        "categoryId": 2,
+        "districtId": 9,
+        "stadiumName": "잠원한강공원 축구장",
+        "latitude": "37.52562226",
+        "longitude": "127.0167407",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1670382805754WNM9KPAJ3PJ18BEEGDB69XXNA"
+      },
+      {
+        "stadiumId": 15,
+        "categoryId": 3,
+        "districtId": 9,
+        "stadiumName": "잠원한강공원 농구장",
+        "latitude": "37.52606006",
+        "longitude": "127.0173449",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=16726464201042N50O0F65NOE5SW1G2ZFNZ6UL"
+      },
+      {
+        "stadiumId": 16,
+        "categoryId": 2,
+        "districtId": 9,
+        "stadiumName": "반포한강공원 축구장",
+        "latitude": "37.51465273",
+        "longitude": "127.0049339",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1670384769391IHDHEYSS8812ZR2CVIT2DZVYE"
+      },
+      {
+        "stadiumId": 17,
+        "categoryId": 3,
+        "districtId": 9,
+        "stadiumName": "반포한강공원 농구장",
+        "latitude": "37.51412747",
+        "longitude": "127.0042462",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672652509806IYD4U7QWRROC3RTFGE00QX4XY"
+      },
+      {
+        "stadiumId": 18,
+        "categoryId": 2,
+        "districtId": 15,
+        "stadiumName": "이촌한강공원 축구장",
+        "latitude": "37.51791777",
+        "longitude": "126.9696372",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=16703835086674CK1VOPAC5AVGT5V214MBH9AK"
+      },
+      {
+        "stadiumId": 19,
+        "categoryId": 1,
+        "districtId": 15,
+        "stadiumName": "이촌한강공원 풋살경기장",
+        "latitude": "37.54139654",
+        "longitude": "127.0204207",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=167038707042188E2HC0ZKSRBZPV36S1HY6OCM"
+      },
+      {
+        "stadiumId": 20,
+        "categoryId": 2,
+        "districtId": 14,
+        "stadiumName": "양화한강공원 축구장",
+        "latitude": "37.54396483",
+        "longitude": "126.893484",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1670383272785V85BXSQ2E4XHEQ8IGEWJ8RRRD"
+      },
+      {
+        "stadiumId": 21,
+        "categoryId": 3,
+        "districtId": 14,
+        "stadiumName": "양화한강공원 농구장",
+        "latitude": "37.54355832",
+        "longitude": "126.8943038",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672649185553RKOF4CX4HU9Z32MFOZGNL3P9C"
+      },
+      {
+        "stadiumId": 22,
+        "categoryId": 3,
+        "districtId": 8,
+        "stadiumName": "망원한강공원 농구장",
+        "latitude": "37.55100096",
+        "longitude": "126.900995",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=16726384080191167IF8ED1YE52CJTBDVFA92K"
+      },
+      {
+        "stadiumId": 23,
+        "categoryId": 2,
+        "districtId": 8,
+        "stadiumName": "망원한강공원 축구장",
+        "latitude": "37.55141484",
+        "longitude": "126.9003031",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1670384374329IXMPNECOY47FFJBFNG113I0U1"
+      },
+      {
+        "stadiumId": 24,
+        "categoryId": 5,
+        "districtId": 5,
+        "stadiumName": "계남근린공원 테니스장",
+        "latitude": "37.51020151",
+        "longitude": "126.8558475",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1671174637994N2AYPRFZ8DI2CQDECYQBO47W5"
+      },
+      {
+        "stadiumId": 25,
+        "categoryId": 2,
+        "districtId": 5,
+        "stadiumName": "계남근린공원 인조잔디축구장",
+        "latitude": "37.50873991",
+        "longitude": "126.8555885",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=16711067444192WK1M99FHTNAF5GHVTMCXSFLO"
+      },
+      {
+        "stadiumId": 26,
+        "categoryId": 1,
+        "districtId": 5,
+        "stadiumName": "안양천 체육시설 풋살경기장",
+        "latitude": "37.49493349",
+        "longitude": "126.8693727",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=SVC_IMG_FILE_241687"
+      },
+      {
+        "stadiumId": 27,
+        "categoryId": 5,
+        "districtId": 10,
+        "stadiumName": "중랑물재생센터 테니스장",
+        "latitude": "37.56057",
+        "longitude": "127.0595",
+        "phone": "02-2211-2568",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1671501139017VBBWTPWQ7JX1MQ2POHKVDYRMZ"
+      },
+      {
+        "stadiumId": 28,
+        "categoryId": 4,
+        "districtId": 10,
+        "stadiumName": "중랑물재생센터 배드민턴장",
+        "latitude": "37.56057",
+        "longitude": "127.0595",
+        "phone": "02-2211-2568",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1671497225455AK15Y70U9JK2UWPJTT6V1ZXVK"
+      },
+      {
+        "stadiumId": 29,
+        "categoryId": 2,
+        "districtId": 10,
+        "stadiumName": "중랑물재생센터 축구장",
+        "latitude": "37.56057",
+        "longitude": "127.0595",
+        "phone": "02-2211-2568",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1669177470652UAEPY1UE1CI2TJ8O55A082QJU"
+      },
+      {
+        "stadiumId": 30,
+        "categoryId": 5,
+        "districtId": 10,
+        "stadiumName": "서울숲 테니스장",
+        "latitude": "37.54308",
+        "longitude": "127.04179",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1669265508995TJQLK8DTG4BH5WEAGFL0C1FCK"
+      },
+      {
+        "stadiumId": 31,
+        "categoryId": 1,
+        "districtId": 13,
+        "stadiumName": "서서울호수공원 풋살장",
+        "latitude": "37.52707",
+        "longitude": "126.83021",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1671405609197L26R0EL1684FLB2YH3SI57UAC"
+      },
+      {
+        "stadiumId": 32,
+        "categoryId": 1,
+        "districtId": 8,
+        "stadiumName": "서울월드컵경기장 풋살구장",
+        "latitude": "37.57254029",
+        "longitude": "126.8990037",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=167144847882337RI4AQCBKMSW21BH3BNGWGZ4"
+      },
+      {
+        "stadiumId": 33,
+        "categoryId": 2,
+        "districtId": 9,
+        "stadiumName": "인재개발원 축구장",
+        "latitude": "37.47916",
+        "longitude": "127.01899",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=SVC_IMG_FILE_98140"
+      },
+      {
+        "stadiumId": 34,
+        "categoryId": 2,
+        "districtId": 5,
+        "stadiumName": "고척스카이돔 축구장",
+        "latitude": "37.49683",
+        "longitude": "126.8669",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=16717763828048Q0BDBXQO3J144S0VMS8YXCOM"
+      },
+      {
+        "stadiumId": 35,
+        "categoryId": 4,
+        "districtId": 9,
+        "stadiumName": "반포종합운동장 배드민턴장",
+        "latitude": "37.50053935",
+        "longitude": "126.9942641",
+        "phone": "02-2155-6214",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672299552145ZBFBG4C3XCK2U5344SMUGWAWM"
+      },
+      {
+        "stadiumId": 36,
+        "categoryId": 2,
+        "districtId": 9,
+        "stadiumName": "방배배수지체육공원 축구장",
+        "latitude": "37.47300444",
+        "longitude": "126.992489",
+        "phone": "02-2155-6211",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1670915229007CFZ6PGVDXTRCWPQZPMRQ5UWWQ"
+      },
+      {
+        "stadiumId": 37,
+        "categoryId": 2,
+        "districtId": 9,
+        "stadiumName": "반포종합운동장",
+        "latitude": "37.50053935",
+        "longitude": "126.9942641",
+        "phone": "02-2155-6214",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=16722954901419E8ZCR2ID1XM6SU5AK4RM3744"
+      },
+      {
+        "stadiumId": 38,
+        "categoryId": 1,
+        "districtId": 8,
+        "stadiumName": "망원유수지 풋살장",
+        "latitude": "37.5567639",
+        "longitude": "126.8969652",
+        "phone": "02-337-7310",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1670907560457NXE4WN017GCWXJEGHGGKYBC7H"
+      },
+      {
+        "stadiumId": 39,
+        "categoryId": 2,
+        "districtId": 9,
+        "stadiumName": "양재근린공원 축구장",
+        "latitude": "37.4719161",
+        "longitude": "127.0417371",
+        "phone": "02-2155-6211",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1670919045830GNSFAG5BF5KT40L1PYMSCXCBJ"
+      },
+      {
+        "stadiumId": 40,
+        "categoryId": 5,
+        "districtId": 9,
+        "stadiumName": "인재개발원 테니스장",
+        "latitude": "37.48119434",
+        "longitude": "127.0234353",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1639357360134LL3H9SB85X39D2ECLAPJOJDHG"
+      },
+      {
+        "stadiumId": 41,
+        "categoryId": 2,
+        "districtId": 12,
+        "stadiumName": "탄천유수지 축구장",
+        "latitude": "37.49666563",
+        "longitude": "127.1005412",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1671692261017R23WTR5S7NB6CSPX57H3O2U5Z"
+      },
+      {
+        "stadiumId": 42,
+        "categoryId": 1,
+        "districtId": 7,
+        "stadiumName": "노들나루공원 풋살장",
+        "latitude": "37.51453063",
+        "longitude": "126.9524302",
+        "phone": "02-820-9585",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1671776286758AYKIIEQSE5SA7472NYYD5HYDA"
+      },
+      {
+        "stadiumId": 43,
+        "categoryId": 5,
+        "districtId": 1,
+        "stadiumName": "탄천물재생센터 테니스장",
+        "latitude": "37.49683086",
+        "longitude": "127.0793709",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1650419495844MQR650MBHFMGP4K0Q7G4ODZB0"
+      },
+      {
+        "stadiumId": 44,
+        "categoryId": 5,
+        "districtId": 3,
+        "stadiumName": "서남물재생센터 테니스장",
+        "latitude": "37.57728768",
+        "longitude": "126.8258961",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1647853851245DH0CCVPON7PRI3JEGQ1Q1W2HO"
+      },
+      {
+        "stadiumId": 45,
+        "categoryId": 1,
+        "districtId": 1,
+        "stadiumName": "에코파크 풋살장",
+        "latitude": "37.49518784",
+        "longitude": "127.0881779",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1647840859627W5FV646AUOQQD1EVFYZQNJDD4"
+      },
+      {
+        "stadiumId": 46,
+        "categoryId": 5,
+        "districtId": 1,
+        "stadiumName": "마루공원 테니스장",
+        "latitude": "37.49523951",
+        "longitude": "127.0806592",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1615787296106DO01L9WX0U7PW3GH3LPI7HIDM"
+      },
+      {
+        "stadiumId": 47,
+        "categoryId": 2,
+        "districtId": 1,
+        "stadiumName": "탄천센터 축구장",
+        "latitude": "37.49727267",
+        "longitude": "127.0764397",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=SVC_IMG_FILE_278083"
+      },
+      {
+        "stadiumId": 48,
+        "categoryId": 2,
+        "districtId": 15,
+        "stadiumName": "효창운동장",
+        "latitude": "37.54404088",
+        "longitude": "126.9616452",
+        "phone": "02-713-1410",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1671441255526GPXOOWV7RHKJ0DNLXUXDSWA6F"
+      },
+      {
+        "stadiumId": 49,
+        "categoryId": 5,
+        "districtId": 5,
+        "stadiumName": "신도림테니스장",
+        "latitude": "37.51376124",
+        "longitude": "126.8832346",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1671485890549VII0HUP8PD1NBU4D05C2YIQHH"
+      },
+      {
+        "stadiumId": 50,
+        "categoryId": 2,
+        "districtId": 8,
+        "stadiumName": "난지천 인조잔디 축구장",
+        "latitude": "37.57408623",
+        "longitude": "126.8840081",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1617941246006NMFDNQN4LMGSIP7FPDU3ZXAVN"
+      },
+      {
+        "stadiumId": 51,
+        "categoryId": 2,
+        "districtId": 7,
+        "stadiumName": "노량진 축구장 야구장",
+        "latitude": "37.51526856",
+        "longitude": "126.9417687",
+        "phone": "02-820-9585",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1621331325078630FS2N0O39E583A3BRWA5NEO"
+      },
+      {
+        "stadiumId": 52,
+        "categoryId": 5,
+        "districtId": 12,
+        "stadiumName": "잠실유수지체육시설 테니스장",
+        "latitude": "37.50305228",
+        "longitude": "127.0790208",
+        "phone": "02-448-7330",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=167143824159841PKV4N69JNJPS5R76G8ZOJIN"
+      },
+      {
+        "stadiumId": 53,
+        "categoryId": 2,
+        "districtId": 12,
+        "stadiumName": "송파구여성축구장",
+        "latitude": "37.52429562",
+        "longitude": "127.1182656",
+        "phone": "02-412-5969",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672120785092D3LHWIMZ8JHDD1TJMJY42HFG2"
+      },
+      {
+        "stadiumId": 54,
+        "categoryId": 5,
+        "districtId": 14,
+        "stadiumName": "대림테니스장",
+        "latitude": "37.49967",
+        "longitude": "126.894",
+        "phone": "02-2670-4096",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=16371979787124TGRIYL75TOLB6JQFW4LNLB5B"
+      },
+      {
+        "stadiumId": 55,
+        "categoryId": 2,
+        "districtId": 14,
+        "stadiumName": "영롱이 억새구장",
+        "latitude": "37.52033",
+        "longitude": "126.88165",
+        "phone": "02-2670-4096",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=SVC_IMG_FILE_213915"
+      },
+      {
+        "stadiumId": 56,
+        "categoryId": 5,
+        "districtId": 4,
+        "stadiumName": "어린이대공원 테니스장",
+        "latitude": "37.54921934",
+        "longitude": "127.0857118",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=164065970052360E3UALIPRY26RL05Q7J26CQ6"
+      },
+      {
+        "stadiumId": 57,
+        "categoryId": 1,
+        "districtId": 4,
+        "stadiumName": "어린이대공원 풋살장",
+        "latitude": "37.55192207",
+        "longitude": "127.0800437",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1640663045129GMUDO652572N6XC1DZBO2VPPJ"
+      },
+      {
+        "stadiumId": 58,
+        "categoryId": 5,
+        "districtId": 16,
+        "stadiumName": "삼청테니스장",
+        "latitude": "37.58887",
+        "longitude": "126.98281",
+        "phone": "02-2148-4068",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1647479987483JNV40UMEFD411UP6RKJI0041U"
+      },
+      {
+        "stadiumId": 59,
+        "categoryId": 3,
+        "districtId": 12,
+        "stadiumName": "광나루 농구장",
+        "latitude": "37.53718134",
+        "longitude": "127.1121291",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=16726399653623O17WLGFBJG3JR0J0TYCNC4EB"
+      },
+      {
+        "stadiumId": 60,
+        "categoryId": 3,
+        "districtId": 9,
+        "stadiumName": "반포 농구장",
+        "latitude": "37.50812415",
+        "longitude": "126.9926868",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=167265280013858QVWSP82V9BK0U1ZSIDG55P2"
+      },
+      {
+        "stadiumId": 61,
+        "categoryId": 1,
+        "districtId": 15,
+        "stadiumName": "이촌 풋살장",
+        "latitude": "37.52799457",
+        "longitude": "127.0065266",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=16703874002056D61S1ZUI24T5ZUOE96MN1N43"
+      },
+      {
+        "stadiumId": 62,
+        "categoryId": 1,
+        "districtId": 8,
+        "stadiumName": "난지 풋살장",
+        "latitude": "37.56471602",
+        "longitude": "126.8812772",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1670387698457UY2CE5BSWKMYRKCSG3KOU151N"
+      },
+      {
+        "stadiumId": 63,
+        "categoryId": 3,
+        "districtId": 15,
+        "stadiumName": "이촌농구",
+        "latitude": "37.51990245",
+        "longitude": "126.9645735",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=16726456692555EVMIKCE7ETOBNPZWQGQM7UMF"
+      },
+      {
+        "stadiumId": 64,
+        "categoryId": 3,
+        "districtId": 15,
+        "stadiumName": "이촌농구장(한강대교 북단 하류)",
+        "latitude": "37.52190258",
+        "longitude": "126.9574694",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672646279853I7VE39EXUNYJ1IYOOCHNGMG24"
+      },
+      {
+        "stadiumId": 65,
+        "categoryId": 3,
+        "districtId": 10,
+        "stadiumName": "이촌농구장(금호나들목)",
+        "latitude": "37.54237766",
+        "longitude": "127.0223588",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672645135634IT9CQMJU4PII1CDZ6GOBNDZR4"
+      },
+      {
+        "stadiumId": 66,
+        "categoryId": 3,
+        "districtId": 15,
+        "stadiumName": "이촌농구장(한남)",
+        "latitude": "37.52819482",
+        "longitude": "127.006995",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672645294752CAVID0ZK1E15FHCBVF1933JEJ"
+      },
+      {
+        "stadiumId": 67,
+        "categoryId": 3,
+        "districtId": 15,
+        "stadiumName": "이촌농구장(인라인장옆)",
+        "latitude": "37.51679125",
+        "longitude": "126.9722453",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672645463889T9XVOMXGCCE6VMBBGKTC3BJ8Q"
+      },
+      {
+        "stadiumId": 68,
+        "categoryId": 3,
+        "districtId": 8,
+        "stadiumName": "난지농구장",
+        "latitude": "37.56464495",
+        "longitude": "126.8814759",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672652311988R4U7YS8AOD0YVEDJMFTXMGJEQ"
+      },
+      {
+        "stadiumId": 69,
+        "categoryId": 3,
+        "districtId": 12,
+        "stadiumName": "잠실 농구장",
+        "latitude": "37.5190125",
+        "longitude": "127.0736346",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672639199582EWXFEDQIN1EIVCI4NJCPH5SBR"
+      },
+      {
+        "stadiumId": 70,
+        "categoryId": 3,
+        "districtId": 4,
+        "stadiumName": "뚝섬 장애인농구장",
+        "latitude": "37.52861769",
+        "longitude": "127.0727311",
+        "phone": "02-3780-0836",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672641100549150RWXQAM1R0EXPN52IBXUWW7"
+      },
+      {
+        "stadiumId": 71,
+        "categoryId": 5,
+        "districtId": 6,
+        "stadiumName": "장평테니스장",
+        "latitude": "37.56654",
+        "longitude": "127.07348",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=16576973042418R4OPTMF2CXJ212ZFEMW3SKCH"
+      },
+      {
+        "stadiumId": 72,
+        "categoryId": 5,
+        "districtId": 15,
+        "stadiumName": "한남테니스장",
+        "latitude": "37.5467",
+        "longitude": "127.00393",
+        "phone": "02-797-1018",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1668496103399OA0TO10VULPJYL8M8SJJ1AWSH"
+      },
+      {
+        "stadiumId": 73,
+        "categoryId": 5,
+        "districtId": 8,
+        "stadiumName": "월드컵공원 테니스장",
+        "latitude": "37.56335",
+        "longitude": "126.89791",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=16697849344833GWPHQSHU8HT6724M1V0UUMTI"
+      },
+      {
+        "stadiumId": 74,
+        "categoryId": 5,
+        "districtId": 11,
+        "stadiumName": "월곡테니스장",
+        "latitude": "37.60906655",
+        "longitude": "127.0416878",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1667607890860TOJ8WE5MVK9WAFVICD62MG36I"
+      },
+      {
+        "stadiumId": 75,
+        "categoryId": 5,
+        "districtId": 17,
+        "stadiumName": "장충테니스장",
+        "latitude": "37.5540056",
+        "longitude": "127.0016719",
+        "phone": "",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=1672101960489FI8W1JZWFFBTDHP7SQKC3RUL5"
+      },
+      {
+        "stadiumId": 76,
+        "categoryId": 2,
+        "districtId": 14,
+        "stadiumName": "영롱이억새구장",
+        "latitude": "37.52033",
+        "longitude": "126.88165",
+        "phone": "02-2670-4096",
+        "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=SVC_IMG_FILE_217607"
       }
     ]
   }
