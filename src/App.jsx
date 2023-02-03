@@ -3,6 +3,7 @@ import Header from './components/Header';
 import './App.css';
 import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import NavBar from './components/Admin/NavBar';
+import Footer from './components/Footer';
 
 function Admin() {
   return (
@@ -20,6 +21,7 @@ function User() {
       <ScrollRestoration />
       <Header />
       <Outlet />
+      <Footer />
     </div>
   );
 }

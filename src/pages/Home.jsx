@@ -14,7 +14,6 @@ const Home = () => {
         <ImminentBoard />
         <NewPostsBoard />
       </main>
-      <Footer />
     </>
   );
 };

@@ -15,6 +15,7 @@ const BoxForm = ({ selectedCategory, selectedDistrict, sort, list }) => {
           filteredList?.map(({ category, postId, district, stadiumName, startTime }) => (
             <ImminentList
               key={postId}
+              postId={postId}
               category={category}
               district={district}
               startTime={startTime}
