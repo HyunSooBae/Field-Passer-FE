@@ -3,13 +3,13 @@ import Question from './Question';
 import requestAPI from '../../../api/axios';
 
 const NewQuestions = () => {
-  const [reports, setReports] = useState([]);
+  const [questions, setQuestions] = useState([]);
   useEffect(() => {
-    async function getReports() {
-      const data = await requestAPI('report');
-      setReports(data?.data?.resultData);
+    async function getQuestions() {
+      const data = await requestAPI('question');
+      setQuestions(data?.data?.resultData);
     }
-    getReports();
+    getQuestions();
   }, []);
 
   return (
@@ -22,7 +22,7 @@ const NewQuestions = () => {
               제목
             </th>
             <th scope='col' className='px-6 py-4 text-left'>
-              닉네임
+              작성자
             </th>
             <th scope='col' className='px-6 py-4 text-left'>
               상태
@@ -30,8 +30,8 @@ const NewQuestions = () => {
           </tr>
         </thead>
         <tbody>
-          {reports ? (
-            reports?.map((report) => <Question key={report.questionId} item={report} />)
+          {questions ? (
+            questions?.map((question) => <Question key={question.questionId} item={question} />)
           ) : (
             <tr>
               <td>문의가 없습니다.</td>

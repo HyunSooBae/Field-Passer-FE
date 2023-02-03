@@ -21,6 +21,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import ReportAndQuestion from './pages/Admin/ReportAndQuestion';
 import Help from './pages/Help';
+import AdminLogin from './pages/Admin/Login';
 
 const router = createBrowserRouter([
   {
@@ -39,10 +40,11 @@ const router = createBrowserRouter([
       { path: '/admin/member/detail/:memberId', element: <AdminMemberDetail /> },
       { path: '/admin/post', element: <AdminPost /> },
       { path: '/admin/post/detail/:postId', element: <AdminPostDetail /> },
-      { path: '/admin/report', element: <ReportAndQuestion /> },
+      { path: '/admin/service', element: <ReportAndQuestion /> },
       { path: '/board', element: <Board /> },
       { path: '/BoradForm', element: <BoradForm /> },
       { path: '/board/details/:id', element: <BoardDetails /> },
+      { path: '/admin/login', element: <AdminLogin /> },
     ],
   },
 ]);

@@ -19,16 +19,33 @@
         "wishCount": "7"
       },
       {
+        "postId": "188246",
+        "memberId": "quokka",
+        "memberName": "강남구 호날두",
+        "category": "풋살장",
+        "district": "강남구",
+        "stadiumName": "진짜 좋은 풋살장",
+        "registerDate": "2023-01-19T13:14:35",
+        "startTime": "2023-02-06T17:00:00",
+        "endTime": "2023-02-06T20:00:00",
+        "title": "강남구 진짜 좋은 풋살장 2월 6일 17시 00분 양도합니다",
+        "price": "50000",
+        "transactionStatus": "양도 중",
+        "imageURL": "/com/hi/helloimage/image1.jpg",
+        "viewCount": "11",
+        "wishCount": "7"
+      },
+      {
         "postId": "100054",
         "memberId": "heoi3",
         "memberName": "미왕빌딩건물주",
         "category": "풋살장",
         "district": "강남구",
-        "stadiumName": "저기풋살장",
+        "stadiumName": "미왕빌딩풋살장",
         "registerDate": "2023-02-03T13:14:35",
         "startTime": "2023-02-05T15:00:00",
         "endTime": "2023-02-05T18:00:00",
-        "title": "강남구 저기풋살장 2월 5일 15시 00분 양도합니다",
+        "title": "강남구 미왕빌딩풋살장 2월 5일 15시 00분 양도합니다",
         "price": "37000",
         "transactionStatus": "양도 중",
         "imageURL": "/com/hi/helloimage/image1.jpg",
@@ -309,7 +326,7 @@
       }
     ]
   },
-  "report": {
+  "question": {
     "resultDataNum": 3,
     "resultData": [
       {
@@ -335,6 +352,39 @@
         "title": "제가 호날두라는데 사람들이 안 믿어줘요",
         "registerDate": "2023-01-19T13:25:35",
         "response": "답변 전"
+      }
+    ]
+  },
+  "report": {
+    "resultCode": "success",
+    "resultDataNum": 3,
+    "resultData": [
+      {
+        "questionId": "q123456",
+        "reporterId": "hello123",
+        "targetId": "hi123",
+        "reportCategory": "부적절한 닉네임",
+        "content": "닉네임이 너무 선정적입니다.",
+        "registerDate": "2023-01-19T13:14:35",
+        "proccess": "처리 전"
+      },
+      {
+        "questionId": "q123457",
+        "reporterId": "hello123",
+        "targetId": "hi123",
+        "reportCategory": "부적절한 닉네임",
+        "content": "닉네임이 너무 선정적입니다.",
+        "registerDate": "2023-01-19T13:20:35",
+        "proccess": "처리 완료"
+      },
+      {
+        "questionId": "q123458",
+        "reporterId": "hello123",
+        "targetId": "hi123",
+        "reportCategory": "부적절한 닉네임",
+        "content": "닉네임이 너무 선정적입니다.",
+        "registerDate": "2023-01-19T13:25:35",
+        "proccess": "처리 전"
       }
     ]
   },
