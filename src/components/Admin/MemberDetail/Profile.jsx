@@ -32,9 +32,14 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          <button className='bg-field rounded-lg text-white hover:bg-hoverField h-10 w-16 ml-3 absolute right-0 top-0'>
-            탈퇴
-          </button>
+          <div className='absolute right-0 top-0'>
+            <button className='bg-field rounded-lg text-white hover:bg-hoverField h-10 w-24'>
+              관리자 권한
+            </button>
+            <button className='bg-field rounded-lg text-white hover:bg-hoverField h-10 w-16 ml-3'>
+              탈퇴
+            </button>
+          </div>
         </div>
       ) : (
         <p>해당 회원을 찾을 수 없습니다.</p>

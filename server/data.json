@@ -326,7 +326,7 @@
       }
     ]
   },
-  "report": {
+  "question": {
     "resultDataNum": 3,
     "resultData": [
       {
@@ -352,6 +352,39 @@
         "title": "제가 호날두라는데 사람들이 안 믿어줘요",
         "registerDate": "2023-01-19T13:25:35",
         "response": "답변 전"
+      }
+    ]
+  },
+  "report": {
+    "resultCode": "success",
+    "resultDataNum": 3,
+    "resultData": [
+      {
+        "questionId": "q123456",
+        "reporterId": "hello123",
+        "targetId": "hi123",
+        "reportCategory": "부적절한 닉네임",
+        "content": "닉네임이 너무 선정적입니다.",
+        "registerDate": "2023-01-19T13:14:35",
+        "proccess": "처리 전"
+      },
+      {
+        "questionId": "q123457",
+        "reporterId": "hello123",
+        "targetId": "hi123",
+        "reportCategory": "부적절한 닉네임",
+        "content": "닉네임이 너무 선정적입니다.",
+        "registerDate": "2023-01-19T13:20:35",
+        "proccess": "처리 완료"
+      },
+      {
+        "questionId": "q123458",
+        "reporterId": "hello123",
+        "targetId": "hi123",
+        "reportCategory": "부적절한 닉네임",
+        "content": "닉네임이 너무 선정적입니다.",
+        "registerDate": "2023-01-19T13:25:35",
+        "proccess": "처리 전"
       }
     ]
   },
