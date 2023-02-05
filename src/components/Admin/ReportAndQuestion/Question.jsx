@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import requestAPI from '../../../api/axios';
 
 const Question = () => {
@@ -27,9 +28,11 @@ const Question = () => {
           {question.response}
         </td>
         <td className='text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap'>
-          <button className='bg-field rounded-lg text-white hover:bg-hoverField h-8 w-20 ml-3'>
-            상세 보기
-          </button>
+          <Link to='/admin/service/123'>
+            <button className='bg-field rounded-lg text-white hover:bg-hoverField h-8 w-20 ml-3'>
+              상세 보기
+            </button>
+          </Link>
         </td>
       </tr>
     ));

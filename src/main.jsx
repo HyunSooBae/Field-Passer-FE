@@ -22,6 +22,7 @@ import store from './store';
 import ReportAndQuestion from './pages/Admin/ReportAndQuestion';
 import Help from './pages/Help';
 import AdminLogin from './pages/Admin/Login';
+import ReportDetail from './pages/Admin/ReportDetail';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
       { path: '/admin/post', element: <AdminPost /> },
       { path: '/admin/post/detail/:postId', element: <AdminPostDetail /> },
       { path: '/admin/service', element: <ReportAndQuestion /> },
+      { path: '/admin/service/:reportId', element: <ReportDetail /> },
       { path: '/board', element: <Board /> },
       { path: '/BoradForm', element: <BoradForm /> },
       { path: '/board/details/:id', element: <BoardDetails /> },
