@@ -56,12 +56,9 @@ const TableForm = ({ selectedCategory, selectedDistrict, sort, list }) => {
         ) : (
           <>
             <tr className='h-40 bg-white'>
-              <td className='text-lg'></td>
-              <td className='text-lg'></td>
-              <td className='text-lg'></td>
-              <td className='text-lg'></td>
-              <td className='text-lg text-center'>조건에 맞는 게시물이 없습니다.</td>
-              <td className='text-lg'></td>
+              <td className='text-lg text-center align-middle' colSpan={6}>
+                조건에 맞는 게시물이 없습니다.
+              </td>
             </tr>
           </>
         )}

@@ -24,7 +24,7 @@ const BoxForm = ({ selectedCategory, selectedDistrict, sort, list }) => {
             />
           ))
         ) : (
-          <div className='h-52 py-12 px-1 border-2 border-solid border-field mb-2 rounded-[10px] text-lg text-center'>
+          <div className='h-52 px-1 border-2 border-solid border-field mb-2 rounded-[10px] text-lg flex flex-col justify-center'>
             조건에 맞는 게시물이 없습니다.
           </div>
         )}
