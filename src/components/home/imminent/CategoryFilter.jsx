@@ -21,7 +21,6 @@ const CategoryFilter = ({ selectedCategory }) => {
             htmlFor={category}
             className='xxs:text-xs xs:text-base mm:text-lg md:text-lg font-bold w-full text-center py-2 align-middle cursor-pointer peer-checked:border-b-[3px] border-solid peer-checked:transition-[.5s]'
             onClick={() => {
-              console.log(category);
               selectedCategory(category);
             }}
           >

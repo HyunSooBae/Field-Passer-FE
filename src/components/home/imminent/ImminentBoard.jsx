@@ -24,7 +24,6 @@ const ImminentBoard = () => {
     async function getList() {
       const data = await requestAPI('imminent');
       setList(data?.data?.resultData);
-      console.log(data?.data?.resultData);
     }
     getList();
   }, []);
@@ -53,9 +52,9 @@ const ImminentBoard = () => {
         마감 임박 게시물
       </div>
       <CategoryFilter selectedCategory={setSelectedCategory} />
-      <div className='flex h-15 mx-5 my-5 gap-10'>
+      <div className='flex h-15 justify-center my-5 gap-16'>
         <select
-          className='border-2 border-field focus:outline-0 text-gray-900 text-sm p-2 rounded-[10px] focus:border-green-500 block h-10 cursor-pointer'
+          className='border-2 border-black focus:outline-0 text-gray-900 text-sm p-2 rounded-full block h-12 w-28 cursor-pointer text-center hover:border-field focus:border-field'
           onChange={(e) => setSelectedDistrict(e.target.value)}
         >
           <option value={'all'}>모든 지역</option>
@@ -68,9 +67,10 @@ const ImminentBoard = () => {
         <div>
           <button
             onClick={(e) => setSortingDate(!sortingDate)}
-            className='p-3 text-sm rounded-[10px] border-2 border-solid border-field hover:bg-gray-200'
+            className='p-3 text-sm h-12 w-28 rounded-full border-2 border-solid border-black hover:border-field'
           >
             날짜 정렬
+            {sortingDate ? '  ▲' : ' ▼'}
           </button>
         </div>
       </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import Searchbar from './home/search/Searchbar';
 import MembersMenu from './MembersMenu';
 
 const Header = () => {

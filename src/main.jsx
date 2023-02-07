@@ -13,7 +13,7 @@ import AdminMemberDetail from './pages/Admin/MemberDetail';
 import Login from './pages/Login';
 import Join from './pages/Join';
 import FindAccount from './pages/FindAccount';
-import BoradForm from './pages/BoradForm';
+import BoardForm from './pages/BoardForm';
 import BoardDetails from './pages/BoardDetails';
 import AdminPost from './pages/Admin/Post';
 import AdminPostDetail from './pages/Admin/PostDetail';
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       { path: '/admin/service', element: <ReportAndQuestion /> },
       { path: '/admin/service/:reportId', element: <ReportDetail /> },
       { path: '/board', element: <Board /> },
-      { path: '/BoradForm', element: <BoradForm /> },
+      { path: '/BoardForm', element: <BoardForm /> },
       { path: '/board/details/:id', element: <BoardDetails /> },
       { path: '/admin/login', element: <AdminLogin /> },
     ],
