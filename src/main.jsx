@@ -23,6 +23,7 @@ import ReportAndQuestion from './pages/Admin/ReportAndQuestion';
 import Help from './pages/Help';
 import AdminLogin from './pages/Admin/Login';
 import ReportDetail from './pages/Admin/ReportDetail';
+import QuestionBox from './components/help/QuestionBox';
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       { path: '/', element: <Home /> },
-      { path: '/help', element: <Help /> },
+      { path: '/help/question', element: <QuestionBox /> },
       { path: '/login', element: <Login /> },
       { path: '/join', element: <Join /> },
       { path: '/findaccount', element: <FindAccount /> },
