@@ -41,6 +41,7 @@ const NewPosts = () => {
 
   const settings = {
     dots: true,
+    dotsClass: 'slick-dots slick-thumb',
     infinite: true,
     speed: 1000,
     slidesToShow: 4,
@@ -51,18 +52,9 @@ const NewPosts = () => {
     prevArrow: <PrevArrow />,
     pauseOnFocus: true,
     pauseOnHover: true,
-    appenDots: (dots) => (
-      <div
-        style={{
-          backgroundColor: '#21A04D',
-          borderRadius: '50%',
-          width: '10px',
-          height: '10px',
-        }}
-      >
-        <ul style={{ margin: '0px' }}>{dots}</ul>
-      </div>
-    ),
+    customPaging: function () {
+      return <div></div>;
+    },
   };
   return (
     <div className='w-3/5'>

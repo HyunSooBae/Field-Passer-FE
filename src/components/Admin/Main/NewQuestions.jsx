@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Question from './Question';
 import requestAPI from '../../../api/axios';
 
@@ -14,7 +15,9 @@ const NewQuestions = () => {
 
   return (
     <div className='w-2/5'>
-      <h3 className='font-bold text-2xl'>문의 게시판</h3>
+      <Link to='/admin/service'>
+        <h3 className='font-bold text-2xl'>문의 게시판</h3>
+      </Link>
       <table className='table-auto w-full text-sm mt-3 rounded-[10px] overflow-hidden border border-solid border-field bg-field'>
         <thead className='text-sm text-field bg-tableBg text-bold'>
           <tr>

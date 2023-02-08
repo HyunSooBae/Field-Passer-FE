@@ -13,7 +13,7 @@ import AdminMemberDetail from './pages/Admin/MemberDetail';
 import Login from './pages/Login';
 import Join from './pages/Join';
 import FindAccount from './pages/FindAccount';
-import BoradForm from './pages/BoradForm';
+import BoardForm from './pages/BoardForm';
 import BoardDetails from './pages/BoardDetails';
 import AdminPost from './pages/Admin/Post';
 import AdminPostDetail from './pages/Admin/PostDetail';
@@ -22,6 +22,7 @@ import store from './store';
 import ReportAndQuestion from './pages/Admin/ReportAndQuestion';
 import Help from './pages/Help';
 import AdminLogin from './pages/Admin/Login';
+import ReportDetail from './pages/Admin/ReportDetail';
 
 const router = createBrowserRouter([
   {
@@ -41,8 +42,9 @@ const router = createBrowserRouter([
       { path: '/admin/post', element: <AdminPost /> },
       { path: '/admin/post/detail/:postId', element: <AdminPostDetail /> },
       { path: '/admin/service', element: <ReportAndQuestion /> },
+      { path: '/admin/service/:reportId', element: <ReportDetail /> },
       { path: '/board', element: <Board /> },
-      { path: '/BoradForm', element: <BoradForm /> },
+      { path: '/BoardForm', element: <BoardForm /> },
       { path: '/board/details/:id', element: <BoardDetails /> },
       { path: '/admin/login', element: <AdminLogin /> },
     ],
