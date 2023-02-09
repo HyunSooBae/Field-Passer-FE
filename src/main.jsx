@@ -32,6 +32,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       { path: '/', element: <Home /> },
+      { path: '/help', element: <Help /> },
       { path: '/help/question', element: <QuestionBox /> },
       { path: '/login', element: <Login /> },
       { path: '/join', element: <Join /> },
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
       { path: '/admin/service', element: <ReportAndQuestion /> },
       { path: '/admin/service/:reportId', element: <ReportDetail /> },
       { path: '/board', element: <Board /> },
-      { path: '/BoardForm', element: <BoardForm /> },
+      { path: '/posting', element: <BoardForm /> },
       { path: '/board/details/:id', element: <BoardDetails /> },
       { path: '/admin/login', element: <AdminLogin /> },
     ],
