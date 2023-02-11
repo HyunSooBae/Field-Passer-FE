@@ -4,6 +4,7 @@ import './App.css';
 import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import NavBar from './components/Admin/NavBar';
 import Footer from './components/Footer';
+import requestAPI from './api/axios';
 
 function Admin() {
   return (

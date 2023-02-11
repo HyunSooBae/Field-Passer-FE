@@ -13,7 +13,7 @@ const NavBar = () => {
   const main = () => <CgWebsite className={iconClass} />;
   return (
     <div className='flex bg-field flex-col box-border fixed h-full justify-center items-center gap-5 w-[400px]'>
-      <img src='./images/korean3-white.png' alt='' className='w-24' />
+      <img src='../images/korean3-white.png' alt='' className='w-24' />
       <div className='flex gap-5 text-white'>
         <span>관리자 ADMIN</span>
         <span>|</span>
