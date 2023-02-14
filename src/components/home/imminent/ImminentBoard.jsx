@@ -22,6 +22,7 @@ const ImminentBoard = () => {
 
   useEffect(() => {
     async function getList() {
+      // const data = await requestAPI({ url: 'imminent', method: 'get' });
       const data = await requestAPI('imminent');
       setList(data?.data?.resultData);
     }
