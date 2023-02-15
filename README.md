@@ -2,7 +2,7 @@
 
 ### Field-Passer 프로젝트 / 프론트엔드
 
-### ⚽ 배포사이트 - 🔗 [FIELD-PASSER](https://6tube.netlify.app/)
+### ⚽ 배포사이트 - 🔗 [FIELD-PASSER](https://field-passer.netlify.app/)
 
 <br />
 

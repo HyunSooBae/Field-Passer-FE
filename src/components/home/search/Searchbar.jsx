@@ -50,9 +50,19 @@ const Searchbar = () => {
       <div className='flex gap-[5px] flex-col mm:flex-row'>
         <div className='flex gap-[5px]'>
           <SelectBox id='category' defaultValue='종목' size='w-1/2' options={categoryList} />
-          <SelectBox id='district' defaultValue='지역 전체' size='w-1/2' options={catagorySelect ? districtList : []} />
+          <SelectBox
+            id='district'
+            defaultValue='지역 전체'
+            size='w-1/2'
+            options={catagorySelect ? districtList : []}
+          />
         </div>
-        <SelectBox id='stadium' defaultValue='구장 전체' size='w-[240px]' options={districtSelect ? stadiumList : []} />
+        <SelectBox
+          id='stadium'
+          defaultValue='구장 전체'
+          size='w-[240px]'
+          options={districtSelect ? stadiumList : []}
+        />
       </div>
 
       <div className='flex gap-[5px] h-[40px]'>
@@ -63,7 +73,7 @@ const Searchbar = () => {
           검색
         </button>
         <button className='p-3 rounded-lg bg-field hover:bg-hoverField text-white text-sm'>
-          <Link to='/BoradForm'>양도하기</Link>
+          <Link to='/posting'>양도하기</Link>
         </button>
       </div>
     </section>

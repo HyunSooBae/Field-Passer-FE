@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import './index.css';
 import AdminHome from './pages/Admin/Home';
@@ -23,6 +23,7 @@ import ReportAndQuestion from './pages/Admin/ReportAndQuestion';
 import Help from './pages/Help';
 import AdminLogin from './pages/Admin/Login';
 import ReportDetail from './pages/Admin/ReportDetail';
+import QuestionBox from './components/help/QuestionBox';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/help', element: <Help /> },
+      { path: '/help/question', element: <QuestionBox /> },
       { path: '/login', element: <Login /> },
       { path: '/join', element: <Join /> },
       { path: '/findaccount', element: <FindAccount /> },
@@ -44,7 +46,7 @@ const router = createBrowserRouter([
       { path: '/admin/service', element: <ReportAndQuestion /> },
       { path: '/admin/service/:reportId', element: <ReportDetail /> },
       { path: '/board', element: <Board /> },
-      { path: '/BoardForm', element: <BoardForm /> },
+      { path: '/posting', element: <BoardForm /> },
       { path: '/board/details/:id', element: <BoardDetails /> },
       { path: '/admin/login', element: <AdminLogin /> },
     ],
