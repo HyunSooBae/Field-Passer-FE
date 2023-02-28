@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BsPatchQuestion } from 'react-icons/bs';
 
 const FAQ = () => {
-  const [selectedCategory, setSelectedCategory] = useState('account');
+  const [selectedCategory, setSelectedCategory] = useState < String > 'account';
 
   return (
     <>

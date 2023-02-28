@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import ImminentList from './ImminentList';
-const BoxForm = ({ selectedCategory, selectedDistrict, sort, list }) => {
+import { ImminentBoardType } from '@src/util/mainPageTypes';
+
+const BoxForm = ({ selectedCategory, selectedDistrict, list }: ImminentBoardType) => {
   const filteredList = list.filter(
     (item) =>
       item.category === selectedCategory &&
       (selectedDistrict === 'all' || item.district === selectedDistrict),
   );
 
-  console.log(filteredList);
   return (
     <div className='flex mm:hidden text-center'>
       <div className='w-full'>

@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { categoryOptions } from '../../../util/options';
 
-const CategoryFilter = ({ selectedCategory }) => {
+const CategoryFilter = ({
+  selectedCategory,
+}: {
+  selectedCategory: Dispatch<SetStateAction<string>>;
+}) => {
   return (
     <div className='flex my-3 border-b border-solid border-gray-200'>
       {categoryOptions.map((category) => (

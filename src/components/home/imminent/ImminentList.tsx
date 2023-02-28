@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ListType } from '@src/util/mainPageTypes';
 
-const ImminentList = ({ postId, category, district, startTime, stadiumName, mobile }) => {
+interface ImminentListType extends ListType {
+  mobile: boolean;
+}
+
+const ImminentList = ({
+  postId,
+  category,
+  district,
+  startTime,
+  stadiumName,
+  mobile,
+}: ImminentListType) => {
   //버튼 누르면 postId로 게시물 이동
   //category, postID 받아야됨..
   const navigate = useNavigate();
@@ -29,13 +41,13 @@ const ImminentList = ({ postId, category, district, startTime, stadiumName, mobi
           <span className='mr-3'>{reservedDate}</span>/
           <span className='ml-3'>{startTime.slice(11, 16)}</span>
         </li>
-        <li className={liClassNameMobile}>{stadiumName}</li>
+        <li className={liClassNameMobile + ' font-semibold'}>{stadiumName}</li>
         <li className='h-6'>
           <button
             onClick={goToPost}
             className='p-2 rounded-[10px] bg-field text-white hover:bg-hoverField'
           >
-            거래하기
+            거래
           </button>
         </li>
       </ul>
@@ -48,7 +60,7 @@ const ImminentList = ({ postId, category, district, startTime, stadiumName, mobi
         <td className={liClassNameTable}>{reservedDate}</td>
         <td className={liClassNameTable}>{startTime.slice(11, 16)}</td>
         <td className={liClassNameTable}>
-          <span className='cursor-pointer hover:text-field' onClick={goToPost}>
+          <span className='cursor-pointer hover:text-field font-semibold' onClick={goToPost}>
             {stadiumName}
           </span>
         </td>
