@@ -6,6 +6,7 @@ import BoxForm from './BoxForm';
 import { useMediaQuery } from 'react-responsive';
 import { districtOptions } from '../../../util/options';
 import { GiTennisCourt } from 'react-icons/gi';
+import { ListType } from '@src/util/mainPageTypes';
 
 const ImminentBoard = () => {
   const pcForm = useMediaQuery({
@@ -15,13 +16,14 @@ const ImminentBoard = () => {
     query: '(max-width:679px)',
   });
 
-  const [list, setList] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('풋살장');
+  const [list, setList] = useState<ListType[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>('풋살장');
   const [selectedDistrict, setSelectedDistrict] = useState('all');
   const [sortingDate, setSortingDate] = useState(true);
 
   useEffect(() => {
     async function getList() {
+      // const data = await requestAPI({ url: 'imminent', method: 'get' });
       const data = await requestAPI('imminent');
       setList(data?.data?.resultData);
     }
@@ -30,14 +32,14 @@ const ImminentBoard = () => {
 
   const sortedItems = () => {
     if (sortingDate) {
-      return list.sort(
-        (a, b) =>
+      return list?.sort(
+        (a: any, b: any) =>
           a.startTime.slice(0, 10).replaceAll('-', '') -
           b.startTime.slice(0, 10).replaceAll('-', ''),
       );
     } else {
       return list.sort(
-        (a, b) =>
+        (a: any, b: any) =>
           b.startTime.slice(0, 10).replaceAll('-', '') -
           a.startTime.slice(0, 10).replaceAll('-', ''),
       );
@@ -58,7 +60,7 @@ const ImminentBoard = () => {
           onChange={(e) => setSelectedDistrict(e.target.value)}
         >
           <option value={'all'}>모든 지역</option>
-          {districtOptions.map((option) => (
+          {districtOptions.map((option: string) => (
             <option key={option} value={option}>
               {option}
             </option>
@@ -78,7 +80,6 @@ const ImminentBoard = () => {
         <TableForm
           selectedCategory={selectedCategory}
           selectedDistrict={selectedDistrict}
-          sort={sortingDate}
           list={list}
         />
       )}
@@ -86,7 +87,6 @@ const ImminentBoard = () => {
         <BoxForm
           selectedCategory={selectedCategory}
           selectedDistrict={selectedDistrict}
-          sort={sortingDate}
           list={list}
         />
       )}

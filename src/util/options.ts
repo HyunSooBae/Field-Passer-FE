@@ -1,4 +1,4 @@
-export const districtOptions = [
+export const districtOptions: string[] = [
   '강남구',
   '강동구',
   '강북구',
@@ -26,4 +26,4 @@ export const districtOptions = [
   '중랑구',
 ];
 
-export const categoryOptions = ['풋살장', '축구장', '농구장', '테니스장', '배드민턴장'];
+export const categoryOptions: string[] = ['풋살장', '축구장', '농구장', '테니스장', '배드민턴장'];

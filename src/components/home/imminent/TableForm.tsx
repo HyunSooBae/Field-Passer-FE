@@ -1,7 +1,8 @@
 import React from 'react';
 import ImminentList from './ImminentList';
+import { ImminentBoardType } from '@src/util/mainPageTypes';
 
-const TableForm = ({ selectedCategory, selectedDistrict, sort, list }) => {
+const TableForm = ({ selectedCategory, selectedDistrict, list }: ImminentBoardType) => {
   const filteredList = list.filter(
     (item) =>
       item.category === selectedCategory &&
@@ -36,7 +37,7 @@ const TableForm = ({ selectedCategory, selectedDistrict, sort, list }) => {
             구장
           </th>
           <th scope='col' className='py-4 text-center'>
-            거래하기
+            거래
           </th>
         </tr>
       </thead>

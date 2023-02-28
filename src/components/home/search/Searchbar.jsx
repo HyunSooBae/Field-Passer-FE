@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import requestAPI from '../../../api/axios';
 import SelectBox from './SelectBox';
 
@@ -72,9 +72,11 @@ const Searchbar = () => {
         >
           검색
         </button>
-        <button className='p-3 rounded-lg bg-field hover:bg-hoverField text-white text-sm'>
-          <Link to='/posting'>양도하기</Link>
-        </button>
+        <Link to='/posting'>
+          <button className='p-3 rounded-lg bg-field hover:bg-hoverField text-white text-sm'>
+            양도하기
+          </button>
+        </Link>
       </div>
     </section>
   );

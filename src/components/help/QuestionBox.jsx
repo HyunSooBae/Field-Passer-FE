@@ -23,8 +23,14 @@ const QuestionBox = () => {
     }
   };
 
+  async function postQuestion(body) {
+    // const data = await requestAPI({ url: 'post', method: 'POST', body: JSON.stringify(body) });
+    // console.log(data?.data?.resultData);
+    console.log(body);
+  }
+
   return (
-    <main className='m-auto max-w-4xl mt-12 mb-80 py-10 relative px-3'>
+    <main className='m-auto max-w-4xl mt-12 mb-40 py-10 relative px-3'>
       <div className='mb-16 text-center'>
         <RiQuestionnaireLine className='w-20 h-20 m-auto mb-4' />
         <h1 className='text-center h-10 leading-10 text-4xl mb-3'>1:1 문의</h1>
@@ -95,7 +101,12 @@ const QuestionBox = () => {
         <button
           className='text-lg p-3 border-solid rounded-[10px] mx-auto bg-field text-white mt-[20px]'
           onClick={() => {
-            window.confirm('문의글 작성이 완료되었습니다.');
+            try {
+              postQuestion('/?');
+              window.confirm('문의글 작성이 완료되었습니다.');
+            } catch (err) {
+              alert(err, '다시 시도해주세요.');
+            }
           }}
         >
           작성
