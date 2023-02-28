@@ -1,4 +1,3 @@
-import React from 'react';
 import NavTab from './NavTab';
 import { BsPeopleFill } from 'react-icons/bs';
 import { HiDocumentDuplicate } from 'react-icons/hi';

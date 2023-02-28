@@ -1,11 +1,17 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const NavTab = ({ title, icon, address }) => {
+type Props = {
+  title: string;
+  icon: JSX.Element;
+  address: string;
+};
+const NavTab = ({ title, icon, address }: Props) => {
   const navigate = useNavigate();
-  const onClickHandler = (address) => {
+
+  const onClickHandler = (address: string) => {
     navigate(`/${address}`);
   };
+
   return (
     <div
       className='flex flex-col justify-center items-center gap-5 w-24'

@@ -1,9 +1,13 @@
-import React from 'react';
 import { BsEye } from 'react-icons/bs';
 import { HiOutlineChatBubbleLeftRight } from 'react-icons/hi2';
+import { postType } from '../typeConfig';
 
-const post = ({ item }) => {
-  const truncate = (str, n) => {
+type Props = {
+  item: postType;
+};
+
+const post = ({ item }: Props) => {
+  const truncate = (str: string, n: number) => {
     return str?.length > n ? str.substring(0, n) + '...' : str;
   };
   return (
@@ -17,7 +21,7 @@ const post = ({ item }) => {
         <span className='text-xs pt-2'>{item.category}</span>
         <span className='font-bold'>{truncate(item.title, 10)}</span>
         <span className='font-bold'>
-          {item.resevedDate} {item.startTime}
+          {item.reservedDate} {item.startTime}
         </span>
         <span className='font-bold'>{Number(item.price).toLocaleString()}원</span>
         <div className='flex gap-3'>

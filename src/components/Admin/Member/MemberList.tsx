@@ -1,9 +1,13 @@
-import React from 'react';
 import { useNavigate } from 'react-router';
+import { memberType } from '../typeConfig';
 
-const MemberList = ({ item }) => {
+type Props = {
+  item: memberType;
+};
+
+const MemberList = ({ item }: Props) => {
   const navigate = useNavigate();
-  const onClickHandler = (id) => {
+  const onClickHandler = (id: string) => {
     navigate(`/admin/member/detail/${id}`);
   };
   return (

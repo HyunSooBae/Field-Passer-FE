@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Question from './Question';
 import requestAPI from '../../../api/axios';
+import { questionType } from '../typeConfig';
 
 const NewQuestions = () => {
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState<questionType[]>([]);
+
   useEffect(() => {
     async function getQuestions() {
       const data = await requestAPI('question');

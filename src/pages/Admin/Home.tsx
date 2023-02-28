@@ -1,4 +1,3 @@
-import React from 'react';
 import Charts from '../../components/Admin/Main/Charts';
 import NewPosts from '../../components/Admin/Main/NewPosts';
 import NewQuestions from '../../components/Admin/Main/NewQuestions';

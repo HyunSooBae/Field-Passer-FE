@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import requestAPI from '../../../api/axios';
+import { memberType } from '../typeConfig';
 
 const Profile = () => {
-  const [member, setMember] = useState([]);
+  const [member, setMember] = useState<memberType>();
   useEffect(() => {
     async function getMember() {
       const data = await requestAPI('membersList');
