@@ -47,7 +47,7 @@ const ImminentList = ({
             onClick={goToPost}
             className='p-2 rounded-[10px] bg-field text-white hover:bg-hoverField'
           >
-            거래
+            거래하기
           </button>
         </li>
       </ul>

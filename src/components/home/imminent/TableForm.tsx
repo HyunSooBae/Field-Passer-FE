@@ -37,7 +37,7 @@ const TableForm = ({ selectedCategory, selectedDistrict, list }: ImminentBoardTy
             구장
           </th>
           <th scope='col' className='py-4 text-center'>
-            거래
+            거래하기
           </th>
         </tr>
       </thead>

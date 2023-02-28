@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import { BsEye } from 'react-icons/bs';
 import { HiOutlineChatBubbleLeftRight } from 'react-icons/hi2';
+import { ListType } from '@src/util/mainPageTypes';
 
-const PostList = ({ data }: any) => {
+const PostList = ({ data }: { data: ListType[] }) => {
   return (
     <div className='max-w-5xl ml-auto mr-auto'>
       <div className='mx-[-15px] flex flex-wrap gap-[10px] pl-[10px]'>
-        {data.map((item: any, index: any) => {
-          console.log(typeof item.endTime);
+        {data.map((item: ListType, index: any) => {
           return (
             <div
               key={index}
@@ -23,7 +23,7 @@ const PostList = ({ data }: any) => {
                   <p className='text-xxs text-gray-500'>{item.category}</p>
                   <p className='text-sm'>{item.stadiumName}</p>
                   <p className='text-xs'>
-                    {item.reservedDate} / {item.endTime.slice(0, 5)}
+                    {item.reservedDate} / {item.endTime?.slice(0, 5)}
                   </p>
                   <p className='text-xs font-black'>{item.price}</p>
                   <p className='text-xs text-gray-700'>{item.district}</p>

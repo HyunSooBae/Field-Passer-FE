@@ -24,6 +24,7 @@ import Help from './pages/Help';
 import AdminLogin from './pages/Admin/Login';
 import ReportDetail from './pages/Admin/ReportDetail';
 import QuestionBox from './components/help/QuestionBox';
+import Chatting from './pages/Chatting';
 
 const router = createBrowserRouter([
   {
@@ -45,10 +46,12 @@ const router = createBrowserRouter([
       { path: '/admin/post/detail/:postId', element: <AdminPostDetail /> },
       { path: '/admin/service', element: <ReportAndQuestion /> },
       { path: '/admin/service/:reportId', element: <ReportDetail /> },
+      { path: '/admin/login', element: <AdminLogin /> },
       { path: '/board', element: <Board /> },
       { path: '/posting', element: <BoardForm /> },
       { path: '/board/details/:id', element: <BoardDetails /> },
-      { path: '/admin/login', element: <AdminLogin /> },
+      { path: '/chatting/:id', element: <Chatting /> },
+      { path: '*', element: <NotFound /> },
     ],
   },
 ]);
