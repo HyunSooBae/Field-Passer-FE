@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 
 const MainSlider = () => {
-  const PrevArrow = (props) => {
+  const PrevArrow = (props: any) => {
     return (
       <SlArrowLeft
         onClick={props.onClick}
@@ -14,7 +14,7 @@ const MainSlider = () => {
     );
   };
 
-  const NextArrow = (props) => {
+  const NextArrow = (props: any) => {
     return (
       <SlArrowRight
         onClick={props.onClick}
@@ -23,7 +23,7 @@ const MainSlider = () => {
     );
   };
 
-  const settings = {
+  const settings: any = {
     arrow: true,
     infinite: true,
     speed: 1000,

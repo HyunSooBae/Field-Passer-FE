@@ -9,27 +9,27 @@ const storeState = createSlice({
   initialState,
   reducers: {
     selected: (state, action) => {
-      switch(action.payload){
-        case 'category' :
-          state.catagorySelect = true ;
+      switch (action.payload) {
+        case 'category':
+          state.catagorySelect = true;
           break;
-        case 'district' : 
-          state.districtSelect = true ;
-          break
-        default :
-          break
+        case 'district':
+          state.districtSelect = true;
+          break;
+        default:
+          break;
       }
     },
     unselected: (state, action) => {
-      switch(action.payload){
-        case 'category' :
-          state.catagorySelect = false ;
+      switch (action.payload) {
+        case 'category':
+          state.catagorySelect = false;
           break;
-        case 'district' : 
-          state.districtSelect = false ;
-          break
-        default :
-          break
+        case 'district':
+          state.districtSelect = false;
+          break;
+        default:
+          break;
       }
     },
   },

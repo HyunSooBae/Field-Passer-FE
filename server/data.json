@@ -125,7 +125,7 @@
   "post": {
     "resultData": [
       {
-        "postId": "123456",
+        "postId": 123456,
         "memberId": "hello123",
         "memberName": "역삼동 모드리치",
         "category": "풋살장",
@@ -1247,5 +1247,19 @@
         "defaultImageUrl": "https://yeyak.seoul.go.kr/web/common/file/FileDown.do?file_id=SVC_IMG_FILE_217607"
       }
     ]
-  }
+  },
+  "register": [
+    {
+      "memberId": "hello1",
+      "password": "1q2w3e4r5t6y"
+    },
+    {
+      "memberId": "hello2",
+      "password": "1q2w3e4r5t6y"
+    },
+    {
+      "memberId": "hello3",
+      "password": "1q2w3e4r5t6y"
+    }
+  ]
 }

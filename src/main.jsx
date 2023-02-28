@@ -2,7 +2,12 @@ import React from 'react';
 import './index.css';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { persistReducer } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
 import App from './App';
+// import configureStore from "./store";
+// import { rootReducer } from "./reducers";
+import './index.css';
 import AdminHome from './pages/Admin/Home';
 import Board from './pages/Board';
 import Home from './pages/Home';
@@ -55,6 +60,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
+    {/* <PersistGate loading={null} persistor={persistor}> */}
     <RouterProvider router={router} />
+    {/* </PersistGate> */}
   </Provider>,
 );

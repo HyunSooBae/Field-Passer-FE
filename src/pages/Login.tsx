@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
+  const [emailId, setEmailId] = useState();
+  const [pw, setPw] = useState();
+
   return (
     <div className='m-auto max-w-5xl pt-[10vh] bg-white'>
       <div className='w-[400px] m-auto'>
@@ -16,6 +19,8 @@ const Login = () => {
               placeholder='이메일을 입력하세요'
               required
               className='w-full h-14 px-2 text-[14px] rounded-[10px] bg-white border appearance-none focus:outline-none autofill:valid:bg-white focus:border-field valid:border-field'
+              value={emailId}
+              onChange={(e: any) => setEmailId(e.target.value)}
             />
           </div>
           <div className='bg-white border mb-4'>
@@ -27,6 +32,8 @@ const Login = () => {
               placeholder='비밀번호를 입력하세요'
               required
               className='w-full h-14 px-2 text-[14px] rounded-[10px] bg-white border appearance-none focus:outline-none autofill:valid:bg-white focus:border-field valid:border-field'
+              value={pw}
+              onChange={(e: any) => setPw(e.target.value)}
             />
           </div>
           <div className='flex justify-between mb-10'>
@@ -40,6 +47,7 @@ const Login = () => {
           <button
             type='submit'
             className='w-full h-14 rounded-[10px] bg-field text-white font-bold hover:bg-hoverfield'
+            // onClick={}
           >
             로그인
           </button>
