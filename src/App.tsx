@@ -6,6 +6,13 @@ import NavBar from './components/Admin/NavBar';
 import Footer from './components/Footer';
 import requestAPI from './api/axios';
 
+// 임시 타입설정
+declare global {
+  interface Window {
+    naver: any;
+  }
+}
+
 function Admin() {
   return (
     <div className='grid grid-cols-admin grid-rows-1 h-screen'>
