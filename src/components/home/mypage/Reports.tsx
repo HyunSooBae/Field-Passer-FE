@@ -42,7 +42,7 @@ const Reports = ({ reports, offset, limitPerPage, page, setPage }) => {
                 문의 내역이 없습니다.
               </td>
             </tr>
-          )}
+          )}{' '}
         </tbody>
       </table>
       <Pagination total={reports.length} limit={limitPerPage} page={page} setPage={setPage} />

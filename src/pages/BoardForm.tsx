@@ -3,7 +3,7 @@ import { useState, useRef } from 'react';
 import Datepicker from 'tailwind-datepicker-react';
 
 const BoardForm = () => {
-  const imgfile = useRef(null);
+  const imgfile: any = useRef(null);
 
   //datepicker options
   const options = {
@@ -34,10 +34,10 @@ const BoardForm = () => {
   // Datepicker component
   const FormDatepicker = () => {
     const [show, setShow] = useState(false);
-    const handleChange = (selectedDate) => {
+    const handleChange = (selectedDate: any) => {
       // api 완성되면 사용할 함수
     };
-    const handleClose = (state) => {
+    const handleClose = (state: any) => {
       setShow(state);
     };
 
@@ -55,10 +55,10 @@ const BoardForm = () => {
   };
 
   // 업로드 이미지 미리보기
-  const imgPreview = (input) => {
+  const imgPreview = (input: any) => {
     if (input.target.files && input.target.files[0]) {
       let reader = new FileReader();
-      reader.onload = (e) => {
+      reader.onload = (e: any) => {
         imgfile.current.src = e.target.result;
       };
       reader.readAsDataURL(input.target.files[0]);
