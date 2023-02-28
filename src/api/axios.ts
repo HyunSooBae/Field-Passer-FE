@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default async function requestAPI(keyword) {
+export default async function requestAPI(keyword: string) {
   try {
     const data = await axios(`http://localhost:3000/${keyword}`, {
       method: 'GET',
@@ -13,7 +13,7 @@ export default async function requestAPI(keyword) {
 
 // export default async function requestAPI({ url, method, body }) {
 //   try {
-//     const data = await axios(`http://3.37.218.170:8080/api/${url}`, {
+//     const data = await axios(`${import.meta.env.VITE_API_BASE_URL}${url}`, {
 //       method: method,
 //       body: body ? body : null,
 //     });

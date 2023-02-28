@@ -20,10 +20,9 @@ const ReportDetail = () => {
       <div>
         <form action=''>
           <textarea
-            type='text'
             placeholder='답글을 작성해 주세요.'
             className='h-[100px] w-[500px] rounded text-sm border-#94a3b8 border-solid border-2 px-3 focus:outline-none focus:border-field scroll'
-          ></textarea>
+          />
           <button
             type='submit'
             className='bg-field rounded-lg text-white hover:bg-hoverField h-8 w-20 ml-3'

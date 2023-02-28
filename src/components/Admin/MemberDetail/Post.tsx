@@ -1,12 +1,17 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
+import { postType } from '../typeConfig';
 
-const Post = ({ item }) => {
+type Props = {
+  item: postType;
+};
+
+const Post = ({ item }: Props) => {
   const navigate = useNavigate();
-  const onClickHandler = (postId) => {
+  const onClickHandler = (postId: string) => {
     navigate(`/admin/post/detail/${postId}`);
   };
-  const reservState = (state) => {
+  const reservState = (state: string) => {
     const reservConfir = 'bg-gray-200 text-gray-400';
     const reserv = 'bg-field text-white';
     const none = 'border border-solid border-fieldtext-field hover:border-field';

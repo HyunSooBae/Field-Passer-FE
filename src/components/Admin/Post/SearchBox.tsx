@@ -1,5 +1,3 @@
-import React from 'react';
-
 const SearchBox = () => {
   return (
     <div className='flex my-10 w-full'>

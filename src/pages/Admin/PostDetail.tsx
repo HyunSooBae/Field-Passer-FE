@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import requestAPI from '../../api/axios';
+import { AxiosResponse } from 'axios';
 
 const PostDetail = () => {
   const mapElement = useRef(null);
@@ -12,15 +13,15 @@ const PostDetail = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const res = await requestAPI('post');
-      setData(res.data.resultData);
+      const res: AxiosResponse<any, any> | undefined = await requestAPI('post');
+      setData(res!.data.resultData);
     };
     getData();
   }, []);
 
   // api 나오면 경도 위도 받아서 사용
   useEffect(() => {
-    const { naver } = window;
+    const { naver }: any = window;
     if (!mapElement.current || !naver) return;
 
     const location = new naver.maps.LatLng(37.51557, 126.91228);
