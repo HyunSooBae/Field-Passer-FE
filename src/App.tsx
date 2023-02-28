@@ -7,6 +7,13 @@ import Footer from './components/Footer';
 import requestAPI from './api/axios';
 import axios from 'axios';
 
+// 임시 타입설정
+declare global {
+  interface Window {
+    naver: any;
+  }
+}
+
 function Admin() {
   return (
     <div className='grid grid-cols-admin grid-rows-1 h-screen'>

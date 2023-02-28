@@ -5,10 +5,10 @@ import requestAPI from '../../../api/axios';
 import SelectBox from './SelectBox';
 
 const Searchbar = () => {
-  const catagorySelect = useSelector((state) => {
+  const catagorySelect = useSelector((state: any) => {
     return state.store.catagorySelect;
   });
-  const districtSelect = useSelector((state) => {
+  const districtSelect = useSelector((state: any) => {
     return state.store.districtSelect;
   });
 
@@ -19,7 +19,7 @@ const Searchbar = () => {
   useEffect(() => {
     const getCategory = async () => {
       const res = await requestAPI('categoryList');
-      setCategoryList(res.data.resultData);
+      setCategoryList(res?.data.resultData);
     };
 
     getCategory();
@@ -29,7 +29,7 @@ const Searchbar = () => {
     if (catagorySelect) {
       const getDistrict = async () => {
         const res = await requestAPI('districtList');
-        setDistrictList(res.data.resultData);
+        setDistrictList(res?.data.resultData);
       };
       getDistrict();
     }
@@ -39,7 +39,7 @@ const Searchbar = () => {
     if (districtSelect) {
       const getStadiumList = async () => {
         const res = await requestAPI('stadiumList');
-        setStadiumList(res.data.resultData);
+        setStadiumList(res?.data.resultData);
       };
       getStadiumList();
     }

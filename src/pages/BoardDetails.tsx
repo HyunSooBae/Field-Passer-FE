@@ -13,9 +13,9 @@ const BoardDetails = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const res = await requestAPI('post')
-      setData(res.data.resultData)
-    }
+      const res = await requestAPI('post');
+      setData(res?.data.resultData);
+    };
     getData();
   }, []);
 
@@ -55,10 +55,7 @@ const BoardDetails = () => {
 
   return (
     <div className='my-[50px] mx-auto max-w-[600px] px-[20px] mm:px-[0]'>
-      <Slider
-        {...settings}
-        className='relative max-h-[600px] mx-auto rounded-lg overflow-hidden'
-      >
+      <Slider {...settings} className='relative max-h-[600px] mx-auto rounded-lg overflow-hidden'>
         <div className='w-full'>
           <img
             className='w-full object-cover aspect-square'
@@ -74,7 +71,11 @@ const BoardDetails = () => {
       </Slider>
 
       <div className='flex items-center my-[20px] gap-[20px]'>
-        <img src="https://img.freepik.com/free-photo/white-wall-with-texture-background_24836-60.jpg?auto=format&h=200" alt="" className='w-[50px] h-[50px] rounded-[50%] '/>
+        <img
+          src='https://img.freepik.com/free-photo/white-wall-with-texture-background_24836-60.jpg?auto=format&h=200'
+          alt=''
+          className='w-[50px] h-[50px] rounded-[50%] '
+        />
         <div className='flex justify-between w-full items-center'>
           <p className='text-sm font-black'>사용자 이름</p>
           <button className='rounded bg-field text-sm text-white p-[10px]'>채팅 하기</button>
@@ -106,14 +107,18 @@ const BoardDetails = () => {
           </p>
 
           <div>
-            <button className='px-[10px] py-[7px] text-xs bg-gray-300 text-white rounded mr-[10px]'>수정</button>
-            <button className='px-[10px] py-[7px] text-xs bg-gray-300 text-white rounded'>삭제</button>
+            <button className='px-[10px] py-[7px] text-xs bg-gray-300 text-white rounded mr-[10px]'>
+              수정
+            </button>
+            <button className='px-[10px] py-[7px] text-xs bg-gray-300 text-white rounded'>
+              삭제
+            </button>
           </div>
         </div>
       </div>
 
       <section className='flex w-full gap-[20px] my-[20px] mm:flex-row flex-col'>
-        <div ref={mapElement} className="mm:w-[300px] w-[100%] aspect-[1/1]"/>
+        <div ref={mapElement} className='mm:w-[300px] w-[100%] aspect-[1/1]' />
 
         <div className='flex flex-col gap-[10px]'>
           <p className='text-sm'>장소 이름 : </p>
@@ -122,11 +127,11 @@ const BoardDetails = () => {
       </section>
 
       <div>
-        <div className="flex items-center justify-between py-[20px]">
+        <div className='flex items-center justify-between py-[20px]'>
           <p className='font-black'>성동구 다른 예약</p>
           <button className='text-xs text-gray-400'>더보기</button>
         </div>
-        <PostList data={data}/>
+        <PostList data={data} />
       </div>
     </div>
   );
