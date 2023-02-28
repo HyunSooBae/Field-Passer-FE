@@ -3,12 +3,20 @@ import { Link } from 'react-router-dom';
 import Question from './Question';
 import Pagination from '../../Pagination';
 
-const Reports = ({ reports, offset, limitPerPage, page, setPage }) => {
+type ReprotType = {
+  reports: any;
+  offset: any;
+  limitPerPage: any;
+  page: any;
+  setPage: any;
+};
+
+const Reports = ({ reports, offset, limitPerPage, page, setPage }: ReprotType) => {
   return (
     <div className='content pb-60'>
       <div className='flex justify-between mt-48 mb-10'>
         <h3 className='text-2xl font-bold'>문의 게시판</h3>
-        <Link>더보기</Link>
+        <Link to=''>더보기</Link>
       </div>
       <table className='table-auto w-full border border-solid border-gray-200 rounded-[10px] overflow-hidden bg-gray-200'>
         <thead className='bg-gray-100'>
@@ -29,7 +37,7 @@ const Reports = ({ reports, offset, limitPerPage, page, setPage }) => {
         </thead>
         <tbody className='devide-y'>
           {reports ? (
-            reports?.slice(offset, offset + limitPerPage).map((report, index) => (
+            reports?.slice(offset, offset + limitPerPage).map((report: any, index: any) => (
               <Question
                 // key={report.questionId}
                 key={index}
