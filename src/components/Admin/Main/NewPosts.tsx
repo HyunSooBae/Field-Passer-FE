@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Post from './Post';
 import requestAPI from '../../../api/axios';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { IoIosArrowDroprightCircle, IoIosArrowDropleftCircle } from 'react-icons/io';
+import { postType } from '../typeConfig';
 
 const NewPosts = () => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<postType[]>([]);
+
   useEffect(() => {
     async function getPosts() {
       const data = await requestAPI('post');
@@ -16,7 +18,7 @@ const NewPosts = () => {
     getPosts();
   }, []);
 
-  const PrevArrow = (props) => {
+  const PrevArrow = (props: any) => {
     const onClick = props.onClick;
     return (
       <div>
@@ -27,7 +29,7 @@ const NewPosts = () => {
       </div>
     );
   };
-  const NextArrow = (props) => {
+  const NextArrow = (props: any) => {
     const onClick = props.onClick;
     return (
       <div>

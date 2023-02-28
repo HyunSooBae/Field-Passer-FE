@@ -1,36 +1,32 @@
-import React from 'react';
-import MemberList from './MemberList';
+import Question from './Question';
 
-const MemberLists = ({ members }) => {
+const Questions = () => {
   return (
     <table className='table-auto w-full text-sm mt-3 rounded-[10px] overflow-hidden bg-field border border-solid border-field'>
-      <colgroup>
-        <col className='w-auto' />
-        <col className='w-auto' />
-        <col className='w-auto' />
-        <col className='w-[250px]' />
-      </colgroup>
       <thead className='text-sm text-field bg-tableBg text-bold'>
         <tr>
           <th scope='col' className='px-6 py-4 text-left'>
-            닉네임
+            #
           </th>
           <th scope='col' className='px-6 py-4 text-left'>
-            이메일
+            제목
           </th>
           <th scope='col' className='px-6 py-4 text-left'>
-            가입일
+            작성자
           </th>
           <th scope='col' className='px-6 py-4 text-left'>
-            관리
+            상태
+          </th>
+          <th scope='col' className='px-6 py-4 text-left'>
+            상세 보기
           </th>
         </tr>
       </thead>
       <tbody>
-        {members ? members?.map((member) => <MemberList key={member.email} item={member} />) : null}
+        <Question />
       </tbody>
     </table>
   );
 };
 
-export default MemberLists;
+export default Questions;

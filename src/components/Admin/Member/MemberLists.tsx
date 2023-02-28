@@ -1,7 +1,12 @@
 import React from 'react';
-import Report from './Report';
+import MemberList from './MemberList';
+import { memberType } from '../typeConfig';
 
-const Reports = () => {
+type Props = {
+  members: memberType[];
+};
+
+const MemberLists = ({ members }: Props) => {
   return (
     <table className='table-auto w-full text-sm mt-3 rounded-[10px] overflow-hidden bg-field border border-solid border-field'>
       <colgroup>
@@ -13,16 +18,13 @@ const Reports = () => {
       <thead className='text-sm text-field bg-tableBg text-bold'>
         <tr>
           <th scope='col' className='px-6 py-4 text-left'>
-            카테고리
+            닉네임
           </th>
           <th scope='col' className='px-6 py-4 text-left'>
-            신고자
+            이메일
           </th>
           <th scope='col' className='px-6 py-4 text-left'>
-            피신고자
-          </th>
-          <th scope='col' className='px-6 py-4 text-left'>
-            처리 상태
+            가입일
           </th>
           <th scope='col' className='px-6 py-4 text-left'>
             관리
@@ -30,10 +32,10 @@ const Reports = () => {
         </tr>
       </thead>
       <tbody>
-        <Report />
+        {members ? members?.map((member) => <MemberList key={member.email} item={member} />) : null}
       </tbody>
     </table>
   );
 };
 
-export default Reports;
+export default MemberLists;
