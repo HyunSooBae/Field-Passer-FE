@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Question = ({ item }) => {
+  console.log(item);
   const convertDate = (date) => {
     return date.replace('T', ' ');
   };

@@ -1,22 +1,42 @@
-import React, { useRef } from 'react';
+import axios from 'axios';
+import React, { useEffect, useRef, useState } from 'react';
+// import requestAPI from '../api/axios';
 
 const Join = () => {
-  const imgfile = useRef(null);
+  const [memberId, setMemberId] = useState('');
+  const [password, setPassword] = useState('');
+
+  const joinHandler = async () => {
+    const res = await axios.post('http://localhost:3000/register', {
+      memberId,
+      password,
+    });
+    // console.log(memberId);
+    // console.log(password);
+    console.log(res.data);
+  };
+
+  const imgfile: any = useRef(null);
   // 업로드 이미지 미리보기
-  const imgPreview = (input) => {
+  const imgPreview = (input: any) => {
     if (input.target.files && input.target.files[0]) {
       let reader = new FileReader();
-      reader.onload = (e) => {
+      reader.onload = (e: any) => {
         imgfile.current.src = e.target.result;
       };
       reader.readAsDataURL(input.target.files[0]);
     }
   };
+
+  const onSubmit = (e: any) => {
+    e.preventDefault();
+  };
+
   return (
     <div className='m-auto max-w-5xl pt-[10vh] mb-40 bg-white'>
       <div className='w-[400px] m-auto'>
         <h1 className='text-3xl text-center mb-14'>회원가입</h1>
-        <form>
+        <form onSubmit={onSubmit}>
           <div className='bg-white border mb-4'>
             <label className='block text-gray-900 text-sm font-bold mb-2' htmlFor='username'>
               아이디
@@ -24,8 +44,10 @@ const Join = () => {
             <input
               type='text'
               placeholder='아이디를 입력하세요'
-              required
+              // required
               className='w-full h-14 px-2 text-[14px] rounded-[10px] bg-white border appearance-none focus:outline-none autofill:valid:bg-white focus:border-field valid:border-field'
+              value={memberId}
+              onChange={(e) => setMemberId(e.target.value)}
             />
           </div>
           <div className='bg-white border mb-4'>
@@ -35,7 +57,7 @@ const Join = () => {
             <input
               type='text'
               placeholder='이메일을 입력하세요'
-              required
+              // required
               className='w-full h-14 px-2 text-[14px] rounded-[10px] bg-white border appearance-none focus:outline-none autofill:valid:bg-white focus:border-field valid:border-field'
             />
           </div>
@@ -46,8 +68,10 @@ const Join = () => {
             <input
               type='password'
               placeholder='비밀번호를 입력하세요'
-              required
+              // required
               className='w-full h-14 px-2 text-[14px] rounded-[10px] bg-white border appearance-none focus:outline-none autofill:valid:bg-white focus:border-field valid:border-field'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className='bg-white border mb-4'>
@@ -55,9 +79,9 @@ const Join = () => {
               닉네임
             </label>
             <input
-              type='password'
+              type='text'
               placeholder='닉네임을 입력하세요'
-              required
+              // required
               className='w-full h-14 px-2 text-[14px] rounded-[10px] bg-white border appearance-none focus:outline-none autofill:valid:bg-white focus:border-field valid:border-field'
             />
           </div>
@@ -110,8 +134,9 @@ const Join = () => {
           </div>
 
           <button
-            type='submit'
+            // type='submit'
             className='w-full h-14 rounded-[10px] bg-field text-white font-bold hover:bg-hoverfield'
+            onClick={joinHandler}
           >
             회원가입
           </button>
