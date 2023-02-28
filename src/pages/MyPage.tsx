@@ -35,7 +35,7 @@ const MyPage = () => {
   useEffect(() => {
     const getData = async () => {
       const res = await requestAPI('post');
-      setData(res.data.resultData);
+      setData(res?.data.resultData);
     };
     getData();
   }, []);
@@ -48,7 +48,9 @@ const MyPage = () => {
       <div className='content'>
         <div className='flex justify-between mt-24 mb-10'>
           <h3 className='text-2xl font-bold'>관심글</h3>
-          <Link className='text-gray-500'>더보기</Link>
+          <Link to='' className='text-gray-500'>
+            더보기
+          </Link>
         </div>
         <div className='grid grid-cols-4 gap-10'>
           <div>
@@ -124,7 +126,7 @@ const MyPage = () => {
       {/* 내가 쓴 글 */}
       <div className='flex justify-between items-center mt-48 mb-10'>
         <h3 className='text-2xl font-bold'>내가 쓴 글</h3>
-        <Link>더보기</Link>
+        <Link to=''>더보기</Link>
       </div>
       <PostList data={data} />
 

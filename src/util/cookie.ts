@@ -2,7 +2,7 @@ import { Cookies, useCookies } from 'react-cookie';
 
 const cookies = new Cookies();
 
-const setCookie = (sessionId: string) => {
+export const setCookie = (sessionId: string) => {
   return cookies.set('token', sessionId, {
     path: '/',
     // expire: ,
@@ -11,6 +11,14 @@ const setCookie = (sessionId: string) => {
   });
 };
 
-const getCookie = () => {};
+export const getCookie = () => {
+  const token = cookies.get('token');
+  return token;
+};
 
-const removeCookie = () => {};
+export const removeCookie = () => {
+  return cookies.set('token', '', {
+    path: '/',
+    maxAge: -1,
+  });
+};

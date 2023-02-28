@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Question = ({ item }) => {
+const Question = ({ item }: any) => {
   console.log(item);
-  const convertDate = (date) => {
+  const convertDate = (date: any) => {
     return date.replace('T', ' ');
   };
   return (
