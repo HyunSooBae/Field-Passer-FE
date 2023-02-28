@@ -5,6 +5,7 @@ import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import NavBar from './components/Admin/NavBar';
 import Footer from './components/Footer';
 import requestAPI from './api/axios';
+import axios from 'axios';
 
 // 임시 타입설정
 declare global {
