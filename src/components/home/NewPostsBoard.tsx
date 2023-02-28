@@ -10,7 +10,7 @@ const NewPostsBoard = () => {
   useEffect(() => {
     const getData = async () => {
       const res = await requestAPI('post');
-      setData(res.data.resultData);
+      setData(res?.data.resultData);
     };
     getData();
   }, []);
