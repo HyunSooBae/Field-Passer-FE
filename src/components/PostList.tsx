@@ -1,13 +1,12 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { BsEye } from 'react-icons/bs';
 import { HiOutlineChatBubbleLeftRight } from 'react-icons/hi2';
 
-const PostList = ({ data }) => {
+const PostList = ({ data }: any) => {
   return (
     <div className='max-w-5xl ml-auto mr-auto'>
       <div className='mx-[-15px] flex flex-wrap gap-[10px] pl-[10px]'>
-        {data.map((item, index) => {
+        {data.map((item: any, index: any) => {
           console.log(typeof item.endTime);
           return (
             <div

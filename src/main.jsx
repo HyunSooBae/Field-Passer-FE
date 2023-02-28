@@ -1,8 +1,8 @@
 import React from 'react';
+import './index.css';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
-import './index.css';
 import AdminHome from './pages/Admin/Home';
 import Board from './pages/Board';
 import Home from './pages/Home';

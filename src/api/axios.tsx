@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default async function requestAPI(keyword) {
+export default async function requestAPI(keyword: any) {
   try {
     const data = await axios(`http://localhost:3000/${keyword}`, {
       method: 'GET',
