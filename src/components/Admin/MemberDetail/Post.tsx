@@ -8,7 +8,7 @@ type Props = {
 
 const Post = ({ item }: Props) => {
   const navigate = useNavigate();
-  const onClickHandler = (postId: string) => {
+  const onClickHandler = (postId: number) => {
     navigate(`/admin/post/detail/${postId}`);
   };
   const reservState = (state: string) => {
@@ -34,9 +34,6 @@ const Post = ({ item }: Props) => {
       <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>{item.title}</td>
       <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
         {item.registerDate}
-      </td>
-      <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
-        {item.viewCount}
       </td>
       <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>2</td>
       <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>

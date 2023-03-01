@@ -1,5 +1,4 @@
 import React from 'react';
-import Paging from '../../components/Admin/Paging';
 import Questions from '../../components/Admin/ReportAndQuestion/Questions';
 import Reports from '../../components/Admin/ReportAndQuestion/Reports';
 
@@ -11,13 +10,11 @@ const ReportAndQuestion = () => {
       <div className='my-10'>
         <h2 className='font-bold text-lg'>회원 신고</h2>
         <Reports />
-        <Paging />
       </div>
       <hr />
       <div className='mt-10'>
         <h2 className='font-bold text-lg'>문의 게시판</h2>
         <Questions />
-        <Paging />
       </div>
     </div>
   );

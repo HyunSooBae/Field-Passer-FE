@@ -1,20 +1,18 @@
 // json server 기반 타입 실제 서버에선 변경될 수 있음
 export interface postType {
+  endTime: string;
+  title: string;
+  price: number;
+  blind: boolean;
+  postId: number;
   category: string;
   district: string;
-  endTime: string;
-  imageURL: string;
-  memberId: string;
-  postId: string;
-  price: string;
   registerDate: string;
-  reservedDate: string;
-  stadiumName: string;
-  startTime: string;
-  title: string;
   transactionStatus: string;
-  viewCount: string;
-  wisthCount: string;
+  stadiumName: string;
+  memberId: string;
+  memberName: string;
+  startTime: string;
 }
 
 export interface questionType {

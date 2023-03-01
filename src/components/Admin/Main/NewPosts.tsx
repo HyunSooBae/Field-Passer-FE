@@ -12,14 +12,13 @@ const NewPosts = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { ok, postsListData } = await getPostsList();
+      const { ok, postsListData } = await getPostsList('2023-02-28', '2023-03-01');
       if (ok) {
         setPosts(postsListData);
       }
     };
     fetchData();
   }, []);
-  console.log(posts);
 
   const PrevArrow = (props: any) => {
     const onClick = props.onClick;

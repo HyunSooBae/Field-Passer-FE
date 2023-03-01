@@ -8,7 +8,7 @@ export const getMembersList = async (page: number = 1) => {
     });
     return {
       ok: true,
-      membersListData: response.data.resultData,
+      membersListData: response.data,
     };
   } catch (error) {
     console.log(error);
@@ -18,8 +18,8 @@ export const getMembersList = async (page: number = 1) => {
   }
 };
 
-// 관리자 페이지 특정 회원 게시글 리스트 조회
-export const getMemberPost = async (memberId: number, page: number = 1) => {
+// 관리자 페이지 특정 회원 게시글 목록 조회
+export const getMemberPost = async (memberId: string, page: number = 1) => {
   try {
     const response = await request(`/admin/board/members/${memberId}?page=${page}`, {
       method: 'GET',
@@ -54,15 +54,18 @@ export const getMemberDetail = async (memberId: string) => {
   }
 };
 
-// 관리자 페이지 게시물 리스트 정보 조회
-export const getPostsList = async () => {
+// 관리자 페이지 게시글 목록 조회
+export const getPostsList = async (startDate: string, endDate: string, page: number = 1) => {
   try {
-    const response = await request(`/admin/board?startDate=2023-01-27&endDate=2023-01-30&page=1`, {
-      method: 'GET',
-    });
+    const response = await request(
+      `/admin/board?startDate=${startDate}&endDate=${endDate}&page=${page}`,
+      {
+        method: 'GET',
+      },
+    );
     return {
       ok: true,
-      postsListData: response.data.resultData,
+      postsListData: response.data,
     };
   } catch (error) {
     console.log(error);
@@ -84,6 +87,24 @@ export const memberPromoted = async (email: string) => {
     return {
       ok: true,
       resultData: response.data.resultCode,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+    };
+  }
+};
+
+// 관리자 페이지 방문자 수 확인
+export const getVisitMember = async (startDate: string, endDate: string) => {
+  try {
+    const response = await request(`/admin/members/?startDate=${startDate}&endDate=${endDate}`, {
+      method: 'GET',
+    });
+    return {
+      ok: true,
+      visitMemberData: response.data.resultData,
     };
   } catch (error) {
     console.log(error);
