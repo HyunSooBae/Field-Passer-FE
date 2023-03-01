@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import requestAPI from '../../../api/axios';
-import { questionType } from '../typeConfig';
+import { questionType } from '@src/util/adminPageTypes';
 
 const Question = () => {
   const [questions, setQuestions] = useState<questionType[]>([]);

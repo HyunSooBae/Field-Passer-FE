@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { memberType } from '../typeConfig';
+import { memberType } from '@src/util/adminPageTypes';
 
 type Props = {
   item: memberType;

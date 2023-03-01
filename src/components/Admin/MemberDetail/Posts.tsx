@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import requestAPI from '../../../api/axios';
-import { postType } from '../typeConfig';
+import { postType } from '@src/util/adminPageTypes';
 import Post from './Post';
 
 const Posts = () => {

@@ -5,7 +5,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { IoIosArrowDroprightCircle, IoIosArrowDropleftCircle } from 'react-icons/io';
-import { postType } from '../typeConfig';
+import { postType } from '@src/util/adminPageTypes';
 
 const NewPosts = () => {
   const [posts, setPosts] = useState<postType[]>([]);

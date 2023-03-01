@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import requestAPI from '../../../api/axios';
-import { memberType } from '../typeConfig';
+import { memberType } from '@src/util/adminPageTypes';
 
 const Profile = () => {
   const [member, setMember] = useState<memberType>();

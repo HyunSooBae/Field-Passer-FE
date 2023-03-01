@@ -1,4 +1,4 @@
-import { questionType } from '../typeConfig';
+import { questionType } from '@src/util/adminPageTypes';
 
 type Props = {
   item: questionType;

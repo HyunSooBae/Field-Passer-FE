@@ -1,6 +1,6 @@
 import React from 'react';
 import MemberList from './MemberList';
-import { memberType } from '../typeConfig';
+import { memberType } from '@src/util/adminPageTypes';
 
 type Props = {
   members: memberType[];
