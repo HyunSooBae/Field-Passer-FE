@@ -9,9 +9,9 @@ const AdminMember = () => {
   const [members, setMembers] = useState<memberListsType[]>([]);
   useEffect(() => {
     const fetchData = async () => {
-      const { ok, memberListData } = await getMembersList();
+      const { ok, membersListData } = await getMembersList();
       if (ok) {
-        setMembers(memberListData);
+        setMembers(membersListData);
       }
     };
     fetchData();

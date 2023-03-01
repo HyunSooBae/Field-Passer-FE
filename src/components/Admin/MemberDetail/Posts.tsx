@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import requestAPI from '../../../api/axios';
+import { getPostsList } from '@src/api/request';
 import { postType } from '@src/util/adminPageTypes';
 import Post from './Post';
 
@@ -7,12 +7,16 @@ const Posts = () => {
   const [posts, setPosts] = useState<postType[]>([]);
 
   useEffect(() => {
-    async function getPosts() {
-      const data = await requestAPI('post');
-      setPosts(data?.data?.resultData);
-    }
-    getPosts();
+    const fetchData = async () => {
+      const { ok, postsListData } = await getPostsList();
+      if (ok) {
+        setPosts(postsListData);
+      }
+    };
+    fetchData();
   }, []);
+
+  console.log(posts);
 
   return (
     <table className='table-auto w-full text-sm mt-3 rounded-[10px] overflow-hidden bg-field border border-solid border-field'>
@@ -48,7 +52,11 @@ const Posts = () => {
         {posts ? (
           posts.map((post) => <Post key={post.postId} item={post} />)
         ) : (
-          <p>작성한 글이 없습니다.</p>
+          <tr className='border-t-[1px] border-solid border-field bg-white text-center '>
+            <td colSpan={8} className='h-8 align-middle'>
+              작성한 글이 없습니다.
+            </td>
+          </tr>
         )}
       </tbody>
     </table>

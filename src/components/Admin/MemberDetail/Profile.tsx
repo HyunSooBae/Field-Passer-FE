@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import requestAPI from '../../../api/axios';
 import { memberType } from '@src/util/adminPageTypes';
+import { memberPromoted } from '@src/api/request';
 
-const Profile = () => {
-  const [member, setMember] = useState<memberType>();
-  useEffect(() => {
-    async function getMember() {
-      const data = await requestAPI('membersList');
-      setMember(data?.data?.resultData[0]);
+type Props = {
+  item: memberType;
+};
+
+const Profile = ({ item }: Props) => {
+  const promoteHandler = async () => {
+    const { ok, resultData } = await memberPromoted(item.email);
+    if (resultData === 'success') {
+      alert('관리자로 지정하였습니다.');
     }
-    getMember();
-  }, []);
-
-  console.log(member);
+  };
   return (
     <div className='mt-[60px]'>
-      {member ? (
+      {item ? (
         <div className='relative m-10'>
           <div className='flex items-center gap-7'>
             <img
@@ -24,19 +23,24 @@ const Profile = () => {
               className='w-[150px] h-[150px] rounded-full'
             />
             <div>
-              <h3 className='font-bold text-field'>{member.memberName}</h3>
+              <h3 className='font-bold text-field'>{item.memberName}</h3>
               <div className='flex flex-col gap-2 mt-[10px] font-light text-sm'>
-                <span>이메일: {member.email}</span>
-                <span>회원 등급: {member.privilege}</span>
-                <span>가입일: {member.signUpDate}</span>
-                <span>누적 신고: {member.reportsNum}</span>
+                <span>이메일: {item.email}</span>
+                <span>회원 등급: {item.privilege}</span>
+                <span>가입일: {item.signUpDate}</span>
+                <span>방문 횟수: {item.visitCount}</span>
               </div>
             </div>
           </div>
           <div className='absolute right-0 top-0'>
-            <button className='bg-field rounded-lg text-white hover:bg-hoverField h-10 w-24'>
-              관리자 권한
-            </button>
+            {item.privilege === '관리자' ? null : (
+              <button
+                onClick={promoteHandler}
+                className='bg-field rounded-lg text-white hover:bg-hoverField h-10 w-24'
+              >
+                관리자 권한
+              </button>
+            )}
             <button className='bg-field rounded-lg text-white hover:bg-hoverField h-10 w-16 ml-3'>
               탈퇴
             </button>

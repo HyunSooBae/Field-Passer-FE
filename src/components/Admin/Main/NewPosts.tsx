@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import Post from './Post';
-import requestAPI from '../../../api/axios';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { getPostsList } from '@src/api/request';
 import { IoIosArrowDroprightCircle, IoIosArrowDropleftCircle } from 'react-icons/io';
 import { postType } from '@src/util/adminPageTypes';
 
@@ -11,12 +11,15 @@ const NewPosts = () => {
   const [posts, setPosts] = useState<postType[]>([]);
 
   useEffect(() => {
-    async function getPosts() {
-      const data = await requestAPI('post');
-      setPosts(data?.data?.resultData);
-    }
-    getPosts();
+    const fetchData = async () => {
+      const { ok, postsListData } = await getPostsList();
+      if (ok) {
+        setPosts(postsListData);
+      }
+    };
+    fetchData();
   }, []);
+  console.log(posts);
 
   const PrevArrow = (props: any) => {
     const onClick = props.onClick;

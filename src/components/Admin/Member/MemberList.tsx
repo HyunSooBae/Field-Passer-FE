@@ -7,7 +7,7 @@ type Props = {
 
 const MemberList = ({ item }: Props) => {
   const navigate = useNavigate();
-  const onClickHandler = (id: string) => {
+  const onClickHandler = (id: number) => {
     navigate(`/admin/member/detail/${id}`);
   };
   return (
@@ -22,7 +22,7 @@ const MemberList = ({ item }: Props) => {
       <td className='px-6 py-4'>
         <button
           className='bg-field rounded-lg text-white hover:bg-hoverField h-8 w-14'
-          onClick={() => onClickHandler(item.email)}
+          onClick={() => onClickHandler(item.memberId)}
         >
           조회
         </button>

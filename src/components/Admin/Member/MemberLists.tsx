@@ -33,7 +33,7 @@ const MemberLists = ({ members }: Props) => {
       </thead>
       <tbody>
         {members ? (
-          members?.map((member) => <MemberList key={member.email} item={member} />)
+          members?.map((member) => <MemberList key={member.memberId} item={member} />)
         ) : (
           <tr className='border-t-[1px] border-solid border-field bg-white text-center '>
             <td colSpan={4} className='h-8 align-middle'>
