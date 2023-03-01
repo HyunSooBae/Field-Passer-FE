@@ -1,7 +1,11 @@
 import PostList from './PostList';
 import { postType } from '@src/util/adminPageTypes';
 
-const PostsLists = (props: { posts: postType[] }) => {
+type Props = {
+  posts: postType[];
+};
+
+const PostsLists = ({ posts }: Props) => {
   return (
     <table className='table-auto w-full text-sm mt-3 rounded-[10px] overflow-hidden bg-field border border-solid border-field'>
       <thead className='text-sm text-field bg-tableBg text-bold'>
@@ -36,9 +40,15 @@ const PostsLists = (props: { posts: postType[] }) => {
         </tr>
       </thead>
       <tbody>
-        {props.posts
-          ? props.posts?.map((post) => <PostList key={post.postId} item={post} />)
-          : null}
+        {posts ? (
+          posts?.map((post) => <PostList key={post.postId} item={post} />)
+        ) : (
+          <tr className='border-t-[1px] border-solid border-field bg-white text-center '>
+            <td colSpan={9} className='h-8 align-middle'>
+              작성한 글이 없습니다.
+            </td>
+          </tr>
+        )}
       </tbody>
     </table>
   );
