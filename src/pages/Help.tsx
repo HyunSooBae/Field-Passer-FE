@@ -18,10 +18,11 @@ const Help = () => {
     <main className='m-auto max-w-4xl mt-12 mb-28 py-10 relative px-3'>
       <FAQ />
       <section className='mt-20 text-center'>
-        <div className='text-xl mb-5'>
-          자주 묻는 질문에 내가 찾는 내용이 없다면?
-          <FaRegHandPointDown className='w-10 h-10 m-auto mt-5' />
+        <div className='text-xl mb-5 flex gap-2 xxs:flex-col sm:flex-row justify-center'>
+          <span>자주 묻는 질문에 </span>
+          <span> 내가 찾는 내용이 없다면?</span>
         </div>
+        <FaRegHandPointDown className='w-10 h-10 m-auto my-5' />
         <button
           className='text-2xl bg-field hover:bg-hoverField text-white p-3 rounded-full'
           onClick={goToPrivateQuestion}
