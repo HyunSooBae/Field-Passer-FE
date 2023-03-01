@@ -113,3 +113,39 @@ export const getVisitMember = async (startDate: string, endDate: string) => {
     };
   }
 };
+
+// 관리자 문의글 목록 조회
+export const getQuestionsList = async (startDate: string, endDate: string) => {
+  try {
+    const response = await request(`/admin/question?startDate=${startDate}&endDate=${endDate}`, {
+      method: 'GET',
+    });
+    return {
+      ok: true,
+      questionsListData: response.data,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+    };
+  }
+};
+
+// 관리자 신고 목록 조회
+export const getReportsList = async (startDate: string, endDate: string) => {
+  try {
+    const response = await request(`/admin/report?startDate=${startDate}&endDate=${endDate}`, {
+      method: 'GET',
+    });
+    return {
+      ok: true,
+      reportsListData: response.data,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+    };
+  }
+};

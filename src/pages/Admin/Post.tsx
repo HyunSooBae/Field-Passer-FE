@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import SearchBox from '../../components/Admin/Post/SearchBox';
-import PostsLists from '../../components/Admin/Post/PostsLists';
+import SearchBox from '@src/components/Admin/Post/SearchBox';
+import PostsLists from '@src/components/Admin/Post/PostsLists';
 import Pagination from '@src/components/Pagination';
 import { getPostsList } from '@src/api/request';
 

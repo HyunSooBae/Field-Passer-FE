@@ -1,6 +1,5 @@
-import React from 'react';
-import Questions from '../../components/Admin/ReportAndQuestion/Questions';
-import Reports from '../../components/Admin/ReportAndQuestion/Reports';
+import Questions from '@src/components/Admin/ReportAndQuestion/Questions';
+import Reports from '@src/components/Admin/ReportAndQuestion/Reports';
 
 const ReportAndQuestion = () => {
   return (
