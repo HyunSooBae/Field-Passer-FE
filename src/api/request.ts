@@ -8,7 +8,7 @@ export const getMembersList = async (page: number = 1) => {
     });
     return {
       ok: true,
-      memberListData: response.data,
+      memberListData: response.data.resultData,
     };
   } catch (error) {
     console.log(error);

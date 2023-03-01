@@ -1,9 +1,9 @@
 import React from 'react';
 import MemberList from './MemberList';
-import { memberType } from '@src/util/adminPageTypes';
+import { memberListsType } from '@src/util/adminPageTypes';
 
 type Props = {
-  members: memberType[];
+  members: memberListsType[];
 };
 
 const MemberLists = ({ members }: Props) => {
@@ -32,7 +32,15 @@ const MemberLists = ({ members }: Props) => {
         </tr>
       </thead>
       <tbody>
-        {members ? members?.map((member) => <MemberList key={member.email} item={member} />) : null}
+        {members ? (
+          members?.map((member) => <MemberList key={member.email} item={member} />)
+        ) : (
+          <tr className='border-t-[1px] border-solid border-field bg-white text-center '>
+            <td colSpan={4} className='h-8 align-middle'>
+              가입한 회원이 없습니다.
+            </td>
+          </tr>
+        )}
       </tbody>
     </table>
   );

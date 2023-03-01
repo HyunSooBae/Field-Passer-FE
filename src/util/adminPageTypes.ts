@@ -47,3 +47,15 @@ export interface reportType {
   reporterId: string;
   targetId: string;
 }
+
+export interface memberListsType {
+  memberId: number;
+  email: string;
+  memberName: string;
+  signupDate: string;
+  postCount: number;
+  visitCount: number;
+  privilege: string;
+  reportNum: number;
+  authority: string;
+}

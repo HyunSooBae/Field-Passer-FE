@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router';
-import { memberType } from '@src/util/adminPageTypes';
+import { memberListsType } from '@src/util/adminPageTypes';
 
 type Props = {
-  item: memberType;
+  item: memberListsType;
 };
 
 const MemberList = ({ item }: Props) => {
@@ -17,7 +17,7 @@ const MemberList = ({ item }: Props) => {
       </td>
       <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>{item.email}</td>
       <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
-        {item.signUpDate}
+        {item.signupDate}
       </td>
       <td className='px-6 py-4'>
         <button
