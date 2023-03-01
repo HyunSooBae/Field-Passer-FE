@@ -20,14 +20,12 @@ const post = ({ item }: Props) => {
       <div className='flex flex-col gap-2'>
         <span className='text-xs pt-2'>{item.category}</span>
         <span className='font-bold'>{truncate(item.title, 10)}</span>
-        <span className='font-bold'>
-          {item.reservedDate} {item.startTime}
-        </span>
+        <span className='font-bold'>{item.startTime}</span>
         <span className='font-bold'>{Number(item.price).toLocaleString()}원</span>
         <div className='flex gap-3'>
           <div className='flex'>
             <BsEye />
-            <span>{item.viewCount}</span>
+            <span>2</span>
           </div>
           <span>·</span>
           <div className='flex'>
