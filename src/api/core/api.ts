@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const axiosConfig: AxiosRequestConfig = {
   // baseURL: 'http://localhost:3000/',
-  baseURL: process.env.VITE_BASE_URL,
+  baseURL: import.meta.env.VITE_BASE_URL,
   headers: {
     'content-type': 'application/json',
     // Authroization 작성해야 함

@@ -1,11 +1,10 @@
 import { request } from './core/api';
 
-// 예시입니다.
-const getMembersList = async () => {
+// 관리자 페이지 회원 정보 리스트 조회
+export const getMembersList = async (page: number = 1) => {
   try {
-    const response = await request('/membersList', {
+    const response = await request(`/admin/members?page=${page}`, {
       method: 'GET',
-      data: null,
     });
     return {
       ok: true,
@@ -18,5 +17,3 @@ const getMembersList = async () => {
     };
   }
 };
-
-// 관리자 페이지 회원 목록 조회
