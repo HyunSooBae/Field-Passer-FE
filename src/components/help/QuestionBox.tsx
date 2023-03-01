@@ -21,7 +21,11 @@ const QuestionBox = () => {
   ];
 
   // 업로드 이미지 미리보기
+<<<<<<< Updated upstream
   const imgPreview = (input: React.ChangeEvent<HTMLInputElement>) => {
+=======
+  const imgPreview = (input: any) => {
+>>>>>>> Stashed changes
     if (input.target.files && input.target.files[0]) {
       let reader = new FileReader();
       reader.onload = (e: ProgressEvent<FileReader>) => {

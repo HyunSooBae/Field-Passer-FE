@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { postType } from '../typeConfig';
+import { postType } from '@src/util/adminPageTypes';
 
 type Props = {
   item: postType;

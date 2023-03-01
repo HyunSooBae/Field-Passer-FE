@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import requestAPI from '../../../api/axios';
-import { reportType } from '../typeConfig';
+import { reportType } from '@src/util/adminPageTypes';
 
 const Report = () => {
   const [reports, setReports] = useState<reportType[]>([]);

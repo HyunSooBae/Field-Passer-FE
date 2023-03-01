@@ -1,6 +1,6 @@
 import { BsEye } from 'react-icons/bs';
 import { HiOutlineChatBubbleLeftRight } from 'react-icons/hi2';
-import { postType } from '../typeConfig';
+import { postType } from '@src/util/adminPageTypes';
 
 type Props = {
   item: postType;

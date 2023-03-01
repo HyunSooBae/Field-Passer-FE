@@ -18,3 +18,5 @@ const getMembersList = async () => {
     };
   }
 };
+
+// 관리자 페이지 회원 목록 조회

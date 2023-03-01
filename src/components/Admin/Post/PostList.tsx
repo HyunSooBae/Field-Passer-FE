@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { postType } from '../typeConfig';
+import { postType } from '@src/util/adminPageTypes';
 
 const PostList = (props: { item: postType }) => {
   const navigate = useNavigate();

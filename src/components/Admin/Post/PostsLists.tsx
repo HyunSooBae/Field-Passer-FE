@@ -1,5 +1,5 @@
 import PostList from './PostList';
-import { postType } from '../typeConfig';
+import { postType } from '@src/util/adminPageTypes';
 
 const PostsLists = (props: { posts: postType[] }) => {
   return (
