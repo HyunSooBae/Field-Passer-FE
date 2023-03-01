@@ -22,7 +22,7 @@ const Footer = () => {
           Frontend Repository
         </a>
         <div className='flex justify-end'>
-          <img src='images/logo-1.png' className='w-36 right-0' />
+          <img src='/images/logo-1.png' className='w-36 right-0' />
         </div>
         <span className='font-semibold text-right'>
           &copy; 2023 FIELD-PASSER. All Rights Reserved.

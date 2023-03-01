@@ -8,7 +8,7 @@ const Header = () => {
         <MembersMenu />
         <div className='w-48 xxs:m-auto cursor-pointer sm:absolute sm:left-5'>
           <a href='/'>
-            <img src='images/logo-1.png' />
+            <img src='/images/logo-1.png' />
           </a>
         </div>
       </div>

@@ -11,6 +11,10 @@ const setCookie = (sessionId: string) => {
   });
 };
 
-const getCookie = () => {};
+export const getCookie = () => {
+  return cookies.get('token');
+};
 
-const removeCookie = () => {};
+export const removeCookie = () => {
+  return cookies.remove('token');
+};

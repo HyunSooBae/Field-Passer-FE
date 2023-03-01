@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState, useRef } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { RiQuestionnaireLine } from 'react-icons/ri';
 
 const QuestionBox = () => {
-  const imgfile = useRef(null);
+  const imgfile: any = useRef();
+  const pcForm = useMediaQuery({
+    query: '(min-width:600px)',
+  });
+  const mobileForm = useMediaQuery({
+    query: '(max-width:599px)',
+  });
+
   const categories = [
     { account: '회원/계정' },
     { conflict: '거래분쟁' },
@@ -13,17 +21,17 @@ const QuestionBox = () => {
   ];
 
   // 업로드 이미지 미리보기
-  const imgPreview = (input) => {
+  const imgPreview = (input: React.ChangeEvent<HTMLInputElement>) => {
     if (input.target.files && input.target.files[0]) {
       let reader = new FileReader();
-      reader.onload = (e) => {
-        imgfile.current.src = e.target.result;
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        imgfile.current.src = e.target!.result;
       };
       reader.readAsDataURL(input.target.files[0]);
     }
   };
 
-  async function postQuestion(body) {
+  async function postQuestion(body: string) {
     // const data = await requestAPI({ url: 'post', method: 'POST', body: JSON.stringify(body) });
     // console.log(data?.data?.resultData);
     console.log(body);
@@ -42,27 +50,54 @@ const QuestionBox = () => {
         action=''
         className='w-full max-w-[600px] ml-auto mr-auto mt-0 mb-0 flex flex-col gap-[10px] mm:gap-[20px]'
       >
-        <div className='flex h-10 gap-3 leading-10 m-auto'>
-          <span className=''>카테고리</span>
-          {categories.map((category, index) => (
-            <div className=' ' key={Object.keys(category)}>
-              <input
-                type='radio'
-                id={Object.keys(category)}
-                value={Object.values(category)}
-                name='category'
-                className='peer mx-2 scale-125'
-                defaultChecked={index === 0}
-              />
-              <label
-                htmlFor={Object.keys(category)}
-                className='font-bold w-full text-center align-middle cursor-pointer'
-              >
-                {Object.values(category)}
-              </label>
-            </div>
-          ))}
-        </div>
+        {pcForm ? (
+          <div className='flex h-10 gap-3 leading-10 m-auto'>
+            <span className=''>카테고리</span>
+            {categories.map((category, index) => (
+              <div className=' ' key={Object.keys(category).join('')}>
+                <input
+                  type='radio'
+                  id={Object.keys(category).join(' ')}
+                  value={Object.values(category).join('')}
+                  name='category'
+                  className='peer mx-2 scale-125'
+                  defaultChecked={index === 0}
+                />
+                <label
+                  htmlFor={Object.keys(category).join('')}
+                  className='font-bold w-full text-center align-middle cursor-pointer'
+                >
+                  {Object.values(category)}
+                </label>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className='text-center border-2 border-[#e5e7eb] border-solid rounded-[5px] p-3'>
+            <div className='text-lg'>카테고리</div>
+            <br />
+            {categories.map((category, index) => (
+              <>
+                <input
+                  type='radio'
+                  id={Object.keys(category).join(' ')}
+                  value={Object.values(category).join('')}
+                  name='category'
+                  className='peer mx-2 scale-125'
+                  defaultChecked={index === 0}
+                  key={Object.keys(category).join('')}
+                />
+                <label
+                  htmlFor={Object.keys(category).join('')}
+                  className='font-bold w-full text-center align-middle cursor-pointer leading-8 mr-4'
+                >
+                  {Object.values(category)}
+                </label>
+                {index % 2 === 1 ? <br /> : ''}
+              </>
+            ))}
+          </div>
+        )}
         <div className='flex flex-col gap-[10px] mm:gap-[20px]'>
           <input
             type='text'
@@ -79,7 +114,7 @@ const QuestionBox = () => {
           <div className='flex gap-[10px]'>
             <label
               htmlFor='images'
-              className='block w-[100px] h-[100px] cursor-pointer border-[#ddd] bg-[url("images/cam.png")] bg-center bg-[length:60px] bg-no-repeat'
+              className='block w-[100px] h-[100px] cursor-pointer border-[#ddd] bg-[url("/images/cam.png")] bg-center bg-[length:60px] bg-no-repeat'
             />
             <input
               id='images'
@@ -105,7 +140,7 @@ const QuestionBox = () => {
               postQuestion('/?');
               window.confirm('문의글 작성이 완료되었습니다.');
             } catch (err) {
-              alert(err, '다시 시도해주세요.');
+              alert(`${err}, 다시 시도해주세요.`);
             }
           }}
         >

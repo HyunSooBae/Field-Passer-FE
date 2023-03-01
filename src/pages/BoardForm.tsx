@@ -107,7 +107,7 @@ const BoardForm = () => {
           />
           <textarea
             placeholder='내용 입력'
-            className='resize-none h-10 rounded text-sm border-#94a3b8 border-solid border-2 px-3 pt-3 h-96 focus:outline-none focus:border-field'
+            className='resize-none rounded text-sm border-#94a3b8 border-solid border-2 px-3 pt-3 h-96 focus:outline-none focus:border-field'
           ></textarea>
         </div>
         <div>
@@ -127,7 +127,7 @@ const BoardForm = () => {
           <div className='flex gap-[10px]'>
             <label
               htmlFor='images'
-              className='block w-[100px] h-[100px] border-solid border rounded-lg cursor-pointer border-[#ddd] bg-[url("images/cam.png")] bg-center bg-[length:60px] bg-no-repeat'
+              className='block w-[100px] h-[100px] border-solid border rounded-lg cursor-pointer border-[#ddd] bg-[url("/images/cam.png")] bg-center bg-[length:60px] bg-no-repeat'
             />
             <input
               id='images'
