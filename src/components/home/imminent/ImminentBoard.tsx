@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { AxiosResponse } from 'axios';
 import requestAPI from '../../../api/axios';
 import CategoryFilter from './CategoryFilter';
 import TableForm from './TableForm';
@@ -17,31 +18,38 @@ const ImminentBoard = () => {
     query: '(max-width:679px)',
   });
 
-  const [list, setList] = useState<ListType[]>([]);
+  const [postList, setPostList] = useState<ListType[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('풋살장');
   const [selectedDistrict, setSelectedDistrict] = useState('all');
   const [sortingDate, setSortingDate] = useState(true);
 
   useEffect(() => {
     async function getList() {
-      const res = await requestAPI('imminent');
-      // const res = await getImminentList();
-      // const res = await getNewPostList();
+      // const res = await requestAPI('imminent');
+      const res = await getImminentList(selectedCategory);
       console.log(res);
-      setList(res?.data?.resultData);
+      // setPostList(res?.data.content);
     }
     getList();
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    async function getNewPost() {
+      const res = await getNewPostList();
+      console.log(res);
+    }
+    getNewPostList();
   }, []);
 
   const sortedItems = () => {
     if (sortingDate) {
-      return list?.sort(
+      return postList?.sort(
         (a: any, b: any) =>
           a.startTime.slice(0, 10).replaceAll('-', '') -
           b.startTime.slice(0, 10).replaceAll('-', ''),
       );
     } else {
-      return list.sort(
+      return postList.sort(
         (a: any, b: any) =>
           b.startTime.slice(0, 10).replaceAll('-', '') -
           a.startTime.slice(0, 10).replaceAll('-', ''),
@@ -83,14 +91,14 @@ const ImminentBoard = () => {
         <TableForm
           selectedCategory={selectedCategory}
           selectedDistrict={selectedDistrict}
-          list={list}
+          list={postList}
         />
       )}
       {mobileForm && (
         <BoxForm
           selectedCategory={selectedCategory}
           selectedDistrict={selectedDistrict}
-          list={list}
+          list={postList}
         />
       )}
     </section>
