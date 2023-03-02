@@ -15,7 +15,7 @@ const Help = () => {
     // }
   };
   return (
-    <main className='m-auto max-w-4xl mt-12 mb-28 py-10 relative px-3'>
+    <main className='m-auto mt-12 mb-28 py-10 relative px-3'>
       <FAQ />
       <section className='mt-20 text-center'>
         <div className='text-xl mb-5 flex gap-2 xxs:flex-col sm:flex-row justify-center'>

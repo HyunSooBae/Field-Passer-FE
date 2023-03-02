@@ -25,12 +25,13 @@ function Admin() {
 }
 
 function User() {
+  const location = useLocation();
   return (
     <div>
       <ScrollRestoration />
       <Header />
       <Outlet />
-      <Footer />
+      {location.pathname.includes('chatting') ? null : <Footer />}
     </div>
   );
 }

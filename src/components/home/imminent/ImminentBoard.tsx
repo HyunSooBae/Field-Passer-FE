@@ -7,6 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 import { districtOptions } from '../../../util/options';
 import { GiTennisCourt } from 'react-icons/gi';
 import { ListType } from '@src/util/mainPageTypes';
+import { getImminentList, getNewPostList } from '@src/api/request';
 
 const ImminentBoard = () => {
   const pcForm = useMediaQuery({
@@ -23,9 +24,11 @@ const ImminentBoard = () => {
 
   useEffect(() => {
     async function getList() {
-      // const data = await requestAPI({ url: 'imminent', method: 'get' });
-      const data = await requestAPI('imminent');
-      setList(data?.data?.resultData);
+      const res = await requestAPI('imminent');
+      // const res = await getImminentList();
+      // const res = await getNewPostList();
+      console.log(res);
+      setList(res?.data?.resultData);
     }
     getList();
   }, []);

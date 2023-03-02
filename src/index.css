@@ -150,6 +150,11 @@ body,
   font-family: 'NanumSquareNeo-Variable', 'Noto Sans KR', sans-serif;
 }
 
+main,
+section {
+  max-width: 1024px;
+}
+
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
