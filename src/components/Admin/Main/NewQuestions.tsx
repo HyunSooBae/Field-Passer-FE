@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Question from './Question';
-import requestAPI from '../../../api/axios';
+import { getQuestionsList } from '@src/api/request';
 import { questionType } from '@src/util/adminPageTypes';
 
 const NewQuestions = () => {
   const [questions, setQuestions] = useState<questionType[]>([]);
 
   useEffect(() => {
-    async function getQuestions() {
-      const data = await requestAPI('question');
-      setQuestions(data?.data?.resultData);
+    async function fetchData() {
+      const { ok, questionsListData } = await getQuestionsList('2023-02-28', '2023-03-01');
+      if (ok) {
+        setQuestions(questionsListData.resultData);
+      }
     }
-    getQuestions();
+    fetchData();
   }, []);
 
   return (
@@ -35,11 +37,13 @@ const NewQuestions = () => {
           </tr>
         </thead>
         <tbody>
-          {questions ? (
+          {questions.length ? (
             questions?.map((question) => <Question key={question.questionId} item={question} />)
           ) : (
-            <tr>
-              <td>문의가 없습니다.</td>
+            <tr className='border-t-[1px] border-solid border-field bg-white text-center '>
+              <td colSpan={3} className='h-8 align-middle'>
+                작성한 글이 없습니다.
+              </td>
             </tr>
           )}
         </tbody>

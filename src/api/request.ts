@@ -1,3 +1,4 @@
+import { GiTrumpet } from 'react-icons/gi';
 import { request } from './core/api';
 
 // 관리자 페이지 회원 정보 리스트 조회
@@ -141,6 +142,28 @@ export const getReportsList = async (startDate: string, endDate: string) => {
     return {
       ok: true,
       reportsListData: response.data,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+    };
+  }
+};
+
+// 관리자 로그인
+export const adminLogin = async (email: string, password: string) => {
+  try {
+    const response = await request('/admin/auth/login', {
+      method: 'POST',
+      data: {
+        email,
+        password,
+      },
+    });
+    return {
+      ok: true,
+      authData: response.data,
     };
   } catch (error) {
     console.log(error);

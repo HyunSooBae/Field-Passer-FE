@@ -65,7 +65,7 @@ const NewPosts = () => {
       <h3 className='font-bold text-2xl'>최신 글 목록</h3>
       <div className='mt-3'>
         <Slider {...settings}>
-          {posts ? (
+          {posts.length ? (
             posts.map((post) => <Post key={post.postId} item={post} />)
           ) : (
             <p>새로운 글이 없습니다.</p>

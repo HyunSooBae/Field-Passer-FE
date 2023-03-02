@@ -16,6 +16,7 @@
     ]
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.9.11",
     "@reduxjs/toolkit": "^1.9.2",
     "@types/jest": "^29.4.0",
     "@types/node": "^18.13.0",
@@ -29,6 +30,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.3",
     "react-icons": "^4.7.1",
     "react-query": "^3.39.3",
     "react-redux": "^8.0.5",
@@ -38,7 +40,8 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "slick-carousel": "^1.8.1",
-    "tailwind-datepicker-react": "^1.2.3"
+    "tailwind-datepicker-react": "^1.2.3",
+    "zod": "^3.20.6"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
