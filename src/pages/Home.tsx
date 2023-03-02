@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from '../components/Footer';
 import ImminentBoard from '../components/home/imminent/ImminentBoard';
 import MainSlider from '../components/home/MainSlider';
 import NewPostsBoard from '../components/home/NewPostsBoard';

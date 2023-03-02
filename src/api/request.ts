@@ -149,3 +149,23 @@ export const getReportsList = async (startDate: string, endDate: string) => {
     };
   }
 };
+
+// 메인 - 마감임박 게시글 조회
+export const getImminentList = async () => {
+  try {
+    const res = await request.get('/api/imminent');
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// 메인 - 새로 등록된 게시글 조회
+export const getNewPostList = async () => {
+  try {
+    const res = await request.get('api/post?page=1');
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+  }
+};

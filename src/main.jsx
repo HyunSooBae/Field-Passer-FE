@@ -56,7 +56,6 @@ const router = createBrowserRouter([
       { path: '/posting', element: <BoardForm /> },
       { path: '/board/details/:id', element: <BoardDetails /> },
       { path: '/chatting/:id', element: <Chatting /> },
-      { path: '*', element: <NotFound /> },
     ],
   },
 ]);
