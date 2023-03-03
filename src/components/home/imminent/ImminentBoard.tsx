@@ -67,7 +67,7 @@ const ImminentBoard = () => {
       <CategoryFilter selectedCategory={setSelectedCategory} />
       <div className='flex h-15 justify-center my-5 gap-16'>
         <select
-          className='border-2 border-black focus:outline-0 text-gray-900 text-sm p-2 rounded-full block h-12 w-28 cursor-pointer text-center hover:border-field focus:border-field'
+          className='border-2 border-gray-300 focus:outline-0 text-gray-900 text-sm p-2 rounded-full block h-12 w-28 cursor-pointer text-center hover:border-field focus:border-field'
           onChange={(e) => setSelectedDistrict(e.target.value)}
         >
           <option value={'all'}>모든 지역</option>
@@ -80,7 +80,7 @@ const ImminentBoard = () => {
         <div>
           <button
             onClick={(e) => setSortingDate(!sortingDate)}
-            className='p-3 text-sm h-12 w-28 rounded-full border-2 border-solid border-black hover:border-field'
+            className='p-3 text-sm h-12 w-28 rounded-full border-2 border-solid border-gray-300 hover:border-field'
           >
             날짜 정렬
             {sortingDate ? '  ▲' : ' ▼'}

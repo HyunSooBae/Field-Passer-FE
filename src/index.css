@@ -162,7 +162,7 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-thumb {
   height: 10%;
-  background: #21a04d;
+  background-color: rgb(107, 107, 107);
   border-radius: 5px;
 }
 body::-webkit-scrollbar-track {
@@ -170,10 +170,10 @@ body::-webkit-scrollbar-track {
 }
 
 .chatting::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
 }
 .chatting::-webkit-scrollbar-thumb {
-  background-color: black;
+  background-color: rgb(148, 148, 148);
   border-radius: 5px;
 }
 .chatting::-webkit-scrollbar-track {

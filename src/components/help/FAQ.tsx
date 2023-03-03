@@ -24,7 +24,7 @@ const FAQ = () => {
             />
             <label
               htmlFor='account'
-              className='xxs:text-xs xs:text-base mm:text-lg md:text-lg font-bold w-full text-center py-2 align-middle cursor-pointer peer-checked:border-b-[3px] border-solid peer-checked:transition-[.5s]'
+              className='xxs:text-xs xs:text-base mm:text-lg md:text-lg font-bold w-full text-center py-2 align-middle cursor-pointer peer-checked:border-b-[3px] border-solid peer-checked:transition-[.5s] hover:text-hoverField'
               onClick={() => {
                 setSelectedCategory('account');
               }}
@@ -42,7 +42,7 @@ const FAQ = () => {
             />
             <label
               htmlFor='policy'
-              className='xxs:text-xs xs:text-base mm:text-lg md:text-lg font-bold w-full text-center py-2 align-middle cursor-pointer peer-checked:border-b-[3px] border-solid peer-checked:transition-[.5s]'
+              className='xxs:text-xs xs:text-base mm:text-lg md:text-lg font-bold w-full text-center py-2 align-middle cursor-pointer peer-checked:border-b-[3px] border-solid peer-checked:transition-[.5s] hover:text-hoverField'
               onClick={() => {
                 setSelectedCategory('policy');
               }}
@@ -54,7 +54,7 @@ const FAQ = () => {
             <input type='radio' id='etc' value='etc' name='category' className='peer hidden' />
             <label
               htmlFor='etc'
-              className='xxs:text-xs xs:text-base mm:text-lg md:text-lg font-bold w-full text-center py-2 align-middle cursor-pointer peer-checked:border-b-[3px] border-solid peer-checked:transition-[.5s]'
+              className='xxs:text-xs xs:text-base mm:text-lg md:text-lg font-bold w-full text-center py-2 align-middle cursor-pointer peer-checked:border-b-[3px] border-solid peer-checked:transition-[.5s] hover:text-hoverField'
               onClick={() => {
                 setSelectedCategory('etc');
               }}
@@ -69,11 +69,8 @@ const FAQ = () => {
           <div>
             <ul className='flex flex-col gap-10 border-2 border-solid border-field px-7 py-10 rounded-lg'>
               {qnaAccount.map((item, index) => (
-                <li
-                  className='flex flex-col gap-3 xxs:text-sm xs:text-base mm:text-lg md:text-lg'
-                  key={index}
-                >
-                  <div>Q. {Object.keys(item)}</div>
+                <li className='flex flex-col gap-3 xxs:text-sm xs:text-base' key={index}>
+                  <div className='mm:text-lg'>Q. {Object.keys(item)}</div>
                   <div className='bg-gray-200 py-7 px-5 leading-7'>A. {Object.values(item)}</div>
                 </li>
               ))}
@@ -85,11 +82,8 @@ const FAQ = () => {
           <div>
             <ul className='flex flex-col gap-10 border-2 border-solid border-field px-7 py-10 rounded-lg'>
               {qnaPolicy.map((item, index) => (
-                <li
-                  className='flex flex-col gap-3 xxs:text-sm xs:text-base mm:text-lg md:text-lg'
-                  key={index}
-                >
-                  <div>Q. {Object.keys(item)}</div>
+                <li className='flex flex-col gap-3 xxs:text-sm xs:text-base' key={index}>
+                  <div className='mm:text-lg '>Q. {Object.keys(item)}</div>
                   <div className='bg-gray-200 py-7 px-5 leading-7'>A. {Object.values(item)}</div>
                 </li>
               ))}
@@ -101,11 +95,8 @@ const FAQ = () => {
           <div>
             <ul className='flex flex-col gap-10 border-2 border-solid border-field px-7 py-10 rounded-lg'>
               {qnaEtc.map((item, index) => (
-                <li
-                  className='flex flex-col gap-3 xxs:text-sm xs:text-base mm:text-lg md:text-lg'
-                  key={index}
-                >
-                  <div>Q. {Object.keys(item)}</div>
+                <li className='flex flex-col gap-3 xxs:text-sm xs:text-base' key={index}>
+                  <div className='mm:text-lg '>Q. {Object.keys(item)}</div>
                   <div className='bg-gray-200 py-7 px-5 leading-7'>A. {Object.values(item)}</div>
                 </li>
               ))}
