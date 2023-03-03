@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { AxiosResponse } from 'axios';
 import requestAPI from '../../../api/axios';
 import CategoryFilter from './CategoryFilter';
 import TableForm from './TableForm';
@@ -17,31 +18,38 @@ const ImminentBoard = () => {
     query: '(max-width:679px)',
   });
 
-  const [list, setList] = useState<ListType[]>([]);
+  const [postList, setPostList] = useState<ListType[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('풋살장');
   const [selectedDistrict, setSelectedDistrict] = useState('all');
   const [sortingDate, setSortingDate] = useState(true);
 
   useEffect(() => {
     async function getList() {
-      const res = await requestAPI('imminent');
-      // const res = await getImminentList();
-      // const res = await getNewPostList();
+      // const res = await requestAPI('imminent');
+      const res = await getImminentList(selectedCategory);
       console.log(res);
-      setList(res?.data?.resultData);
+      // setPostList(res?.data.content);
     }
     getList();
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    async function getNewPost() {
+      const res = await getNewPostList();
+      console.log(res);
+    }
+    getNewPostList();
   }, []);
 
   const sortedItems = () => {
     if (sortingDate) {
-      return list?.sort(
+      return postList?.sort(
         (a: any, b: any) =>
           a.startTime.slice(0, 10).replaceAll('-', '') -
           b.startTime.slice(0, 10).replaceAll('-', ''),
       );
     } else {
-      return list.sort(
+      return postList.sort(
         (a: any, b: any) =>
           b.startTime.slice(0, 10).replaceAll('-', '') -
           a.startTime.slice(0, 10).replaceAll('-', ''),
@@ -59,7 +67,7 @@ const ImminentBoard = () => {
       <CategoryFilter selectedCategory={setSelectedCategory} />
       <div className='flex h-15 justify-center my-5 gap-16'>
         <select
-          className='border-2 border-black focus:outline-0 text-gray-900 text-sm p-2 rounded-full block h-12 w-28 cursor-pointer text-center hover:border-field focus:border-field'
+          className='border-2 border-gray-300 focus:outline-0 text-gray-900 text-sm p-2 rounded-full block h-12 w-28 cursor-pointer text-center hover:border-field focus:border-field'
           onChange={(e) => setSelectedDistrict(e.target.value)}
         >
           <option value={'all'}>모든 지역</option>
@@ -72,7 +80,7 @@ const ImminentBoard = () => {
         <div>
           <button
             onClick={(e) => setSortingDate(!sortingDate)}
-            className='p-3 text-sm h-12 w-28 rounded-full border-2 border-solid border-black hover:border-field'
+            className='p-3 text-sm h-12 w-28 rounded-full border-2 border-solid border-gray-300 hover:border-field'
           >
             날짜 정렬
             {sortingDate ? '  ▲' : ' ▼'}
@@ -83,14 +91,14 @@ const ImminentBoard = () => {
         <TableForm
           selectedCategory={selectedCategory}
           selectedDistrict={selectedDistrict}
-          list={list}
+          list={postList}
         />
       )}
       {mobileForm && (
         <BoxForm
           selectedCategory={selectedCategory}
           selectedDistrict={selectedDistrict}
-          list={list}
+          list={postList}
         />
       )}
     </section>

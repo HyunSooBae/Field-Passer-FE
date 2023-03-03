@@ -174,10 +174,13 @@ export const adminLogin = async (email: string, password: string) => {
 };
 
 // 메인 - 마감임박 게시글 조회
-export const getImminentList = async () => {
+export const getImminentList = async (category: string) => {
   try {
-    const res = await request.get('/api/imminent');
-    console.log(res);
+    return await request.get('/api/imminent', {
+      params: {
+        category,
+      },
+    });
   } catch (error) {
     console.log(error);
   }
@@ -186,8 +189,7 @@ export const getImminentList = async () => {
 // 메인 - 새로 등록된 게시글 조회
 export const getNewPostList = async () => {
   try {
-    const res = await request.get('api/post?page=1');
-    console.log(res);
+    return await request.get('/api/post?page=1');
   } catch (error) {
     console.log(error);
   }

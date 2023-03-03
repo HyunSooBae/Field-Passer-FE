@@ -5,6 +5,7 @@ import requestAPI from '../../../api/axios';
 import SelectBox from './SelectBox';
 
 const Searchbar = () => {
+  const navigate = useNavigate();
   const catagorySelect = useSelector((state: any) => {
     return state.store.catagorySelect;
   });
@@ -72,11 +73,12 @@ const Searchbar = () => {
         >
           검색
         </button>
-        <Link to='/posting'>
-          <button className='p-3 rounded-lg bg-field hover:bg-hoverField text-white text-sm'>
-            양도하기
-          </button>
-        </Link>
+        <button
+          onClick={() => navigate('/posting')}
+          className='p-3 rounded-lg bg-field hover:bg-hoverField text-white text-sm'
+        >
+          양도하기
+        </button>
       </div>
     </section>
   );

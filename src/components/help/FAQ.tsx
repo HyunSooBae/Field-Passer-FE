@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BsPatchQuestion } from 'react-icons/bs';
+import { qnaAccount, qnaPolicy, qnaEtc } from '@src/util/options';
 
 const FAQ = () => {
   const [selectedCategory, setSelectedCategory] = useState<String>('account');
@@ -23,7 +24,7 @@ const FAQ = () => {
             />
             <label
               htmlFor='account'
-              className='xxs:text-xs xs:text-base mm:text-lg md:text-lg font-bold w-full text-center py-2 align-middle cursor-pointer peer-checked:border-b-[3px] border-solid peer-checked:transition-[.5s]'
+              className='xxs:text-xs xs:text-base mm:text-lg md:text-lg font-bold w-full text-center py-2 align-middle cursor-pointer peer-checked:border-b-[3px] border-solid peer-checked:transition-[.5s] hover:text-hoverField'
               onClick={() => {
                 setSelectedCategory('account');
               }}
@@ -41,7 +42,7 @@ const FAQ = () => {
             />
             <label
               htmlFor='policy'
-              className='xxs:text-xs xs:text-base mm:text-lg md:text-lg font-bold w-full text-center py-2 align-middle cursor-pointer peer-checked:border-b-[3px] border-solid peer-checked:transition-[.5s]'
+              className='xxs:text-xs xs:text-base mm:text-lg md:text-lg font-bold w-full text-center py-2 align-middle cursor-pointer peer-checked:border-b-[3px] border-solid peer-checked:transition-[.5s] hover:text-hoverField'
               onClick={() => {
                 setSelectedCategory('policy');
               }}
@@ -53,7 +54,7 @@ const FAQ = () => {
             <input type='radio' id='etc' value='etc' name='category' className='peer hidden' />
             <label
               htmlFor='etc'
-              className='xxs:text-xs xs:text-base mm:text-lg md:text-lg font-bold w-full text-center py-2 align-middle cursor-pointer peer-checked:border-b-[3px] border-solid peer-checked:transition-[.5s]'
+              className='xxs:text-xs xs:text-base mm:text-lg md:text-lg font-bold w-full text-center py-2 align-middle cursor-pointer peer-checked:border-b-[3px] border-solid peer-checked:transition-[.5s] hover:text-hoverField'
               onClick={() => {
                 setSelectedCategory('etc');
               }}
@@ -63,66 +64,42 @@ const FAQ = () => {
           </div>
         </div>
       </section>
-      <section className='mt-10 flex flex-col gap-8'>
+      <section className='mt-10'>
         {selectedCategory === 'account' && (
           <div>
-            <ul className='flex flex-col gap-5 border-2 border-solid border-field px-5 py-8 rounded-lg'>
-              <li className='flex flex-col gap-3 xxs:text-sm xs:text-base mm:text-lg md:text-lg'>
-                <div>거래사기로 제재된 사람이 다시 필드패서를 이용할 수 있나요?</div>
-                <div className='bg-green-200 py-5 px-3'>안됩니다.</div>
-              </li>
-              <li className='flex flex-col gap-3 xxs:text-sm xs:text-base mm:text-lg md:text-lg'>
-                <div>등록한 게시물이 갑자기 삭제 됐어요.</div>
-                <div className='bg-green-200 py-5 px-3'>제가 삭제함.</div>
-              </li>
-              <li className='flex flex-col gap-3 xxs:text-sm xs:text-base mm:text-lg md:text-lg'>
-                <div>회원 탈퇴를 하고 싶어요.</div>
-                <div className='bg-green-200 py-5 px-3'>안됩니다.</div>
-              </li>
+            <ul className='flex flex-col gap-10 border-2 border-solid border-field px-7 py-10 rounded-lg'>
+              {qnaAccount.map((item, index) => (
+                <li className='flex flex-col gap-3 xxs:text-sm xs:text-base' key={index}>
+                  <div className='mm:text-lg'>Q. {Object.keys(item)}</div>
+                  <div className='bg-gray-200 py-7 px-5 leading-7'>A. {Object.values(item)}</div>
+                </li>
+              ))}
             </ul>
           </div>
         )}
 
         {selectedCategory === 'policy' && (
           <div>
-            <ul className='flex flex-col gap-5 border-2 border-solid border-field px-5 py-8 rounded-lg'>
-              <li className='flex flex-col gap-3 xxs:text-sm xs:text-base mm:text-lg md:text-lg'>
-                <div>사기꾼의 주요 사기패턴 유형이 궁금해요.</div>
-                <div className='bg-green-200 py-5 px-3'>친절한 척 합니다.</div>
-              </li>
-              <li className='flex flex-col gap-3 xxs:text-sm xs:text-base mm:text-lg md:text-lg'>
-                <div>사기를 당하면 어떻게 처리해야 되나요?</div>
-                <div className='bg-green-200 py-5 px-3'>경찰에 신고 하세요.</div>
-              </li>
-              <li className='flex flex-col gap-3 xxs:text-sm xs:text-base mm:text-lg md:text-lg'>
-                <div>필드패서 이용 시 지켜야 할 운영정책은 어떤 것들이 있나요?</div>
-                <div className='bg-green-200 py-5 px-3'>🙏 기본적인 예의는 지켜 주세요.</div>
-              </li>
+            <ul className='flex flex-col gap-10 border-2 border-solid border-field px-7 py-10 rounded-lg'>
+              {qnaPolicy.map((item, index) => (
+                <li className='flex flex-col gap-3 xxs:text-sm xs:text-base' key={index}>
+                  <div className='mm:text-lg '>Q. {Object.keys(item)}</div>
+                  <div className='bg-gray-200 py-7 px-5 leading-7'>A. {Object.values(item)}</div>
+                </li>
+              ))}
             </ul>
           </div>
         )}
 
         {selectedCategory === 'etc' && (
           <div>
-            <ul className='flex flex-col gap-5 border-2 border-solid border-field px-5 py-8 rounded-lg'>
-              <li className='flex flex-col gap-3 xxs:text-sm xs:text-base mm:text-lg md:text-lg'>
-                <div>사이트를 어떻게 이용하나요?</div>
-                <div className='bg-green-200 py-5 px-3'>
-                  양도를 하려면 양도하기 누르시고 양도를 받으시려면 게시글을 누르세요
-                </div>
-              </li>
-              <li className='flex flex-col gap-3 xxs:text-sm xs:text-base mm:text-lg md:text-lg'>
-                <div>거래를 취소하고 싶어요.</div>
-                <div className='bg-green-200 py-5 px-3'>안됩니다.</div>
-              </li>
-              <li className='flex flex-col gap-3 xxs:text-sm xs:text-base mm:text-lg md:text-lg'>
-                <div>양도받은 이후 사정이 생겨 못 가게 된다면 재판매도 가능한가요?</div>
-                <div className='bg-green-200 py-5 px-3'>그러게요...</div>
-              </li>
-              <li className='flex flex-col gap-3 xxs:text-sm xs:text-base mm:text-lg md:text-lg'>
-                <div>고객센터 운영시간은 어떻게 되나요?</div>
-                <div className='bg-green-200 py-5 px-3'>평일 오전 9시 ~ 오후 6시 입니다.</div>
-              </li>
+            <ul className='flex flex-col gap-10 border-2 border-solid border-field px-7 py-10 rounded-lg'>
+              {qnaEtc.map((item, index) => (
+                <li className='flex flex-col gap-3 xxs:text-sm xs:text-base' key={index}>
+                  <div className='mm:text-lg '>Q. {Object.keys(item)}</div>
+                  <div className='bg-gray-200 py-7 px-5 leading-7'>A. {Object.values(item)}</div>
+                </li>
+              ))}
             </ul>
           </div>
         )}

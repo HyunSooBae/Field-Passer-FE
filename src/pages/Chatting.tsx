@@ -14,7 +14,7 @@ const Chatting = (props: Props) => {
   };
 
   return (
-    <main className='m-auto relative'>
+    <main className='m-auto relative max-w-4xl'>
       <section className='flex'>
         <VscArrowLeft
           onClick={() => history.back()}
@@ -35,7 +35,7 @@ const Chatting = (props: Props) => {
           onClick={() => modalOpen()}
         />
       </section>
-      <section className='h-16 flex border-b-2 border-solid border-gray-400'>
+      <section className='h-16 flex '>
         <img
           src='/images/background-track.jpg'
           alt='구장 사진'
