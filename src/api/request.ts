@@ -1,5 +1,5 @@
 import { GiTrumpet } from 'react-icons/gi';
-import { request } from './core/api';
+import { request, requestForm } from './core/api';
 
 // 관리자 페이지 회원 정보 리스트 조회
 export const getMembersList = async (page: number = 1) => {
@@ -192,5 +192,28 @@ export const getNewPostList = async () => {
     return await request.get('/api/post?page=1');
   } catch (error) {
     console.log(error);
+  }
+};
+
+// 사용자 로그인
+export const userLogin = async (formData: any) => {
+  let entries = formData.entries();
+    for (const pair of entries) {
+      console.log(pair[0] + ', ' + pair[1]);
+    }
+  try {
+    const response = await requestForm('/api/auth/login', {
+      method: 'POST',
+      data: formData,
+    });
+    return {
+      ok: true,
+      authData: response,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+    };
   }
 };

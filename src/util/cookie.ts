@@ -2,22 +2,22 @@ import { Cookies, useCookies } from 'react-cookie';
 
 const cookies = new Cookies();
 
-export const setCookie = (sessionId: string) => {
-  return cookies.set('token', sessionId, {
+export const setCookie = (JSESSIONID: string) => {
+  return cookies.set('sessionId', JSESSIONID, {
     path: '/',
     // expire: ,
-    maxAge: 2600000,
+    maxAge: 604800, // 일주일
     secure: true,
   });
 };
 
 export const getCookie = () => {
-  const token = cookies.get('token');
-  return token;
+  const sessionId = cookies.get('sessionId');
+  return sessionId;
 };
 
 export const removeCookie = () => {
-  return cookies.set('token', '', {
+  return cookies.set('sessionId', '', {
     path: '/',
     maxAge: -1,
   });
