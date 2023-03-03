@@ -1,7 +1,12 @@
 import React from 'react';
+import './index.css';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { persistReducer } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
 import App from './App';
+// import configureStore from "./store";
+// import { rootReducer } from "./reducers";
 import './index.css';
 import AdminHome from './pages/Admin/Home';
 import Board from './pages/Board';
@@ -24,6 +29,8 @@ import Help from './pages/Help';
 import AdminLogin from './pages/Admin/Login';
 import ReportDetail from './pages/Admin/ReportDetail';
 import QuestionBox from './components/help/QuestionBox';
+import Chatting from './pages/Chatting';
+import { CookiesProvider } from 'react-cookie';
 
 const router = createBrowserRouter([
   {
@@ -45,16 +52,21 @@ const router = createBrowserRouter([
       { path: '/admin/post/detail/:postId', element: <AdminPostDetail /> },
       { path: '/admin/service', element: <ReportAndQuestion /> },
       { path: '/admin/service/:reportId', element: <ReportDetail /> },
+      { path: '/admin/login', element: <AdminLogin /> },
       { path: '/board', element: <Board /> },
       { path: '/posting', element: <BoardForm /> },
       { path: '/board/details/:id', element: <BoardDetails /> },
-      { path: '/admin/login', element: <AdminLogin /> },
+      { path: '/chatting/:id', element: <Chatting /> },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  // <CookiesProvider>
   <Provider store={store}>
+    {/* <PersistGate loading={null} persistor={persistor}> */}
     <RouterProvider router={router} />
+    {/* </PersistGate> */}
   </Provider>,
+  // </CookiesProvider>,
 );

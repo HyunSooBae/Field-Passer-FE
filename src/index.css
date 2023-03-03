@@ -150,6 +150,11 @@ body,
   font-family: 'NanumSquareNeo-Variable', 'Noto Sans KR', sans-serif;
 }
 
+main,
+section {
+  max-width: 1024px;
+}
+
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -166,4 +171,36 @@ select:-webkit-autofill:focus {
   box-shadow: 0 0 0px 1000px transparent inset;
   transition: background-color 1000s ease-in-out 0s;
   /* color: white; */
+}
+
+/* 페이지네이션 */
+.btnPage {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  color: black;
+}
+
+.btnPage:not(:disabled):hover {
+  background-color: black;
+  color: white;
+}
+
+.btnPage:disabled {
+  opacity: 0.5;
+}
+
+.btnPage[aria-current] {
+  background: #21a04d;
+  color: white;
+  font-weight: bold;
+}
+
+.btnArrow {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #e5e7eb;
+  font-weight: bold;
+  font-size: 10px;
 }

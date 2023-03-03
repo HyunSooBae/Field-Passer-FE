@@ -1,7 +1,8 @@
 import React from 'react';
 import ImminentList from './ImminentList';
+import { ImminentBoardType } from '@src/util/mainPageTypes';
 
-const TableForm = ({ selectedCategory, selectedDistrict, sort, list }) => {
+const TableForm = ({ selectedCategory, selectedDistrict, list }: ImminentBoardType) => {
   const filteredList = list.filter(
     (item) =>
       item.category === selectedCategory &&
