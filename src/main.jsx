@@ -30,6 +30,7 @@ import AdminLogin from './pages/Admin/Login';
 import ReportDetail from './pages/Admin/ReportDetail';
 import QuestionBox from './components/help/QuestionBox';
 import Chatting from './pages/Chatting';
+import { CookiesProvider } from 'react-cookie';
 
 const router = createBrowserRouter([
   {
@@ -61,9 +62,11 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  // <CookiesProvider>
   <Provider store={store}>
     {/* <PersistGate loading={null} persistor={persistor}> */}
     <RouterProvider router={router} />
     {/* </PersistGate> */}
   </Provider>,
+  // </CookiesProvider>,
 );
