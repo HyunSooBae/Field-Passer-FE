@@ -12,7 +12,7 @@ const ChatBox = (props: Props) => {
 
   return (
     <>
-      <section className='chatting xxs:h-[calc(100vh-220px)] sm:h-[calc(100vh-240px) flex flex-col gap-3 px-5 py-7 overflow-scroll border-2 border-solid border-gray-200 bg-gray-100'>
+      <section className='chatting xxs:h-[calc(100vh-200px)] sm:h-[calc(100vh-220px)] flex flex-col gap-3 px-5 py-7 overflow-scroll border-2 border-solid border-gray-200 bg-gray-100'>
         <MessageBubble person={'me'} />
         <MessageBubble person={'other'} />
         <MessageBubble person={'me'} />
