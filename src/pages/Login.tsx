@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { userLogin } from '@src/api/request';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -7,6 +7,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import axios from 'axios';
 
 const Login = () => {
+  const navigate = useNavigate();
   const formSchema = z.object({
     email: z
       .string()
@@ -29,7 +30,8 @@ const Login = () => {
     formData.append('email', email);
     formData.append('password', password);
     const { ok, authData } = await userLogin(formData);
-    console.log(authData);
+    console.log(authData?.data);
+    // navigate('/')
   };
 
   return (
