@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ReportDetail = () => {
   return (
-    <div className='w-[1520px] h-screen absolute left-[400px] p-10'>
+    <div className='max-w-[1520px] h-screen grid-in-main p-10'>
       <h1 className='text-2xl text-field font-bold'>문의 상세 보기</h1>
       <div className='my-[30px]'>
         <div className='flex gap-[10px]'>

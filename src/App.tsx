@@ -16,7 +16,7 @@ declare global {
 
 function Admin() {
   return (
-    <div className='grid grid-cols-admin grid-rows-1 h-screen'>
+    <div className='grid grid-areas-admin grid-cols-admin'>
       <ScrollRestoration />
       <NavBar />
       <Outlet />

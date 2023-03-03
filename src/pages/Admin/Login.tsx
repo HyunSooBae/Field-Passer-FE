@@ -28,7 +28,7 @@ const Login = () => {
     console.log(authData);
   };
   return (
-    <div className='w-[1520px] h-screen absolute left-[400px] p-10'>
+    <div className='max-w-[1520px] h-screen grid-in-main'>
       <div className='m-auto max-w-5xl pt-[10vh] bg-white'>
         <div className='w-[400px] m-auto'>
           <h1 className='text-3xl text-center mb-14'>로그인</h1>

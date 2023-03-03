@@ -4,7 +4,7 @@ import NewQuestions from '../../components/Admin/Main/NewQuestions';
 
 const Home = () => {
   return (
-    <div className='max-w-[1520px] h-screen absolute left-[400px]'>
+    <div className='max-w-[1520px] h-screen grid-in-main p-10'>
       <div className='relative w-full top-[250px]'>
         <Charts />
         <div className='flex gap-3 mx-8 mt-8'>
