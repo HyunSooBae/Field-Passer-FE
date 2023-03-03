@@ -195,6 +195,10 @@ export const getNewPostList = async () => {
 
 // 사용자 로그인
 export const userLogin = async (formData: any) => {
+  let entries = formData.entries();
+    for (const pair of entries) {
+      console.log(pair[0] + ', ' + pair[1]);
+    }
   try {
     const response = await requestForm('/api/auth/login', {
       method: 'POST',
@@ -202,7 +206,6 @@ export const userLogin = async (formData: any) => {
     });
     return {
       ok: true,
-      // setCookie(sessionId),
       authData: response,
     };
   } catch (error) {
