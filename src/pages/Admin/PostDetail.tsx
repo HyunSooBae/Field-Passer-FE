@@ -127,6 +127,7 @@ const PostDetail = () => {
           </div>
         </section>
       </div>
+      <button>블라인드</button>
     </div>
   );
 };
