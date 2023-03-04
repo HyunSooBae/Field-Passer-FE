@@ -19,7 +19,7 @@ const Post = () => {
     fetchData();
   }, [page]);
   return (
-    <div className='w-[1520px] h-screen absolute left-[400px] p-10'>
+    <div className='max-w-[1520px] h-screen grid-in-main p-10'>
       <h1 className='text-2xl text-field font-bold'>게시글 관리</h1>
       <SearchBox />
       <hr />

@@ -26,12 +26,16 @@ module.exports = {
         hoverField: '#666666',
         tableBg: '#E6FFE8',
       },
-      gridTemplateColumns: {
-        admin: '400px auto',
-      },
       boxShadow: {
         'table-border': '0 0 0 1px rgba(0,0,0,.3)',
       },
+      gridTemplateAreas: {
+        admin: ['nav main'],
+      },
+      gridTemplateColumns: {
+        admin: '300px auto',
+      },
     },
   },
+  plugins: [require('@savvywombat/tailwindcss-grid-areas')],
 };

@@ -1,13 +1,14 @@
 import { getReportsList } from '@src/api/request';
 import { useState, useEffect } from 'react';
 import Report from './Report';
+import { startDate, endDate } from '@src/util/dateCalc';
 
 const Reports = () => {
   const [reports, setReports] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const { ok, reportsListData } = await getReportsList('2023-02-28', '2023-03-01');
+      const { ok, reportsListData } = await getReportsList(startDate(), endDate());
       if (ok) {
         setReports(reportsListData.resultData);
       }

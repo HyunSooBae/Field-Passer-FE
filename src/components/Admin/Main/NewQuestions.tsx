@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import Question from './Question';
 import { getQuestionsList } from '@src/api/request';
 import { questionType } from '@src/util/adminPageTypes';
+import { startDate, endDate } from '@src/util/dateCalc';
 
 const NewQuestions = () => {
   const [questions, setQuestions] = useState<questionType[]>([]);
 
   useEffect(() => {
     async function fetchData() {
-      const { ok, questionsListData } = await getQuestionsList('2023-02-28', '2023-03-01');
+      const { ok, questionsListData } = await getQuestionsList(startDate(), endDate());
       if (ok) {
         setQuestions(questionsListData.resultData);
       }
