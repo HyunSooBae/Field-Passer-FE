@@ -23,7 +23,7 @@ const startDate = () => {
     day = `0${day}`;
   } else if (day < 1) {
     month -= 1;
-    if (month === 4 && 6 && 9 && 11) {
+    if (month === 4 || month === 6 || month === 9 || month === 11) {
       day = 30 + day;
     } else if (month === 2) {
       day = 28 + day;
