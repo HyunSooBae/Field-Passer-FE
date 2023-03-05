@@ -1,34 +1,61 @@
 import ChatBox from '@src/components/chatting/ChatBox';
 import SendMessage from '@src/components/chatting/SendMessage';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { VscMenu, VscArrowLeft } from 'react-icons/vsc';
-import { over } from 'stompjs';
-import SockJS from 'sockjs-client';
+import { Client } from '@stomp/stompjs';
 
 type Props = {};
 
-// 접속id와 다를경우 접근 불가
+// 접속id와 다를경우 접근 불가해야함......근데 그걸 어케 하는거죠?
 const Chatting = (props: Props) => {
-  const [userData, setUserData] = useState({
-    username: '',
-    recievername: '',
-    connected: false,
-    message: '',
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [totalMessage, setTotalMessage] = useState({
+    myMessage: '',
+    recievedMessage: '',
   });
 
-  const modalOpen = () => {
-    // 모달 열기
-    // 거래예약(입금대기), 대화상대 신고
+  const client = new Client({
+    brokerURL: `wss:${import.meta.env.VITE_WS_URL}/ws`,
+    connectHeaders: {
+      postId: `1`,
+      sellerId: `1`,
+      buyerId: `3`,
+    },
+    debug: (notice) => {
+      console.log(notice);
+    },
+    onConnect: () => {
+      client.subscribe('/room/test1', (message) => {
+        console.log(`Received: ${message.body}`);
+      });
+      client.publish({
+        destination: `room/test1`,
+        body: 'First Message',
+      });
+    },
+  });
+
+  useEffect(() => {
+    // 웹소켓 연결
+    client.activate();
+    return () => {
+      //언마운트 시 연결 해제
+      client.deactivate();
+    };
+  }, []);
+
+  const reservation = () => {
+    //거래예약 api
   };
 
-  const checkUser = () => {
-    let sock = new SockJS(import.meta.env.VITE_BASE_URL + '/chat/room');
+  const report = () => {
+    // 회원신고 api
   };
 
   return (
     <main className='m-auto relative max-w-4xl'>
-      {userData.connected ? (
+      {totalMessage ? (
         <>
           <section className='flex'>
             <VscArrowLeft
@@ -47,8 +74,21 @@ const Chatting = (props: Props) => {
             </div>
             <VscMenu
               className='w-7 h-7 absolute top-4 right-5 cursor-pointer hover:text-field'
-              onClick={() => modalOpen()}
+              onClick={() => setIsModalOpen(!isModalOpen)}
             />
+            {isModalOpen && (
+              <div className='absolute right-5 top-12 flex flex-col h-fit w-36 border-2 border-solid border-field rounded-lg bg-white'>
+                <button
+                  className=' h-12 hover:text-field hover:font-bold'
+                  onClick={() => reservation()}
+                >
+                  거래 예약하기
+                </button>
+                <button className=' h-12 hover:text-field hover:font-bold' onClick={() => report()}>
+                  대화상대 신고
+                </button>
+              </div>
+            )}
           </section>
           <section className='h-16 flex '>
             <img
