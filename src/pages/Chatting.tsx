@@ -7,7 +7,7 @@ import { Client } from '@stomp/stompjs';
 
 type Props = {};
 
-// 접속id와 다를경우 접근 불가해야함......근데 그걸 어케 하는거죠?
+// 접속id와 다를경우 접근 불가
 const Chatting = (props: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [totalMessage, setTotalMessage] = useState({
