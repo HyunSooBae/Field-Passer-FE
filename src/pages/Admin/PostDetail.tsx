@@ -53,7 +53,7 @@ const PostDetail = () => {
     dotsClass: 'slick-dots !bottom-[10px] z-10',
   };
   return (
-    <div className='w-[1520px] h-screen absolute left-[400px] p-10'>
+    <div className='max-w-[1520px] h-screen grid-in-main p-10'>
       <div className='my-[50px] mx-auto max-w-[600px] px-[20px] mm:px-[0]'>
         <h1 className='text-2xl text-field font-bold mb-10'>게시물 상세 보기</h1>
         <Slider {...settings} className='relative max-h-[600px] mx-auto rounded-lg overflow-hidden'>
@@ -127,6 +127,7 @@ const PostDetail = () => {
           </div>
         </section>
       </div>
+      <button>블라인드</button>
     </div>
   );
 };

@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import Question from './Question';
 import { questionType } from '@src/util/adminPageTypes';
 import { getQuestionsList } from '@src/api/request';
+import { startDate, endDate } from '@src/util/dateCalc';
 
 const Questions = () => {
   const [questions, setQuestions] = useState<questionType[]>([]);
   useEffect(() => {
     const fetchData = async () => {
-      const { ok, questionsListData } = await getQuestionsList('2023-02-28', '2023-03-01');
+      const { ok, questionsListData } = await getQuestionsList(startDate(), endDate());
       if (ok) {
         setQuestions(questionsListData.resultData);
       }

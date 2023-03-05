@@ -1,4 +1,3 @@
-import { GiTrumpet } from 'react-icons/gi';
 import { request, requestForm } from './core/api';
 
 // 관리자 페이지 회원 정보 리스트 조회
@@ -97,7 +96,7 @@ export const memberPromoted = async (email: string) => {
   }
 };
 
-// 관리자 페이지 방문자 수 확인
+// 관리자 방문자 수 확인
 export const getVisitMember = async (startDate: string, endDate: string) => {
   try {
     const response = await request(`/admin/members/?startDate=${startDate}&endDate=${endDate}`, {
@@ -115,12 +114,46 @@ export const getVisitMember = async (startDate: string, endDate: string) => {
   }
 };
 
+// 관리자 신규 회원 수 조회
+export const getNewMember = async (startDate: string, endDate: string, page: number = 1) => {
+  try {
+    const response = await request.get(
+      `/admin/membes/new?startDate=${startDate}&endDate=${endDate}&page=${page}`,
+    );
+    return {
+      ok: true,
+      newMemberData: response.data,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+    };
+  }
+};
+
+// 관리자 신규 게시글 수 조회
+export const getNewPosts = async (startDate: string, endDate: string, page: number = 1) => {
+  try {
+    const response = await request.get(
+      `/admin/board/new?startDate=${startDate}&endDate=${endDate}&page=${page}`,
+    );
+    return {
+      ok: true,
+      newPostsData: response.data,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+    };
+  }
+};
+
 // 관리자 문의글 목록 조회
 export const getQuestionsList = async (startDate: string, endDate: string) => {
   try {
-    const response = await request(`/admin/question?startDate=${startDate}&endDate=${endDate}`, {
-      method: 'GET',
-    });
+    const response = await request.get(`/admin/question?startDate=${startDate}&endDate=${endDate}`);
     return {
       ok: true,
       questionsListData: response.data,
@@ -173,6 +206,27 @@ export const adminLogin = async (email: string, password: string) => {
   }
 };
 
+// 관리자 게시글 블라인드 처리
+export const postBlind = async (postId: string, blind: boolean) => {
+  try {
+    const response = await request.put('/admin/board/blind', {
+      data: {
+        postId,
+        blind,
+      },
+    });
+    return {
+      ok: true,
+      blindData: response.data,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+    };
+  }
+};
+
 // 메인 - 마감임박 게시글 조회
 export const getImminentList = async (category: string) => {
   try {
@@ -198,9 +252,9 @@ export const getNewPostList = async () => {
 // 사용자 로그인
 export const userLogin = async (formData: any) => {
   let entries = formData.entries();
-    for (const pair of entries) {
-      console.log(pair[0] + ', ' + pair[1]);
-    }
+  for (const pair of entries) {
+    console.log(pair[0] + ', ' + pair[1]);
+  }
   try {
     const response = await requestForm('/api/auth/login', {
       method: 'POST',

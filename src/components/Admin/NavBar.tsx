@@ -17,7 +17,7 @@ const NavBar = () => {
 
   const navigate = useNavigate();
   return (
-    <div className='flex bg-field flex-col box-border fixed h-full justify-center items-center gap-5 w-[400px]'>
+    <div className='grid-in-nav flex bg-field flex-col justify-center items-center gap-5 fixed h-full w-[300px]'>
       <div className='flex gap-5 text-white'>
         {isLogin ? (
           <>
