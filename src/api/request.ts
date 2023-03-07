@@ -271,3 +271,26 @@ export const userLogin = async (formData: any) => {
     };
   }
 };
+
+// 고객센터 문의글 접수하기
+export const submitReport = async (
+  memberId: string,
+  memberName: string,
+  title: string,
+  reportCategory: string,
+  content: string,
+) => {
+  try {
+    const response = await request.post('/userservice/report', {
+      data: {
+        memberId,
+        memberName,
+        title,
+        reportCategory,
+        content,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

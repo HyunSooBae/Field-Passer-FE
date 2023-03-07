@@ -2,14 +2,12 @@ import React, { useEffect } from 'react';
 import { useState, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { RiQuestionnaireLine } from 'react-icons/ri';
+import { submitReport } from '@src/api/request';
 
 const QuestionBox = () => {
   const imgfile: any = useRef();
   const pcForm = useMediaQuery({
     query: '(min-width:600px)',
-  });
-  const mobileForm = useMediaQuery({
-    query: '(max-width:599px)',
   });
 
   const categories = [
@@ -31,25 +29,30 @@ const QuestionBox = () => {
     }
   };
 
-  async function postQuestion(body: string) {
-    // const data = await requestAPI({ url: 'post', method: 'POST', body: JSON.stringify(body) });
-    // console.log(data?.data?.resultData);
-    console.log(body);
+  async function onSubmit(title: string, reportCategory: string, content: string) {
+    // 유저정보 id, name은 redux에서 가져오기
+    // useForm으로 submit 걸기
+    const memberId = '가져온데이터';
+    const memberName = '가져온데이터';
+    try {
+      submitReport(memberId, memberName, title, reportCategory, content);
+      window.alert('문의글 작성이 완료되었습니다.');
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
     <main className='m-auto max-w-4xl mt-12 mb-40 py-10 relative px-3'>
-      <div className='mb-16 text-center'>
+      <div className='mb-10 text-center'>
         <RiQuestionnaireLine className='w-20 h-20 m-auto mb-4' />
         <h1 className='text-center h-10 leading-10 text-4xl mb-3'>1:1 문의</h1>
-        <span className='h-10 text-neutral-500'>
-          문의사항을 남겨주시면 빠르게 답변드리겠습니다.
+        <span className='text-neutral-500 leading-5'>
+          문의사항을 남겨주시면 빠르게 답변드리겠습니다. <br />
+          작성한 글과 답변내역은 마이페이지에서 확인하실 수 있습니다.
         </span>
       </div>
-      <form
-        action=''
-        className='w-full max-w-[600px] ml-auto mr-auto mt-0 mb-0 flex flex-col gap-[10px] mm:gap-[20px]'
-      >
+      <form className='w-full max-w-[600px] ml-auto mr-auto mt-0 mb-0 flex flex-col gap-[10px] mm:gap-[20px]'>
         {pcForm ? (
           <div className='flex h-10 gap-3 leading-10 m-auto'>
             <span className=''>카테고리</span>
@@ -77,7 +80,7 @@ const QuestionBox = () => {
             <div className='text-lg'>카테고리</div>
             <br />
             {categories.map((category, index) => (
-              <>
+              <div key={Object.keys(category).join('')} className=''>
                 <input
                   type='radio'
                   id={Object.keys(category).join(' ')}
@@ -85,7 +88,6 @@ const QuestionBox = () => {
                   name='category'
                   className='peer mx-2 scale-125'
                   defaultChecked={index === 0}
-                  key={Object.keys(category).join('')}
                 />
                 <label
                   htmlFor={Object.keys(category).join('')}
@@ -94,7 +96,7 @@ const QuestionBox = () => {
                   {Object.values(category)}
                 </label>
                 {index % 2 === 1 ? <br /> : ''}
-              </>
+              </div>
             ))}
           </div>
         )}
@@ -134,14 +136,9 @@ const QuestionBox = () => {
         </div>
 
         <button
-          className='text-lg p-3 border-solid rounded-[10px] mx-auto bg-field text-white mt-[20px]'
+          className='text-lg p-3 border-solid rounded-[10px] mx-auto bg-field text-white mt-[20px] hover:bg-hoverField'
           onClick={() => {
-            try {
-              postQuestion('/?');
-              window.confirm('문의글 작성이 완료되었습니다.');
-            } catch (err) {
-              alert(`${err}, 다시 시도해주세요.`);
-            }
+            onSubmit('/?', '????', '?????');
           }}
         >
           작성
