@@ -1,7 +1,6 @@
-import React from 'react';
 import './index.css';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { persistReducer } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import App from './App';
@@ -30,7 +29,7 @@ import AdminLogin from './pages/Admin/Login';
 import ReportDetail from './pages/Admin/ReportDetail';
 import QuestionBox from './components/help/QuestionBox';
 import Chatting from './pages/Chatting';
-import { CookiesProvider } from 'react-cookie';
+// import { CookiesProvider } from 'react-cookie';
 
 const router = createBrowserRouter([
   {
