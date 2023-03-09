@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { chatListType } from './ChatBox';
+import { ChatListType } from '@src/util/mainPageTypes';
 
-const MessageBubble = ({ person, time, message }: chatListType) => {
+const MessageBubble = ({ person, time, message }: ChatListType) => {
   return (
     <>
       {person === 'me' ? (
