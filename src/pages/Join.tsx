@@ -5,7 +5,7 @@ import { join } from '@src/api/request';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useForm, useFormContext, SubmitHandler } from 'react-hook-form';
-import ConfirmModal from '@src/components/ui/Modal';
+import ConfirmModal from '@src/components/Modal';
 import { IoIosCloseCircle } from 'react-icons/io';
 
 const Join = () => {

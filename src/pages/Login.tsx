@@ -7,6 +7,8 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_AUTH } from '@src/store/authSlice';
+import Modal from '@src/components/Modal';
+import type { modalPropsType } from '@src/components/Modal';
 
 const Login = () => {
   const formSchema = z
@@ -31,18 +33,28 @@ const Login = () => {
     formState: { errors },
   } = useForm<FormSchmaType>({ mode: 'onChange', resolver: zodResolver(formSchema) });
 
+  const [confirmModal, setComfirmModal] = useState(false);
+  const [authMessage, setAuthMessage] = useState('')
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const authState = useSelector(SET_AUTH);
+  // const authState = useSelector(state => state.auth);
 
   const onSubmit: SubmitHandler<FormSchmaType> = async (data) => {
     const { ok, code, authData } = await userLogin(data);
-    if (ok && code === 200 && authData) {
+    // console.log(authData);
+    if (ok && code === 200 ) {
       dispatch(SET_AUTH(true));
       // navigate('/');
       console.log(authData);
+      setAuthMessage(authData.message)
+      setComfirmModal(true)
     }
-    // else 로그인에 실패하였습니다 모달창 띄우기
+    else {
+      console.log('ok : ', ok, ', code : ', code, ', authData.message : ', authData.message)
+      // 로그인에 실패하였습니다 모달창 띄우기
+      setAuthMessage(authData.message)
+      setComfirmModal(true)
+    }
   };
 
   return (
@@ -94,6 +106,16 @@ const Login = () => {
           </button>
         </form>
       </div>
+      <>
+        {confirmModal && (
+          <Modal 
+          title={authMessage}
+          description={authMessage}
+          onCancel={() => setComfirmModal(false)}
+          onConfirm={() => navigate('/')}
+          />
+        )}
+      </>
     </div>
   );
 };
