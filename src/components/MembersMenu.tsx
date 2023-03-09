@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import type { RootState } from '@src/store/store';
 import { SET_AUTH } from '@src/store/authSlice';
 import { logout } from '@src/api/request';
 
@@ -9,7 +10,7 @@ const MembersMenu = () => {
   // else {고객센터/마이페이지/로그아웃}
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { authenticated } = useSelector((state) => state.auth);
+  const { authenticated } = useSelector((state: RootState) => state.auth);
 
   const logoutHandler = async () => {
     const { ok, code, authData } = await logout();

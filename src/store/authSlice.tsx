@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-type authState = {
+export type authState = {
   authenticated: boolean;
 };
 

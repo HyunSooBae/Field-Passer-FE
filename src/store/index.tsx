@@ -1,4 +1,4 @@
-// import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 // import storeState from './store';
 // import categoryReducer from './categorySlice';
 // import authReducer from './authSlice';

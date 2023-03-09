@@ -58,6 +58,7 @@ const store = configureStore({
   reducer: persistedReducer,
 });
 
+export type RootState = ReturnType<typeof store.getState>;
 export const persistor = persistStore(store);
 export default store;
 // export const { selected, unselected } = storeState.actions;
