@@ -5,6 +5,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { SET_AUTH } from '@src/store/authSlice';
 
 const Login = () => {
   const formSchema = z
@@ -29,28 +31,18 @@ const Login = () => {
     formState: { errors },
   } = useForm<FormSchmaType>({ mode: 'onChange', resolver: zodResolver(formSchema) });
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const authState = useSelector(SET_AUTH);
+
   const onSubmit: SubmitHandler<FormSchmaType> = async (data) => {
-    // const { email, password } = data;
-    // const formData = new FormData();
-    // formData.append('email', email);
-    // formData.append('password', password);
-    // const { ok, authData } = await userLogin(data);
-    // console.log(authData);
-
-    // 갓로피 credentials: 'include', 옵션 테스트용
-    const response = await axios.post('https://field-passer.store/api/auth/login', data, {
-      headers: {
-        'content-type': 'multipart/form-data',
-        withCredentials: true,
-        credentials: 'include',
-      },
-    });
-    console.log(response);
-
-    // const asdf = await axios.post('https://field-passer.store/api/auth/login', {
-    //   withCredentials: true,
-    // });
-    // console.log(asdf);
+    const { ok, code, authData } = await userLogin(data);
+    if (ok && code === 200 && authData) {
+      dispatch(SET_AUTH(true));
+      // navigate('/');
+      console.log(authData);
+    }
+    // else 로그인에 실패하였습니다 모달창 띄우기
   };
 
   return (

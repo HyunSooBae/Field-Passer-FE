@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { selected, unselected } from '../../../store/store';
+import { unselected, selected } from '../../../store/categorySlice';
 
 const SelectBox = ({ id, options, defaultValue, size }: any) => {
   const dispatch = useDispatch();
