@@ -1,3 +1,10 @@
+// 마감임박 게시판
+export type ImminentBoardType = {
+  selectedCategory: string;
+  selectedDistrict: string;
+  list: ListType[];
+};
+// 마감임박 API 응답값
 export interface ListType {
   category: string;
   district: string;
@@ -15,8 +22,9 @@ export interface ListType {
   transactionStatus?: string;
   viewCount?: string;
 }
-export type ImminentBoardType = {
-  selectedCategory: string;
-  selectedDistrict: string;
-  list: ListType[];
-};
+// 채팅페이지 메시지 전송/응답값 타입
+export interface ChatListType {
+  person: string;
+  time: string;
+  message: string;
+}

@@ -32,8 +32,8 @@ const QuestionBox = () => {
   async function onSubmit(title: string, reportCategory: string, content: string) {
     // 유저정보 id, name은 redux에서 가져오기
     // useForm으로 submit 걸기
-    const memberId = '가져온데이터';
-    const memberName = '가져온데이터';
+    const memberId = 'admin@test.com';
+    const memberName = '관리자';
     try {
       submitReport(memberId, memberName, title, reportCategory, content);
       window.alert('문의글 작성이 완료되었습니다.');
@@ -137,8 +137,9 @@ const QuestionBox = () => {
 
         <button
           className='text-lg p-3 border-solid rounded-[10px] mx-auto bg-field text-white mt-[20px] hover:bg-hoverField'
-          onClick={() => {
-            onSubmit('/?', '????', '?????');
+          onClick={(e) => {
+            e.preventDefault();
+            onSubmit('계정 삭제 문의합니다.', '회원/계정', '계정 삭제는 어디서 할 수 있나요?');
           }}
         >
           작성
