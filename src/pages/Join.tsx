@@ -1,55 +1,110 @@
-import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
-// import requestAPI from '../api/axios';
+import { Link } from 'react-router-dom';
+import { join } from '@src/api/request';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { IoIosCloseCircle } from 'react-icons/io';
 
 const Join = () => {
-  const [memberId, setMemberId] = useState('');
-  const [password, setPassword] = useState('');
-
-  const joinHandler = async () => {
-    const res = await axios.post('http://localhost:3000/register', {
-      memberId,
-      password,
+  const MAX_FILE_SIZE = 300000;
+  const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+  const formSchema = z
+    .object({
+      email: z
+        .string()
+        .email({ message: '이메일을 양식에 맞게 작성해 주세요.' })
+        .min(1, { message: '이메일을 양식에 맞게 작성해 주세요.' }),
+      password: z
+        .string()
+        .min(6, { message: '비밀번호는 6자 이상 16자 이하로 작성해야 합니다.' })
+        .max(16, { message: '비밀번호는 6자 이상 16자 이하로 작성해야 합니다.' })
+        .regex(/^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/, '숫자 혹은 문자로만 구성되어야 합니다'),
+      passwordCheck: z
+        .string()
+        .min(6, { message: '비밀번호는 6자 이상 16자 이하로 작성해야 합니다.' })
+        .max(16, { message: '비밀번호는 6자 이상 16자 이하로 작성해야 합니다.' })
+        .regex(/^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/, '숫자 혹은 문자로만 구성되어야 합니다'),
+      memberName: z
+        .string()
+        .min(1, { message: '최대 10글자 이내로 작성해주세요.' })
+        .max(10, { message: '최대 10글자 이내로 작성해주세요.' }),
+      profileImg: z.union([z.any(), z.instanceof(File).optional()]),
+      // .refine((files) => files !== null, { message: '파일을 선택해주세요.' })
+      // .refine((files) => ACCEPTED_IMAGE_TYPES.includes('files.0.type'), {
+      //   message: '파일 형식은 .jpg, .jpeg, .png, .webp 만 가능합니다.',
+      // })
+      // .refine((files) => files.size <= MAX_FILE_SIZE, {
+      //   message: `파일 용량은 최대 1MB까지 가능합니다.`,
+      // }),
+    })
+    .partial({
+      profileImg: true,
+    })
+    .refine((data) => data.password === data.passwordCheck, {
+      message: '비밀번호가 일치하지 않습니다.',
+      path: ['passwordCheck'],
     });
-    // console.log(memberId);
-    // console.log(password);
-    console.log(res.data);
+
+  type formSchema = z.infer<typeof formSchema>;
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm<formSchema>({ mode: 'onChange', resolver: zodResolver(formSchema) });
+
+  const onSubmit: SubmitHandler<formSchema> = async (data) => {
+    console.log(watch(data.profileImg));
+    const { email, passwordCheck, memberName, profileImg } = data;
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('password', passwordCheck);
+    formData.append('memberName', memberName);
+    formData.append('profileImg', profileImg);
+    console.log(formData);
+    const { ok, autData } = await join(data);
+    console.log(autData);
   };
 
-  const imgfile: any = useRef(null);
-  // 업로드 이미지 미리보기
-  const imgPreview = (input: any) => {
-    if (input.target.files && input.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (e: any) => {
-        imgfile.current.src = e.target.result;
-      };
-      reader.readAsDataURL(input.target.files[0]);
-    }
+  const [imgFile, setImgFile] = useState('');
+  const imgRef: any = useRef('');
+  const onFileChange = (event: React.FormEvent<HTMLInputElement>) => {
+    const {
+      target: { files },
+    } = event;
+    const theFile = files[0];
+    if (theFile.size > 1024 * 1024) return;
+    const reader = new FileReader();
+    reader.onloadend = (finishedEvent) => {
+      const {
+        currentTarget: { result },
+      } = finishedEvent;
+      setImgFile(result);
+    };
+    reader.readAsDataURL(theFile);
   };
 
-  const onSubmit = (e: any) => {
-    e.preventDefault();
+  const [avatarPreview, setAvatarPreview] = useState('');
+  // const avatar = watch('profileImg');
+  // useEffect(() => {
+  //   if (avatar && avatar.length > 0) {
+  //     const file = avatar[0];
+  //     setAvatarPreview(URL.createObjectURL(file));
+  //   }
+  // }, [avatar]);
+
+  const removeProfileImg = () => {
+    setAvatarPreview('');
+    reset({ profileImg: null });
   };
 
   return (
     <div className='m-auto max-w-5xl pt-[10vh] mb-40 bg-white'>
       <div className='w-[400px] m-auto'>
         <h1 className='text-3xl text-center mb-14'>회원가입</h1>
-        <form onSubmit={onSubmit}>
-          <div className='bg-white border mb-4'>
-            <label className='block text-gray-900 text-sm font-bold mb-2' htmlFor='username'>
-              아이디
-            </label>
-            <input
-              type='text'
-              placeholder='아이디를 입력하세요'
-              // required
-              className='w-full h-14 px-2 text-[14px] rounded-[10px] bg-white border appearance-none focus:outline-none autofill:valid:bg-white focus:border-field valid:border-field'
-              value={memberId}
-              onChange={(e) => setMemberId(e.target.value)}
-            />
-          </div>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className='bg-white border mb-4'>
             <label className='block text-gray-900 text-sm font-bold mb-2' htmlFor='username'>
               이메일
@@ -57,9 +112,11 @@ const Join = () => {
             <input
               type='text'
               placeholder='이메일을 입력하세요'
-              // required
+              required
               className='w-full h-14 px-2 text-[14px] rounded-[10px] bg-white border appearance-none focus:outline-none autofill:valid:bg-white focus:border-field valid:border-field'
+              {...register('email')}
             />
+            {errors.email && <p className='text-xs text-red-600 py-3'>{errors.email.message}</p>}
           </div>
           <div className='bg-white border mb-4'>
             <label className='block text-gray-900 text-sm font-bold mb-2' htmlFor='password'>
@@ -68,11 +125,28 @@ const Join = () => {
             <input
               type='password'
               placeholder='비밀번호를 입력하세요'
-              // required
+              required
               className='w-full h-14 px-2 text-[14px] rounded-[10px] bg-white border appearance-none focus:outline-none autofill:valid:bg-white focus:border-field valid:border-field'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              {...register('password')}
             />
+            {errors.password && (
+              <p className='text-xs text-red-600 py-3'>{errors.password.message}</p>
+            )}
+          </div>
+          <div className='bg-white border mb-4'>
+            <label className='block text-gray-900 text-sm font-bold mb-2' htmlFor='password'>
+              비밀번호 확인
+            </label>
+            <input
+              type='password'
+              placeholder='비밀번호를 한번 더 입력하세요'
+              required
+              className='w-full h-14 px-2 text-[14px] rounded-[10px] bg-white border appearance-none focus:outline-none autofill:valid:bg-white focus:border-field valid:border-field'
+              {...register('passwordCheck')}
+            />
+            {errors.passwordCheck && (
+              <p className='text-xs text-red-600 py-3'>{errors.passwordCheck.message}</p>
+            )}
           </div>
           <div className='bg-white border mb-4'>
             <label className='block text-gray-900 text-sm font-bold mb-2' htmlFor='password'>
@@ -81,9 +155,13 @@ const Join = () => {
             <input
               type='text'
               placeholder='닉네임을 입력하세요'
-              // required
+              required
               className='w-full h-14 px-2 text-[14px] rounded-[10px] bg-white border appearance-none focus:outline-none autofill:valid:bg-white focus:border-field valid:border-field'
+              {...register('memberName')}
             />
+            {errors.memberName && (
+              <p className='text-xs text-red-600 py-3'>{errors.memberName.message}</p>
+            )}
           </div>
           <div className='bg-white border'>
             <h4 className='block text-gray-900 text-sm font-bold mb-2'>프로필 사진 (선택)</h4>
@@ -91,52 +169,68 @@ const Join = () => {
               <span className=''>이미지 미리보기</span>
             </div> */}
             <div className='flex justify-center gap-3 my-5'>
-              {/* <label
+              <label
                 className='w-fit p-1.5 rounded-[10px] border border-solid border-field text-gray-400'
                 htmlFor='imgFile'
               >
                 사진 선택
-              </label> */}
+              </label>
 
               <div>
-                <div className='flex gap-[10px]'>
-                  <label
-                    htmlFor='images'
-                    className='block w-[100px] h-[100px] border-solid border rounded-lg cursor-pointer border-[#ddd] bg-[url("images/cam.png")] bg-center bg-[length:60px] bg-no-repeat'
-                  />
+                <div className='flex gap-[10px] relative'>
                   <input
                     id='images'
                     type='file'
                     className='hidden'
-                    accept='image/gif,image/jpeg,image/png'
-                    onChange={(e) => imgPreview(e)}
+                    accept='image/*'
+                    {...register('profileImg', { onChange: onFileChange })}
+                    // ref={imgRef}
                   />
-
-                  <img
-                    src=''
-                    alt='미리보기 이미지'
-                    className='w-[100px] h-[100px] rounded-lg border border-solid border-gray-300'
-                    ref={imgfile}
-                  />
+                  {errors.profileImg && (
+                    <p className='text-xs text-red-600 py-3'>{errors.profileImg.message}</p>
+                  )}
+                  {imgFile && (
+                    <div>
+                      <img src={imgFile} style={{ backgroundImage: imgFile }} alt='thumnail' />
+                      <div className='factoryForm__clear' onClick={removeProfileImg}>
+                        <button
+                          type='button'
+                          className='absolute right-[-10px] top-[-10px] rounded-full'
+                        >
+                          <IoIosCloseCircle size='30' color='gray'></IoIosCloseCircle>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                  {/* {avatarPreview && !errors.profileImg ? (
+                    <>
+                      <img
+                        src={avatarPreview}
+                        alt='미리보기 이미지'
+                        className='w-[100px] h-[100px] rounded-lg border border-solid border-gray-300 object-cover'
+                      />
+                      <button
+                        type='button'
+                        className='absolute right-[-10px] top-[-10px] rounded-full'
+                        onClick={() => removeProfileImg()}
+                      >
+                        <IoIosCloseCircle size='30' color='gray'></IoIosCloseCircle>
+                      </button>
+                    </> */}
+                  {/* ) : (
+                    <label
+                      htmlFor='images'
+                      className='block w-[100px] h-[100px] border-solid border rounded-lg cursor-pointer border-[#ddd] bg-[url("/images/cam.png")] bg-center bg-[length:60px] bg-no-repeat'
+                    />
+                  )} */}
                 </div>
-                <span className='p-1.5 my-6 rounded-[10px] border border-solid border-gray-400 text-gray-400'>
-                  사진 삭제
-                </span>
               </div>
             </div>
-            <input
-              type='file'
-              id='imgFile'
-              // placeholder='닉네임을 입력하세요'
-              // required
-              style={{ display: 'none' }}
-            />
           </div>
 
           <button
-            // type='submit'
+            type='submit'
             className='w-full h-14 rounded-[10px] bg-field text-white font-bold hover:bg-hoverfield'
-            onClick={joinHandler}
           >
             회원가입
           </button>

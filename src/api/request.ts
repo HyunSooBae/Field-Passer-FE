@@ -251,17 +251,15 @@ export const getNewPostList = async () => {
 
 // 사용자 로그인
 export const userLogin = async (formData: any) => {
-  let entries = formData.entries();
-  for (const pair of entries) {
-    console.log(pair[0] + ', ' + pair[1]);
-  }
   try {
     const response = await requestForm('/api/auth/login', {
       method: 'POST',
       data: formData,
+      withCredentials: true,
     });
     return {
       ok: true,
+      // setCookie(response.sessionId),
       authData: response,
     };
   } catch (error) {
@@ -292,5 +290,24 @@ export const submitReport = async (
     });
   } catch (error) {
     console.log(error);
+  }
+};
+
+// 사용자 회원가입
+export const join = async (data: any) => {
+  try {
+    const response = await requestForm('/api/auth/register', {
+      method: 'POST',
+      data,
+    });
+    return {
+      ok: true,
+      authData: response.data,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+    };
   }
 };

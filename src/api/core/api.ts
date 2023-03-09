@@ -44,7 +44,7 @@ const axiosConfigForm: AxiosRequestConfig = {
   headers: {
     'content-type': 'multipart/form-data',
     withCredentials: true,
-    // Authroization 작성해야 함
+    credentials: 'include',
   },
 
   timeout: 10000,
