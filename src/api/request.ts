@@ -1,4 +1,5 @@
 import { request, requestForm } from './core/api';
+import { getCookie, setCookie } from '@src/util/cookie';
 
 // 관리자 페이지 회원 정보 리스트 조회
 export const getMembersList = async (page: number = 1) => {
@@ -251,14 +252,52 @@ export const getNewPostList = async () => {
 
 // 사용자 로그인
 export const userLogin = async (formData: any) => {
-  let entries = formData.entries();
-  for (const pair of entries) {
-    console.log(pair[0] + ', ' + pair[1]);
-  }
   try {
     const response = await requestForm('/api/auth/login', {
       method: 'POST',
       data: formData,
+      withCredentials: true,
+    });
+    // console.log(response.data);
+    return {
+      ok: true,
+      code: response.data.code,
+      authData: response.data,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+    };
+  }
+};
+
+// 사용자·관리자 공용 로그아웃
+export const logout = async () => {
+  try {
+    const response = await requestForm('/api/auth/logout', {
+      method: 'POST',
+    });
+    return {
+      ok: true,
+      code: response.data.code,
+      authData: response.data,
+    };
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+    };
+  }
+};
+
+// 사용자 회원가입
+export const join = async (data: any) => {
+  try {
+    const response = await requestForm('/api/auth/register', {
+      method: 'POST',
+      data,
     });
     return {
       ok: true,

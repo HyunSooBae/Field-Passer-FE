@@ -1,26 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import storeState from './store';
-import authReducer from './authSlice';
+// import storeState from './store';
+// import categoryReducer from './categorySlice';
+// import authReducer from './authSlice';
 
-const store = configureStore({
-  reducer: {
-    store: storeState.reducer,
-    authToken: authReducer,
-  },
-});
-
-// const authToken = configureStore({
+// const store = configureStore({
 //   reducer: {
-//     authToken: authReducer,
+//     // store: storeState,
+//     store: categoryReducer,
+//     auth: authReducer,
 //   },
 // });
 
-// const rootReducer = combineReducers({
-//   user: userSlice,
-//   item: detailSlice,
-//   table: searchTableSlice,
-//   footer: footerStateSlice,
-// });
-
-export default store;
-// export default rootReducer;
+// export default store;
+// // export default rootReducer;

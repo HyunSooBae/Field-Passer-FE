@@ -7,10 +7,10 @@ import SelectBox from './SelectBox';
 const Searchbar = () => {
   const navigate = useNavigate();
   const catagorySelect = useSelector((state: any) => {
-    return state.store.catagorySelect;
+    return state.catagorySelect;
   });
   const districtSelect = useSelector((state: any) => {
-    return state.store.districtSelect;
+    return state.districtSelect;
   });
 
   const [categoryList, setCategoryList] = useState([]);
