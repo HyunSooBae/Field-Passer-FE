@@ -1,39 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MessageBubble from './MessageBubble';
-import SendMessage from './SendMessage';
+import { ChatListType } from '@src/util/mainPageTypes';
 
-type Props = {};
+type PropsType = {
+  chatList: ChatListType[];
+};
 
-const ChatBox = (props: Props) => {
-  const [person, setPerson] = useState('me');
-  const [message, setMessage] = useState('');
-  const [time, setTime] = useState('');
-  const [date, setDate] = useState('');
-
+const ChatBox = ({ chatList }: PropsType) => {
   return (
-    <>
-      <section className='chatting xxs:h-[calc(100vh-200px)] sm:h-[calc(100vh-220px)] flex flex-col gap-3 px-5 py-7 overflow-scroll border-2 border-solid border-gray-200 bg-gray-100'>
-        <MessageBubble person={'me'} />
-        <MessageBubble person={'other'} />
-        <MessageBubble person={'me'} />
-        <MessageBubble person={'other'} />
-        <MessageBubble person={'me'} />
-        <MessageBubble person={'other'} />
-        <MessageBubble person={'me'} />
-        <MessageBubble person={'other'} />
-        <MessageBubble person={'me'} />
-        <MessageBubble person={'other'} />
-        <MessageBubble person={'me'} />
-        <MessageBubble person={'other'} />
-        <MessageBubble person={'me'} />
-        <MessageBubble person={'other'} />
-        <MessageBubble person={'me'} />
-        <MessageBubble person={'other'} />
-        <MessageBubble person={'me'} />
-        <MessageBubble person={'other'} />
-      </section>
-      <SendMessage />
-    </>
+    <section className='chatting xxs:h-[calc(100vh-200px)] sm:h-[calc(100vh-220px)] flex flex-col gap-3 px-5 py-7 overflow-scroll border-2 border-solid border-gray-200 bg-gray-100'>
+      {chatList.length >= 1 &&
+        chatList.map((message, index) => (
+          <MessageBubble
+            key={index}
+            person={message.person}
+            time={message.time}
+            message={message.message}
+          />
+        ))}
+    </section>
   );
 };
 

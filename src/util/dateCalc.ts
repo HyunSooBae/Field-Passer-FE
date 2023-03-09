@@ -1,4 +1,18 @@
 const date = new Date();
+
+const timeNow = () => {
+  let hours: string = ('0' + date.getHours()).slice(-2);
+  let minutes: string = ('0' + date.getMinutes()).slice(-2);
+  return `${hours}:${minutes}`;
+};
+
+const dateNow = () => {
+  var year = date.getFullYear();
+  var month = ('0' + (date.getMonth() + 1)).slice(-2);
+  var day = ('0' + date.getDate()).slice(-2);
+  return { year, month, day };
+};
+
 const endDate = () => {
   const year = date.getFullYear();
   let month: string | number = date.getMonth() + 1;
@@ -42,4 +56,4 @@ const startDate = () => {
   return `${year}-${month}-${day}`;
 };
 
-export { endDate, startDate };
+export { endDate, startDate, timeNow, dateNow };
