@@ -16,7 +16,7 @@ export const request = axios.create(axiosConfig);
 request.interceptors.request.use(
   function (config) {
     // 요청 전달 되기 전 작업 수행
-    console.log('req interceptor : ', config);
+    // console.log('req interceptor : ', config);
     return config;
   },
   function (error) {
@@ -29,7 +29,7 @@ request.interceptors.request.use(
 request.interceptors.response.use(
   function (config) {
     // 응답 데이터가 있는 작업 수행
-    console.log('res interceptor : ', config);
+    // console.log('res interceptor : ', config);
     return config;
   },
   function (error) {
@@ -46,7 +46,8 @@ const axiosConfigForm: AxiosRequestConfig = {
     withCredentials: true,
     credentials: 'include',
   },
+  withCredentials: true,
 
-  timeout: 10000,
+  // timeout: 10000,
 };
 export const requestForm = axios.create(axiosConfigForm);

@@ -1,14 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { join } from '@src/api/request';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, useFormContext, SubmitHandler } from 'react-hook-form';
+import ConfirmModal from '@src/components/ui/Modal';
 import { IoIosCloseCircle } from 'react-icons/io';
 
 const Join = () => {
-  const MAX_FILE_SIZE = 300000;
-  const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+  const [confirmModal, setConfirmModal] = useState(false);
+  const navigate = useNavigate();
+  const MAX_FILE_SIZE = 1048576;
+  const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
   const formSchema = z
     .object({
       email: z
@@ -29,24 +32,28 @@ const Join = () => {
         .string()
         .min(1, { message: '최대 10글자 이내로 작성해주세요.' })
         .max(10, { message: '최대 10글자 이내로 작성해주세요.' }),
-      profileImg: z.union([z.any(), z.instanceof(File).optional()]),
-      // .refine((files) => files !== null, { message: '파일을 선택해주세요.' })
-      // .refine((files) => ACCEPTED_IMAGE_TYPES.includes('files.0.type'), {
-      //   message: '파일 형식은 .jpg, .jpeg, .png, .webp 만 가능합니다.',
-      // })
-      // .refine((files) => files.size <= MAX_FILE_SIZE, {
-      //   message: `파일 용량은 최대 1MB까지 가능합니다.`,
-      // }),
+      profileImg: z
+        .any()
+        .default(null)
+        .refine((file) => file !== null, {
+          message: '.jpg, .jpeg, .png, gif 형식에 맞는 파일을 업로드해주세요.',
+        })
+        .refine((file) => ACCEPTED_IMAGE_TYPES.includes(file?.[0]?.type), {
+          message: '.jpg, .jpeg, .png, gif 형식에 맞는 파일을 업로드해주세요.',
+        })
+        .refine((file) => file?.[0]?.size <= MAX_FILE_SIZE, {
+          message: `파일 용량은 최대 1MB까지 가능합니다.`,
+        }),
+      // .optional(),
     })
-    .partial({
-      profileImg: true,
-    })
+    .required()
+    // .partial()
     .refine((data) => data.password === data.passwordCheck, {
       message: '비밀번호가 일치하지 않습니다.',
       path: ['passwordCheck'],
     });
-
   type formSchema = z.infer<typeof formSchema>;
+
   const {
     register,
     handleSubmit,
@@ -63,37 +70,27 @@ const Join = () => {
     formData.append('password', passwordCheck);
     formData.append('memberName', memberName);
     formData.append('profileImg', profileImg);
-    console.log(formData);
-    const { ok, autData } = await join(data);
-    console.log(autData);
+    // console.log(data);
+    // const { ok, authData } = await join(formData);
+    // console.log(authData);
+    setConfirmModal(true);
+    // let entries = formData.entries();
+    // for (const pair of entries) {
+    //   console.log(pair[0] + ', ' + pair[1]);
+    // }
   };
 
-  const [imgFile, setImgFile] = useState('');
-  const imgRef: any = useRef('');
-  const onFileChange = (event: React.FormEvent<HTMLInputElement>) => {
-    const {
-      target: { files },
-    } = event;
-    const theFile = files[0];
-    if (theFile.size > 1024 * 1024) return;
-    const reader = new FileReader();
-    reader.onloadend = (finishedEvent) => {
-      const {
-        currentTarget: { result },
-      } = finishedEvent;
-      setImgFile(result);
-    };
-    reader.readAsDataURL(theFile);
-  };
+  // const [imgFile, setImgFile] = useState('');
+  // const imgRef: any = useRef('');
 
   const [avatarPreview, setAvatarPreview] = useState('');
-  // const avatar = watch('profileImg');
-  // useEffect(() => {
-  //   if (avatar && avatar.length > 0) {
-  //     const file = avatar[0];
-  //     setAvatarPreview(URL.createObjectURL(file));
-  //   }
-  // }, [avatar]);
+  const avatar = watch('profileImg');
+  useEffect(() => {
+    if (avatar && avatar.length > 0) {
+      const file = avatar[0];
+      setAvatarPreview(URL.createObjectURL(file));
+    }
+  }, [avatar]);
 
   const removeProfileImg = () => {
     setAvatarPreview('');
@@ -164,7 +161,7 @@ const Join = () => {
             )}
           </div>
           <div className='bg-white border'>
-            <h4 className='block text-gray-900 text-sm font-bold mb-2'>프로필 사진 (선택)</h4>
+            <h4 className='block text-gray-900 text-sm font-bold mb-2'>프로필 사진</h4>
             {/* <div className='w-1/3 border aspect-square bg-gray-100 m-auto'>
               <span className=''>이미지 미리보기</span>
             </div> */}
@@ -181,28 +178,17 @@ const Join = () => {
                   <input
                     id='images'
                     type='file'
+                    // required
                     className='hidden'
-                    accept='image/*'
-                    {...register('profileImg', { onChange: onFileChange })}
+                    accept='image/gif,image/jpeg,image/png'
+                    // onChange={imgPreview}
+                    {...register('profileImg')}
                     // ref={imgRef}
                   />
-                  {errors.profileImg && (
+                  {/* {errors.profileImg && (
                     <p className='text-xs text-red-600 py-3'>{errors.profileImg.message}</p>
-                  )}
-                  {imgFile && (
-                    <div>
-                      <img src={imgFile} style={{ backgroundImage: imgFile }} alt='thumnail' />
-                      <div className='factoryForm__clear' onClick={removeProfileImg}>
-                        <button
-                          type='button'
-                          className='absolute right-[-10px] top-[-10px] rounded-full'
-                        >
-                          <IoIosCloseCircle size='30' color='gray'></IoIosCloseCircle>
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                  {/* {avatarPreview && !errors.profileImg ? (
+                  )} */}
+                  {avatarPreview && !errors.profileImg ? (
                     <>
                       <img
                         src={avatarPreview}
@@ -216,13 +202,13 @@ const Join = () => {
                       >
                         <IoIosCloseCircle size='30' color='gray'></IoIosCloseCircle>
                       </button>
-                    </> */}
-                  {/* ) : (
+                    </>
+                  ) : (
                     <label
                       htmlFor='images'
                       className='block w-[100px] h-[100px] border-solid border rounded-lg cursor-pointer border-[#ddd] bg-[url("/images/cam.png")] bg-center bg-[length:60px] bg-no-repeat'
                     />
-                  )} */}
+                  )}
                 </div>
               </div>
             </div>
@@ -235,6 +221,16 @@ const Join = () => {
             회원가입
           </button>
         </form>
+        {confirmModal && (
+          <ConfirmModal
+            title='회원가입이 완료되었습니다.'
+            description='확인 버튼을 누르면 로그인 화면으로 이동합니다.'
+            onConfirm={() => navigate('/login')}
+            onCancel={() => {
+              setConfirmModal(false), navigate('/');
+            }}
+          />
+        )}
       </div>
     </div>
   );
