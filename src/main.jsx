@@ -11,8 +11,7 @@ import NotFound from './pages/NotFound';
 import AdminMember from './pages/Admin/Member';
 import AdminMemberDetail from './pages/Admin/MemberDetail';
 import Login from './pages/Login';
-// import Join from './pages/Join';
-import Join2 from './pages/Join2';
+import Join from './pages/Join';
 import FindAccount from './pages/FindAccount';
 import BoardForm from './pages/BoardForm';
 import BoardDetails from './pages/BoardDetails';
@@ -39,7 +38,7 @@ const router = createBrowserRouter([
       { path: '/help', element: <Help /> },
       { path: '/help/question', element: <QuestionBox /> },
       { path: '/login', element: <Login /> },
-      { path: '/join', element: <Join2 /> },
+      { path: '/join', element: <Join /> },
       { path: '/findaccount', element: <FindAccount /> },
       { path: '/mypage', element: <MyPage /> },
       { path: '/admin', element: <AdminHome /> },
