@@ -27,7 +27,7 @@ const PostList = ({ item }: Props) => {
       </td>
       <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>{item.title}</td>
       <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
-        {item.registerDate}
+        {item.registerDate?.slice(0, 10)}
       </td>
       <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
         {item.memberId}
