@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { join } from '@src/api/request';
@@ -167,12 +166,12 @@ const Join = () => {
               <span className=''>이미지 미리보기</span>
             </div> */}
             <div className='flex justify-center gap-3 my-5'>
-              {/* <label
+              <label
                 className='w-fit p-1.5 rounded-[10px] border border-solid border-field text-gray-400'
                 htmlFor='imgFile'
               >
                 사진 선택
-              </label> */}
+              </label>
 
               <div>
                 <div className='flex gap-[10px] relative'>

@@ -17,7 +17,7 @@ const MemberList = ({ item }: Props) => {
       </td>
       <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>{item.email}</td>
       <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
-        {item.signupDate}
+        {item.signupDate?.slice(0, 10)}
       </td>
       <td className='px-6 py-4'>
         <button
