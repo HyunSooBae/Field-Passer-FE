@@ -34,7 +34,7 @@ const Login = () => {
   } = useForm<FormSchmaType>({ mode: 'onChange', resolver: zodResolver(formSchema) });
 
   const [confirmModal, setComfirmModal] = useState(false);
-  const [authMessage, setAuthMessage] = useState('')
+  const [authMessage, setAuthMessage] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   // const authState = useSelector(state => state.auth);
@@ -42,18 +42,17 @@ const Login = () => {
   const onSubmit: SubmitHandler<FormSchmaType> = async (data) => {
     const { ok, code, authData } = await userLogin(data);
     // console.log(authData);
-    if (ok && code === 200 ) {
+    if (ok && code === 200) {
       dispatch(SET_AUTH(true));
       // navigate('/');
       console.log(authData);
-      setAuthMessage(authData.message)
-      setComfirmModal(true)
-    }
-    else {
-      console.log('ok : ', ok, ', code : ', code, ', authData.message : ', authData.message)
+      setAuthMessage(authData.message);
+      setComfirmModal(true);
+    } else {
+      console.log('ok : ', ok, ', code : ', code, ', authData.message : ', authData.message);
       // 로그인에 실패하였습니다 모달창 띄우기
-      setAuthMessage(authData.message)
-      setComfirmModal(true)
+      setAuthMessage(authData.message);
+      setComfirmModal(true);
     }
   };
 
@@ -108,11 +107,11 @@ const Login = () => {
       </div>
       <>
         {confirmModal && (
-          <Modal 
-          title={authMessage}
-          description={authMessage}
-          onCancel={() => setComfirmModal(false)}
-          onConfirm={() => navigate('/')}
+          <Modal
+            title={authMessage}
+            description={authMessage}
+            onCancel={() => setComfirmModal(false)}
+            onConfirm={() => navigate('/')}
           />
         )}
       </>

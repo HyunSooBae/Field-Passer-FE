@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { useForm, useFormContext, SubmitHandler } from 'react-hook-form';
 import ConfirmModal from '@src/components/Modal';
 import { IoIosCloseCircle } from 'react-icons/io';
+import { profile } from 'console';
 
 const Join = () => {
   const [confirmModal, setConfirmModal] = useState(false);
@@ -65,19 +66,23 @@ const Join = () => {
   const onSubmit: SubmitHandler<formSchema> = async (data) => {
     console.log(watch(data.profileImg));
     const { email, passwordCheck, memberName, profileImg } = data;
+    console.log(profileImg[0]);
     const formData = new FormData();
     formData.append('email', email);
     formData.append('password', passwordCheck);
     formData.append('memberName', memberName);
-    formData.append('profileImg', profileImg);
-    // console.log(data);
+    const blob = new Blob([JSON.stringify(profileImg)], {
+      type: 'application/json',
+    });
+    formData.append('profileImg', profileImg[0]);
+    console.log(data);
     // const { ok, authData } = await join(formData);
     // console.log(authData);
-    setConfirmModal(true);
-    // let entries = formData.entries();
-    // for (const pair of entries) {
-    //   console.log(pair[0] + ', ' + pair[1]);
-    // }
+    // setConfirmModal(true);
+    let entries = formData.entries();
+    for (const pair of entries) {
+      console.log(pair[0] + ', ' + pair[1]);
+    }
   };
 
   // const [imgFile, setImgFile] = useState('');
@@ -166,24 +171,26 @@ const Join = () => {
               <span className=''>이미지 미리보기</span>
             </div> */}
             <div className='flex justify-center gap-3 my-5'>
-              <label
+              {/* <label
                 className='w-fit p-1.5 rounded-[10px] border border-solid border-field text-gray-400'
                 htmlFor='imgFile'
               >
                 사진 선택
-              </label>
+              </label> */}
 
               <div>
                 <div className='flex gap-[10px] relative'>
                   <input
                     id='images'
                     type='file'
+                    multiple
                     // required
                     className='hidden'
                     accept='image/gif,image/jpeg,image/png'
                     // onChange={imgPreview}
                     {...register('profileImg')}
                     // ref={imgRef}
+                    name='profileImg'
                   />
                   {/* {errors.profileImg && (
                     <p className='text-xs text-red-600 py-3'>{errors.profileImg.message}</p>
