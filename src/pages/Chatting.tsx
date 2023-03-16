@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { VscMenu, VscArrowLeft } from 'react-icons/vsc';
 import { Client } from '@stomp/stompjs';
 import { currentTime, TimeFormatEnum } from '@src/util/CurrentTime';
-import { ChatListType } from '@src/util/mainPageTypes';
+import { ChatListType } from '@src/util/userPageTypes';
 
 // 접속id와 다를경우 접근 불가
 const Chatting = () => {

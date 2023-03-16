@@ -1,9 +1,42 @@
 import React from 'react';
 import { useState, useRef } from 'react';
 import Datepicker from 'tailwind-datepicker-react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { submitPost } from '@src/api/request';
 
 const BoardForm = () => {
   const imgfile: any = useRef(null);
+  const navigate = useNavigate();
+  const formSchema = z.object({
+    categoryName: z.string(),
+    districtName: z.string(),
+    stadiumName: z.string(),
+    title: z.string().min(2, { message: '제목을 2자 이상 입력해주세요.' }),
+    price: z.number().min(0, { message: '양도할 가격을 입력해주세요.' }),
+    content: z.string().min(5, { message: '상세 내용을 입력해주세요.' }),
+    date: z.string(),
+  });
+
+  type FormSchmaType = z.infer<typeof formSchema>;
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormSchmaType>({ mode: 'onSubmit', resolver: zodResolver(formSchema) });
+
+  const onSubmit: SubmitHandler<FormSchmaType> = async (data) => {
+    const { categoryName, districtName, stadiumName, title, price, content, date } = data;
+    const formData = new FormData();
+    // formData.append('email', email);
+    // formData.append('password', password);
+    const response = await submitPost(formData);
+    console.log(response);
+    // navigate('/')
+  };
 
   //datepicker options
   const options = {

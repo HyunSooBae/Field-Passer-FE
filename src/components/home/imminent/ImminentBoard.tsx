@@ -7,7 +7,7 @@ import BoxForm from './BoxForm';
 import { useMediaQuery } from 'react-responsive';
 import { districtOptions } from '../../../util/options';
 import { GiTennisCourt } from 'react-icons/gi';
-import { ListType } from '@src/util/mainPageTypes';
+import { ListType } from '@src/util/userPageTypes';
 import { getImminentList, getNewPostList } from '@src/api/request';
 
 const ImminentBoard = () => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ImminentList from './ImminentList';
-import { ImminentBoardType } from '@src/util/mainPageTypes';
+import { ImminentBoardType } from '@src/util/userPageTypes';
 
 const BoxForm = ({ selectedCategory, selectedDistrict, list }: ImminentBoardType) => {
   const filteredList = list.filter(

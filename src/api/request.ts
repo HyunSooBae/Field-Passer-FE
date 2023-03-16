@@ -1,3 +1,5 @@
+import { PostDataType } from '@src/util/userPageTypes';
+import { File } from 'buffer';
 import { request, requestForm } from './core/api';
 
 // 관리자 페이지 회원 정보 리스트 조회
@@ -292,5 +294,15 @@ export const submitReport = async (
     });
   } catch (error) {
     console.log(error);
+  }
+};
+
+// 양도 게시글 작성
+export const submitPost = async (formData: FormData) => {
+  try {
+    const response = await request.post('/api/post/write', formData);
+    return response;
+  } catch (err) {
+    console.log(err);
   }
 };
