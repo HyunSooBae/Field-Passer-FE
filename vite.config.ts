@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { resolve } from 'path';
-import mkcert from 'vite-plugin-mkcert';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -31,10 +30,6 @@ export default defineConfig(({ mode }) => {
         },
       }),
       tsconfigPaths(),
-      mkcert(),
     ],
-    server: {
-      https: true,
-    },
   };
 });

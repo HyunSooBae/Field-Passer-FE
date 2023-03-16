@@ -8,7 +8,7 @@ import { useMediaQuery } from 'react-responsive';
 import { districtOptions } from '../../../util/options';
 import { GiTennisCourt } from 'react-icons/gi';
 import { ListType } from '@src/util/userPageTypes';
-import { getImminentList, getNewPostList } from '@src/api/request';
+import { getImminentList } from '@src/api/request';
 
 const ImminentBoard = () => {
   const pcForm = useMediaQuery({
@@ -25,23 +25,14 @@ const ImminentBoard = () => {
 
   useEffect(() => {
     async function getList() {
-      // const res = await requestAPI('imminent');
       const res = await getImminentList(selectedCategory);
-      console.log(res);
-      // setPostList(res?.data.content);
+      setPostList(res?.data);
     }
     getList();
   }, [selectedCategory]);
 
-  useEffect(() => {
-    async function getNewPost() {
-      const res = await getNewPostList();
-      console.log(res);
-    }
-    getNewPostList();
-  }, []);
-
   const sortedItems = () => {
+    console.log(postList);
     if (sortingDate) {
       return postList?.sort(
         (a: any, b: any) =>

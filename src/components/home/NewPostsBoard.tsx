@@ -3,16 +3,18 @@ import requestAPI from '../../api/axios';
 import { GiSoccerField } from 'react-icons/gi';
 import Board from '../../pages/Board';
 import PostList from '../PostList';
+import { ListType } from '@src/util/userPageTypes';
+import { getNewPostList } from '@src/api/request';
 
 const NewPostsBoard = () => {
-  const [data, setData] = useState([]);
+  const [newPostList, setNewPostList] = useState<ListType[]>([]);
 
   useEffect(() => {
-    const getData = async () => {
-      const res = await requestAPI('post');
-      setData(res?.data.resultData);
-    };
-    getData();
+    async function getNewPost() {
+      const res = await getNewPostList();
+      setNewPostList(res?.data.content);
+    }
+    getNewPost();
   }, []);
 
   return (
@@ -22,7 +24,7 @@ const NewPostsBoard = () => {
         새로 등록된 글
       </div>
       <div className='py-5 px-5'>
-        <PostList data={data} />
+        <PostList data={newPostList} />
       </div>
     </section>
   );

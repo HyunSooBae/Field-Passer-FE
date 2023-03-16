@@ -246,7 +246,8 @@ export const getImminentList = async (category: string) => {
 // 메인 - 새로 등록된 게시글 조회
 export const getNewPostList = async () => {
   try {
-    return await request.get('/api/post?page=1');
+    const res = await request.get('/api/post?page=1');
+    return res;
   } catch (error) {
     console.log(error);
   }

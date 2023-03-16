@@ -8,6 +8,7 @@ const BoxForm = ({ selectedCategory, selectedDistrict, list }: ImminentBoardType
       item.category === selectedCategory &&
       (selectedDistrict === 'all' || item.district === selectedDistrict),
   );
+  console.log(list);
 
   return (
     <div className='flex mm:hidden text-center'>
