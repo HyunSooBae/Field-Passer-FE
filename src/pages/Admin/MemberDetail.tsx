@@ -33,7 +33,7 @@ const AdminMemberDetail = () => {
       <Profile item={member} />
       <hr />
       <div className='mt-4'>
-        <span className='mb-5 block text-field font-bold'>작성한 게시글 {member.postCount}</span>
+        <span className='mb-5 block text-field font-bold'>작성한 게시글 {total ? total : 0}</span>
         <Posts items={posts} />
       </div>
       <Pagination total={total} limit={10} page={page} setPage={setPage} />

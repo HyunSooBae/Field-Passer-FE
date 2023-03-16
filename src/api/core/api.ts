@@ -44,7 +44,7 @@ const axiosConfigForm: AxiosRequestConfig = {
   headers: {
     'content-type': 'multipart/form-data',
     withCredentials: true,
-    // credentials: 'include',
+    credentials: 'include',
   },
   withCredentials: true,
 

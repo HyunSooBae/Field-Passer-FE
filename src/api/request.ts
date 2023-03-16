@@ -292,25 +292,6 @@ export const logout = async () => {
   }
 };
 
-// 사용자 회원가입
-export const join = async (data: any) => {
-  try {
-    const response = await requestForm('/api/auth/register', {
-      method: 'POST',
-      data,
-    });
-    return {
-      ok: true,
-      authData: response,
-    };
-  } catch (error) {
-    console.log(error);
-    return {
-      ok: false,
-    };
-  }
-};
-
 // 고객센터 문의글 접수하기
 export const submitReport = async (
   memberId: string,
@@ -331,5 +312,24 @@ export const submitReport = async (
     });
   } catch (error) {
     console.log(error);
+  }
+};
+
+// 사용자 회원가입
+export const join = async (data: any) => {
+  try {
+    const response = await requestForm('/api/auth/register', {
+      method: 'POST',
+      data,
+    });
+    return {
+      ok: true,
+      authData: response.data,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+    };
   }
 };
