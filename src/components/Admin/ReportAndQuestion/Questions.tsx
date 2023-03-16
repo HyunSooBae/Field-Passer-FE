@@ -3,6 +3,7 @@ import Question from './Question';
 import { questionType } from '@src/util/adminPageTypes';
 import { getQuestionsList } from '@src/api/request';
 import { startDate, endDate } from '@src/util/dateCalc';
+import FormDatePicker from '@src/components/Admin/FormDatePicker';
 
 const Questions = () => {
   const [questions, setQuestions] = useState<questionType[]>([]);
@@ -15,8 +16,20 @@ const Questions = () => {
     };
     fetchData();
   }, []);
+
   return (
     <>
+      <div className='flex items-center '>
+        <FormDatePicker title={'시작 날짜'} />
+        <span className='mr-3'>~</span>
+        <FormDatePicker title={'마지막 날짜'} />
+        <button
+          type='submit'
+          className='bg-field rounded-lg text-white hover:bg-hoverField h-8 w-16'
+        >
+          검색
+        </button>
+      </div>
       <table className='table-auto w-full text-sm mt-3 rounded-[10px] overflow-hidden bg-field border border-solid border-field'>
         <thead className='text-sm text-field bg-tableBg text-bold'>
           <tr>

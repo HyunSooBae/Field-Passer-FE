@@ -1,11 +1,7 @@
 import './index.css';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { persistReducer } from 'redux-persist';
-import { PersistGate } from 'redux-persist/integration/react';
 import App from './App';
-// import configureStore from "./store";
-// import { rootReducer } from "./reducers";
 import './index.css';
 import AdminHome from './pages/Admin/Home';
 import Board from './pages/Board';
@@ -22,14 +18,15 @@ import BoardDetails from './pages/BoardDetails';
 import AdminPost from './pages/Admin/Post';
 import AdminPostDetail from './pages/Admin/PostDetail';
 import { Provider } from 'react-redux';
-import store from './store';
+import { PersistGate } from 'redux-persist/integration/react';
+import store, { persistor } from './store/store';
 import ReportAndQuestion from './pages/Admin/ReportAndQuestion';
 import Help from './pages/Help';
 import AdminLogin from './pages/Admin/Login';
 import ReportDetail from './pages/Admin/ReportDetail';
 import QuestionBox from './components/help/QuestionBox';
 import Chatting from './pages/Chatting';
-// import { CookiesProvider } from 'react-cookie';
+import { CookiesProvider } from 'react-cookie';
 
 const router = createBrowserRouter([
   {
@@ -61,11 +58,11 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <CookiesProvider>
-  <Provider store={store}>
-    {/* <PersistGate loading={null} persistor={persistor}> */}
-    <RouterProvider router={router} />
-    {/* </PersistGate> */}
-  </Provider>,
-  // </CookiesProvider>,
+  <CookiesProvider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <RouterProvider router={router} />
+      </PersistGate>
+    </Provider>
+  </CookiesProvider>,
 );
