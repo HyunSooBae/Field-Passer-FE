@@ -5,8 +5,8 @@ import { ImminentBoardType } from '@src/util/userPageTypes';
 const TableForm = ({ selectedCategory, selectedDistrict, list }: ImminentBoardType) => {
   const filteredList = list.filter(
     (item) =>
-      item.category === selectedCategory &&
-      (selectedDistrict === 'all' || item.district === selectedDistrict),
+      item.categoryName === selectedCategory &&
+      (selectedDistrict === 'all' || item.districtName === selectedDistrict),
   );
 
   return (
@@ -43,12 +43,12 @@ const TableForm = ({ selectedCategory, selectedDistrict, list }: ImminentBoardTy
       </thead>
       <tbody>
         {filteredList.length ? (
-          filteredList?.map(({ category, postId, district, stadiumName, startTime }) => (
+          filteredList?.map(({ categoryName, postId, districtName, stadiumName, startTime }) => (
             <ImminentList
               key={postId}
               postId={postId}
-              category={category}
-              district={district}
+              categoryName={categoryName}
+              districtName={districtName}
               startTime={startTime}
               stadiumName={stadiumName}
               mobile={false}
