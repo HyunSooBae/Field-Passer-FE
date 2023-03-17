@@ -6,9 +6,9 @@ export type ImminentBoardType = {
 };
 // 마감임박 API 응답값
 export interface ListType {
-  category: string;
-  district: string;
-  imageURL?: string;
+  categoryName: string;
+  districtName: string;
+  defaultImageUrl?: string;
   memberId?: string;
   memberName?: string;
   postId: string;
