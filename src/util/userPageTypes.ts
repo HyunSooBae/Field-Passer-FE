@@ -28,3 +28,17 @@ export interface ChatListType {
   time: string;
   message: string;
 }
+
+export interface PostDataType {
+  memberId: string;
+  categoryName: string;
+  districtName: string;
+  stadiumName: string;
+  title: string;
+  content: string;
+  startTime: string;
+  endTime: string;
+  file: File;
+  transactionStatus: string;
+  price: number;
+}

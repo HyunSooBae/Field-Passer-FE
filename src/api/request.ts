@@ -1,3 +1,5 @@
+import { PostDataType } from '@src/util/userPageTypes';
+import { File } from 'buffer';
 import { request, requestForm } from './core/api';
 import { getCookie, setCookie } from '@src/util/cookie';
 
@@ -244,7 +246,8 @@ export const getImminentList = async (category: string) => {
 // 메인 - 새로 등록된 게시글 조회
 export const getNewPostList = async () => {
   try {
-    return await request.get('/api/post?page=1');
+    const res = await request.get('/api/post?page=1');
+    return res;
   } catch (error) {
     console.log(error);
   }
@@ -312,6 +315,16 @@ export const submitReport = async (
     });
   } catch (error) {
     console.log(error);
+  }
+};
+
+// 양도 게시글 작성
+export const submitPost = async (formData: FormData) => {
+  try {
+    const response = await request.post('/api/post/write', formData);
+    return response;
+  } catch (err) {
+    console.log(err);
   }
 };
 

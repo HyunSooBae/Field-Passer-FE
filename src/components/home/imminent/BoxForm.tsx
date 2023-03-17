@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ImminentList from './ImminentList';
-import { ImminentBoardType } from '@src/util/mainPageTypes';
+import { ImminentBoardType } from '@src/util/userPageTypes';
 
 const BoxForm = ({ selectedCategory, selectedDistrict, list }: ImminentBoardType) => {
   const filteredList = list.filter(
@@ -8,6 +8,7 @@ const BoxForm = ({ selectedCategory, selectedDistrict, list }: ImminentBoardType
       item.category === selectedCategory &&
       (selectedDistrict === 'all' || item.district === selectedDistrict),
   );
+  console.log(list);
 
   return (
     <div className='flex mm:hidden text-center'>

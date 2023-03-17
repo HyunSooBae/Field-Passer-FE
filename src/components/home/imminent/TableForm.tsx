@@ -1,6 +1,6 @@
 import React from 'react';
 import ImminentList from './ImminentList';
-import { ImminentBoardType } from '@src/util/mainPageTypes';
+import { ImminentBoardType } from '@src/util/userPageTypes';
 
 const TableForm = ({ selectedCategory, selectedDistrict, list }: ImminentBoardType) => {
   const filteredList = list.filter(

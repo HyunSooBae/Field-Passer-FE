@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import MessageBubble from './MessageBubble';
-import { ChatListType } from '@src/util/mainPageTypes';
+import { ChatListType } from '@src/util/userPageTypes';
 
 type PropsType = {
   chatList: ChatListType[];

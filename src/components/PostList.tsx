@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { BsEye } from 'react-icons/bs';
 import { HiOutlineChatBubbleLeftRight } from 'react-icons/hi2';
-import { ListType } from '@src/util/mainPageTypes';
+import { ListType } from '@src/util/userPageTypes';
 
 const PostList = ({ data }: { data: ListType[] }) => {
   return (
