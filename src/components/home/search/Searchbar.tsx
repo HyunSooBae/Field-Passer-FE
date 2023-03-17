@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import requestAPI from '../../../api/axios';
 import SelectBox from './SelectBox';
+import { RootState } from '@src/store/store';
+import { getCategoryDistrict, getStadiumList } from '@src/api/request';
 
 const Searchbar = () => {
   const navigate = useNavigate();
-  const catagorySelect = useSelector((state: any) => {
-    return state.catagorySelect;
+  const catagorySelect = useSelector<RootState>((state) => {
+    return state.category.catagorySelect;
   });
-  const districtSelect = useSelector((state: any) => {
-    return state.districtSelect;
+  const districtSelect = useSelector<RootState>((state) => {
+    return state.category.districtSelect;
   });
 
   const [categoryList, setCategoryList] = useState([]);
@@ -18,19 +20,19 @@ const Searchbar = () => {
   const [stadiumList, setStadiumList] = useState([]);
 
   useEffect(() => {
-    const getCategory = async () => {
-      const res = await requestAPI('categoryList');
-      setCategoryList(res?.data.resultData);
+    const getCategoryList = async () => {
+      const res = await getCategoryDistrict('category');
+      setCategoryList(res);
     };
 
-    getCategory();
+    getCategoryList();
   }, []);
 
   useEffect(() => {
     if (catagorySelect) {
       const getDistrict = async () => {
-        const res = await requestAPI('districtList');
-        setDistrictList(res?.data.resultData);
+        const res = await getCategoryDistrict('district');
+        setDistrictList(res);
       };
       getDistrict();
     }

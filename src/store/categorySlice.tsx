@@ -1,9 +1,15 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+export interface CategoryType {
+  catagorySelect: boolean;
+  districtSelect: boolean;
+}
+
+const initialState: CategoryType = {
   catagorySelect: false,
   districtSelect: false,
 };
+
 const categorySlice = createSlice({
   name: 'store',
   initialState,
@@ -24,6 +30,7 @@ const categorySlice = createSlice({
       switch (action.payload) {
         case 'category':
           state.catagorySelect = false;
+          state.districtSelect = false;
           break;
         case 'district':
           state.districtSelect = false;
