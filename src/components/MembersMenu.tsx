@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '@src/store/store';
-import {} from '@src/store/authSlice';
+import { SET_AUTH } from '@src/store/authSlice';
 import { logout } from '@src/api/request';
 
 const MembersMenu = () => {
@@ -16,7 +16,7 @@ const MembersMenu = () => {
     const { ok, code, authData } = await logout();
     // console.log(authData);
     if (ok && code === 200 && authData) {
-      dispatch(false);
+      dispatch(SET_AUTH(false));
       navigate('/');
     }
   };
