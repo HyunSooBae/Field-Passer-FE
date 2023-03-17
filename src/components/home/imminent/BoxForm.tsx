@@ -5,21 +5,20 @@ import { ImminentBoardType } from '@src/util/userPageTypes';
 const BoxForm = ({ selectedCategory, selectedDistrict, list }: ImminentBoardType) => {
   const filteredList = list.filter(
     (item) =>
-      item.category === selectedCategory &&
-      (selectedDistrict === 'all' || item.district === selectedDistrict),
+      item.categoryName === selectedCategory &&
+      (selectedDistrict === 'all' || item.districtName === selectedDistrict),
   );
-  console.log(list);
 
   return (
     <div className='flex mm:hidden text-center'>
       <div className='w-full'>
         {filteredList.length ? (
-          filteredList?.map(({ category, postId, district, stadiumName, startTime }) => (
+          filteredList?.map(({ categoryName, postId, districtName, stadiumName, startTime }) => (
             <ImminentList
               key={postId}
               postId={postId}
-              category={category}
-              district={district}
+              categoryName={categoryName}
+              districtName={districtName}
               startTime={startTime}
               stadiumName={stadiumName}
               mobile={true}

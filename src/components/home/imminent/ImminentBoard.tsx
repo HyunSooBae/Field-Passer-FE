@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { AxiosResponse } from 'axios';
 import requestAPI from '../../../api/axios';
 import CategoryFilter from './CategoryFilter';
@@ -23,16 +23,19 @@ const ImminentBoard = () => {
   const [selectedDistrict, setSelectedDistrict] = useState('all');
   const [sortingDate, setSortingDate] = useState(true);
 
-  useEffect(() => {
+  const fetchPostList = useCallback(() => {
     async function getList() {
       const res = await getImminentList(selectedCategory);
       setPostList(res?.data);
     }
     getList();
+  }, []);
+
+  useEffect(() => {
+    fetchPostList();
   }, [selectedCategory]);
 
   const sortedItems = () => {
-    console.log(postList);
     if (sortingDate) {
       return postList?.sort(
         (a: any, b: any) =>
