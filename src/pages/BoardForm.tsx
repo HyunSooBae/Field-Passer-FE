@@ -10,16 +10,31 @@ import { submitPost } from '@src/api/request';
 const BoardForm = () => {
   const imgfile: any = useRef(null);
   const navigate = useNavigate();
-  const formSchema = z.object({
-    categoryName: z.string(),
-    districtName: z.string(),
-    stadiumName: z.string(),
-    title: z.string().min(2, { message: '제목을 2자 이상 입력해주세요.' }),
-    price: z.number().min(0, { message: '양도할 가격을 입력해주세요.' }),
-    content: z.string().min(5, { message: '상세 내용을 입력해주세요.' }),
-    date: z.string(),
-  });
-
+  const MAX_FILE_SIZE = 10485760;
+  const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+  const formSchema = z
+    .object({
+      categoryName: z.string(),
+      districtName: z.string(),
+      stadiumName: z.string(),
+      title: z.string().min(2, { message: '제목을 2자 이상 입력해주세요.' }),
+      price: z.number().min(0, { message: '양도할 가격을 입력해주세요.' }),
+      content: z.string().min(5, { message: '상세 내용을 입력해주세요.' }),
+      startTime: z.string(),
+      file: z
+        .any()
+        .default(null)
+        .refine((file) => file !== null, {
+          message: '.jpg, .jpeg, .png, gif 형식에 맞는 파일을 업로드해주세요.',
+        })
+        .refine((file) => ACCEPTED_IMAGE_TYPES.includes(file?.[0]?.type), {
+          message: '.jpg, .jpeg, .png, gif 형식에 맞는 파일을 업로드해주세요.',
+        })
+        .refine((file) => file?.[0]?.size <= MAX_FILE_SIZE, {
+          message: `파일 용량은 최대 10MB까지 가능합니다.`,
+        }),
+    })
+    .required();
   type FormSchmaType = z.infer<typeof formSchema>;
 
   const {
@@ -29,7 +44,7 @@ const BoardForm = () => {
   } = useForm<FormSchmaType>({ mode: 'onSubmit', resolver: zodResolver(formSchema) });
 
   const onSubmit: SubmitHandler<FormSchmaType> = async (data) => {
-    const { categoryName, districtName, stadiumName, title, price, content, date } = data;
+    const { categoryName, districtName, stadiumName, title, price, content, startTime } = data;
     const formData = new FormData();
     // formData.append('email', email);
     // formData.append('password', password);
@@ -37,6 +52,27 @@ const BoardForm = () => {
     console.log(response);
     // navigate('/')
   };
+  // const onSubmit: SubmitHandler<formSchema> = async (data) => {
+  //   console.log(watch(data.profileImg));
+  //   const { email, passwordCheck, memberName, profileImg } = data;
+  //   console.log(profileImg[0]);
+  //   const formData = new FormData();
+  //   formData.append('email', email);
+  //   formData.append('password', passwordCheck);
+  //   formData.append('memberName', memberName);
+  //   const blob = new Blob([JSON.stringify(profileImg)], {
+  //     type: 'application/json',
+  //   });
+  //   formData.append('profileImg', profileImg[0]);
+  //   console.log(data);
+  //   // const { ok, authData } = await join(formData);
+  //   // console.log(authData);
+  //   // setConfirmModal(true);
+  //   let entries = formData.entries();
+  //   for (const pair of entries) {
+  //     console.log(pair[0] + ', ' + pair[1]);
+  //   }
+  // };
 
   //datepicker options
   const options = {
@@ -143,20 +179,28 @@ const BoardForm = () => {
             className='resize-none rounded text-sm border-#94a3b8 border-solid border-2 px-3 pt-3 h-96 focus:outline-none focus:border-field'
           ></textarea>
         </div>
-        <div>
-          <p className='text-xs text-gray-600 mb-[10px]'>예약 날짜 / 시간</p>
+        <div className='flex flex-col gap-3'>
+          <p className='text-xs text-gray-600'>예약 날짜 / 시간</p>
+          <FormDatepicker />
           <div className='flex'>
-            <FormDatepicker />
             <input
               type='time'
-              className='form-control block w-[calc(50%-10px)] px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:outline-none
-                            focus:border-field focus:outline-none;'
+              className='form-control block  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:outline-none
+                            focus:border-field cursor-pointer'
               placeholder='Select a date'
             />
+            <div className='mr-3 py-2 px-1'>부터</div>
+            <input
+              type='time'
+              className='form-control block px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:outline-none
+                            focus:border-field cursor-pointer'
+              placeholder='Select a date'
+            />
+            <div className='mr-3 py-2 px-1'>까지</div>
           </div>
         </div>
         <div>
-          <p className='text-xs text-gray-600 mb-[10px]'>인증 사진</p>
+          <p className='text-xs text-gray-600 mb-[10px]'>예약 인증 사진</p>
           <div className='flex gap-[10px]'>
             <label
               htmlFor='images'
