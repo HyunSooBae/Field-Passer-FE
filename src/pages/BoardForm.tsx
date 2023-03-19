@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState, useRef } from 'react';
 import Datepicker from 'tailwind-datepicker-react';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { submitPost } from '@src/api/request';
+import { IoIosCloseCircle } from 'react-icons/io';
 
 const BoardForm = () => {
   const imgfile: any = useRef(null);
@@ -20,10 +21,12 @@ const BoardForm = () => {
       title: z.string().min(2, { message: '제목을 2자 이상 입력해주세요.' }),
       price: z.number().min(0, { message: '양도할 가격을 입력해주세요.' }),
       content: z.string().min(5, { message: '상세 내용을 입력해주세요.' }),
+      date: z.string(),
       startTime: z.string(),
+      endTime: z.string(),
       file: z
         .any()
-        .default(null)
+        // .default(null)
         .refine((file) => file !== null, {
           message: '.jpg, .jpeg, .png, gif 형식에 맞는 파일을 업로드해주세요.',
         })
@@ -40,39 +43,48 @@ const BoardForm = () => {
   const {
     register,
     handleSubmit,
+    watch,
+    reset,
     formState: { errors },
   } = useForm<FormSchmaType>({ mode: 'onSubmit', resolver: zodResolver(formSchema) });
 
   const onSubmit: SubmitHandler<FormSchmaType> = async (data) => {
-    const { categoryName, districtName, stadiumName, title, price, content, startTime } = data;
+    // const formData = new FormData(e.currentTarget);
+    // console.log(formData.get('startTime'));
+
+    // const response = await submitPost(formData);
+    // console.log(response);
+    // // navigate('/')
+
+    const {
+      categoryName,
+      districtName,
+      stadiumName,
+      title,
+      price,
+      content,
+      date,
+      startTime,
+      endTime,
+      file,
+    } = data;
+
+    console.log(watch(file));
+
     const formData = new FormData();
     // formData.append('email', email);
-    // formData.append('password', password);
-    const response = await submitPost(formData);
-    console.log(response);
-    // navigate('/')
+    // formData.append('password', passwordCheck);
+    // formData.append('memberName', memberName);
+    // const blob = new Blob([JSON.stringify(profileImg)], {
+    //   type: 'application/json',
+    // });
+    // formData.append('profileImg', profileImg[0]);
+
+    let entries = formData.entries();
+    for (const pair of entries) {
+      console.log(pair[0] + ', ' + pair[1]);
+    }
   };
-  // const onSubmit: SubmitHandler<formSchema> = async (data) => {
-  //   console.log(watch(data.profileImg));
-  //   const { email, passwordCheck, memberName, profileImg } = data;
-  //   console.log(profileImg[0]);
-  //   const formData = new FormData();
-  //   formData.append('email', email);
-  //   formData.append('password', passwordCheck);
-  //   formData.append('memberName', memberName);
-  //   const blob = new Blob([JSON.stringify(profileImg)], {
-  //     type: 'application/json',
-  //   });
-  //   formData.append('profileImg', profileImg[0]);
-  //   console.log(data);
-  //   // const { ok, authData } = await join(formData);
-  //   // console.log(authData);
-  //   // setConfirmModal(true);
-  //   let entries = formData.entries();
-  //   for (const pair of entries) {
-  //     console.log(pair[0] + ', ' + pair[1]);
-  //   }
-  // };
 
   //datepicker options
   const options = {
@@ -124,7 +136,21 @@ const BoardForm = () => {
   };
 
   // 업로드 이미지 미리보기
-  const imgPreview = (input: any) => {
+  const [imgPreview, setImgPreview] = useState('');
+  const imgFile = watch('file');
+  useEffect(() => {
+    if (imgFile && imgFile.length > 0) {
+      const file = imgFile[0];
+      setImgPreview(URL.createObjectURL(file));
+    }
+  }, [imgFile]);
+
+  const removeImg = () => {
+    setImgPreview('');
+    reset({ file: null });
+  };
+
+  const preview = (input: any) => {
     if (input.target.files && input.target.files[0]) {
       let reader = new FileReader();
       reader.onload = (e: any) => {
@@ -137,7 +163,7 @@ const BoardForm = () => {
   return (
     <div className='my-[50px] mx-auto px-[20px] mm:px-0'>
       <form
-        action=''
+        onSubmit={handleSubmit(onSubmit)}
         className='w-full max-w-[600px] ml-auto mr-auto mt-0 mb-0 flex flex-col gap-[10px] mm:gap-[20px]'
       >
         <div className='flex gap-3'>
@@ -168,19 +194,25 @@ const BoardForm = () => {
             type='text'
             placeholder='제목'
             className='h-10 rounded text-sm border-#94a3b8 border-solid border-2 px-3 focus:outline-none focus:border-field'
+            {...register('title')}
           />
+          {errors.title && <p className='text-xs text-red-600'>{errors.title.message}</p>}
           <input
             type='number'
             placeholder='가격 입력'
             className='h-10 rounded text-sm border-#94a3b8 border-solid border-2 px-3 focus:outline-none focus:border-field'
+            {...register('price')}
           />
+          {errors.price && <p className='text-xs text-red-600'>{errors.price.message}</p>}
           <textarea
             placeholder='내용 입력'
             className='resize-none rounded text-sm border-#94a3b8 border-solid border-2 px-3 pt-3 h-96 focus:outline-none focus:border-field'
+            {...register('content')}
           ></textarea>
+          {errors.content && <p className='text-xs text-red-600'>{errors.content.message}</p>}
         </div>
         <div className='flex flex-col gap-3'>
-          <p className='text-xs text-gray-600'>예약 날짜 / 시간</p>
+          <p className='text-xs text-gray-600'>예약 일시</p>
           <FormDatepicker />
           <div className='flex'>
             <input
@@ -188,30 +220,35 @@ const BoardForm = () => {
               className='form-control block  px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:outline-none
                             focus:border-field cursor-pointer'
               placeholder='Select a date'
+              {...register('startTime')}
             />
             <div className='mr-3 py-2 px-1'>부터</div>
             <input
               type='time'
               className='form-control block px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:outline-none
-                            focus:border-field cursor-pointer'
+              focus:border-field cursor-pointer'
               placeholder='Select a date'
+              {...register('endTime')}
             />
             <div className='mr-3 py-2 px-1'>까지</div>
           </div>
+          {errors.startTime && <p className='text-xs text-red-600'>{errors.startTime.message}</p>}
+          {errors.endTime && <p className='text-xs text-red-600'>{errors.endTime.message}</p>}
         </div>
         <div>
           <p className='text-xs text-gray-600 mb-[10px]'>예약 인증 사진</p>
           <div className='flex gap-[10px]'>
             <label
-              htmlFor='images'
+              htmlFor='img'
               className='block w-[100px] h-[100px] border-solid border rounded-lg cursor-pointer border-[#ddd] bg-[url("/images/cam.png")] bg-center bg-[length:60px] bg-no-repeat'
             />
             <input
-              id='images'
+              id='img'
               type='file'
               className='hidden'
               accept='image/gif,image/jpeg,image/png'
-              onChange={(e) => imgPreview(e)}
+              {...register('file')}
+              onChange={(e) => preview(e)}
             />
 
             <img
@@ -220,6 +257,44 @@ const BoardForm = () => {
               className='w-[100px] h-[100px] rounded-lg border border-solid border-gray-300'
               ref={imgfile}
             />
+            {/* <div>
+              <div className='flex gap-[10px] relative'>
+                <input
+                  id='file'
+                  type='file'
+                  multiple
+                  // required
+                  className='hidden'
+                  accept='image/gif,image/jpeg,image/png'
+                  // onChange={imgPreview}
+                  {...register('file')}
+                  // ref={imgRef}
+                  name='file'
+                />
+                {errors.file && <p className='text-xs text-red-600 py-3'>{errors.file.message}</p>}
+                {imgPreview && !errors.file ? (
+                  <>
+                    <img
+                      src={imgPreview}
+                      alt='미리보기 이미지'
+                      className='w-[100px] h-[100px] rounded-lg border border-solid border-gray-300 object-cover'
+                    />
+                    <button
+                      type='button'
+                      className='absolute right-[-10px] top-[-10px] rounded-full'
+                      onClick={() => removeImg()}
+                    >
+                      <IoIosCloseCircle size='30' color='gray'></IoIosCloseCircle>
+                    </button>
+                  </>
+                ) : (
+                  <label
+                    htmlFor='images'
+                    className='block w-[100px] h-[100px] border-solid border rounded-lg cursor-pointer border-[#ddd] bg-[url("/images/cam.png")] bg-center bg-[length:60px] bg-no-repeat'
+                  />
+                )}
+              </div>
+            </div> */}
           </div>
         </div>
 
