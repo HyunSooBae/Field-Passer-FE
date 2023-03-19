@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import { BsEye } from 'react-icons/bs';
 import { HiOutlineChatBubbleLeftRight } from 'react-icons/hi2';
-import { ListType } from '@src/util/userPageTypes';
+import { PostType } from '@src/util/userPageTypes';
 
-const PostList = ({ data }: { data: ListType[] }) => {
+const PostList = ({ data }: { data: PostType[] }) => {
   return (
     <div className='max-w-5xl ml-auto mr-auto'>
       <div className='mx-[-15px] flex flex-wrap gap-[10px] pl-[10px]'>
-        {data.map((item: ListType, index: any) => {
+        {data.map((item: PostType, index: any) => {
           const link = `/board/details/${item.postId}`;
           return (
             <div

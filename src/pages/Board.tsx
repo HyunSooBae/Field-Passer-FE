@@ -1,23 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import requestAPI from '../api/axios';
+import { useSelector } from 'react-redux';
 import Searchbar from '../components/home/search/Searchbar';
 import PostList from '../components/PostList';
+import { RootState } from '@src/store/store';
+import { PostType } from './../util/userPageTypes';
 
 const Board = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      const res = await requestAPI('post');
-      setData(res?.data.resultData);
-    };
-    getData();
-  }, []);
+  const postData = useSelector<RootState>((state) => {
+    return state.post.postData;
+  });
 
   return (
     <div className='px-[20px]'>
       <Searchbar />
-      <PostList data={data} />
+      <PostList data={postData as PostType[]} />
     </div>
   );
 };
