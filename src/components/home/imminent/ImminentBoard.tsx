@@ -30,13 +30,12 @@ const ImminentBoard = () => {
   //     console.log(res);
   //   }
   //   getList();
-  // }, []);
+  // }, [selectedCategory]);
 
   useEffect(() => {
     async function fetchPostList() {
       const res = await getImminentList(selectedCategory);
       setPostList(res?.data);
-      console.log(res);
     }
     fetchPostList();
   }, [selectedCategory]);

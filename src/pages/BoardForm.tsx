@@ -19,8 +19,11 @@ const BoardForm = () => {
       districtName: z.string(),
       stadiumName: z.string(),
       title: z.string().min(2, { message: '제목을 2자 이상 입력해주세요.' }),
-      price: z.number().min(0, { message: '양도할 가격을 입력해주세요.' }),
-      content: z.string().min(5, { message: '상세 내용을 입력해주세요.' }),
+      price: z
+        .string()
+        .min(1, { message: '양도할 가격을 입력해주세요.' })
+        .refine((val) => !Number.isNaN(parseInt(val, 10))),
+      content: z.string().min(5, { message: '상세 내용을 5글자 이상 입력해주세요.' }),
       date: z.string(),
       startTime: z.string(),
       endTime: z.string(),
@@ -46,45 +49,7 @@ const BoardForm = () => {
     watch,
     reset,
     formState: { errors },
-  } = useForm<FormSchmaType>({ mode: 'onSubmit', resolver: zodResolver(formSchema) });
-
-  const onSubmit: SubmitHandler<FormSchmaType> = async (data) => {
-    // const formData = new FormData(e.currentTarget);
-    // console.log(formData.get('startTime'));
-
-    // const response = await submitPost(formData);
-    // console.log(response);
-    // // navigate('/')
-
-    const {
-      categoryName,
-      districtName,
-      stadiumName,
-      title,
-      price,
-      content,
-      date,
-      startTime,
-      endTime,
-      file,
-    } = data;
-
-    console.log(watch(file));
-
-    const formData = new FormData();
-    // formData.append('email', email);
-    // formData.append('password', passwordCheck);
-    // formData.append('memberName', memberName);
-    // const blob = new Blob([JSON.stringify(profileImg)], {
-    //   type: 'application/json',
-    // });
-    // formData.append('profileImg', profileImg[0]);
-
-    let entries = formData.entries();
-    for (const pair of entries) {
-      console.log(pair[0] + ', ' + pair[1]);
-    }
-  };
+  } = useForm<FormSchmaType>({ mode: 'onChange', resolver: zodResolver(formSchema) });
 
   //datepicker options
   const options = {
@@ -160,10 +125,51 @@ const BoardForm = () => {
     }
   };
 
+  const onSubmit: SubmitHandler<FormSchmaType> = async (data) => {
+    const {
+      categoryName,
+      districtName,
+      stadiumName,
+      title,
+      price,
+      content,
+      date,
+      startTime,
+      endTime,
+      file,
+    } = data;
+
+    const formData = new FormData();
+    formData.append('categoryName', categoryName);
+    formData.append('districtName', districtName);
+    formData.append('stadiumName', stadiumName);
+    formData.append('title', title);
+    formData.append('price', String(price));
+    formData.append('content', content);
+    formData.append('startTime', `${date}T${startTime}`);
+    formData.append('endTime', `${date}T${endTime}`);
+
+    const blob = new Blob([JSON.stringify(file)], {
+      type: 'application/json',
+    });
+    formData.append('file', file[0]);
+
+    console.log(formData.get('districtName'));
+
+    let entries = formData.entries();
+    for (const pair of entries) {
+      console.log(pair[0] + ', ' + pair[1]);
+    }
+
+    // const response = await submitPost(formData);
+    // console.log(response);
+    // navigate('/')
+  };
+
   return (
     <div className='my-[50px] mx-auto px-[20px] mm:px-0'>
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit((data) => onSubmit(data))}
         className='w-full max-w-[600px] ml-auto mr-auto mt-0 mb-0 flex flex-col gap-[10px] mm:gap-[20px]'
       >
         <div className='flex gap-3'>
@@ -298,7 +304,10 @@ const BoardForm = () => {
           </div>
         </div>
 
-        <button className='text-sm px-2 py-2 border-solid rounded mx-auto w-[50px] bg-field text-white mt-[20px]'>
+        <button
+          type='submit'
+          className='text-sm px-2 py-2 border-solid rounded mx-auto w-[50px] bg-field text-white mt-[20px]'
+        >
           작성
         </button>
       </form>
