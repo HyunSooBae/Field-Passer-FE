@@ -4,7 +4,7 @@ import { HiOutlineChatBubbleLeftRight } from 'react-icons/hi2';
 import { PostType } from '@src/util/userPageTypes';
 
 interface Props {
-  data: PostType[] | any;
+  data: PostType[];
 }
 
 const PostList = ({ data }: Props) => {

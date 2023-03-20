@@ -3,17 +3,23 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import PostList from '../components/PostList';
-import { useParams } from 'react-router-dom';
-import { getDetailPostData } from '@src/api/request';
+import { useNavigate, useParams } from 'react-router-dom';
+import { getDetailPostData, getSearchPostList } from '@src/api/request';
 import { PostType } from './../util/userPageTypes';
+import { useDispatch } from 'react-redux';
+import { savePostMore } from '@src/store/postSlice';
+import { unselected } from '@src/store/categorySlice';
 
 const BoardDetails = () => {
   let { id } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const mapElement = useRef(null);
 
-  // api 나오면 특정 게시글 데이터로 교체
   const [data, setData] = useState<PostType>();
+  const [district, setDistrict] = useState<PostType[]>([]);
 
+  // 상세 게시글 api
   useEffect(() => {
     const getData = async () => {
       const res = await getDetailPostData(id);
@@ -22,6 +28,15 @@ const BoardDetails = () => {
     getData();
   }, []);
 
+  useEffect(() => {
+    const getDistrictData = async () => {
+      const res = await getSearchPostList('', data?.districtName, '', 1);
+      setDistrict(res);
+    };
+    getDistrictData();
+  }, [data]);
+
+  // 지도 api
   useEffect(() => {
     const { naver } = window;
     if (!mapElement.current || !naver) return;
@@ -40,7 +55,7 @@ const BoardDetails = () => {
       position: location,
       map,
     });
-  }, []);
+  }, [data]);
 
   const settings = {
     infinite: true,
@@ -55,20 +70,20 @@ const BoardDetails = () => {
     dotsClass: 'slick-dots !bottom-[10px] z-10',
   };
 
+  const morePage = () => {
+    dispatch(unselected('all'));
+    dispatch(savePostMore(district));
+    navigate('/boardMore');
+  };
+
   return (
     <div className='my-[50px] mx-auto max-w-[600px] px-[20px] mm:px-[0]'>
       <Slider {...settings} className='relative max-h-[600px] mx-auto rounded-lg overflow-hidden'>
         <div className='w-full'>
-          <img
-            className='w-full object-cover aspect-square'
-            src={data?.defaultImageUrl}
-          />
+          <img className='w-full object-cover aspect-square' src={data?.defaultImageUrl} />
         </div>
         <div className='w-full'>
-          <img
-            className='w-full object-cover aspect-square'
-            src={data?.imageUrl}
-          />
+          <img className='w-full object-cover aspect-square' src={data?.imageUrl} />
         </div>
       </Slider>
 
@@ -87,9 +102,7 @@ const BoardDetails = () => {
       <div className='py-[20px] border-b border-t border-solid border-field flex flex-col gap-[20px]'>
         <p className='text-sm'>{data?.title}</p>
         <p className='text-sm font-black'>{data?.price}</p>
-        <p className='text-sm leading-normal'>
-          {data?.content}
-        </p>
+        <p className='text-sm leading-normal'>{data?.content}</p>
         <div className='flex items-center justify-between'>
           <p className='flex gap-[5px]'>
             <span className='text-xs text-gray-500'>관심 {data?.wishCount}</span>
@@ -117,13 +130,15 @@ const BoardDetails = () => {
         </div>
       </section>
 
-      {/* <div>
+      <div>
         <div className='flex items-center justify-between py-[20px]'>
-          <p className='font-black'>성동구 다른 예약</p>
-          <button className='text-xs text-gray-400'>더보기</button>
+          <p className='font-black'>{data?.districtName} 다른 예약</p>
+          <button className='text-xs text-gray-400' onClick={() => morePage()}>
+            더보기
+          </button>
         </div>
-        <PostList data={data} />
-      </div> */}
+        <PostList data={district} />
+      </div>
     </div>
   );
 };

@@ -368,12 +368,16 @@ export const getStadiumList = async ( category:string , district:string) => {
 }
 
 // 게시글 검색 
-export const getSearchPostList = async (category:string, district:string, stadium:string, page:number) => {
+export const getSearchPostList = async (category:string | boolean, district:string | undefined | boolean, stadium:string | boolean, page:number) => {  
   try {
-    let res = await request.get(`api/post/category?category=${category}&page=${page}`);
+    let res = await request.get(`/api/post?page=${page}`);
+    if(!category && district && !stadium) {
+      res = await request.get(`api/post/district?district=${district}&page=${page}`)
+      return res.data.content
+    }
+    if(category) res = await request.get(`api/post/category?category=${category}&page=${page}`);
     if(district) res = await request.get(`api/post/category/district?category=${category}&district=${district}&page=${page}`);
     if(stadium) res = await request.get(`api/post/stadium?category=${category}&district=${district}&stadiumName=${stadium}&page=${page}`);
-
     return res.data.content
   }catch (error) {
     console.log(error)
@@ -383,9 +387,7 @@ export const getSearchPostList = async (category:string, district:string, stadiu
 // 상세 게시글 조회
 export const getDetailPostData = async (id : string | undefined) => {
   try {
-    const res = await request.get(`api/post/${id}`);
-    console.log(res.data);
-  
+    const res = await request.get(`api/post/${id}`);  
     return res.data
   }catch (error) {
     console.log(error)

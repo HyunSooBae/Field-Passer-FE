@@ -20,6 +20,8 @@ const categorySlice = createSlice({
       switch (action.payload.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')) {
         case 'category':
           state.catagorySelect = action.payload.replace(/[a-zA-Z]/g, '');
+          state.districtSelect = false;
+          state.stadiumSelect = false;
           break;
         case 'district':
           state.districtSelect = action.payload.replace(/[a-zA-Z]/g, '');
@@ -34,8 +36,8 @@ const categorySlice = createSlice({
     unselected: (state, action) => {
       switch (action.payload.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')) {
         case 'category':
-          state.catagorySelect = false;
           state.districtSelect = false;
+          state.stadiumSelect = false;
           break;
         case 'district':
           state.districtSelect = false;
@@ -43,6 +45,10 @@ const categorySlice = createSlice({
         case 'stadium':
           state.stadiumSelect = false;
           break;
+        case 'all':
+          state.catagorySelect = false;
+          state.districtSelect = false;
+          state.stadiumSelect = false;
         default:
           break;
       }
