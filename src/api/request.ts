@@ -351,7 +351,7 @@ export const join = async (data: any) => {
 export const getCategoryDistrict = async ( type:string ) => {
   try {
     const res = await request.get(`/api/${type}`);
-    return res.data
+    return res.data;
   } catch (error) {
     console.log(error);
   }
@@ -361,7 +361,7 @@ export const getCategoryDistrict = async ( type:string ) => {
 export const getStadiumList = async ( category:string , district:string) => {
   try {
     const res = await request.get(`/api/stadiumList?category=${category}&district=${district}`);
-    return res.data
+    return res.data;
   } catch (error) {
     console.log(error);
   }

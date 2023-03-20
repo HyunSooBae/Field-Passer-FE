@@ -14,8 +14,6 @@ const ImminentList = ({
   stadiumName,
   mobile,
 }: ImminentListType) => {
-  //버튼 누르면 postId로 게시물 이동
-  //category, postID 받아야됨..
   const navigate = useNavigate();
   const reservedDate = startTime.slice(5, 10).replace('-', '월 ') + '일';
   const liClassNameMobile = 'border-b border-solid border-gray-200 h-7 leading-6';

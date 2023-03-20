@@ -1,5 +1,3 @@
-import { BsEye } from 'react-icons/bs';
-import { HiOutlineChatBubbleLeftRight } from 'react-icons/hi2';
 import { postType } from '@src/util/adminPageTypes';
 
 type Props = {
@@ -20,19 +18,8 @@ const post = ({ item }: Props) => {
       <div className='flex flex-col gap-2'>
         <span className='text-xs pt-2'>{item.category}</span>
         <span className='font-bold'>{truncate(item.title, 10)}</span>
-        <span className='font-bold'>{item.startTime}</span>
+        <span className='font-bold'>{item.startTime.slice(0, 10)}</span>
         <span className='font-bold'>{Number(item.price).toLocaleString()}원</span>
-        <div className='flex gap-3'>
-          <div className='flex'>
-            <BsEye />
-            <span>2</span>
-          </div>
-          <span>·</span>
-          <div className='flex'>
-            <HiOutlineChatBubbleLeftRight />
-            <span>3</span>
-          </div>
-        </div>
       </div>
     </div>
   );
