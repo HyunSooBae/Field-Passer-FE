@@ -348,7 +348,7 @@ export const join = async (data: any) => {
 };
 
 // 카테고리,구역 리스트
-export const getCategoryDistrict = async ( type:string ) => {
+export const getCategoryDistrict = async (type: string) => {
   try {
     const res = await request.get(`/api/${type}`);
     return res.data;
@@ -358,36 +358,48 @@ export const getCategoryDistrict = async ( type:string ) => {
 };
 
 // 구장 리스트
-export const getStadiumList = async ( category:string , district:string) => {
+export const getStadiumList = async (category: string, district: string) => {
   try {
     const res = await request.get(`/api/stadiumList?category=${category}&district=${district}`);
     return res.data;
   } catch (error) {
     console.log(error);
   }
-}
+};
 
-// 게시글 검색 
-export const getSearchPostList = async (category:string, district:string, stadium:string, page:number) => {
+// 게시글 검색
+export const getSearchPostList = async (
+  category: string,
+  district: string | undefined,
+  stadium: string,
+  page: number,
+) => {
   try {
     let res = await request.get(`api/post/category?category=${category}&page=${page}`);
-    if(district) res = await request.get(`api/post/category/district?category=${category}&district=${district}&page=${page}`);
-    if(stadium) res = await request.get(`api/post/stadium?category=${category}&district=${district}&stadiumName=${stadium}&page=${page}`);
-
-    return res.data.content
-  }catch (error) {
-    console.log(error)
+    if (!category && district && !stadium)
+      res = await request.get(`api/post/district?district=${district}&page=${page}`);
+    if (district)
+      res = await request.get(
+        `api/post/category/district?category=${category}&district=${district}&page=${page}`,
+      );
+    if (stadium)
+      res = await request.get(
+        `api/post/stadium?category=${category}&district=${district}&stadiumName=${stadium}&page=${page}`,
+      );
+    return res.data.content;
+  } catch (error) {
+    console.log(error);
   }
-}
+};
 
 // 상세 게시글 조회
-export const getDetailPostData = async (id : string | undefined) => {
+export const getDetailPostData = async (id: string | undefined) => {
   try {
     const res = await request.get(`api/post/${id}`);
     console.log(res.data);
-  
-    return res.data
-  }catch (error) {
-    console.log(error)
+
+    return res.data;
+  } catch (error) {
+    console.log(error);
   }
-}
+};
