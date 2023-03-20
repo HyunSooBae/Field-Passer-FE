@@ -15,6 +15,24 @@ export interface postType {
   startTime: string;
 }
 
+export const initPost = [
+  {
+    endTime: '',
+    title: '',
+    price: 0,
+    blind: false,
+    postId: 0,
+    category: '',
+    district: '',
+    registerDate: '',
+    transactionStatus: '',
+    stadiumName: '',
+    memberId: '',
+    memberName: '',
+    startTime: '',
+  },
+];
+
 export interface questionType {
   memberId: string;
   memberName: string;
