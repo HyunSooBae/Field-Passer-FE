@@ -1,16 +1,100 @@
-import React, { useEffect } from 'react';
-import { useState, useRef } from 'react';
-import Datepicker from 'tailwind-datepicker-react';
+import React, { FormEvent, useEffect, useState, useRef } from 'react';
+import DatePicker from 'tailwind-datepicker-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { getCategoryDistrict, getStadiumList, getSearchPostList } from '@src/api/request';
+import { useDispatch, useSelector } from 'react-redux';
+import { savePost } from '@src/store/postSlice';
+import SelectBox from '@src/components/home/search/SelectBox';
+import { RootState } from '@src/store/store';
 import { submitPost } from '@src/api/request';
 import { IoIosCloseCircle } from 'react-icons/io';
 
 const BoardForm = () => {
   const imgfile: any = useRef(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // 카테고리 선택
+  const catagorySelect = useSelector<RootState>((state) => {
+    return state.category.catagorySelect;
+  });
+  const districtSelect = useSelector<RootState>((state) => {
+    return state.category.districtSelect;
+  });
+  const stadiumSelect = useSelector<RootState>((state) => {
+    return state.category.stadiumSelect;
+  });
+
+  const [categoryList, setCategoryList] = useState([]);
+  const [districtList, setDistrictList] = useState([]);
+  const [stadiumList, setStadiumList] = useState([]);
+
+  useEffect(() => {
+    const getCategoryList = async () => {
+      const res = await getCategoryDistrict('category');
+      setCategoryList(res);
+    };
+
+    getCategoryList();
+  }, []);
+
+  useEffect(() => {
+    if (catagorySelect) {
+      const getDistrict = async () => {
+        const res = await getCategoryDistrict('district');
+        setDistrictList(res);
+      };
+      getDistrict();
+    }
+  }, [catagorySelect]);
+
+  useEffect(() => {
+    if (districtSelect) {
+      const getStadium = async () => {
+        const res = await getStadiumList(catagorySelect as string, districtSelect as string);
+        setStadiumList(res);
+      };
+      getStadium();
+    }
+  }, [districtSelect]);
+
+  //datepicker
+  const [show, setShow] = useState(false);
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+  const handleChange = (selectedDate: any) => {
+    setDate(selectedDate.toISOString().slice(0, 10));
+  };
+  const handleClose = (state: any) => {
+    setShow(state);
+  };
+  const options = {
+    title: '예약 일자',
+    autoHide: true,
+    maxDate: new Date('2050-01-01'),
+    minDate: new Date(),
+    defaultDate: new Date(),
+    theme: {
+      background: 'bg-white',
+      todayBtn: 'bg-field hover:bg-field',
+      clearBtn: '',
+      icons: '',
+      text: 'text-gray-700',
+      disabledText: 'foyyyy text-gray-500',
+      input: 'cursor-pointer w-full rounded bg-white :focus:border-field:',
+      inputIcon: '',
+      selected: 'text-white bg-field hover:bg-field',
+    },
+    icons: {
+      prev: () => <span>{'<'}</span>,
+      next: () => <span>{'>'}</span>,
+    },
+    datepickerClassNames: '-top-[450px]',
+    language: 'ko',
+  };
+
   const MAX_FILE_SIZE = 10485760;
   const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
   const formSchema = z
@@ -19,14 +103,17 @@ const BoardForm = () => {
       districtName: z.string(),
       stadiumName: z.string(),
       title: z.string().min(2, { message: '제목을 2자 이상 입력해주세요.' }),
-      price: z.number().min(0, { message: '양도할 가격을 입력해주세요.' }),
-      content: z.string().min(5, { message: '상세 내용을 입력해주세요.' }),
+      price: z
+        .string()
+        .min(1, { message: '양도할 가격을 입력해주세요.' })
+        .refine((val) => !Number.isNaN(parseInt(val, 10))),
+      content: z.string().min(5, { message: '상세 내용을 5글자 이상 입력해주세요.' }),
       date: z.string(),
       startTime: z.string(),
       endTime: z.string(),
       file: z
         .any()
-        // .default(null)
+        .default(null)
         .refine((file) => file !== null, {
           message: '.jpg, .jpeg, .png, gif 형식에 맞는 파일을 업로드해주세요.',
         })
@@ -42,98 +129,10 @@ const BoardForm = () => {
 
   const {
     register,
-    handleSubmit,
     watch,
     reset,
     formState: { errors },
-  } = useForm<FormSchmaType>({ mode: 'onSubmit', resolver: zodResolver(formSchema) });
-
-  const onSubmit: SubmitHandler<FormSchmaType> = async (data) => {
-    // const formData = new FormData(e.currentTarget);
-    // console.log(formData.get('startTime'));
-
-    // const response = await submitPost(formData);
-    // console.log(response);
-    // // navigate('/')
-
-    const {
-      categoryName,
-      districtName,
-      stadiumName,
-      title,
-      price,
-      content,
-      date,
-      startTime,
-      endTime,
-      file,
-    } = data;
-
-    console.log(watch(file));
-
-    const formData = new FormData();
-    // formData.append('email', email);
-    // formData.append('password', passwordCheck);
-    // formData.append('memberName', memberName);
-    // const blob = new Blob([JSON.stringify(profileImg)], {
-    //   type: 'application/json',
-    // });
-    // formData.append('profileImg', profileImg[0]);
-
-    let entries = formData.entries();
-    for (const pair of entries) {
-      console.log(pair[0] + ', ' + pair[1]);
-    }
-  };
-
-  //datepicker options
-  const options = {
-    title: '예약 일자',
-    autoHide: true,
-    maxDate: new Date('2050-01-01'),
-    minDate: new Date('2000-01-01'),
-    theme: {
-      background: 'bg-white',
-      todayBtn: 'bg-field hover:bg-field',
-      clearBtn: '',
-      icons: '',
-      text: 'text-gray-700',
-      disabledText: 'font-normal text-gray-500',
-      input: 'cursor-pointer w-full rounded bg-white :focus:border-field:',
-      inputIcon: '',
-      selected: 'text-white bg-field hover:bg-field',
-    },
-    icons: {
-      prev: () => <span>{'<'}</span>,
-      next: () => <span>{'>'}</span>,
-    },
-    datepickerClassNames: '-top-[450px]',
-    defaultDate: new Date(),
-    language: 'ko',
-  };
-
-  // Datepicker component
-  const FormDatepicker = () => {
-    const [show, setShow] = useState(false);
-    const handleChange = (selectedDate: any) => {
-      // api 완성되면 사용할 함수
-    };
-    const handleClose = (state: any) => {
-      setShow(state);
-    };
-
-    return (
-      <div className=' w-[calc(50%-10px)] mr-5'>
-        <Datepicker
-          options={options}
-          onChange={handleChange}
-          show={show}
-          setShow={handleClose}
-          classNames='relative'
-        />
-      </div>
-    );
-  };
+  } = useForm<FormSchmaType>({ mode: 'onChange', resolver: zodResolver(formSchema) });
 
   // 업로드 이미지 미리보기
   const [imgPreview, setImgPreview] = useState('');
@@ -160,35 +159,57 @@ const BoardForm = () => {
     }
   };
 
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const startDate = String(formData.get('startTime'));
+    const endDate = String(formData.get('endTime'));
+
+    formData.set('startTime', date + 'T' + startDate + ':00');
+    formData.set('endTime', date + 'T' + endDate + ':00');
+
+    let entries = formData.entries();
+    for (const pair of entries) {
+      console.log(pair[0] + ', ' + pair[1]);
+    }
+
+    // const response = await submitPost(formData);
+    // console.log(response);
+    // navigate('/')
+  };
+
   return (
     <div className='my-[50px] mx-auto px-[20px] mm:px-0'>
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={(e) => onSubmit(e)}
         className='w-full max-w-[600px] ml-auto mr-auto mt-0 mb-0 flex flex-col gap-[10px] mm:gap-[20px]'
       >
-        <div className='flex gap-3'>
-          <select
-            name=''
-            id=''
-            className='w-24 h-8 border-2 border-solid border-#94a3b8 rounded-md text-sm pl-2 focus:outline-none focus:border-field '
-          >
-            <option value=''>종목</option>
-          </select>
-          <select
-            name=''
-            id=''
-            className='w-24 h-8 border-2 border-solid border-#94a3b8 rounded-md text-sm pl-2 focus:outline-none focus:border-field '
-          >
-            <option value=''>지역</option>
-          </select>
-          <select
-            name=''
-            id=''
-            className='w-48 h-8 border-2 border-solid border-#94a3b8 rounded-md text-sm pl-2 focus:outline-none focus:border-field '
-          >
-            <option value=''>구장</option>
-          </select>
+        <div className='flex gap-[5px]'>
+          <SelectBox
+            id='category'
+            defaultValue='종목'
+            size='w-1/4'
+            options={categoryList}
+            {...register('categoryName')}
+          />
+          <SelectBox
+            id='district'
+            defaultValue='지역 전체'
+            size='w-1/4'
+            options={catagorySelect ? districtList : []}
+            {...register('districtName')}
+          />
+          <SelectBox
+            id='stadium'
+            defaultValue='구장 전체'
+            size='w-1/2'
+            options={districtSelect ? stadiumList : []}
+            {...register('stadiumName')}
+          />
         </div>
+        {errors.categoryName && (
+          <p className='text-xs text-red-600'>{errors.categoryName.message}</p>
+        )}
         <div className='flex flex-col gap-[10px] mm:gap-[20px]'>
           <input
             type='text'
@@ -213,7 +234,17 @@ const BoardForm = () => {
         </div>
         <div className='flex flex-col gap-3'>
           <p className='text-xs text-gray-600'>예약 일시</p>
-          <FormDatepicker />
+
+          <div className=' w-[calc(50%-10px)] mr-5'>
+            <DatePicker
+              options={options}
+              onChange={(date) => handleChange(date)}
+              show={show}
+              setShow={handleClose}
+              classNames='relative'
+            />
+          </div>
+
           <div className='flex'>
             <input
               type='time'
@@ -298,7 +329,10 @@ const BoardForm = () => {
           </div>
         </div>
 
-        <button className='text-sm px-2 py-2 border-solid rounded mx-auto w-[50px] bg-field text-white mt-[20px]'>
+        <button
+          type='submit'
+          className='text-sm px-2 py-2 border-solid rounded mx-auto w-[50px] bg-field text-white mt-[20px]'
+        >
           작성
         </button>
       </form>

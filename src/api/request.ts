@@ -348,7 +348,7 @@ export const join = async (data: any) => {
 };
 
 // 카테고리,구역 리스트
-export const getCategoryDistrict = async ( type:string ) => {
+export const getCategoryDistrict = async (type: string) => {
   try {
     const res = await request.get(`/api/${type}`);
     return res.data;
@@ -358,14 +358,14 @@ export const getCategoryDistrict = async ( type:string ) => {
 };
 
 // 구장 리스트
-export const getStadiumList = async ( category:string , district:string) => {
+export const getStadiumList = async (category: string, district: string) => {
   try {
     const res = await request.get(`/api/stadiumList?category=${category}&district=${district}`);
     return res.data;
   } catch (error) {
     console.log(error);
   }
-}
+};
 
 // 게시글 검색 
 export const getSearchPostList = async (category:string | boolean, district:string | undefined | boolean, stadium:string | boolean, page:number) => {  
@@ -382,14 +382,14 @@ export const getSearchPostList = async (category:string | boolean, district:stri
   }catch (error) {
     console.log(error)
   }
-}
+};
 
 // 상세 게시글 조회
-export const getDetailPostData = async (id : string | undefined) => {
+export const getDetailPostData = async (id: string | undefined) => {
   try {
     const res = await request.get(`api/post/${id}`);  
     return res.data
   }catch (error) {
     console.log(error)
   }
-}
+};
