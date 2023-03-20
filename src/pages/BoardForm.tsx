@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { FormEvent, useEffect } from 'react';
 import { useState, useRef } from 'react';
 import Datepicker from 'tailwind-datepicker-react';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -29,7 +29,7 @@ const BoardForm = () => {
       endTime: z.string(),
       file: z
         .any()
-        // .default(null)
+        .default(null)
         .refine((file) => file !== null, {
           message: '.jpg, .jpeg, .png, gif 형식에 맞는 파일을 업로드해주세요.',
         })
@@ -125,41 +125,38 @@ const BoardForm = () => {
     }
   };
 
-  const onSubmit: SubmitHandler<FormSchmaType> = async (data) => {
-    const {
-      categoryName,
-      districtName,
-      stadiumName,
-      title,
-      price,
-      content,
-      date,
-      startTime,
-      endTime,
-      file,
-    } = data;
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // const {
+    //   categoryName,
+    //   districtName,
+    //   stadiumName,
+    //   title,
+    //   price,
+    //   content,
+    //   date,
+    //   startTime,
+    //   endTime,
+    //   file,
+    // } = data;
 
-    const formData = new FormData();
-    formData.append('categoryName', categoryName);
-    formData.append('districtName', districtName);
-    formData.append('stadiumName', stadiumName);
-    formData.append('title', title);
-    formData.append('price', String(price));
-    formData.append('content', content);
-    formData.append('startTime', `${date}T${startTime}`);
-    formData.append('endTime', `${date}T${endTime}`);
+    // const formData = new FormData();
+    // formData.append('categoryName', categoryName);
+    // formData.append('districtName', districtName);
+    // formData.append('stadiumName', stadiumName);
+    // formData.append('title', title);
+    // formData.append('price', String(price));
+    // formData.append('content', content);
+    // formData.append('startTime', `${date}T${startTime}`);
+    // formData.append('endTime', `${date}T${endTime}`);
+    // formData.append('file', file[0]);
 
-    const blob = new Blob([JSON.stringify(file)], {
-      type: 'application/json',
-    });
-    formData.append('file', file[0]);
+    console.log(e.currentTarget.categoryName);
 
-    console.log(formData.get('districtName'));
-
-    let entries = formData.entries();
-    for (const pair of entries) {
-      console.log(pair[0] + ', ' + pair[1]);
-    }
+    // let entries = formData.entries();
+    // for (const pair of entries) {
+    //   console.log(pair[0] + ', ' + pair[1]);
+    // }
 
     // const response = await submitPost(formData);
     // console.log(response);
@@ -169,31 +166,34 @@ const BoardForm = () => {
   return (
     <div className='my-[50px] mx-auto px-[20px] mm:px-0'>
       <form
-        onSubmit={handleSubmit((data) => onSubmit(data))}
+        onSubmit={(e) => onSubmit(e)}
         className='w-full max-w-[600px] ml-auto mr-auto mt-0 mb-0 flex flex-col gap-[10px] mm:gap-[20px]'
       >
         <div className='flex gap-3'>
           <select
-            name=''
             id=''
             className='w-24 h-8 border-2 border-solid border-#94a3b8 rounded-md text-sm pl-2 focus:outline-none focus:border-field '
+            {...register('categoryName')}
           >
             <option value=''>종목</option>
           </select>
           <select
-            name=''
             id=''
             className='w-24 h-8 border-2 border-solid border-#94a3b8 rounded-md text-sm pl-2 focus:outline-none focus:border-field '
+            {...register('districtName')}
           >
             <option value=''>지역</option>
           </select>
           <select
-            name=''
             id=''
             className='w-48 h-8 border-2 border-solid border-#94a3b8 rounded-md text-sm pl-2 focus:outline-none focus:border-field '
+            {...register('stadiumName')}
           >
             <option value=''>구장</option>
           </select>
+          {errors.categoryName && (
+            <p className='text-xs text-red-600'>{errors.categoryName.message}</p>
+          )}
         </div>
         <div className='flex flex-col gap-[10px] mm:gap-[20px]'>
           <input
