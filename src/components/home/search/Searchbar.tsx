@@ -53,14 +53,19 @@ const Searchbar = () => {
   }, [districtSelect]);
 
   const selectSearch = async () => {
-    if (!catagorySelect) return console.log('카테고리 선택해주세요.')
-    const res = await getSearchPostList(catagorySelect as string, districtSelect as string, stadiumSelect as string, 1)
-    dispatch(savePost([catagorySelect, districtSelect, stadiumSelect, res]))
-    navigate('/board')
-  }
+    if (!catagorySelect) return console.log('카테고리 선택해주세요.');
+    const res = await getSearchPostList(
+      catagorySelect as string,
+      districtSelect as string,
+      stadiumSelect as string,
+      1,
+    );
+    dispatch(savePost([catagorySelect, districtSelect, stadiumSelect, res]));
+    navigate('/board');
+  };
 
   return (
-    <section className='flex my-[20px] justify-center gap-[10px] items-center flex-wrap'>
+    <section className='flex my-[20px] justify-center gap-[10px] items-center flex-wrap max-w-full'>
       <div className='flex gap-[5px] flex-col mm:flex-row'>
         <div className='flex gap-[5px]'>
           <SelectBox id='category' defaultValue='종목' size='w-1/2' options={categoryList} />
