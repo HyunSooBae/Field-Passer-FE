@@ -27,6 +27,7 @@ import ReportDetail from './pages/Admin/ReportDetail';
 import QuestionBox from './components/help/QuestionBox';
 import Chatting from './pages/Chatting';
 import { CookiesProvider } from 'react-cookie';
+import BoardMore from './pages/BoardMore';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,7 @@ const router = createBrowserRouter([
       { path: '/posting', element: <BoardForm /> },
       { path: '/board/details/:id', element: <BoardDetails /> },
       { path: '/chatting/:id', element: <Chatting /> },
+      { path: '/boardMore', element: <BoardMore /> },
     ],
   },
 ]);
