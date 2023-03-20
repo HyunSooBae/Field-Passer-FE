@@ -3,7 +3,11 @@ import { BsEye } from 'react-icons/bs';
 import { HiOutlineChatBubbleLeftRight } from 'react-icons/hi2';
 import { PostType } from '@src/util/userPageTypes';
 
-const PostList = ({ data }: { data: PostType[] }) => {
+interface Props {
+  data: PostType[] | any;
+}
+
+const PostList = ({ data }: Props) => {
   return (
     <div className='max-w-5xl ml-auto mr-auto'>
       <div className='mx-[-15px] flex flex-wrap gap-[10px] pl-[10px]'>
