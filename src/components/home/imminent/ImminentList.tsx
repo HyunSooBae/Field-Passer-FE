@@ -8,21 +8,19 @@ interface ImminentListType extends ListType {
 
 const ImminentList = ({
   postId,
-  category,
-  district,
+  categoryName,
+  districtName,
   startTime,
   stadiumName,
   mobile,
 }: ImminentListType) => {
-  //버튼 누르면 postId로 게시물 이동
-  //category, postID 받아야됨..
   const navigate = useNavigate();
   const reservedDate = startTime.slice(5, 10).replace('-', '월 ') + '일';
   const liClassNameMobile = 'border-b border-solid border-gray-200 h-7 leading-6';
   const liClassNameTable = 'text-gray-900 font-light px-2 py-4 whitespace-nowrap text-center';
 
   const goToPost = () => {
-    navigate(`/post/${postId}`);
+    navigate(`/board/details/${postId}`);
   };
 
   return mobile ? (
@@ -35,8 +33,8 @@ const ImminentList = ({
         <li className='h-6 leading-6'>거래하기</li>
       </ul>
       <ul className='py-1 w-full flex flex-col justify-center gap-2'>
-        <li className={liClassNameMobile + ' text-field'}>{category}</li>
-        <li className={liClassNameMobile}>{district}</li>
+        <li className={liClassNameMobile + ' text-field'}>{categoryName}</li>
+        <li className={liClassNameMobile}>{districtName}</li>
         <li className={liClassNameMobile}>
           <span className='mr-3'>{reservedDate}</span>/
           <span className='ml-3'>{startTime.slice(11, 16)}</span>
@@ -55,8 +53,8 @@ const ImminentList = ({
   ) : (
     <>
       <tr className='border-t-[1px] border-solid border-field bg-white xxs:text-sm lg:text-base'>
-        <td className={liClassNameTable + ' text-field'}>{category}</td>
-        <td className={liClassNameTable}>{district}</td>
+        <td className={liClassNameTable + ' text-field'}>{categoryName}</td>
+        <td className={liClassNameTable}>{districtName}</td>
         <td className={liClassNameTable}>{reservedDate}</td>
         <td className={liClassNameTable}>{startTime.slice(11, 16)}</td>
         <td className={liClassNameTable}>

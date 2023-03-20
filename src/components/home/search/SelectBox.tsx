@@ -1,18 +1,18 @@
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { unselected, selected } from '../../../store/categorySlice';
+import { unselected, selected } from '@src/store/categorySlice';
 
 const SelectBox = ({ id, options, defaultValue, size }: any) => {
   const dispatch = useDispatch();
   const select = useRef<HTMLSelectElement>(null);
 
-  const checkSelector = (action: any) => {
-    if (select.current) {
-      if (select.current.value === '') {
-        dispatch(unselected(action));
-      } else {
+  const checkSelector = (action: string) => {
+    if (select.current?.value === '') dispatch(unselected(action));
+    else {
+      dispatch(unselected(action));
+      setTimeout(() => {
         dispatch(selected(action));
-      }
+      });
     }
   };
 

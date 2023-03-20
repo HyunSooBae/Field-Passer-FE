@@ -10,6 +10,7 @@ const MemberList = ({ item }: Props) => {
   const onClickHandler = (id: number) => {
     navigate(`/admin/member/detail/${id}`);
   };
+
   return (
     <tr className='border-t-[1px] border-solid border-field bg-white'>
       <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
