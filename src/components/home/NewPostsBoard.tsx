@@ -3,11 +3,11 @@ import requestAPI from '../../api/axios';
 import { GiSoccerField } from 'react-icons/gi';
 import Board from '../../pages/Board';
 import PostList from '../PostList';
-import { ListType } from '@src/util/userPageTypes';
+import { PostType } from '@src/util/userPageTypes';
 import { getNewPostList } from '@src/api/request';
 
 const NewPostsBoard = () => {
-  const [newPostList, setNewPostList] = useState<ListType[]>([]);
+  const [newPostList, setNewPostList] = useState<PostType[]>([]);
 
   useEffect(() => {
     async function getNewPost() {
