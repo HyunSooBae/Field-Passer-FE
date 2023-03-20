@@ -1,6 +1,24 @@
+import { useState } from 'react';
 import FormDatePicker from '../FormDatePicker';
+import { getPostsList } from '@src/api/request';
+import { postType } from '@src/util/adminPageTypes';
 
-const SearchBox = () => {
+type Props = {
+  setPosts: React.Dispatch<React.SetStateAction<Array<postType>>>;
+  setTotal: React.Dispatch<React.SetStateAction<number>>;
+};
+
+const SearchBox = ({ setPosts, setTotal }: Props) => {
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+
+  const dateHandler = async () => {
+    const { ok, postsListData } = await getPostsList(startDate, endDate, 1);
+    if (ok) {
+      setPosts(postsListData.resultData);
+      setTotal(postsListData.resultDataNum);
+    }
+  };
   return (
     <div className='flex my-10 w-full flex-col'>
       <div className='flex'>
@@ -25,12 +43,13 @@ const SearchBox = () => {
         </button>
       </div>
       <div className='flex items-center '>
-        <FormDatePicker title={'시작 날짜'} />
+        <FormDatePicker title={'시작 날짜'} setDate={setStartDate} />
         <span className='mr-3'>~</span>
-        <FormDatePicker title={'마지막 날짜'} />
+        <FormDatePicker title={'마지막 날짜'} setDate={setEndDate} />
         <button
           type='submit'
           className='bg-field rounded-lg text-white hover:bg-hoverField h-8 w-16'
+          onClick={dateHandler}
         >
           검색
         </button>

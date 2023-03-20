@@ -3,9 +3,10 @@ import Datepicker from 'tailwind-datepicker-react';
 
 type Props = {
   title: string;
+  setDate: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const FormDatePicker = ({ title }: Props) => {
+const FormDatePicker = ({ title, setDate }: Props) => {
   const [show, setShow] = useState(false);
   //datepicker options
   const options = {
@@ -32,9 +33,11 @@ const FormDatePicker = ({ title }: Props) => {
     language: 'ko',
   };
 
-  const handleChange = (selectedDate: any) => {
+  const handleChange = (selectedDate: Date) => {
     // api 완성되면 사용할 함수
+    setDate(selectedDate.toISOString().slice(0, 10));
   };
+
   const handleClose = (state: any) => {
     setShow(state);
   };
