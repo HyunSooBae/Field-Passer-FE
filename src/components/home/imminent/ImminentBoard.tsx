@@ -23,15 +23,21 @@ const ImminentBoard = () => {
   const [selectedDistrict, setSelectedDistrict] = useState('all');
   const [sortingDate, setSortingDate] = useState(true);
 
-  const fetchPostList = useCallback(() => {
-    async function getList() {
-      const res = await getImminentList(selectedCategory);
-      setPostList(res?.data);
-    }
-    getList();
-  }, []);
+  // const fetchPostList = useCallback(() => {
+  //   async function getList() {
+  //     const res = await getImminentList(selectedCategory);
+  //     setPostList(res?.data);
+  //     console.log(res);
+  //   }
+  //   getList();
+  // }, []);
 
   useEffect(() => {
+    async function fetchPostList() {
+      const res = await getImminentList(selectedCategory);
+      setPostList(res?.data);
+      console.log(res);
+    }
     fetchPostList();
   }, [selectedCategory]);
 
