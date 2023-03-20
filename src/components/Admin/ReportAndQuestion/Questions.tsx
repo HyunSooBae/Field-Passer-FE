@@ -7,6 +7,8 @@ import FormDatePicker from '@src/components/Admin/FormDatePicker';
 
 const Questions = () => {
   const [questions, setQuestions] = useState<questionType[]>([]);
+  const [newStartDate, setStartDate] = useState('');
+  const [newEndDate, setEndDate] = useState('');
   useEffect(() => {
     const fetchData = async () => {
       const { ok, questionsListData } = await getQuestionsList(startDate(), endDate());
@@ -20,9 +22,9 @@ const Questions = () => {
   return (
     <>
       <div className='flex items-center '>
-        <FormDatePicker title={'시작 날짜'} />
+        <FormDatePicker title={'시작 날짜'} setDate={setStartDate} />
         <span className='mr-3'>~</span>
-        <FormDatePicker title={'마지막 날짜'} />
+        <FormDatePicker title={'마지막 날짜'} setDate={setEndDate} />
         <button
           type='submit'
           className='bg-field rounded-lg text-white hover:bg-hoverField h-8 w-16'

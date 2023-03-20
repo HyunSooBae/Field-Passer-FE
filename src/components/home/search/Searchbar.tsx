@@ -1,18 +1,22 @@
-import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import requestAPI from '../../../api/axios';
+import { useState, useEffect, Dispatch } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import SelectBox from './SelectBox';
 import { RootState } from '@src/store/store';
-import { getCategoryDistrict, getStadiumList } from '@src/api/request';
+import { getCategoryDistrict, getStadiumList, getSearchPostList } from '@src/api/request';
+import { savePost } from '@src/store/postSlice';
 
 const Searchbar = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const catagorySelect = useSelector<RootState>((state) => {
     return state.category.catagorySelect;
   });
   const districtSelect = useSelector<RootState>((state) => {
     return state.category.districtSelect;
+  });
+  const stadiumSelect = useSelector<RootState>((state) => {
+    return state.category.stadiumSelect;
   });
 
   const [categoryList, setCategoryList] = useState([]);
@@ -40,16 +44,28 @@ const Searchbar = () => {
 
   useEffect(() => {
     if (districtSelect) {
-      const getStadiumList = async () => {
-        const res = await requestAPI('stadiumList');
-        setStadiumList(res?.data.resultData);
+      const getStadium = async () => {
+        const res = await getStadiumList(catagorySelect as string, districtSelect as string);
+        setStadiumList(res);
       };
-      getStadiumList();
+      getStadium();
     }
   }, [districtSelect]);
 
+  const selectSearch = async () => {
+    if (!catagorySelect) return console.log('카테고리 선택해주세요.');
+    const res = await getSearchPostList(
+      catagorySelect as string,
+      districtSelect as string,
+      stadiumSelect as string,
+      1,
+    );
+    dispatch(savePost([catagorySelect, districtSelect, stadiumSelect, res]));
+    navigate('/board');
+  };
+
   return (
-    <section className='flex my-[20px] justify-center gap-[10px] items-center flex-wrap'>
+    <section className='flex my-[20px] justify-center gap-[10px] items-center flex-wrap max-w-full'>
       <div className='flex gap-[5px] flex-col mm:flex-row'>
         <div className='flex gap-[5px]'>
           <SelectBox id='category' defaultValue='종목' size='w-1/2' options={categoryList} />
@@ -72,6 +88,7 @@ const Searchbar = () => {
         <button
           type='submit'
           className='rounded-lg bg-field hover:bg-hoverField text-white text p-3 text-sm'
+          onClick={() => selectSearch()}
         >
           검색
         </button>

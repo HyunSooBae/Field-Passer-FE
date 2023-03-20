@@ -6,15 +6,16 @@ import 'slick-carousel/slick/slick-theme.css';
 import { getPostsList } from '@src/api/request';
 import { IoIosArrowDroprightCircle, IoIosArrowDropleftCircle } from 'react-icons/io';
 import { postType } from '@src/util/adminPageTypes';
+import { startDate, endDate } from '@src/util/dateCalc';
 
 const NewPosts = () => {
   const [posts, setPosts] = useState<postType[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const { ok, postsListData } = await getPostsList('2023-02-28', '2023-03-01');
+      const { ok, postsListData } = await getPostsList(startDate(), endDate());
       if (ok) {
-        setPosts(postsListData);
+        setPosts(postsListData.resultData);
       }
     };
     fetchData();
