@@ -3,15 +3,23 @@ import { useDispatch } from 'react-redux';
 import { unselected, selected } from '@src/store/categorySlice';
 
 const SelectBox = ({ id, options, defaultValue, size }: any) => {
+  interface Options {
+    categoryID: number
+    category: string
+    district: string
+    stadiumName: string
+  }
+
   const dispatch = useDispatch();
   const select = useRef<HTMLSelectElement>(null);
 
-  const checkSelector = (action: string) => {
-    if (select.current?.value === '') dispatch(unselected(action));
+  const checkSelector = (action: string, value: string) => {
+    const prams = action + value
+    if (select.current?.value === '') dispatch(unselected(prams));
     else {
-      dispatch(unselected(action));
+      dispatch(unselected(prams));
       setTimeout(() => {
-        dispatch(selected(action));
+        dispatch(selected(prams));
       });
     }
   };
@@ -21,12 +29,12 @@ const SelectBox = ({ id, options, defaultValue, size }: any) => {
       ref={select}
       id={id}
       className={`bg-gray-50 border-2 border-gray-200 focus:outline-0 text-gray-900 text-sm p-2 rounded-lg focus:border-green-500 block h-10 ${size}`}
-      onChange={() => {
-        checkSelector(id);
+      onChange={(e) => {
+        checkSelector(id, e.target.value);
       }}
     >
       <option value=''>{defaultValue}</option>
-      {options.map((option: any, index: number) => (
+      {options.map((option: Options, index: number) => (
         <option key={index} value={option.category || option.district || option.stadiumName}>
           {option.category || option.district || option.stadiumName}
         </option>

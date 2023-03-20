@@ -22,6 +22,7 @@ export interface ListType {
   transactionStatus?: string;
   viewCount?: string;
 }
+
 // 채팅페이지 메시지 전송/응답값 타입
 export interface ChatListType {
   person: string;
@@ -41,4 +42,31 @@ export interface PostDataType {
   file: File;
   transactionStatus: string;
   price: number;
+}
+
+export interface PostType {
+  blind : number;
+  categoryName : string;
+  defaultImageUrl : string;
+  deleteCheck : number;
+  deleteDate? : string 
+  districtName : string
+  endTime : string
+  memberId : number
+  memberName : string
+  postId : number;
+  price : number;
+  registerDate : string
+  stadiumName : string
+  startTime : string;
+  title : string
+  transactionStatus : string
+  updateDate : string
+  viewCount : number
+  wishCount : number
+  imageUrl ? : string
+  content ? : string
+  phone ? : string
+  latitude ? : string
+  longitude ? : string
 }

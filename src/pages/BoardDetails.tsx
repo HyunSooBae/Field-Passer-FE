@@ -3,28 +3,30 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import PostList from '../components/PostList';
-import requestAPI from '../api/axios';
+import { useParams } from 'react-router-dom';
+import { getDetailPostData } from '@src/api/request';
+import { PostType } from './../util/userPageTypes';
 
 const BoardDetails = () => {
+  let { id } = useParams();
   const mapElement = useRef(null);
 
   // api 나오면 특정 게시글 데이터로 교체
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<PostType>();
 
   useEffect(() => {
     const getData = async () => {
-      const res = await requestAPI('post');
-      setData(res?.data.resultData);
+      const res = await getDetailPostData(id);
+      setData(res);
     };
     getData();
   }, []);
 
-  // api 나오면 경도 위도 받아서 사용
   useEffect(() => {
     const { naver } = window;
     if (!mapElement.current || !naver) return;
 
-    const location = new naver.maps.LatLng(37.51557, 126.91228);
+    const location = new naver.maps.LatLng(data?.latitude, data?.longitude);
     const mapOptions = {
       center: location,
       zoom: 17,
@@ -59,13 +61,13 @@ const BoardDetails = () => {
         <div className='w-full'>
           <img
             className='w-full object-cover aspect-square'
-            src='https://ldb-phinf.pstatic.net/20200609_17/15916992874041Uh2W_JPEG/4vxRsS84aj20HB3TJ45pa9Vc.jpg'
+            src={data?.defaultImageUrl}
           />
         </div>
         <div className='w-full'>
           <img
             className='w-full object-cover aspect-square'
-            src='https://www.slnews.co.kr/news/photo/202201/39716_41365_2337.jpg'
+            src={data?.imageUrl}
           />
         </div>
       </Slider>
@@ -83,27 +85,16 @@ const BoardDetails = () => {
       </div>
 
       <div className='py-[20px] border-b border-t border-solid border-field flex flex-col gap-[20px]'>
-        <p className='text-sm'>레드폭스케이지풋살</p>
-        <p className='text-sm font-black'>41,000</p>
+        <p className='text-sm'>{data?.title}</p>
+        <p className='text-sm font-black'>{data?.price}</p>
         <p className='text-sm leading-normal'>
-          내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+          {data?.content}
         </p>
         <div className='flex items-center justify-between'>
           <p className='flex gap-[5px]'>
-            <span className='text-xs text-gray-500'>관심 0</span>
+            <span className='text-xs text-gray-500'>관심 {data?.wishCount}</span>
             <span className='text-xs text-gray-500'>· 채팅 0 ·</span>
-            <span className='text-xs text-gray-500'>조회 0</span>
+            <span className='text-xs text-gray-500'>조회 {data?.viewCount}</span>
           </p>
 
           <div>
@@ -121,18 +112,18 @@ const BoardDetails = () => {
         <div ref={mapElement} className='mm:w-[300px] w-[100%] aspect-[1/1]' />
 
         <div className='flex flex-col gap-[10px]'>
-          <p className='text-sm'>장소 이름 : </p>
-          <p className='text-sm'>장소 번호 : </p>
+          <p className='text-sm'>장소 이름 : {data?.stadiumName}</p>
+          <p className='text-sm'>장소 번호 : {data?.phone}</p>
         </div>
       </section>
 
-      <div>
+      {/* <div>
         <div className='flex items-center justify-between py-[20px]'>
           <p className='font-black'>성동구 다른 예약</p>
           <button className='text-xs text-gray-400'>더보기</button>
         </div>
         <PostList data={data} />
-      </div>
+      </div> */}
     </div>
   );
 };

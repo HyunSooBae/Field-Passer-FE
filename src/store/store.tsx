@@ -3,6 +3,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage/session';
 import categoryReducer from './categorySlice';
 import authReducer from './authSlice';
+import postReducer from './postSlice'
 
 const persistConfig = {
   key: 'root',
@@ -12,6 +13,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   category: categoryReducer,
   auth: authReducer,
+  post: postReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
