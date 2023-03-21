@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isLogged: false,
   user_name: null,
   // user_id: null,
   user_profile: null,
-}
+};
 
 const LoggedState = createSlice({
   name: 'user',

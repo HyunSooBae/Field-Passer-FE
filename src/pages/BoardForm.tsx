@@ -6,7 +6,6 @@ import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { getCategoryDistrict, getStadiumList, getSearchPostList } from '@src/api/request';
 import { useDispatch, useSelector } from 'react-redux';
-import { savePost } from '@src/store/postSlice';
 import SelectBox from '@src/components/home/search/SelectBox';
 import { RootState } from '@src/store/store';
 import { submitPost } from '@src/api/request';
@@ -15,10 +14,9 @@ import { IoIosCloseCircle } from 'react-icons/io';
 const BoardForm = () => {
   const imgfile: any = useRef(null);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   // 카테고리 선택
-  const catagorySelect = useSelector<RootState>((state) => {
+  const categorySelect = useSelector<RootState>((state) => {
     return state.category.catagorySelect;
   });
   const districtSelect = useSelector<RootState>((state) => {
@@ -31,6 +29,7 @@ const BoardForm = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [districtList, setDistrictList] = useState([]);
   const [stadiumList, setStadiumList] = useState([]);
+  const [stadium, setStadium] = useState('');
 
   useEffect(() => {
     const getCategoryList = async () => {
@@ -42,24 +41,28 @@ const BoardForm = () => {
   }, []);
 
   useEffect(() => {
-    if (catagorySelect) {
+    if (categorySelect) {
       const getDistrict = async () => {
         const res = await getCategoryDistrict('district');
         setDistrictList(res);
       };
       getDistrict();
     }
-  }, [catagorySelect]);
+  }, [categorySelect]);
 
   useEffect(() => {
     if (districtSelect) {
       const getStadium = async () => {
-        const res = await getStadiumList(catagorySelect as string, districtSelect as string);
+        const res = await getStadiumList(categorySelect as string, districtSelect as string);
         setStadiumList(res);
       };
       getStadium();
     }
   }, [districtSelect]);
+
+  useEffect(() => {
+    setStadium(stadiumSelect as string);
+  }, [stadiumSelect]);
 
   //datepicker
   const [show, setShow] = useState(false);
@@ -159,12 +162,17 @@ const BoardForm = () => {
     }
   };
 
+  // hookForm handleSubmit 동작안됨 이벤트객체로 임시 변경
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const startDate = String(formData.get('startTime'));
     const endDate = String(formData.get('endTime'));
-
+    formData.append('memberId', '2'); //임시 멤버아이디
+    formData.append('categoryName', categorySelect as string);
+    formData.append('districtName', districtSelect as string);
+    formData.append('stadiumName', stadium as string);
+    formData.append('transactionStatus', '판매중');
     formData.set('startTime', date + 'T' + startDate + ':00');
     formData.set('endTime', date + 'T' + endDate + ':00');
 
@@ -173,9 +181,15 @@ const BoardForm = () => {
       console.log(pair[0] + ', ' + pair[1]);
     }
 
-    // const response = await submitPost(formData);
-    // console.log(response);
-    // navigate('/')
+    try {
+      const response = await submitPost(formData);
+      console.log(response);
+      window.confirm('게시글 작성이 완료되었습니다. 메인으로 이동하시겠습니까?')
+        ? navigate('/')
+        : null;
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -190,21 +204,20 @@ const BoardForm = () => {
             defaultValue='종목'
             size='w-1/4'
             options={categoryList}
-            {...register('categoryName')}
+            // {...register('categoryName')}
           />
           <SelectBox
             id='district'
             defaultValue='지역 전체'
             size='w-1/4'
-            options={catagorySelect ? districtList : []}
-            {...register('districtName')}
+            options={categorySelect ? districtList : []}
           />
           <SelectBox
             id='stadium'
             defaultValue='구장 전체'
             size='w-1/2'
             options={districtSelect ? stadiumList : []}
-            {...register('stadiumName')}
+            setStadium={setStadium}
           />
         </div>
         {errors.categoryName && (
@@ -281,13 +294,13 @@ const BoardForm = () => {
               {...register('file')}
               onChange={(e) => preview(e)}
             />
-
             <img
               src=''
               alt='미리보기 이미지'
               className='w-[100px] h-[100px] rounded-lg border border-solid border-gray-300'
               ref={imgfile}
             />
+            {errors.file && <p className='text-xs text-red-600'>{errors.file.message as string}</p>}
             {/* <div>
               <div className='flex gap-[10px] relative'>
                 <input

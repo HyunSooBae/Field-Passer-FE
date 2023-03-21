@@ -26,7 +26,12 @@ const ImminentBoard = () => {
   useEffect(() => {
     async function fetchPostList() {
       const res = await getImminentList(selectedCategory);
-      setPostList(res?.data);
+
+      const filteredList = res?.data.filter((data: any) => {
+        const diffDate = new Date(data.startTime).getTime() - new Date().getTime();
+        return diffDate / (1000 * 60 * 60 * 24) <= 3;
+      });
+      setPostList(filteredList);
     }
     fetchPostList();
   }, [selectedCategory]);
