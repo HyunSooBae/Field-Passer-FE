@@ -1,12 +1,13 @@
-import React, { FormEvent, useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import DatePicker from 'tailwind-datepicker-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { getCategoryDistrict, getStadiumList, getSearchPostList } from '@src/api/request';
 import { useDispatch, useSelector } from 'react-redux';
-import SelectBox from '@src/components/home/search/SelectBox';
+import { savePost } from '@src/store/postSlice';
+import SelectBox from '@src/components/boardForm/SelectBox';
 import { RootState } from '@src/store/store';
 import { submitPost } from '@src/api/request';
 import { IoIosCloseCircle } from 'react-icons/io';
@@ -15,20 +16,12 @@ const BoardForm = () => {
   const imgfile: any = useRef(null);
   const navigate = useNavigate();
 
-  // 카테고리 선택
-  const categorySelect = useSelector<RootState>((state) => {
-    return state.category.catagorySelect;
-  });
-  const districtSelect = useSelector<RootState>((state) => {
-    return state.category.districtSelect;
-  });
-  const stadiumSelect = useSelector<RootState>((state) => {
-    return state.category.stadiumSelect;
-  });
-
+  // 카테고리 리스트
   const [categoryList, setCategoryList] = useState([]);
   const [districtList, setDistrictList] = useState([]);
   const [stadiumList, setStadiumList] = useState([]);
+  const [category, setCategory] = useState('');
+  const [district, setDistrict] = useState('');
   const [stadium, setStadium] = useState('');
 
   useEffect(() => {
@@ -41,28 +34,28 @@ const BoardForm = () => {
   }, []);
 
   useEffect(() => {
-    if (categorySelect) {
+    if (category) {
       const getDistrict = async () => {
         const res = await getCategoryDistrict('district');
         setDistrictList(res);
       };
       getDistrict();
     }
-  }, [categorySelect]);
+  }, [category]);
 
   useEffect(() => {
-    if (districtSelect) {
+    if (district) {
       const getStadium = async () => {
-        const res = await getStadiumList(categorySelect as string, districtSelect as string);
+        const res = await getStadiumList(category as string, district as string);
         setStadiumList(res);
       };
       getStadium();
     }
-  }, [districtSelect]);
+  }, [district]);
 
   useEffect(() => {
-    setStadium(stadiumSelect as string);
-  }, [stadiumSelect]);
+    setStadium(stadium as string);
+  }, [stadium]);
 
   //datepicker
   const [show, setShow] = useState(false);
@@ -134,6 +127,7 @@ const BoardForm = () => {
     register,
     watch,
     reset,
+    handleSubmit,
     formState: { errors },
   } = useForm<FormSchmaType>({ mode: 'onChange', resolver: zodResolver(formSchema) });
 
@@ -162,15 +156,14 @@ const BoardForm = () => {
     }
   };
 
-  // hookForm handleSubmit 동작안됨 이벤트객체로 임시 변경
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = async (data: FormSchmaType, e: any) => {
     const formData = new FormData(e.currentTarget);
+    console.log(e.currentTarget);
     const startDate = String(formData.get('startTime'));
     const endDate = String(formData.get('endTime'));
     formData.append('memberId', '2'); //임시 멤버아이디
-    formData.append('categoryName', categorySelect as string);
-    formData.append('districtName', districtSelect as string);
+    formData.append('categoryName', category as string);
+    formData.append('districtName', district as string);
     formData.append('stadiumName', stadium as string);
     formData.append('transactionStatus', '판매중');
     formData.set('startTime', date + 'T' + startDate + ':00');
@@ -191,11 +184,29 @@ const BoardForm = () => {
       console.log(err);
     }
   };
+  // const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   const formData = new FormData(e.currentTarget);
+  //   const startDate = String(formData.get('startTime'));
+  //   const endDate = String(formData.get('endTime'));
+
+  //   formData.set('startTime', date + 'T' + startDate + ':00');
+  //   formData.set('endTime', date + 'T' + endDate + ':00');
+
+  //   let entries = formData.entries();
+  //   for (const pair of entries) {
+  //     console.log(pair[0] + ', ' + pair[1]);
+  //   }
+
+  //   // const response = await submitPost(formData);
+  //   // console.log(response);
+  //   // navigate('/')
+  // };
 
   return (
     <div className='my-[50px] mx-auto px-[20px] mm:px-0'>
       <form
-        onSubmit={(e) => onSubmit(e)}
+        onSubmit={handleSubmit(onSubmit)}
         className='w-full max-w-[600px] ml-auto mr-auto mt-0 mb-0 flex flex-col gap-[10px] mm:gap-[20px]'
       >
         <div className='flex gap-[5px]'>
@@ -204,20 +215,27 @@ const BoardForm = () => {
             defaultValue='종목'
             size='w-1/4'
             options={categoryList}
-            // {...register('categoryName')}
+            register={register}
+            type='categoryName'
+            setList={setCategory}
           />
           <SelectBox
             id='district'
             defaultValue='지역 전체'
             size='w-1/4'
-            options={categorySelect ? districtList : []}
+            options={category ? districtList : []}
+            register={register}
+            type='districtName'
+            setList={setDistrict}
           />
           <SelectBox
             id='stadium'
             defaultValue='구장 전체'
             size='w-1/2'
-            options={districtSelect ? stadiumList : []}
-            setStadium={setStadium}
+            options={district ? stadiumList : []}
+            register={register}
+            type='stadiumName'
+            setList={setStadium}
           />
         </div>
         {errors.categoryName && (
