@@ -1,21 +1,24 @@
-import { useState, useEffect, Dispatch } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import SelectBox from './SelectBox';
 import { RootState } from '@src/store/store';
 import { getCategoryDistrict, getStadiumList, getSearchPostList } from '@src/api/request';
 import { savePost } from '@src/store/postSlice';
+import { unselected } from '@src/store/categorySlice';
 
 const Searchbar = () => {
+  let link = document.location.pathname;
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const catagorySelect = useSelector<RootState>((state) => {
+  const catagorySelect = useSelector((state: RootState) => {
     return state.category.catagorySelect;
   });
-  const districtSelect = useSelector<RootState>((state) => {
+  const districtSelect = useSelector((state: RootState) => {
     return state.category.districtSelect;
   });
-  const stadiumSelect = useSelector<RootState>((state) => {
+  const stadiumSelect = useSelector((state: RootState) => {
     return state.category.stadiumSelect;
   });
 
@@ -23,12 +26,16 @@ const Searchbar = () => {
   const [districtList, setDistrictList] = useState([]);
   const [stadiumList, setStadiumList] = useState([]);
 
+  // 카테고리 선택 초기화
+  useEffect(() => {
+    if (link === '/') dispatch(unselected('all'));
+  }, []);
+
   useEffect(() => {
     const getCategoryList = async () => {
       const res = await getCategoryDistrict('category');
       setCategoryList(res);
     };
-
     getCategoryList();
   }, []);
 
@@ -53,14 +60,10 @@ const Searchbar = () => {
   }, [districtSelect]);
 
   const selectSearch = async () => {
-    if (!catagorySelect) return console.log('카테고리 선택해주세요.');
-    const res = await getSearchPostList(
-      catagorySelect as string,
-      districtSelect as string,
-      stadiumSelect as string,
-      1,
-    );
+    console.log(catagorySelect);
+    const res = await getSearchPostList(catagorySelect, districtSelect, stadiumSelect, 1);
     dispatch(savePost([catagorySelect, districtSelect, stadiumSelect, res]));
+    dispatch(unselected('category'));
     navigate('/board');
   };
 

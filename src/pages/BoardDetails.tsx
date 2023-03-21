@@ -3,14 +3,22 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import PostList from '../components/PostList';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getDetailPostData, getSearchPostList } from '@src/api/request';
 import { PostType } from './../util/userPageTypes';
+import { useDispatch } from 'react-redux';
+import { savePostMore } from '@src/store/postSlice';
+import { unselected } from '@src/store/categorySlice';
+
 const BoardDetails = () => {
   let { id } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const mapElement = useRef(null);
+
   const [data, setData] = useState<PostType>();
   const [district, setDistrict] = useState<PostType[]>([]);
+
   // 상세 게시글 api
   useEffect(() => {
     const getData = async () => {
@@ -29,6 +37,15 @@ const BoardDetails = () => {
   }, [data]);
   // 지도 api
   useEffect(() => {
+    const getDistrictData = async () => {
+      const res = await getSearchPostList('', data?.districtName, '', 1);
+      setDistrict(res);
+    };
+    getDistrictData();
+  }, [data]);
+
+  // 지도 api
+  useEffect(() => {
     const { naver } = window;
     if (!mapElement.current || !naver) return;
     const location = new naver.maps.LatLng(data?.latitude, data?.longitude);
@@ -45,7 +62,8 @@ const BoardDetails = () => {
       position: location,
       map,
     });
-  }, []);
+  }, [data]);
+
   const settings = {
     infinite: true,
     speed: 500,
@@ -58,6 +76,13 @@ const BoardDetails = () => {
     pauseOnHover: true,
     dotsClass: 'slick-dots !bottom-[10px] z-10',
   };
+
+  const morePage = () => {
+    dispatch(unselected('all'));
+    dispatch(savePostMore(district));
+    navigate('/boardMore');
+  };
+
   return (
     <div className='my-[50px] mx-auto max-w-[600px] px-[20px] mm:px-[0]'>
       <Slider {...settings} className='relative max-h-[600px] mx-auto rounded-lg overflow-hidden'>
@@ -106,10 +131,13 @@ const BoardDetails = () => {
           <p className='text-sm'>장소 번호 : {data?.phone}</p>
         </div>
       </section>
+
       <div>
         <div className='flex items-center justify-between py-[20px]'>
           <p className='font-black'>{data?.districtName} 다른 예약</p>
-          <button className='text-xs text-gray-400'>더보기</button>
+          <button className='text-xs text-gray-400' onClick={() => morePage()}>
+            더보기
+          </button>
         </div>
         <PostList data={district} />
       </div>
