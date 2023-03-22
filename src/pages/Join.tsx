@@ -76,8 +76,8 @@ const Join = () => {
     });
     formData.append('profileImg', profileImg[0]);
     console.log(data);
-    // const { ok, authData } = await join(formData);
-    // console.log(authData);
+    const { ok, authData } = await join(formData);
+    console.log(authData);
     // setConfirmModal(true);
     let entries = formData.entries();
     for (const pair of entries) {

@@ -42,7 +42,7 @@ request.interceptors.response.use(
 const axiosConfigForm: AxiosRequestConfig = {
   baseURL: import.meta.env.VITE_BASE_URL,
   headers: {
-    'content-type': 'multipart/form-data',
+    'Content-type': 'multipart/form-data',
     withCredentials: true,
     credentials: 'include',
   },
