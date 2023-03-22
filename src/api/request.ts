@@ -321,7 +321,7 @@ export const submitReport = async (
 // 양도 게시글 작성
 export const submitPost = async (formData: FormData) => {
   try {
-    const response = await request.post('/api/post/write', formData);
+    const response = await requestForm.post('/api/post/write', formData);
     return response;
   } catch (err) {
     console.log(err);
