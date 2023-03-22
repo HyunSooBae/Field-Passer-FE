@@ -2,12 +2,12 @@ import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { unselected, selected } from '@src/store/categorySlice';
 
-const SelectBox = ({ id, options, defaultValue, size }: any) => {
+const SelectBox = ({ id, options, defaultValue, size, setStadium }: any) => {
   interface Options {
-    categoryID: number
-    category: string
-    district: string
-    stadiumName: string
+    categoryID: number;
+    category: string;
+    district: string;
+    stadiumName: string;
   }
 
   const dispatch = useDispatch();
@@ -31,6 +31,7 @@ const SelectBox = ({ id, options, defaultValue, size }: any) => {
       id={id}
       className={`bg-gray-50 border-2 border-gray-200 focus:outline-0 text-gray-900 text-sm p-2 rounded-lg focus:border-green-500 block h-10 ${size}`}
       onChange={(e) => {
+        if (e.target.id === 'stadium') setStadium(e.target.value);
         checkSelector(id, e.target.value);
       }}
     >
