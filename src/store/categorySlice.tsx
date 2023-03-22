@@ -36,8 +36,8 @@ const categorySlice = createSlice({
     unselected: (state, action) => {
       switch (action.payload.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')) {
         case 'category':
+          state.catagorySelect = false;
           state.districtSelect = false;
-          state.stadiumSelect = false;
           break;
         case 'district':
           state.districtSelect = false;

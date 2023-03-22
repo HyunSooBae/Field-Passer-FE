@@ -15,7 +15,8 @@ const SelectBox = ({ id, options, defaultValue, size }: any) => {
 
   const checkSelector = (action: string, value: string) => {
     const prams = action + value
-    if (select.current?.value === '') dispatch(unselected(prams));
+
+    if (select.current?.value === '') dispatch(unselected(action))
     else {
       dispatch(unselected(prams));
       setTimeout(() => {
