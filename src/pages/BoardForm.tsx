@@ -183,6 +183,7 @@ const BoardForm = () => {
     } catch (err) {
       console.log(err);
     }
+    console.log('실행됨');
   };
   // const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   //   e.preventDefault();
@@ -198,9 +199,9 @@ const BoardForm = () => {
   //     console.log(pair[0] + ', ' + pair[1]);
   //   }
 
-  //   // const response = await submitPost(formData);
-  //   // console.log(response);
-  //   // navigate('/')
+  //   const response = await submitPost(formData);
+  //   console.log(response);
+  //   navigate('/');
   // };
 
   return (

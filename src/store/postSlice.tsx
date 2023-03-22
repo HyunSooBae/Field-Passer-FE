@@ -31,8 +31,7 @@ const postSlice = createSlice({
       state.postMoreData = action.payload;
     },
     scrollPost: (state, action) => {
-      state.postData.push(action.payload);
-      console.log(action.payload);
+      state.postData.push(...action.payload);
     },
   },
 });
