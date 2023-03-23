@@ -15,6 +15,8 @@ const Test = () => {
   const [district, setDistrict] = useState('');
   const [stadium, setStadium] = useState('');
 
+  const navigate = useNavigate();
+
   // 카테고리 리스트 부르기
   useEffect(() => {
     const getCategoryList = async () => {
@@ -83,21 +85,32 @@ const Test = () => {
     language: 'ko',
   };
 
-  const formSchema = z.object({
-    categoryName: z.string(),
-    districtName: z.string(),
-    stadiumName: z.string(),
-    title: z.string().min(2, { message: '제목을 2자 이상 입력해주세요.' }),
-    price: z
-      .string()
-      .min(1, { message: '양도할 가격을 입력해주세요.' })
-      .refine((val) => !Number.isNaN(parseInt(val, 10))),
-    content: z.string().min(5, { message: '상세 내용을 5글자 이상 입력해주세요.' }),
-    startTime: z.string(),
-    endTime: z.string(),
-    file: z.any(),
-  });
-  // .required();
+  const MAX_FILE_SIZE = 1048576;
+  const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+
+  const formSchema = z
+    .object({
+      categoryName: z.string(),
+      districtName: z.string(),
+      stadiumName: z.string(),
+      title: z.string().min(2, { message: '제목을 2자 이상 입력해주세요.' }),
+      price: z
+        .string()
+        .min(1, { message: '양도할 가격을 입력해주세요.' })
+        .refine((val) => !Number.isNaN(parseInt(val, 10))),
+      content: z.string().min(5, { message: '상세 내용을 5글자 이상 입력해주세요.' }),
+      startTime: z.string(),
+      endTime: z.string(),
+      file: z
+        .any()
+        .refine((file) => ACCEPTED_IMAGE_TYPES.includes(file[0].type), {
+          message: '.jpg, .jpeg, .png, gif 형식에 맞는 파일을 업로드해주세요.',
+        })
+        .refine((file) => file[0].size <= MAX_FILE_SIZE, {
+          message: '파일 용량은 최대 1MB까지 가능합니다.',
+        }),
+    })
+    .required();
   type FormSchmaType = z.infer<typeof formSchema>;
 
   const {
@@ -120,7 +133,7 @@ const Test = () => {
       endTime,
       file,
     } = data;
-    console.log(data);
+
     const formData = new FormData();
     formData.append('memberId', '2');
     formData.append('categoryName', categoryName);
@@ -140,10 +153,9 @@ const Test = () => {
     }
     try {
       const response = await submitPost(formData);
-      console.log(response);
-      // window.confirm('게시글 작성이 완료되었습니다. 메인으로 이동하시겠습니까?')
-      //   ? navigate('/')
-      //   : null;
+      window.confirm('게시글 작성이 완료되었습니다. 메인으로 이동하시겠습니까?')
+        ? navigate('/')
+        : null;
     } catch (err) {
       console.log(err);
     }
@@ -192,6 +204,9 @@ const Test = () => {
             setList={setStadium}
           />
         </div>
+        {errors.categoryName && (
+          <p className='text-xs text-red-600'>{errors.categoryName.message}</p>
+        )}
         <div className='flex flex-col gap-[10px] mm:gap-[20px]'>
           <input
             type='text'
@@ -199,17 +214,20 @@ const Test = () => {
             className='h-10 rounded text-sm border-#94a3b8 border-solid border-2 px-3 focus:outline-none focus:border-field'
             {...register('title')}
           />
+          {errors.title && <p className='text-xs text-red-600'>{errors.title.message}</p>}
           <input
             type='number'
             placeholder='가격 입력'
             className='h-10 rounded text-sm border-#94a3b8 border-solid border-2 px-3 focus:outline-none focus:border-field'
             {...register('price')}
           />
+          {errors.price && <p className='text-xs text-red-600'>{errors.price.message}</p>}
           <textarea
             placeholder='내용 입력'
             className='resize-none rounded text-sm border-#94a3b8 border-solid border-2 px-3 pt-3 h-96 focus:outline-none focus:border-field'
             {...register('content')}
           ></textarea>
+          {errors.content && <p className='text-xs text-red-600'>{errors.content.message}</p>}
         </div>
         <div className='flex flex-col gap-3'>
           <p className='text-xs text-gray-600'>예약 일시</p>
@@ -242,6 +260,8 @@ const Test = () => {
             />
             <div className='mr-3 py-2 px-1'>까지</div>
           </div>
+          {errors.startTime && <p className='text-xs text-red-600'>{errors.startTime.message}</p>}
+          {errors.endTime && <p className='text-xs text-red-600'>{errors.endTime.message}</p>}
         </div>
         <div>
           <p className='text-xs text-gray-600 mb-[10px]'>예약 인증 사진</p>
@@ -262,6 +282,7 @@ const Test = () => {
               alt='미리보기 이미지'
               className='w-[100px] h-[100px] rounded-lg border border-solid border-gray-300'
             />
+            {errors.file && <p className='text-xs text-red-600'>{errors.file.message as string}</p>}
           </div>
         </div>
 
