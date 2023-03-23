@@ -157,14 +157,14 @@ const BoardForm = () => {
     for (const pair of entries) {
       console.log(pair[0] + ', ' + pair[1]);
     }
-    // try {
-    //   const response = await submitPost(formData);
-    //   window.confirm('게시글 작성이 완료되었습니다. 메인으로 이동하시겠습니까?')
-    //     ? navigate('/')
-    //     : null;
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    try {
+      const response = await submitPost(formData);
+      window.confirm('게시글 작성이 완료되었습니다. 메인으로 이동하시겠습니까?')
+        ? navigate('/')
+        : null;
+    } catch (err) {
+      console.log(err);
+    }
   };
   const [imgPreview, setImgPreview] = useState('');
 
