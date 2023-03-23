@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { getCategoryDistrict, getStadiumList, submitPost } from '@src/api/request';
 import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
-import { useForm, FieldValues } from 'react-hook-form';
+import { useForm, FieldValues, FieldErrors } from 'react-hook-form';
 import DatePicker from 'tailwind-datepicker-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import SelectBox from '@src/components/boardForm/SelectBox';
+import { IoIosCloseCircle } from 'react-icons/io';
 
 const Test = () => {
   const [categoryList, setCategoryList] = useState([]);
@@ -90,9 +91,9 @@ const Test = () => {
 
   const formSchema = z
     .object({
-      categoryName: z.string(),
-      districtName: z.string(),
-      stadiumName: z.string(),
+      categoryName: z.string().min(1, { message: '종목을 선택하세요.' }),
+      districtName: z.string().min(1, { message: '지역을 선택하세요.' }),
+      stadiumName: z.string().min(1, { message: '구장을 선택하세요.' }),
       title: z.string().min(2, { message: '제목을 2자 이상 입력해주세요.' }),
       price: z
         .string()
@@ -117,10 +118,15 @@ const Test = () => {
     register,
     watch,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormSchmaType>({ resolver: zodResolver(formSchema) });
 
   const imgFile = watch('file');
+  const removeImg = () => {
+    setImgPreview('');
+    reset({ file: null });
+  };
   const onSubmit = async (data: FieldValues) => {
     const {
       categoryName,
@@ -133,7 +139,7 @@ const Test = () => {
       endTime,
       file,
     } = data;
-
+    console.log(data);
     const formData = new FormData();
     formData.append('memberId', '2');
     formData.append('categoryName', categoryName);
@@ -151,14 +157,14 @@ const Test = () => {
     for (const pair of entries) {
       console.log(pair[0] + ', ' + pair[1]);
     }
-    try {
-      const response = await submitPost(formData);
-      window.confirm('게시글 작성이 완료되었습니다. 메인으로 이동하시겠습니까?')
-        ? navigate('/')
-        : null;
-    } catch (err) {
-      console.log(err);
-    }
+    // try {
+    //   const response = await submitPost(formData);
+    //   window.confirm('게시글 작성이 완료되었습니다. 메인으로 이동하시겠습니까?')
+    //     ? navigate('/')
+    //     : null;
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
   const [imgPreview, setImgPreview] = useState('');
 
@@ -207,6 +213,10 @@ const Test = () => {
         {errors.categoryName && (
           <p className='text-xs text-red-600'>{errors.categoryName.message}</p>
         )}
+        {errors.districtName && (
+          <p className='text-xs text-red-600'>{errors.districtName.message}</p>
+        )}
+        {errors.stadiumName && <p className='text-xs text-red-600'>{errors.stadiumName.message}</p>}
         <div className='flex flex-col gap-[10px] mm:gap-[20px]'>
           <input
             type='text'
@@ -265,11 +275,7 @@ const Test = () => {
         </div>
         <div>
           <p className='text-xs text-gray-600 mb-[10px]'>예약 인증 사진</p>
-          <div className='flex gap-[10px]'>
-            <label
-              htmlFor='img'
-              className='block w-[100px] h-[100px] border-solid border rounded-lg cursor-pointer border-[#ddd] bg-[url("/images/cam.png")] bg-center bg-[length:60px] bg-no-repeat'
-            />
+          <div className='flex gap-[10px] relative'>
             <input
               id='img'
               type='file'
@@ -277,11 +283,27 @@ const Test = () => {
               accept='image/gif,image/jpeg,image/png'
               {...register('file')}
             />
-            <img
-              src={imgPreview}
-              alt='미리보기 이미지'
-              className='w-[100px] h-[100px] rounded-lg border border-solid border-gray-300'
-            />
+            {imgPreview && !errors.file ? (
+              <div className='relative'>
+                <img
+                  src={imgPreview}
+                  alt='미리보기 이미지'
+                  className='w-[100px] h-[100px] rounded-lg border border-solid border-gray-300'
+                />
+                <button
+                  type='button'
+                  className='absolute right-[-10px] top-[-10px] rounded-full'
+                  onClick={removeImg}
+                >
+                  <IoIosCloseCircle size='30' color='gray'></IoIosCloseCircle>
+                </button>
+              </div>
+            ) : (
+              <label
+                htmlFor='img'
+                className='block w-[100px] h-[100px] border-solid border rounded-lg cursor-pointer border-[#ddd] bg-[url("/images/cam.png")] bg-center bg-[length:60px] bg-no-repeat'
+              />
+            )}
             {errors.file && <p className='text-xs text-red-600'>{errors.file.message as string}</p>}
           </div>
         </div>
