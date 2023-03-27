@@ -1,3 +1,4 @@
+import { getMyPosts } from '@src/api/request';
 import axios from 'axios';
 import React from 'react';
 import { useState, useEffect } from 'react';
@@ -16,6 +17,13 @@ const MyPage = () => {
 
   // 비동기...
   const [totalPage, setTotalPage] = useState();
+
+  const getMyPostData = async () => {
+    const { ok, myPostData } = await getMyPosts();
+    console.log(ok);
+    console.log(myPostData);
+  };
+  getMyPostData();
 
   // 문의글 & 페이지네이션
   useEffect(() => {

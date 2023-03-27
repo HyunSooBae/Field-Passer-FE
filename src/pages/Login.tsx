@@ -7,6 +7,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_AUTH } from '@src/store/authSlice';
+import { SET_USER, DELETE_USER } from '@src/store/userSlice';
 import Modal from '@src/components/Modal';
 import type { modalPropsType } from '@src/components/Modal';
 
@@ -43,11 +44,13 @@ const Login = () => {
     const { ok, code, authData } = await userLogin(data);
     // console.log(authData);
     if (ok && code === 200) {
-      dispatch(SET_AUTH(true));
-      // navigate('/');
       console.log(authData);
-      setAuthMessage(authData.message);
-      setComfirmModal(true);
+      dispatch(SET_AUTH(true));
+      navigate('/');
+      console.log(authData.data);
+      dispatch(SET_USER(authData.data));
+      // setAuthMessage(authData.message);
+      // setComfirmModal(true);
     } else {
       console.log('ok : ', ok, ', code : ', code, ', authData.message : ', authData.message);
       // 로그인에 실패하였습니다 모달창 띄우기
@@ -110,8 +113,8 @@ const Login = () => {
           <Modal
             title={authMessage}
             description={authMessage}
-            onCancel={() => setComfirmModal(false)}
-            onConfirm={() => navigate('/')}
+            onConfirm={() => setComfirmModal(false)}
+            // onConcel={() => navigate('/')}
           />
         )}
       </>

@@ -406,11 +406,35 @@ export const getDetailPostData = async (id: string | undefined) => {
 };
 
 // 게시글 삭제
-export const DeletePost = async (postId : string | undefined) => {
+export const DeletePost = async (postId: string | undefined) => {
   try {
     await request.put(`api/post/delete/${postId}`);
-    alert('삭제 완료되었습니다.')
+    alert('삭제 완료되었습니다.');
   } catch (error) {
     console.log(error);
   }
 };
+
+// 마이페이지 관심글 조회
+//
+
+// 마이페이지 내가 쓴 게시글 조회
+export const getMyPosts = async () => {
+  try {
+    const response = await request(`/api/search/post/:memberId`, {
+      method: 'GET',
+    });
+    console.log(response);
+    return {
+      ok: true,
+      myPostData: response.data,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+    };
+  }
+};
+// 마이페이지 내가 쓴 문의글 조회
+//

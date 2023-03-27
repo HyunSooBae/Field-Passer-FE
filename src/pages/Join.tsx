@@ -36,15 +36,19 @@ const Join = () => {
       profileImg: z
         .any()
         .default(null)
-        .refine((file) => !file?.[0] || file == '' || file !== null || file == undefined || file.length == 0, {
-          message: '이미지 파일을 업로드해주세요.',
-        })
+        .refine(
+          (file) =>
+            !file?.[0] || file == '' || file !== null || file == undefined || file.length == 0,
+          {
+            message: '이미지 파일을 업로드해주세요.',
+          },
+        )
         .refine((file) => ACCEPTED_IMAGE_TYPES.includes(file?.[0]?.type), {
           message: '.jpg, .jpeg, .png, gif 형식에 맞는 파일을 업로드해주세요.',
         })
         .refine((file) => file?.[0]?.size <= MAX_FILE_SIZE, {
           message: `파일 용량은 최대 1MB까지 가능합니다.`,
-        })
+        }),
       // .optional(),
     })
     .required()
@@ -213,9 +217,6 @@ const Join = () => {
                       htmlFor='images'
                       className='block w-[100px] h-[100px] border-solid border rounded-lg cursor-pointer border-[#ddd] bg-[url("/images/cam.png")] bg-center bg-[length:60px] bg-no-repeat'
                     />
-                  )}
-                  {errors.profileImg && (
-                    <p className='w-full text-xs text-red-600 py-3'>{String(errors.profileImg.message)}</p>
                   )}
                 </div>
               </div>
