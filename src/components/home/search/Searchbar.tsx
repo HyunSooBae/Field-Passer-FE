@@ -12,6 +12,8 @@ const Searchbar = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  // 카테고리 선택 값
   const catagorySelect = useSelector((state: RootState) => {
     return state.category.catagorySelect;
   });
@@ -22,33 +24,29 @@ const Searchbar = () => {
     return state.category.stadiumSelect;
   });
 
+  // 카테고리 리스트 
   const [categoryList, setCategoryList] = useState([]);
   const [districtList, setDistrictList] = useState([]);
   const [stadiumList, setStadiumList] = useState([]);
 
-  // 카테고리 선택 초기화
+  // 홈 화면 카테고리 선택 초기화
   useEffect(() => {
     if (link === '/') dispatch(unselected('all'));
   }, []);
 
+  // 카테고리 종목,구역 리스트 api 호출
   useEffect(() => {
-    const getCategoryList = async () => {
-      const res = await getCategoryDistrict('category');
-      setCategoryList(res);
+    const getCategoryDistrictList = async () => {
+      const categoryRes = await getCategoryDistrict('category');
+      setCategoryList(categoryRes)
+
+      const districtRes = await getCategoryDistrict('district');
+      setDistrictList(districtRes);
     };
-    getCategoryList();
+    getCategoryDistrictList()
   }, []);
 
-  useEffect(() => {
-    if (catagorySelect) {
-      const getDistrict = async () => {
-        const res = await getCategoryDistrict('district');
-        setDistrictList(res);
-      };
-      getDistrict();
-    }
-  }, [catagorySelect]);
-
+  // 구장 리스트 api 호출
   useEffect(() => {
     if (districtSelect) {
       const getStadium = async () => {
@@ -59,13 +57,14 @@ const Searchbar = () => {
     }
   }, [districtSelect]);
 
+  // 검색 버튼 함수
   const selectSearch = async () => {
-    console.log(catagorySelect);
     const res = await getSearchPostList(catagorySelect, districtSelect, stadiumSelect, 1);
     dispatch(savePost([catagorySelect, districtSelect, stadiumSelect, res]));
-    dispatch(unselected('category'));
+    if (link !== '/board') dispatch(unselected('all'));
     navigate('/board');
   };
+
 
   return (
     <section className='flex my-[20px] justify-center gap-[10px] items-center flex-wrap max-w-full'>
@@ -96,7 +95,10 @@ const Searchbar = () => {
           검색
         </button>
         <button
-          onClick={() => navigate('/posting')}
+          onClick={() => {
+            dispatch(unselected('all'));
+            navigate('/posting')
+          }}
           className='p-3 rounded-lg bg-field hover:bg-hoverField text-white text-sm'
         >
           양도하기

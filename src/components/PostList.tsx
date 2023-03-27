@@ -15,7 +15,7 @@ const PostList = ({ data }: Props) => {
       ) : (
         <div className='mx-[-15px] flex flex-wrap gap-[10px] pl-[10px]'>
           {data.map((item: PostType, index: any) => {
-            const link = `/board/details/${item.postId}`;
+            const link = `/board/details/${item.postId}/${item.memberId}`;
             return (
               <div
                 key={index}
@@ -27,9 +27,9 @@ const PostList = ({ data }: Props) => {
                     className='w-full border border-gray-500 border-solid object-cover aspect-square rounded-lg'
                     src={item.defaultImageUrl}
                   />
-                  <div className='flex flex-col gap-[8px]'>
+                  <div className='flex flex-col gap-[8px] text-start'>
                     <p className='text-xxs text-gray-500'>{item.categoryName}</p>
-                    <p className='text-sm'>{item.stadiumName}</p>
+                    <p className='text-sm leading-5'>{item.stadiumName}</p>
                     <p className='text-xs'>
                       {item.startTime?.slice(5, 10).replace('-', '월 ') + '일'} /{' '}
                       {item.startTime?.slice(11, 16)}

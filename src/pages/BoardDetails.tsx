@@ -3,20 +3,25 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import PostList from '../components/PostList';
-import { useNavigate, useParams } from 'react-router-dom';
-import { getDetailPostData, getSearchPostList } from '@src/api/request';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { DeletePost, getDetailPostData, getSearchPostList } from '@src/api/request';
 import { PostType } from './../util/userPageTypes';
 import { useDispatch } from 'react-redux';
 import { savePostMore } from '@src/store/postSlice';
 import { unselected } from '@src/store/categorySlice';
 
 const BoardDetails = () => {
-  let { id } = useParams();
+  let { id } = useParams(); // 게시글 id
+  let { userId } = useParams(); // 작성자 id
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const mapElement = useRef(null);
 
+  // 게시글 data
   const [data, setData] = useState<PostType>();
+  // 게시글 지역 data
   const [district, setDistrict] = useState<PostType[]>([]);
 
   // 상세 게시글 api
@@ -27,14 +32,16 @@ const BoardDetails = () => {
     };
     getData();
   }, []);
+
+  // 해당 게시글 지역 기반 게시글 api
   useEffect(() => {
     const getDistrictData = async () => {
       const res = await getSearchPostList('', data?.districtName, '', 1);
-      console.log(data?.districtName);
       setDistrict(res);
     };
     getDistrictData();
   }, [data]);
+
   // 지도 api
   useEffect(() => {
     const getDistrictData = async () => {
@@ -77,6 +84,7 @@ const BoardDetails = () => {
     dotsClass: 'slick-dots !bottom-[10px] z-10',
   };
 
+  // 더보기 버튼 함수
   const morePage = () => {
     dispatch(unselected('all'));
     dispatch(savePostMore(district));
@@ -94,20 +102,26 @@ const BoardDetails = () => {
         </div>
       </Slider>
       <div className='flex items-center my-[20px] gap-[20px]'>
-        <img
-          src='https://img.freepik.com/free-photo/white-wall-with-texture-background_24836-60.jpg?auto=format&h=200'
-          alt=''
-          className='w-[50px] h-[50px] rounded-[50%] '
-        />
+        <Link to={`/userProfile/${userId}`} className='w-[50px] h-[50px] rounded-[50%] block '>
+          <img
+            src={data?.profileImg}
+            alt='profileImg'
+            className='w-[50px] h-[50px] rounded-[50%] block'
+          />
+        </Link>
         <div className='flex justify-between w-full items-center'>
-          <p className='text-sm font-black'>사용자 이름</p>
+          <p className='text-xm font-black'>{data?.memberName}</p>
           <button className='rounded bg-field text-sm text-white p-[10px]'>채팅 하기</button>
         </div>
       </div>
-      <div className='py-[20px] border-b border-t border-solid border-field flex flex-col gap-[20px]'>
-        <p className='text-sm'>{data?.title}</p>
-        <p className='text-sm font-black'>{data?.price}</p>
-        <p className='text-sm leading-normal'>{data?.content}</p>
+      <div className='pt-[20px] pb-[10px] border-b border-t border-solid border-field flex flex-col gap-[20px]'>
+        <div className='flex justify-between'>
+          <p className='inline-block max-w-[70%] whitespace-nowrap overflow-hidden text-ellipsis'>
+            {data?.title}
+          </p>
+          <p className='text-sm font-black'>{data?.price.toLocaleString()} 원</p>
+        </div>
+        <p className='text-sm leading-normal pt-2 pb-2'>{data?.content}</p>
         <div className='flex items-center justify-between'>
           <p className='flex gap-[5px]'>
             <span className='text-xs text-gray-500'>관심 {data?.wishCount}</span>
@@ -118,7 +132,15 @@ const BoardDetails = () => {
             <button className='px-[10px] py-[7px] text-xs bg-gray-300 text-white rounded mr-[10px]'>
               수정
             </button>
-            <button className='px-[10px] py-[7px] text-xs bg-gray-300 text-white rounded'>
+            <button
+              className='px-[10px] py-[7px] text-xs bg-gray-300 text-white rounded'
+              onClick={() => {
+                if (confirm('삭제 하시겠습니까?') === true) {
+                  DeletePost(id);
+                  navigate('/');
+                }
+              }}
+            >
               삭제
             </button>
           </div>

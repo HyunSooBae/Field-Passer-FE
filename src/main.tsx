@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       { path: '/admin/login', element: <AdminLogin /> },
       { path: '/board', element: <Board /> },
       { path: '/posting', element: <BoardForm /> },
-      { path: '/board/details/:id', element: <BoardDetails /> },
+      { path: '/board/details/:id/:userId', element: <BoardDetails /> },
       { path: '/chatting/:id', element: <Chatting /> },
       { path: '/boardMore', element: <BoardMore /> },
     ],

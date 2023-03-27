@@ -404,3 +404,13 @@ export const getDetailPostData = async (id: string | undefined) => {
     console.log(error);
   }
 };
+
+// 게시글 삭제
+export const DeletePost = async (postId : string | undefined) => {
+  try {
+    await request.put(`api/post/delete/${postId}`);
+    alert('삭제 완료되었습니다.')
+  } catch (error) {
+    console.log(error);
+  }
+};
