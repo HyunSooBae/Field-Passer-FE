@@ -29,7 +29,10 @@ const PostList = ({ data }: Props) => {
                   />
                   <div className='flex flex-col gap-[8px] text-start'>
                     <p className='text-xxs text-gray-500'>{item.categoryName}</p>
-                    <p className='text-sm leading-5'>{item.stadiumName}</p>
+                    <p className='text-sm leading-5'>
+                      {/* {item.stadiumName} */}
+                      {item.title}
+                    </p>
                     <p className='text-xs'>
                       {item.startTime?.slice(5, 10).replace('-', '월 ') + '일'} /{' '}
                       {item.startTime?.slice(11, 16)}

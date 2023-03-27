@@ -24,7 +24,18 @@ const Searchbar = () => {
     return state.category.stadiumSelect;
   });
 
-  // 카테고리 리스트 
+  // 저장된 카테고리 선택 값
+  const catagoryVal = useSelector((state: RootState) => {
+    return state.post.catagoryVal;
+  });
+  const districtVal = useSelector((state: RootState) => {
+    return state.post.districtVal;
+  });
+  const stadiumVal = useSelector((state: RootState) => {
+    return state.post.stadiumVal;
+  });
+
+  // 카테고리 리스트
   const [categoryList, setCategoryList] = useState([]);
   const [districtList, setDistrictList] = useState([]);
   const [stadiumList, setStadiumList] = useState([]);
@@ -38,12 +49,12 @@ const Searchbar = () => {
   useEffect(() => {
     const getCategoryDistrictList = async () => {
       const categoryRes = await getCategoryDistrict('category');
-      setCategoryList(categoryRes)
+      setCategoryList(categoryRes);
 
       const districtRes = await getCategoryDistrict('district');
       setDistrictList(districtRes);
     };
-    getCategoryDistrictList()
+    getCategoryDistrictList();
   }, []);
 
   // 구장 리스트 api 호출
@@ -60,11 +71,17 @@ const Searchbar = () => {
   // 검색 버튼 함수
   const selectSearch = async () => {
     const res = await getSearchPostList(catagorySelect, districtSelect, stadiumSelect, 1);
-    dispatch(savePost([catagorySelect, districtSelect, stadiumSelect, res]));
+    if (
+      catagorySelect === catagoryVal &&
+      districtSelect === districtVal &&
+      stadiumSelect === stadiumVal &&
+      link === '/board'
+    )
+      return;
+    else dispatch(savePost([catagorySelect, districtSelect, stadiumSelect, res.content]));
     if (link !== '/board') dispatch(unselected('all'));
     navigate('/board');
   };
-
 
   return (
     <section className='flex my-[20px] justify-center gap-[10px] items-center flex-wrap max-w-full'>
@@ -97,7 +114,7 @@ const Searchbar = () => {
         <button
           onClick={() => {
             dispatch(unselected('all'));
-            navigate('/posting')
+            navigate('/posting');
           }}
           className='p-3 rounded-lg bg-field hover:bg-hoverField text-white text-sm'
         >

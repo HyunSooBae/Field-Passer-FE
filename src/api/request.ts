@@ -378,7 +378,7 @@ export const getSearchPostList = async (
     let res = await request.get(`/api/post?page=${page}`);
     if (!category && district && !stadium) {
       res = await request.get(`api/post/district?district=${district}&page=${page}`);
-      return res.data.content;
+      return res.data;
     }
     if (category) res = await request.get(`api/post/category?category=${category}&page=${page}`);
     if (district)
@@ -389,7 +389,7 @@ export const getSearchPostList = async (
       res = await request.get(
         `api/post/stadium?category=${category}&district=${district}&stadiumName=${stadium}&page=${page}`,
       );
-    return res.data.content;
+    return res.data;
   } catch (error) {
     console.log(error);
   }
