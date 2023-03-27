@@ -37,16 +37,7 @@ const BoardDetails = () => {
   useEffect(() => {
     const getDistrictData = async () => {
       const res = await getSearchPostList('', data?.districtName, '', 1);
-      setDistrict(res);
-    };
-    getDistrictData();
-  }, [data]);
-
-  // 지도 api
-  useEffect(() => {
-    const getDistrictData = async () => {
-      const res = await getSearchPostList('', data?.districtName, '', 1);
-      setDistrict(res);
+      setDistrict(res.content);
     };
     getDistrictData();
   }, [data]);
@@ -87,7 +78,7 @@ const BoardDetails = () => {
   // 더보기 버튼 함수
   const morePage = () => {
     dispatch(unselected('all'));
-    dispatch(savePostMore(district));
+    dispatch(savePostMore([district, data?.districtName]));
     navigate('/boardMore');
   };
 

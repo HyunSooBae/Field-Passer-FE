@@ -7,6 +7,7 @@ export interface CategoryType {
   stadiumVal: boolean | string;
   postData: PostType[];
   postMoreData: PostType[];
+  postMoreDistrict: string;
 }
 
 const initialState: CategoryType = {
@@ -15,6 +16,7 @@ const initialState: CategoryType = {
   stadiumVal: false,
   postData: [],
   postMoreData: [],
+  postMoreDistrict: '',
 };
 
 const postSlice = createSlice({
@@ -28,13 +30,17 @@ const postSlice = createSlice({
       state.postData = action.payload[3];
     },
     savePostMore: (state, action) => {
-      state.postMoreData = action.payload;
+      state.postMoreData = action.payload[0];
+      state.postMoreDistrict = action.payload[1];
     },
     scrollPost: (state, action) => {
       state.postData.push(...action.payload);
     },
+    scrollMorePost: (state, action) => {
+      state.postMoreData.push(...action.payload);
+    },
   },
 });
 
-export const { savePost, savePostMore, scrollPost } = postSlice.actions;
+export const { savePost, savePostMore, scrollPost, scrollMorePost } = postSlice.actions;
 export default postSlice.reducer;
