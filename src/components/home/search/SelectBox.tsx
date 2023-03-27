@@ -14,9 +14,8 @@ const SelectBox = ({ id, options, defaultValue, size, setStadium }: any) => {
   const select = useRef<HTMLSelectElement>(null);
 
   const checkSelector = (action: string, value: string) => {
-    const prams = action + value
-
-    if (select.current?.value === '') dispatch(unselected(action))
+    const prams = action + value;
+    if (select.current?.value === '') dispatch(unselected(prams));
     else {
       dispatch(unselected(prams));
       setTimeout(() => {

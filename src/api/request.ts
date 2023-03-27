@@ -321,7 +321,7 @@ export const submitReport = async (
 // 양도 게시글 작성
 export const submitPost = async (formData: FormData) => {
   try {
-    const response = await request.post('/api/post/write', formData);
+    const response = await requestForm.post('/api/post/write', formData);
     return response;
   } catch (err) {
     console.log(err);
@@ -400,6 +400,16 @@ export const getDetailPostData = async (id: string | undefined) => {
   try {
     const res = await request.get(`api/post/${id}`);
     return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// 게시글 삭제
+export const DeletePost = async (postId : string | undefined) => {
+  try {
+    await request.put(`api/post/delete/${postId}`);
+    alert('삭제 완료되었습니다.')
   } catch (error) {
     console.log(error);
   }

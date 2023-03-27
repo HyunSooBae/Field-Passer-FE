@@ -69,4 +69,5 @@ export interface PostType {
   phone ? : string
   latitude ? : string
   longitude ? : string
+  profileImg ? : string
 }
