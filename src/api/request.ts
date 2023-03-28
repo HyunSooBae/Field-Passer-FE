@@ -1,7 +1,7 @@
 import { PostDataType } from '@src/util/userPageTypes';
 import { File } from 'buffer';
 import { request, requestForm } from './core/api';
-import { getCookie, setCookie } from '@src/util/cookie';
+// import { getCookie, setCookie } from '@src/util/cookie';
 
 // 관리자 페이지 회원 정보 리스트 조회
 export const getMembersList = async (page: number = 1) => {
