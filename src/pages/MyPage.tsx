@@ -1,4 +1,4 @@
-import { getMyPosts } from '@src/api/request';
+import { getMyPosts, getUserInfo } from '@src/api/request';
 import axios from 'axios';
 import React from 'react';
 import { useState, useEffect } from 'react';
@@ -24,6 +24,13 @@ const MyPage = () => {
     console.log(myPostData);
   };
   getMyPostData();
+
+  // const getMyInfo = async () => {
+  //   const { ok, myInfo } = await getUserInfo();
+  //   console.log(ok);
+  //   console.log(myInfo);
+  // };
+  // getMyInfo();
 
   // 문의글 & 페이지네이션
   useEffect(() => {

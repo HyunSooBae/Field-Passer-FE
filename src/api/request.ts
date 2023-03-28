@@ -438,3 +438,22 @@ export const getMyPosts = async () => {
 };
 // 마이페이지 내가 쓴 문의글 조회
 //
+
+// 사용자 회원정보조회
+export const getUserInfo = async () => {
+  try {
+    const response = await request(`/api/:memberid`, {
+      method: 'GET',
+    });
+    console.log(response);
+    return {
+      ok: true,
+      myInfo: response.data,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+    };
+  }
+};

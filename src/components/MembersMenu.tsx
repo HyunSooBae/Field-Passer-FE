@@ -16,14 +16,9 @@ const MembersMenu = () => {
 
   const logoutHandler = async () => {
     const { ok, code, authData } = await logout();
-    console.log(authData);
-    console.log(memberName);
     if (ok && code === 200 && authData) {
       dispatch(SET_AUTH(false));
       dispatch(DELETE_USER());
-      console.log(SET_USER);
-      console.log(authenticated);
-      console.log(memberName);
       navigate('/');
     }
   };

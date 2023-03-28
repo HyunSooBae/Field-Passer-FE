@@ -46,7 +46,7 @@ const Login = () => {
     if (ok && code === 200) {
       console.log(authData);
       dispatch(SET_AUTH(true));
-      navigate('/');
+      // navigate('/');
       console.log(authData.data);
       dispatch(SET_USER(authData.data));
       // setAuthMessage(authData.message);
