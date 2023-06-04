@@ -47,7 +47,7 @@ const Join = () => {
           message: '.jpg, .jpeg, .png, gif 형식에 맞는 파일을 업로드해주세요.',
         })
         .refine((file) => file?.[0]?.size <= MAX_FILE_SIZE, {
-          message: `파일 용량은 최대 1MB까지 가능합니다.`,
+          message: `파일 용량은 최대 1MB 까지 가능합니다.`,
         }),
       // .optional(),
     })
